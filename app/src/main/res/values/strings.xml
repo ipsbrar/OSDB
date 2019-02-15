@@ -8,4 +8,13 @@
     <string name="benifit_2">Benefit #2</string>
     <string name="benifit_3">Benefit #3</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</string>
+    <string name="some_error">Error</string>
+    <string name="account_exists_text">I already have an account <font color="#6849D7"><b>Sign in</b></font></string>
+    <string name="logo">Logo</string>
+    <string name="login_options_sub_heading">Please select an option below \nin order to continue.</string>
+    <string name="welcome_to_osdb">Welcome to OSDB</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="continue_with_gmail">Continue with Gmail</string>
+    <string name="continue_with_amazon">Continue with Amazon</string>
+    <string name="create_account">Create Account</string>
 </resources>

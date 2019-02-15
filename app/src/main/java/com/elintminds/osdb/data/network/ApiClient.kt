@@ -1,4 +1,4 @@
-package com.elintminds.introduceem.data.network
+package com.elintminds.osdb.data.network
 
 import android.content.Context
 import android.util.Log

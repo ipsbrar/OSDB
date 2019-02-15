@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login_options.view.LoginOptionsActivity">
+
+
+        <TextView
+                android:id="@+id/signin_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@string/account_exists_text"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/signin_tab"
+            android:background="@color/color_8798AD"/>
+
+        <ImageView
+                android:id="@+id/app_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/logo"
+
+                android:layout_centerHorizontal="true"/>
+
+        <TextView
+                android:id="@+id/welcome_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_to_osdb"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/app_logo"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_2E384D"/>
+        <TextView
+                android:id="@+id/welcome_sub_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_options_sub_heading"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/welcome_heading"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/color_8798AD"/>
+
+    <LinearLayout
+            android:id="@+id/fb_btn_lay"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/fb_btn_bg"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:gravity="center"
+            android:layout_below="@id/welcome_sub_text"
+            android:layout_marginTop="45dp">
+        <TextView
+                android:id="@+id/fb_login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_white"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:text="@string/continue_with_facebook"
+                android:drawableLeft="@drawable/ic_social_facebook"
+                android:drawableStart="@drawable/ic_social_facebook"
+                android:drawablePadding="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/google_btn_lay"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/google_btn_bg"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:gravity="center"
+            android:layout_below="@id/fb_btn_lay"
+            android:layout_marginTop="10dp">
+        <TextView
+                android:id="@+id/google_login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_white"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:text="@string/continue_with_gmail"
+                android:drawableLeft="@drawable/ic_social_facebook"
+                android:drawableStart="@drawable/ic_social_facebook"
+                android:drawablePadding="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/amazon_btn_lay"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/amazon_btn_bg"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:gravity="center"
+            android:layout_below="@id/google_btn_lay"
+            android:layout_marginTop="10dp">
+        <TextView
+                android:id="@+id/amazon_login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_white"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:text="@string/continue_with_amazon"
+                android:drawableLeft="@drawable/ic_social_facebook"
+                android:drawableStart="@drawable/ic_social_facebook"
+                android:drawablePadding="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/create_account_lay"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/create_account_btn_bg"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:gravity="center"
+            android:layout_below="@id/amazon_btn_lay"
+            android:layout_marginTop="10dp">
+        <TextView
+                android:id="@+id/create_account_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_white"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:text="@string/create_account"
+                android:drawableLeft="@drawable/ic_social_facebook"
+                android:drawableStart="@drawable/ic_social_facebook"
+                android:drawablePadding="10dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

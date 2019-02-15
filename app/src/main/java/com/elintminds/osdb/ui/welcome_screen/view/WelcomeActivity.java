@@ -1,4 +1,4 @@
-package com.elintminds.osdb.data;
+package com.elintminds.osdb.ui.welcome_screen.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,8 +17,10 @@ import android.widget.TextView;
 import com.elintminds.osdb.MainActivity;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
+import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.ui.login_options.view.LoginOptionsActivity;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends BaseActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -95,8 +97,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];
 
-        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
-        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
+//        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
+//        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
 
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
@@ -117,7 +119,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, LoginOptionsActivity.class));
         finish();
     }
 

@@ -30,6 +30,16 @@ public class AppPreferenceHelperClass implements PreferenceHelper {
     }
 
     @Override
+    public void setFirstTimeLaunch(Boolean firstTimeLaunch) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH, firstTimeLaunch);
+        editor.commit();
+    }
+
+    @Override
+    public Boolean isFirstTimeLaunch() {
+        return preferences.getBoolean(IS_FIRST_TIME_LAUNCH, true);
+    }
+    @Override
     public String getToken() {
         return preferences.getString(TOKEN, "");
     }
@@ -63,15 +73,6 @@ public class AppPreferenceHelperClass implements PreferenceHelper {
         editor.putString(DEVICETOKEN, token);
         editor.commit();
 
-    }
-    @Override
-    public void setFirstTimeLaunch(boolean isFirstTime) {
-        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor.commit();
-    }
-    @Override
-    public Boolean isFirstTimeLaunch() {
-        return preferences.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
 
     @Override

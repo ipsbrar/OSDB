@@ -1,8 +1,6 @@
 package com.elintminds.osdb.data.app_prefs;
 
 
-
-
 public interface PreferenceHelper {
     String prefsFile = "Introduceem_prefFile";
 
@@ -16,24 +14,32 @@ public interface PreferenceHelper {
     String TOUCH_ID = "TouchId";
     String IS_FIRST_TIME_LAUNCH = "isfirsttimelaunch";
 
-
-    void setFirstTimeLaunch(boolean firstTimeLaunch);
-    Boolean isFirstTimeLaunch();
     void saveLoginStatus(Boolean isLoggedin);
+
     Boolean getLoginStatus();
 
+    void setFirstTimeLaunch(Boolean firstTimeLaunch);
+
+    Boolean isFirstTimeLaunch();
+
     void saveToken(String saveToken, String userId, String touchId);
+
     String getToken();
+
     String getUserId();
+
     String getTouchId();
 
     void saveProjConfData(String data);
+
     void setDeviceToken(String token);
+
     String getDeviceToken();
 
     void saveLoginData(String data);
 
     String getLoginData();
+
     String getProjConfData();
 
     void clearUserData();
