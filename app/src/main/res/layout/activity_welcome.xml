@@ -10,7 +10,7 @@
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/view"/>
+            />
     <Button
             android:id="@+id/btn_skip"
             android:layout_width="wrap_content"
