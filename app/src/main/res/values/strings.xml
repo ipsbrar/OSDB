@@ -3,13 +3,14 @@
     <string name="next">Next</string>
     <string name="get_started">Get Started</string>
     <string name="skip">Skip</string>
-    <string name="signin">Sign in</string>
+    <string name="signin">Sign In</string>
     <string name="benifit_1">Benefit #1</string>
     <string name="benifit_2">Benefit #2</string>
     <string name="benifit_3">Benefit #3</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</string>
     <string name="some_error">Error</string>
     <string name="account_exists_text">I already have an account <font color="#6849D7"><b>Sign in</b></font></string>
+    <string name="dont_have_account_text">Don’t you have an account <font color="#6849D7"><b>Sign up</b></font></string>
     <string name="logo">Logo</string>
     <string name="login_options_sub_heading">Please select an option below \nin order to continue.</string>
     <string name="welcome_to_osdb">Welcome to OSDB</string>
@@ -17,4 +18,18 @@
     <string name="continue_with_gmail">Continue with Gmail</string>
     <string name="continue_with_amazon">Continue with Amazon</string>
     <string name="create_account">Create Account</string>
+    <string name="protect_account">Protect your account</string>
+    <string name="protect_account_sub_heading">Add a password to keep your account safe.</string>
+
+    <string name="recover_account">Recover your account</string>
+    <string name="recover_account_sub_heading">Please enter your new password below.</string>
+
+    <string name="signin_to_osdb">Sign in to OSDB</string>
+    <string name="signin_subheading">Please enter your credentials to proceed.</string>
+    <string name="email_address">EMAIL ADDRESS</string>
+    <string name="password">PASSWORD</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="forgot_password_sub_heading">We will send password \nreset instructions on you email.</string>
+    <string name="password_min_8">PASSWORD(MIN. 8 CHARACTERS) </string>
+    <string name="conf_pass">CONFIRM PASSWORD</string>
 </resources>

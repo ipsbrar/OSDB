@@ -18,6 +18,7 @@ import com.elintminds.osdb.MainActivity;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.ui.login.view.LoginActivity;
 import com.elintminds.osdb.ui.login_options.view.LoginOptionsActivity;
 
 public class WelcomeActivity extends BaseActivity {
@@ -74,7 +75,9 @@ public class WelcomeActivity extends BaseActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchHomeScreen();
+                prefManager.setFirstTimeLaunch(false);
+                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                finish();
             }
         });
 
@@ -104,7 +107,7 @@ public class WelcomeActivity extends BaseActivity {
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
+            dots[i].setTextSize(33);
             dots[i].setTextColor(getResources().getColor(R.color.opacity));
             dotsLayout.addView(dots[i]);
         }
@@ -207,7 +210,7 @@ public class WelcomeActivity extends BaseActivity {
             View text = page.findViewById(R.id.benifit_txt);
             if (text != null) {
                 text.setAlpha(1.0f - position);
-                text.setAnimation(AnimationUtils.loadAnimation(WelcomeActivity.this,R.anim.slide_in_right));
+              //  text.setAnimation(AnimationUtils.loadAnimation(WelcomeActivity.this,R.anim.slide_in_right));
             }
         }
     }
