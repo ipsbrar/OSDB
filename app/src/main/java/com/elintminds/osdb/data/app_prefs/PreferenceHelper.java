@@ -14,7 +14,11 @@ public interface PreferenceHelper {
     String LOGIN_STR = "login";
     String USER_ID = "UserId";
     String TOUCH_ID = "TouchId";
+    String IS_FIRST_TIME_LAUNCH = "isfirsttimelaunch";
 
+
+    void setFirstTimeLaunch(boolean firstTimeLaunch);
+    Boolean isFirstTimeLaunch();
     void saveLoginStatus(Boolean isLoggedin);
     Boolean getLoginStatus();
 

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">OSDB</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    <string name="skip">Skip</string>
+    <string name="signin">Sign in</string>
+    <string name="benifit_1">Benefit #1</string>
+    <string name="benifit_2">Benefit #2</string>
+    <string name="benifit_3">Benefit #3</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</string>
 </resources>
