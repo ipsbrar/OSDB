@@ -2,16 +2,24 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent"
         tools:context=".ui.login.view.LoginActivity">
+
+    <ImageView
+            android:id="@+id/crossImg" android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               app:srcCompat="@drawable/ic_cross"
+               android:padding="@dimen/dp_20"/>
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
                   android:layout_marginLeft="@dimen/dp_25"
                   android:layout_marginRight="@dimen/dp_25"
-                  android:layout_marginTop="@dimen/dp_45"
+                  android:layout_marginTop="@dimen/dp_20"
+                  android:layout_below="@+id/crossImg"
     >
+
         <TextView
                 android:id="@+id/welcome_heading"
                 android:layout_width="wrap_content"
@@ -20,6 +28,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/app_logo"
                 android:textSize="28sp"
+                android:layout_marginTop="@dimen/dp_10"
                 android:textStyle="bold"
                 android:textColor="@color/color_2E384D"/>
         <TextView
@@ -48,10 +57,12 @@
                 android:textColor="@color/color_8798AD"/>
 
         <EditText
+                android:id="@+id/login_email_et"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:padding="@dimen/dp_5"
                 android:background="@drawable/login_regist_et_bg"/>
 
 
@@ -65,11 +76,14 @@
                 android:textSize="15sp"
                 android:textColor="@color/color_8798AD"/>
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="@dimen/dp_40"
-                  android:maxLines="1"
-                  android:inputType="textPassword"
-                  android:background="@drawable/login_regist_et_bg"/>
+        <EditText
+                android:id="@+id/password_email_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:maxLines="1"
+                android:padding="@dimen/dp_5"
+                android:inputType="textPassword"
+                android:background="@drawable/login_regist_et_bg"/>
 
         <TextView
                 android:id="@+id/signin_btn"

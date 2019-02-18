@@ -6,15 +6,17 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.Toast;
 import com.elintminds.osdb.utils.ValidationChecks;
 
 public abstract class BaseFragment extends Fragment implements BaseView {
     private BaseActivity mActivity;
-
+    private ValidationChecks validationChecks;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
+
     }
 
     @Override
@@ -28,12 +30,13 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         super.onAttach(context);
         if (context instanceof BaseActivity) {
             this.mActivity = (BaseActivity) context;
+            validationChecks = new ValidationChecks(context);
         }
     }
 
     @Override
     public ValidationChecks getValidateChecksInstance() {
-        return null;
+        return validationChecks;
     }
 
     @Override
@@ -92,7 +95,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
     @Override
     public void showToast(String msg) {
-       // Toast.makeText(getContext(),msg,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),msg, Toast.LENGTH_SHORT).show();
     }
 
 //    @Override

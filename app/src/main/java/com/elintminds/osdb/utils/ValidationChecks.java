@@ -27,13 +27,13 @@ public class ValidationChecks
         return matcher.matches();
     }
 
-    public boolean PasswordValidator(String password) {
+    public boolean passwordValidator(String password) {
 
         Pattern pattern;
         Matcher matcher;
 
         final String PASSWORD_PATTERN =
-                "((?=.*\\d)(?=.*[A-Z]).{8,})";
+                "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$";
 
         pattern = Pattern.compile(PASSWORD_PATTERN);
 

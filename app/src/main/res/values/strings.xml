@@ -103,4 +103,8 @@
         <item>5</item>
         <item>6</item>
     </integer-array>
+
+    <string name="do_you_know">Do you know</string>
+    <string name="dummy_header_text">New Orleans Saints receivers Tommylee Lewis (11) works for a catch against Los Angeles</string>
+    <string name="dummy_detail_text">At least one lawsuit filed against the league by two Saints ticketholders calls on Goodell to either reverse the games result or reschedule the game from the point of the no-call – or replay the game in its entirety. The league recently said that replaying the game would have been prohibitively costly. Goodell insisted that changing the rules to allow penalties or adding an eight official to crews would only create more challenges. He acknowledged that expanding instant replay technology was a possibility, but qualified that it would not cover judgment calls.</string>
 </resources>

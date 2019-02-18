@@ -10,7 +10,8 @@
     <android.support.v7.widget.Toolbar
             android:id="@+id/register_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_back_gray">
         <TextView
                 android:id="@+id/page_count"
                 android:layout_width="wrap_content"
@@ -21,6 +22,8 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="25dp"
                 android:layout_marginRight="25dp"/>
+
+
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout
@@ -28,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/register_toolbar"/>
-
 
 
 </RelativeLayout>
