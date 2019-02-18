@@ -9,8 +9,8 @@
     <string name="benifit_3">Benefit #3</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</string>
     <string name="some_error">Error</string>
-    <string name="account_exists_text">I already have an account <font color="#6849D7"><b>Sign in</b></font></string>
-    <string name="dont_have_account_text">Don’t you have an account <font color="#6849D7"><b>Sign up</b></font></string>
+    <string name="account_exists_text">I already have an account  <font color="#6849D7"><b>Sign in</b></font></string>
+    <string name="dont_have_account_text">Don’t you have an account  <font color="#6849D7"><b>Sign up</b></font></string>
     <string name="logo">Logo</string>
     <string name="login_options_sub_heading">Please select an option below \nin order to continue.</string>
     <string name="welcome_to_osdb">Welcome to OSDB</string>
@@ -43,4 +43,8 @@
     <string name="register_password_subtext">Add a password to keep your account safe.</string>
     <string name="password_min_8_characters">Password (Min. 8 Characters)</string>
     <string name="confirm_password">Confirm Password</string>
+    
+    <string name="do_you_know">Do you know</string>
+    <string name="dummy_header_text">New Orleans Saints receivers Tommylee Lewis (11) works for a catch against Los Angeles</string>
+    <string name="dummy_detail_text">At least one lawsuit filed against the league by two Saints ticketholders calls on Goodell to either reverse the games result or reschedule the game from the point of the no-call – or replay the game in its entirety. The league recently said that replaying the game would have been prohibitively costly. Goodell insisted that changing the rules to allow penalties or adding an eight official to crews would only create more challenges. He acknowledged that expanding instant replay technology was a possibility, but qualified that it would not cover judgment calls.</string>
 </resources>

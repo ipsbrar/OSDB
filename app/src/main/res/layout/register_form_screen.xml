@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
             android:id="@+id/signin_tab"
@@ -30,6 +30,7 @@
             android:orientation="vertical"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+
             android:layout_above="@id/form_separator">
 
         <TextView
@@ -39,7 +40,7 @@
                 android:textSize="28sp"
                 android:textColor="@color/color_2E384D"
                 android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="20dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,10 +59,13 @@
                 android:textColor="@color/color_8798AD"/>
 
         <EditText
+                android:id="@+id/signup_name_et"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:inputType="text"
                 android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:padding="@dimen/dp_5"
                 android:background="@drawable/login_regist_et_bg"/>
 
         <TextView
@@ -76,10 +80,13 @@
                 android:textColor="@color/color_8798AD"/>
 
         <EditText
+                android:id="@+id/signup_email_et"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:padding="@dimen/dp_5"
+                android:imeOptions="actionNext"
                 android:background="@drawable/login_regist_et_bg"/>
 
 
@@ -95,10 +102,14 @@
                 android:textColor="@color/color_8798AD"/>
 
         <EditText
+                android:id="@+id/signup_phn_et"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
-                android:inputType="textPassword"
+                android:inputType="number"
                 android:maxLines="1"
+                android:maxLength="10"
+                android:padding="@dimen/dp_5"
+                android:imeOptions="actionDone"
                 android:background="@drawable/login_regist_et_bg"/>
 
 

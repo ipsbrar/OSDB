@@ -67,6 +67,7 @@
             android:gravity="center"
             android:layout_below="@id/welcome_sub_text"
             android:layout_marginTop="45dp">
+
         <TextView
                 android:id="@+id/fb_login_btn"
                 android:layout_width="wrap_content"
@@ -75,8 +76,8 @@
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:text="@string/continue_with_facebook"
-                android:drawableLeft="@drawable/ic_social_facebook"
-                android:drawableStart="@drawable/ic_social_facebook"
+                android:drawableLeft="@drawable/ic_facebook"
+                android:drawableStart="@drawable/ic_facebook"
                 android:drawablePadding="10dp"/>
     </LinearLayout>
 
@@ -98,8 +99,8 @@
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:text="@string/continue_with_gmail"
-                android:drawableLeft="@drawable/ic_social_facebook"
-                android:drawableStart="@drawable/ic_social_facebook"
+                android:drawableLeft="@drawable/ic_gplus"
+                android:drawableStart="@drawable/ic_gplus"
                 android:drawablePadding="10dp"/>
     </LinearLayout>
 
@@ -121,8 +122,8 @@
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:text="@string/continue_with_amazon"
-                android:drawableLeft="@drawable/ic_social_facebook"
-                android:drawableStart="@drawable/ic_social_facebook"
+                android:drawableLeft="@drawable/ic_amazon"
+                android:drawableStart="@drawable/ic_amazon"
                 android:drawablePadding="10dp"/>
     </LinearLayout>
 
@@ -143,10 +144,11 @@
                 android:textColor="@color/color_white"
                 android:textStyle="bold"
                 android:textSize="15sp"
+
                 android:text="@string/create_account"
-                android:drawableLeft="@drawable/ic_social_facebook"
-                android:drawableStart="@drawable/ic_social_facebook"
-                android:drawablePadding="10dp"/>
+                android:drawableLeft="@drawable/ic_email"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="40dp"/>
     </LinearLayout>
 
 </RelativeLayout>
