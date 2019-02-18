@@ -18,7 +18,7 @@ public class ForgotPasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_forgot_password);
 
 
-        submitBtn = findViewById(R.id.signin_btn);
+        submitBtn = findViewById(R.id.submit_btn);
         signupTab = findViewById(R.id.signup_tab);
 
 

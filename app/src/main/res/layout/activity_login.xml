@@ -47,10 +47,12 @@
                 android:textSize="15sp"
                 android:textColor="@color/color_8798AD"/>
 
-        <EditText android:layout_width="match_parent"
-                  android:layout_height="@dimen/dp_40"
-                  android:inputType="textEmailAddress"
-                  android:maxLines="1"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:background="@drawable/login_regist_et_bg"/>
 
 
         <TextView
@@ -66,7 +68,8 @@
         <EditText android:layout_width="match_parent"
                   android:layout_height="@dimen/dp_40"
                   android:maxLines="1"
-                  android:inputType="textPassword"/>
+                  android:inputType="textPassword"
+                  android:background="@drawable/login_regist_et_bg"/>
 
         <TextView
                 android:id="@+id/signin_btn"

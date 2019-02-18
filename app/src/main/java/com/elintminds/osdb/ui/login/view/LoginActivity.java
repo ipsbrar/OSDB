@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.elintminds.osdb.MainActivity;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.ui.forgot_password.view.ForgotPasswordActivity;
 import com.elintminds.osdb.ui.register.view.RegisterActivity;
 
 public class LoginActivity extends BaseActivity {
@@ -37,6 +38,13 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 finish();
+            }
+        });
+
+        forgotPassTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
             }
         });
 
