@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="20dp">
+    <TextView
+            android:id="@+id/second_view_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/featured_athlete"
+            android:textColor="@color/color_565656"
+            android:textSize="14sp"
+            android:textAllCaps="true"/>
+
+    <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/color_white"
+            android:layout_marginTop="8dp">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+            <ImageView
+                    android:id="@+id/view_3_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:contentDescription="@string/item_image"/>
+
+            <ImageView
+                    android:id="@+id/twitter_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="@string/twitter_button"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_below="@id/view_3_image"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"/>
+
+            <ImageView
+                    android:id="@+id/insta_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="@string/insta_button"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_below="@id/view_3_image"
+                    android:layout_toLeftOf="@id/twitter_icon"
+                    android:layout_toStartOf="@id/twitter_icon"/>
+            <TextView
+                    android:id="@+id/view_3_msg_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_2E384D"
+                    android:textSize="15sp"
+                    android:maxLines="5"
+                    android:text="Shamil Abdurakhimov"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_below="@id/view_3_image"
+                    android:layout_toLeftOf="@id/insta_icon"
+                    android:layout_toStartOf="@id/insta_icon"/>
+
+            <TextView
+                    android:id="@+id/sport_name_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/color_white"
+                    android:background="@drawable/view_third_sport_name_bg"
+                    android:text="ufc"
+                    android:layout_below="@id/view_3_msg_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="6dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"/>
+
+            <LinearLayout
+                    android:id="@+id/height_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@id/sport_name_tag"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/height"
+                        android:textColor="@color/color_8798AD"
+                        android:textAllCaps="true"
+                        android:textSize="12sp"
+                        android:padding="5dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6' 2"
+                        android:textColor="@color/color_2E384D"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/weight_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@id/sport_name_tag"
+                    android:layout_toRightOf="@id/height_layout"
+                    android:layout_toEndOf="@id/height_layout"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weight"
+                        android:textColor="@color/color_8798AD"
+                        android:textAllCaps="true"
+                        android:textSize="12sp"
+                        android:padding="5dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="225lbs"
+                        android:textColor="@color/color_2E384D"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/age_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@id/sport_name_tag"
+                    android:layout_toRightOf="@id/weight_layout"
+                    android:layout_toEndOf="@id/weight_layout"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/age"
+                        android:textColor="@color/color_8798AD"
+                        android:textAllCaps="true"
+                        android:textSize="12sp"
+                        android:padding="5dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="29"
+                        android:textColor="@color/color_2E384D"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"/>
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/player_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sport_name_tag"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignTop="@id/age_layout"
+                    android:layout_alignBottom="@id/age_layout"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

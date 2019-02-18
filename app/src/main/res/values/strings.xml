@@ -9,8 +9,16 @@
     <string name="benifit_3">Benefit #3</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</string>
     <string name="some_error">Error</string>
-    <string name="account_exists_text">I already have an account <font color="#6849D7"><b>Sign in</b></font></string>
-    <string name="dont_have_account_text">Don’t you have an account <font color="#6849D7"><b>Sign up</b></font></string>
+    <string name="account_exists_text">I already have an account
+        <font color="#6849D7">
+            <b>Sign in</b>
+        </font>
+    </string>
+    <string name="dont_have_account_text">Don’t you have an account
+        <font color="#6849D7">
+            <b>Sign up</b>
+        </font>
+    </string>
     <string name="logo">Logo</string>
     <string name="login_options_sub_heading">Please select an option below \nin order to continue.</string>
     <string name="welcome_to_osdb">Welcome to OSDB</string>
@@ -30,7 +38,7 @@
     <string name="password">PASSWORD</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="forgot_password_sub_heading">We will send password \nreset instructions on you email.</string>
-    <string name="password_min_8">PASSWORD(MIN. 8 CHARACTERS) </string>
+    <string name="password_min_8">PASSWORD(MIN. 8 CHARACTERS)</string>
     <string name="conf_pass">CONFIRM PASSWORD</string>
     <string name="cont_n">Continue</string>
     <string name="phone">Phone</string>
@@ -43,4 +51,56 @@
     <string name="register_password_subtext">Add a password to keep your account safe.</string>
     <string name="password_min_8_characters">Password (Min. 8 Characters)</string>
     <string name="confirm_password">Confirm Password</string>
+
+    <!--dashboard strings-->
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_latest">Latest</string>
+    <string name="title_live_scores">Live Scores</string>
+    <string name="title_poll">Poll</string>
+    <string name="title_discussion">Discussion</string>
+    <string name="home_logo">Home Logo</string>
+    <string name="sport_icon">Sport Icon</string>
+    <string name="on_this_day">On this day</string>
+    <string name="sample_text_1">Aaron Rodgers commits future to Green Bay Packers to become NFL\'s highest-paid player</string>
+    <string name="sample_text_4">Who do You think will win Europe Champions League 2018?</string>
+    <string name="sample_text_5">His biggest achievement has been winning the 2009 US Open, defeating Rafael Nadal in
+        the semifinal and 5-time defending champion Roger Federer in the final. He was the first to defeat both…</string>
+    <string name="sample_text_6">On July 12, 1921 Babe Ruth sets a record of 137 career home runs.</string>
+    <string name="did_you_know">Did you know?</string>
+    <string name="item_image">Item image</string>
+    <string name="team_logo">Team logo</string>
+    <string name="born_today">Born Today</string>
+    <string name="featured_athlete">Featured Athlete</string>
+    <string name="insta_button">Insta button</string>
+    <string name="twitter_button">twitter Button</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="age">Age</string>
+    <string name="featured_poll">Featured Poll</string>
+    <string name="breaking_news">Breaking News</string>
+    <string name="sep_16_2018">Sep. 16, 2018</string>
+    <string name="_1_min_ago">1 min ago</string>
+
+
+    <string-array name="sports_names">
+        <item>NFL</item>
+        <item>NBA</item>
+        <item>SOCCER</item>
+        <item>NHL</item>
+        <item>GOLF</item>
+        <item>TENNIS</item>
+        <item>BOXING</item>
+        <item>NASCAR</item>
+        <item>MLB</item>
+    </string-array>
+
+    <integer-array name="home_item_types">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </integer-array>
 </resources>
