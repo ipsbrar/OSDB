@@ -1,4 +1,4 @@
-package com.elintminds.osdb.ui.live_scores.adapter;
+package com.elintminds.osdb.ui.dashboard.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.elintminds.osdb.R;
-import com.elintminds.osdb.ui.live_scores.beans.LiveScroresAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.LiveScroresAdapterBean;
 
 import java.util.ArrayList;
 

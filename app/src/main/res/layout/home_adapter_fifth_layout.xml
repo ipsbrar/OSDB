@@ -18,6 +18,8 @@
                 android:id="@+id/view_5_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/category_img_baseball"
                 android:contentDescription="@string/item_image"/>
         <TextView
                 android:id="@+id/view_5_heading"

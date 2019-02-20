@@ -1,4 +1,4 @@
-package com.elintminds.osdb.ui.live_scores.view;
+package com.elintminds.osdb.ui.dashboard.view;
 
 import com.elintminds.osdb.ui.base.view.BaseView;
 

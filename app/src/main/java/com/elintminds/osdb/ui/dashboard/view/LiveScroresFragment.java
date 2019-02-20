@@ -1,4 +1,4 @@
-package com.elintminds.osdb.ui.live_scores.view;
+package com.elintminds.osdb.ui.dashboard.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.adapters.SportsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
-import com.elintminds.osdb.ui.live_scores.adapter.LiveScroresListAdapter;
-import com.elintminds.osdb.ui.live_scores.beans.LiveScroresAdapterBean;
+import com.elintminds.osdb.ui.dashboard.adapters.LiveScroresListAdapter;
+import com.elintminds.osdb.ui.dashboard.beans.LiveScroresAdapterBean;
 
 import java.util.ArrayList;
 
@@ -53,6 +53,8 @@ public class LiveScroresFragment extends BaseFragment {
         sportsRecyclerView.setAdapter(sportsListAdapter);
 
         getLatestData();
+
+
         liveScroresListAdapter = new LiveScroresListAdapter(context, latestItemsList);
         latestItemsRecyclerView.setAdapter(liveScroresListAdapter);
     }

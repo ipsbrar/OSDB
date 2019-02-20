@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:layout_marginTop="20dp">
+
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        android:background="@color/color_38D8D8D8">
+
+            <TextView
+                    android:id="@+id/poll_heading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_2E384D"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:maxLines="5"
+                    android:text="@string/sample_text_4"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@id/view_5_image"/>
+
+            <LinearLayout android:id="@+id/poll_option_parent"
+                    android:layout_width="match_parent"
+                          android:orientation="vertical"
+                          android:layout_marginTop="@dimen/dp_15"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@id/poll_heading_text">
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+</LinearLayout>

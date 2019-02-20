@@ -27,7 +27,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView, View
     private void intializeViews() {
         pageCount = findViewById(R.id.page_count);
         toolbar = findViewById(R.id.register_toolbar);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back_gray));
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

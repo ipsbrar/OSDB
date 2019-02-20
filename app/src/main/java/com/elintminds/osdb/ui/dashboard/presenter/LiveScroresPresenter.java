@@ -1,8 +1,8 @@
-package com.elintminds.osdb.ui.live_scores.presenter;
+package com.elintminds.osdb.ui.dashboard.presenter;
 
 import com.elintminds.osdb.ui.base.presenter.BasePresenter;
-import com.elintminds.osdb.ui.live_scores.model.LiveScroresInteractor;
-import com.elintminds.osdb.ui.live_scores.view.LiveScroresView;
+import com.elintminds.osdb.ui.dashboard.model.LiveScroresInteractor;
+import com.elintminds.osdb.ui.dashboard.view.LiveScroresView;
 
 public interface LiveScroresPresenter<V extends LiveScroresView, I extends LiveScroresInteractor> extends BasePresenter<V,I> {
 }

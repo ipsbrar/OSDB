@@ -131,6 +131,8 @@
     <string name="show_details">Show Details</string>
     <string name="share">Share</string>
     <string name="buy_tickets">Buy Tickets</string>
+    <string name="no_live_game_currently">No Live Game Currently</string>
+    <string name="please_visit_again_for_live_scores">Please visit again for Live Scores</string>
 
 
     <string-array name="sampl_news">
@@ -147,7 +149,29 @@
         <item>Rams kicker Greg Zuerlein dealing with foot strain</item>
         <item>Chiefs hire Spagnuolo to replace Bob Sutton</item>
     </string-array>
+    <string name="sunday">Sun</string>
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tue</string>
+    <string name="wednesday">Wed</string>
+    <string name="thursday">Thus</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
 
+
+    <string-array name="months">
+        <item>January</item>
+        <item>Febraury</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 
     <string-array name="sampl_events">
         <item>WASHINGTON WIZARDS VS NEW YORKS KNICKS AT BK STADIUM</item>

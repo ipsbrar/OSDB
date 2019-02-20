@@ -1,4 +1,4 @@
-package com.elintminds.osdb.ui.live_scores.model;
+package com.elintminds.osdb.ui.dashboard.model;
 
 import android.content.Context;
 import com.elintminds.osdb.data.app_prefs.PreferenceHelper;

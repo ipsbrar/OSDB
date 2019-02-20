@@ -1,11 +1,11 @@
-package com.elintminds.osdb.ui.live_scores.presenter;
+package com.elintminds.osdb.ui.dashboard.presenter;
 
 import android.content.Context;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
-import com.elintminds.osdb.ui.live_scores.model.LiveScroresInteractor;
-import com.elintminds.osdb.ui.live_scores.model.LiveScroresInteractorClass;
-import com.elintminds.osdb.ui.live_scores.view.LiveScroresView;
+import com.elintminds.osdb.ui.dashboard.model.LiveScroresInteractor;
+import com.elintminds.osdb.ui.dashboard.model.LiveScroresInteractorClass;
+import com.elintminds.osdb.ui.dashboard.view.LiveScroresView;
 
 public class LiveScroresPresenterClass<V extends LiveScroresView, I extends LiveScroresInteractor> extends BasePresenterClass<V,I> implements LiveScroresPresenter<V,I>
 {

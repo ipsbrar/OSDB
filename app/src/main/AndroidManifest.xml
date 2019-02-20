@@ -17,8 +17,7 @@
             android:supportsRtl="true"
 
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.event_details.view.EventDetailsActivity">
-        </activity>
+
         <activity
                 android:name=".ui.dashboard.view.DashboardActivity"
                 android:label="@string/title_activity_dashboard">
@@ -53,6 +52,7 @@
                 android:name=".ui.do_you_know.view.DoYouKnowActivity"
                 android:windowSoftInputMode="adjustPan">
         </activity>
+        <activity android:name=".ui.dashboard.view.PollCalendarActivity"/>
     </application>
 
 </manifest>

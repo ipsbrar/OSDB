@@ -1,4 +1,4 @@
-package com.elintminds.osdb.ui.live_scores.beans;
+package com.elintminds.osdb.ui.dashboard.beans;
 
 public class LiveScroresAdapterBean {
 

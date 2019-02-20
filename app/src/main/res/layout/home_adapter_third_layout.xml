@@ -41,6 +41,8 @@
                     android:id="@+id/view_3_image"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_img_golf"
                     android:contentDescription="@string/item_image"/>
 
             <ImageView

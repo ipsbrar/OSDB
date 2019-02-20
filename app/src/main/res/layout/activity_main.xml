@@ -6,14 +6,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+    <com.elintminds.osdb.ui.calendarview.view.CalendarView
+            android:id="@+id/calendarView"
+            app:dayHeight="48dp"
+            app:dayWidth="48dp"
+            app:todayCircleSize="30dp"
+            app:weekdayNameHeight="24dp"
+            app:monthLabelHeight="24dp"
+            app:monthLabelSize="14sp"
+            app:monthDividerSize="48dp"
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:todayCircleColor="@color/colorPrimary"
+            app:eventCircleColor="@color/default_eventCircleColor"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+    </com.elintminds.osdb.ui.calendarview.view.CalendarView>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.elintminds.osdb.ui.dashboard.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
-import com.elintminds.osdb.ui.live_scores.view.LiveScroresFragment;
 
 public class DashboardActivity extends BaseActivity implements DashboardView {
 
@@ -43,6 +43,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
     TabLayout bottomTabLayout;
 
     ImageView icon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +53,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
         initTab();
 
 
-      //  getSupportFragmentManager().beginTransaction().add(R.id.dashboard_container, HomeFragment.newInstance()).commit();
+        //  getSupportFragmentManager().beginTransaction().add(R.id.dashboard_container, HomeFragment.newInstance()).commit();
 
         switchTab(0);
     }
@@ -133,9 +134,11 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
                 break;
             case 3:
                 mTextMessage.setText(R.string.title_poll);
+                changeFragment(PollFragment.newInstance(), PollFragment.TAG);
                 break;
             case 4:
                 mTextMessage.setText(R.string.title_discussion);
+               // startActivity(new Intent(DashboardActivity.this, PollCalendarActivity.class));
                 break;
 
         }
