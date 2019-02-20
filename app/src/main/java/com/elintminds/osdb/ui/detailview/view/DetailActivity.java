@@ -41,6 +41,7 @@ public class DetailActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.color_black));
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
