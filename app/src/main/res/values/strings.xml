@@ -131,6 +131,12 @@
     <string name="show_details">Show Details</string>
     <string name="share">Share</string>
     <string name="buy_tickets">Buy Tickets</string>
+    <string name="event_details">Event Details</string>
+    <string name="contact_details">Contact Details</string>
+    <string name="location">Location</string>
+    <string name="date">Date</string>
+    <string name="starts_at">starts at</string>
+    <string name="versus">Versus</string>
     <string name="no_live_game_currently">No Live Game Currently</string>
     <string name="please_visit_again_for_live_scores">Please visit again for Live Scores</string>
 

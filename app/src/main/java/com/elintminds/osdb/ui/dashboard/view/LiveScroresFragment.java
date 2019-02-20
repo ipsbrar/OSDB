@@ -62,11 +62,11 @@ public class LiveScroresFragment extends BaseFragment {
     private void getSportsData()
     {
         String[] list = getResources().getStringArray(R.array.sports_names);
-        for(String name: list)
-        {
+        int[] imgRes = {R.drawable.nfl, R.drawable.nba, R.drawable.soccer, R.drawable.nhl, R.drawable.golf, R.drawable.tennis, R.drawable.boxing};
+        for (int name : imgRes) {
             SportsAdapterListBean item = new SportsAdapterListBean();
-            item.setGameName(name);
 
+            item.setImgRes(name);
             sportsList.add(item);
         }
     }

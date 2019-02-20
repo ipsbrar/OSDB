@@ -18,6 +18,12 @@
 
             android:theme="@style/AppTheme">
 
+        <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyC8fFpWGfRMA28hHluiOQtxzeApLis9N-k" />
+
+        <activity android:name=".ui.event_details.view.EventDetailsActivity">
+        </activity>
         <activity
                 android:name=".ui.dashboard.view.DashboardActivity"
                 android:label="@string/title_activity_dashboard">

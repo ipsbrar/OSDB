@@ -1,6 +1,7 @@
 package com.elintminds.osdb.ui.dashboard.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,12 +16,12 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.adapters.NewsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
+import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.utils.CardPaddingItemDecoration;
 
 import java.util.ArrayList;
 
-public class NewsFragment extends BaseFragment
-{
+public class NewsFragment extends BaseFragment implements DashboardView.NewsItemsClickListener {
     public static final String TAG = "NewsFragment";
 
     private Context context;
@@ -53,7 +54,7 @@ public class NewsFragment extends BaseFragment
     {
         CardPaddingItemDecoration itemDecoration = new CardPaddingItemDecoration(context, 10f, 10f, 7f,7f);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context, 2);
-        adapter = new NewsListAdapter(context, newsList);
+        adapter = new NewsListAdapter(context, newsList, this);
 
         newsRecyclerView.addItemDecoration(itemDecoration);
         newsRecyclerView.setLayoutManager(layoutManager);
@@ -83,5 +84,12 @@ public class NewsFragment extends BaseFragment
         Log.e("DATA",""+newsList.size());
         adapter.setDataList(newsList);
         newsRecyclerView.hideShimmerAdapter();
+    }
+
+    @Override
+    public void onNewsClick(int position)
+    {
+        Log.e("ON NEWS CLICK",""+position);
+        startActivity(new Intent(context, DetailActivity.class));
     }
 }

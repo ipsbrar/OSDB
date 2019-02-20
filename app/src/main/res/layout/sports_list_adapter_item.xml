@@ -3,9 +3,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="90dp"
         android:layout_height="90dp" xmlns:app="http://schemas.android.com/apk/res-auto"
-
         app:cardElevation="@dimen/dp_4"
         app:cardCornerRadius="@dimen/dp_4"
+        app:cardBackgroundColor="@color/transparent"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:layout_marginLeft="13dp"
