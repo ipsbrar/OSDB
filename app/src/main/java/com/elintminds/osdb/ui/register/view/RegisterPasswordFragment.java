@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.elintminds.osdb.MainActivity;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
+import com.elintminds.osdb.ui.dashboard.view.DashboardActivity;
 
 public class RegisterPasswordFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = "RegisterPasswordFragment";
@@ -43,7 +43,7 @@ public class RegisterPasswordFragment extends BaseFragment implements View.OnCli
         switch (view.getId()) {
             case R.id.createAccountBtn: {
                 if (validate()) {
-                    startActivity(new Intent(getContext(), MainActivity.class));
+                    startActivity(new Intent(getContext(), DashboardActivity.class));
                 }
                 break;
             }

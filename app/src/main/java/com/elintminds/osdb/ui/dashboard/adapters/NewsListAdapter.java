@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
+import com.elintminds.osdb.ui.dashboard.view.DashboardView;
 
 import java.util.ArrayList;
 
@@ -18,11 +19,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 {
     private Context context;
     private ArrayList<NewsAdapterBean> dataList;
+    private DashboardView.NewsItemsClickListener listener;
 
-    public NewsListAdapter(Context context, ArrayList<NewsAdapterBean> dataList)
+    public NewsListAdapter(Context context, ArrayList<NewsAdapterBean> dataList, DashboardView.NewsItemsClickListener listener)
     {
         this.context = context;
         this.dataList = dataList;
+        this.listener = listener;
     }
 
 
@@ -56,6 +59,15 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
             newsPreviewImage = itemView.findViewById(R.id.news_preview_image);
             newsTitle = itemView.findViewById(R.id.news_title);
             newsDateTime = itemView.findViewById(R.id.news_date_time);
+
+            itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    listener.onNewsClick(getAdapterPosition());
+                }
+            });
         }
     }
 

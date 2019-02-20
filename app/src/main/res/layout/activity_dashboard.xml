@@ -8,25 +8,31 @@
         android:layout_height="match_parent"
         tools:context=".ui.dashboard.view.DashboardActivity">
 
-    <android.support.v7.widget.Toolbar
-            android:id="@+id/dashboard_toolbar"
+    <android.support.design.widget.AppBarLayout
+            android:id="@+id/dashboard_appBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-    >
-        <TextView
-                android:id="@+id/dashboard_title"
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/dashboard_toolbar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/title_home"
-                android:layout_gravity="center"/>
-        <ImageView
-                android:id="@+id/home_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/home_logo"
-                android:visibility="gone"/>
-    </android.support.v7.widget.Toolbar>
+                app:navigationIcon="@drawable/user_icon">
+            <TextView
+                    android:id="@+id/dashboard_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_home"
+                    android:layout_gravity="center"/>
+            <ImageView
+                    android:id="@+id/home_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/home_logo"
+                    android:visibility="gone"/>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
 
     <android.support.design.widget.TabLayout
             android:id="@+id/navigation"
@@ -47,7 +53,7 @@
             android:id="@+id/dashboard_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/dashboard_toolbar"
+            android:layout_below="@id/dashboard_appBar"
             android:layout_above="@id/navigation">
 
     </FrameLayout>

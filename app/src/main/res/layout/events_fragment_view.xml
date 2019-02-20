@@ -37,6 +37,8 @@
                 android:textColor="@color/color_A1A1A1"
                 android:width="155dp"
                 android:height="21dp"
-                android:visibility="visible"/>
+                android:visibility="visible"
+                android:fontFamily="@font/rubik_medium"
+                tools:targetApi="jelly_bean"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

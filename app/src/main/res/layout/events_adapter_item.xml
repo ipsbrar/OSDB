@@ -12,6 +12,8 @@
                 android:id="@+id/news_frag_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/category_img_baseball"
                 android:contentDescription="@string/item_image"/>
         <LinearLayout
                 android:id="@+id/event_date_layout"

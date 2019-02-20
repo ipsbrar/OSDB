@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.EventsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
+import com.elintminds.osdb.ui.dashboard.view.DashboardView;
 
 import java.util.ArrayList;
 
@@ -18,11 +19,13 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListAdapter.Vi
 {
     private Context context;
     private ArrayList<EventsAdapterBean> dataList;
+    private DashboardView.EventsItemsClickListener listener;
 
-    public EventsListAdapter(Context context, ArrayList<EventsAdapterBean> dataList)
+    public EventsListAdapter(Context context, ArrayList<EventsAdapterBean> dataList, DashboardView.EventsItemsClickListener listener)
     {
         this.context = context;
         this.dataList = dataList;
+        this.listener =  listener;
     }
 
 
@@ -47,10 +50,18 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView eventTitle;
+        TextView eventTitle, showDetailsBtn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             eventTitle = itemView.findViewById(R.id.event_title);
+            showDetailsBtn = itemView.findViewById(R.id.show_details);
+
+            showDetailsBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onShowDetailsClick(getAdapterPosition());
+                }
+            });
         }
     }
 
