@@ -3,10 +3,12 @@ package com.elintminds.osdb.ui.dashboard.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.HomeAdapterListBean;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     {
         this.context = context;
         this.dataList = dataList;
+        Log.e("DATA SIZE",""+dataList.size());
     }
 
     @NonNull
@@ -52,7 +55,18 @@ public class HomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i)
     {
+        if(viewHolder instanceof SecondViewHolder)
+        {
+            ArrayList<BornTodayAdapterBean> dataItems = new ArrayList<>(10);
+            for (int j=0; j<10; j++){
+                BornTodayAdapterBean item = new BornTodayAdapterBean();
 
+                dataItems.add(item);
+            }
+            BornTodayAdapter adapter = new BornTodayAdapter(context, dataItems);
+            ((SecondViewHolder) viewHolder).bornTodayRecycler.setNestedScrollingEnabled(false);
+            ((SecondViewHolder) viewHolder).bornTodayRecycler.setAdapter(adapter);
+        }
     }
 
     @Override
@@ -62,7 +76,9 @@ public class HomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemViewType(int position) {
+        Log.e("Position",""+position+", "+dataList.size());
         HomeAdapterListBean item = dataList.get(position);
+        Log.e("TYPE",""+item.getType());
         return Integer.parseInt(item.getType());
     }
 
@@ -73,9 +89,12 @@ public class HomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 
-    public class SecondViewHolder extends RecyclerView.ViewHolder{
+    public class SecondViewHolder extends RecyclerView.ViewHolder
+    {
+        RecyclerView bornTodayRecycler;
         public SecondViewHolder(@NonNull View itemView) {
             super(itemView);
+            bornTodayRecycler = itemView.findViewById(R.id.born_today_recycler);
         }
     }
 

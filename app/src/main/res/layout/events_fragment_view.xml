@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="15dp"
+            android:paddingTop="20dp">
+
+        <com.cooltechworks.views.shimmer.ShimmerRecyclerView
+                android:id="@+id/events_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:shimmer_demo_child_count="5"
+                app:shimmer_demo_layout="@layout/events_shimmer_view"
+                app:shimmer_demo_layout_manager_type="linear_vertical"
+                app:shimmer_demo_angle="20"
+                android:nestedScrollingEnabled="false"
+                tools:targetApi="lollipop"/>
+
+
+        <TextView
+                android:id="@+id/load_more_events"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:lineSpacingMultiplier="1.50"
+                android:text="@string/load_more_events"
+                android:textSize="14sp"
+                android:textColor="@color/color_A1A1A1"
+                android:width="155dp"
+                android:height="21dp"
+                android:visibility="visible"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

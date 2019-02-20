@@ -7,4 +7,10 @@
         <item name="colorPrimaryDark">@color/color_6849D7</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+
+    <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <!--<item name="android:fontFamily">@font/b_preplay</item>-->
+        <item name="android:textAllCaps">true</item>
+    </style>
 </resources>

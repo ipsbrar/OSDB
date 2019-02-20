@@ -62,10 +62,13 @@
     <string name="home_logo">Home Logo</string>
     <string name="sport_icon">Sport Icon</string>
     <string name="on_this_day">On this day</string>
-    <string name="sample_text_1">Aaron Rodgers commits future to Green Bay Packers to become NFL\'s highest-paid player</string>
+    <string name="sample_text_1">Aaron Rodgers commits future to Green Bay Packers to become NFL\'s highest-paid
+        player
+    </string>
     <string name="sample_text_4">Who do You think will win Europe Champions League 2018?</string>
     <string name="sample_text_5">His biggest achievement has been winning the 2009 US Open, defeating Rafael Nadal in
-        the semifinal and 5-time defending champion Roger Federer in the final. He was the first to defeat both…</string>
+        the semifinal and 5-time defending champion Roger Federer in the final. He was the first to defeat both…
+    </string>
     <string name="sample_text_6">On July 12, 1921 Babe Ruth sets a record of 137 career home runs.</string>
     <string name="did_you_know">Did you know?</string>
     <string name="item_image">Item image</string>
@@ -94,17 +97,61 @@
         <item>NASCAR</item>
         <item>MLB</item>
     </string-array>
-
-    <integer-array name="home_item_types">
+    <array name="tab_names">
+        <item>Home</item>
+        <item>Latest</item>
+        <item>Live Scores</item>
+        <item>Poll</item>
+        <item>Discussion</item>
+    </array>
+    <string-array name="home_item_types">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
         <item>6</item>
+    </string-array>
+    <integer-array name="live_item_types">
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>1</item>
     </integer-array>
-
     <string name="do_you_know">Do you know</string>
     <string name="dummy_header_text">New Orleans Saints receivers Tommylee Lewis (11) works for a catch against Los Angeles</string>
     <string name="dummy_detail_text">At least one lawsuit filed against the league by two Saints ticketholders calls on Goodell to either reverse the games result or reschedule the game from the point of the no-call – or replay the game in its entirety. The league recently said that replaying the game would have been prohibitively costly. Goodell insisted that changing the rules to allow penalties or adding an eight official to crews would only create more challenges. He acknowledged that expanding instant replay technology was a possibility, but qualified that it would not cover judgment calls.</string>
+    <string name="barcelona">Barcelona</string>
+    <string name="real_madrid">Real Madrid</string>
+    <string name="metlife_stadium_east_rutherford">MetLife Stadium, East Rutherford</string>
+    <string name="bufallo_bills">Bufallo Bills</string>
+    <string name="seahawck">Seahawck</string>
+    <string name="load_more_news">Load more news</string>
+    <string name="load_more_events">Load more events</string>
+    <string name="show_details">Show Details</string>
+    <string name="share">Share</string>
+    <string name="buy_tickets">Buy Tickets</string>
+
+
+    <string-array name="sampl_news">
+        <item>Le\'Veon Bell is making the biggest bet of all in 2018</item>
+        <item>Aaron Rodgers commits future to Green</item>
+        <item>Newton\'s surgery highlights need for backup QB</item>
+        <item>Dak: Kellen Moore \'has got the mind\' for OC job</item>
+        <item>NFC comes back to win Pro Bowl Skills Showdown</item>
+        <item>Cooks intentionally dropped pass ahead of GW FG</item>
+        <item>Rams kicker Greg Zuerlein dealing with foot strain</item>
+        <item>Chiefs hire Spagnuolo to replace Bob Sutton</item>
+        <item>NFC comes back to win Pro Bowl Skills Showdown</item>
+        <item>Cooks intentionally dropped pass ahead of GW FG</item>
+        <item>Rams kicker Greg Zuerlein dealing with foot strain</item>
+        <item>Chiefs hire Spagnuolo to replace Bob Sutton</item>
+    </string-array>
+
+
+    <string-array name="sampl_events">
+        <item>WASHINGTON WIZARDS VS NEW YORKS KNICKS AT BK STADIUM</item>
+        <item>Nfl cup 2019 opening ceremony performers</item>
+        <item>WASHINGTON WIZARDS VS NEW YORKS KNICKS AT BK STADIUM</item>
+    </string-array>
 </resources>

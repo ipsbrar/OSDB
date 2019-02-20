@@ -16,11 +16,8 @@ import com.elintminds.osdb.ui.dashboard.beans.HomeAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-public class HomeFragment extends BaseFragment
-{
+public class HomeFragment extends BaseFragment {
     public static final String TAG = "HomeFragment";
 
     private Context context;
@@ -31,21 +28,18 @@ public class HomeFragment extends BaseFragment
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
     private ArrayList<HomeAdapterListBean> homeItemsList = new ArrayList<>();
 
-    public static HomeFragment newInstance()
-    {
+    public static HomeFragment newInstance() {
         return new HomeFragment();
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.home_fragment_view, container, false);
     }
 
     @Override
-    protected void setUp(View view)
-    {
+    protected void setUp(View view) {
         context = getContext();
         sportsRecyclerView = view.findViewById(R.id.sportsList);
         homeItemsRecyclerView = view.findViewById(R.id.homes_items_list);
@@ -59,24 +53,23 @@ public class HomeFragment extends BaseFragment
         homeItemsRecyclerView.setAdapter(homeListAdapter);
     }
 
-    private void getSportsData()
-    {
+    private void getSportsData() {
         String[] list = getResources().getStringArray(R.array.sports_names);
-        for(String name: list)
-        {
-            SportsAdapterListBean item = new SportsAdapterListBean();
-            item.setGameName(name);
+        int[] imgRes = {R.drawable.nfl, R.drawable.nba, R.drawable.soccer, R.drawable.nhl, R.drawable.golf, R.drawable.tennis, R.drawable.boxing};
 
+        for (int name : imgRes) {
+            SportsAdapterListBean item = new SportsAdapterListBean();
+
+            item.setImgRes(name);
             sportsList.add(item);
         }
     }
 
-    private void getHomeData()
-    {
+    private void getHomeData() {
         String[] types = getResources().getStringArray(R.array.home_item_types);
-        for(String type: types)
-        {
+        for (String type : types) {
             HomeAdapterListBean item = new HomeAdapterListBean();
+
             item.setType(type);
 
             homeItemsList.add(item);

@@ -36,7 +36,8 @@ public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.Vi
     {
         SportsAdapterListBean item = dataList.get(i);
 
-        holder.sportsName.setText(item.getGameName());
+        //holder.sportsName.setText(item.getGameName());
+        holder.sportsIcon.setImageResource(item.getImgRes());
     }
 
     @Override

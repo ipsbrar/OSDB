@@ -61,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:inputType="textEmailAddress"
+                android:text="abc@gmail.com"
                 android:maxLines="1"
                 android:padding="@dimen/dp_5"
                 android:background="@drawable/login_regist_et_bg"/>
@@ -80,6 +81,7 @@
                 android:id="@+id/password_email_et"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
+                android:text="Pass@123"
                 android:maxLines="1"
                 android:padding="@dimen/dp_5"
                 android:inputType="textPassword"

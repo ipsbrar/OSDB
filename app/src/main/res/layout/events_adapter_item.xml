@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/news_frag_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/item_image"/>
+        <LinearLayout
+                android:id="@+id/event_date_layout"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_below="@id/news_frag_image"
+                android:layout_marginTop="14dp">
+
+            <TextView
+                    android:id="@+id/event_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_6849D7"
+                    android:text="Feb"/>
+
+            <TextView
+                    android:id="@+id/event_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_black"
+                    android:text="08"/>
+
+            <TextView
+                    android:id="@+id/event_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_black"
+                    android:text="Fri"/>
+
+        </LinearLayout>
+
+        <View android:id="@+id/event_date_separator"
+              android:layout_width="1dp"
+              android:layout_height="match_parent"
+              android:layout_alignTop="@id/event_date_layout"
+              android:layout_alignBottom="@id/event_date_layout"
+              android:layout_toRightOf="@id/event_date_layout"
+              android:background="@color/color_DEDEDE"
+              android:layout_marginTop="4dp"
+              android:layout_marginBottom="4dp"
+              android:layout_toEndOf="@id/event_date_layout"/>
+        <TextView
+                android:id="@+id/event_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:maxLines="2"
+                android:layout_below="@id/news_frag_image"
+                android:layout_toRightOf="@id/event_date_separator"
+                android:layout_toEndOf="@id/event_date_separator"
+                android:text="@string/sample_text_1"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MetLife Stadium,  East Rutherford"
+                android:textSize="11sp"
+                android:textColor="@color/color_474747"
+                android:layout_below="@id/event_title"
+                android:layout_toRightOf="@id/event_date_separator"
+                android:layout_toEndOf="@id/event_date_separator"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"/>
+
+        <View
+                android:id="@+id/show_details_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_DEDEDE"
+                android:layout_below="@id/event_date_layout"
+                android:layout_marginTop="15dp"/>
+
+        <TextView
+                android:id="@+id/show_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/show_details"
+                android:textColor="@color/color_8798AD"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_below="@id/show_details_separator"
+                android:textSize="12sp"
+                android:padding="15dp"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

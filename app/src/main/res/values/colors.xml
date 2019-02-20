@@ -7,9 +7,9 @@
     <color name="opacity">#4DE6E6E6</color>
     <color name="transparent">#00000000</color>
     <color name="purple">#6849D7</color>
+    <color name="demo_dark_transparent">#24000000</color>
 
     <color name="color_white">#FFFFFF</color>
-    <color name="color_black">#000000</color>
 
     <color name="color_F8F6FF">#F8F6FF</color>
     <color name="color_black">#000000</color>
@@ -24,8 +24,13 @@
     <color name="color_565656">#565656</color>
     <color name="color_D7A049">#D7A049</color>
     <color name="color_DC1F1C">#DC1F1C</color>
-    <color name="color_B3FFFFFF">#B3FFFFFF</color>
+    <color name="color_B3FFFFFF">#F7FFFFFF</color>
     <color name="color_A0A5B5">#A0A5B5</color>
+    <color name="color_4CE1B6">#4CE1B6</color>
 
+    <color name="color_EFEFEF">#EFEFEF</color>
+    <color name="color_A1A1A1">#A1A1A1</color>
+    <color name="color_DEDEDE">#DEDEDE</color>
+    <color name="color_474747">#474747</color>
 
 </resources>

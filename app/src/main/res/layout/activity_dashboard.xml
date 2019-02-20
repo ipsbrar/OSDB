@@ -12,7 +12,7 @@
             android:id="@+id/dashboard_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+    >
         <TextView
                 android:id="@+id/dashboard_title"
                 android:layout_width="wrap_content"
@@ -28,13 +28,20 @@
                 android:visibility="gone"/>
     </android.support.v7.widget.Toolbar>
 
-    <android.support.design.widget.BottomNavigationView
+    <android.support.design.widget.TabLayout
             android:id="@+id/navigation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground"
+            android:layout_height="70dp"
+            app:tabSelectedTextColor="@color/color_6849D7"
+            app:tabMode="scrollable"
+            app:tabPaddingTop="0dp"
+            app:tabPaddingStart="9dp"
+            app:tabPaddingEnd="9dp"
+            app:tabGravity="fill"
+            app:tabMinWidth="0dp"
+            android:background="@color/white"
             android:layout_alignParentBottom="true"
-            app:menu="@menu/navigation"/>
+    />
 
     <FrameLayout
             android:id="@+id/dashboard_container"
