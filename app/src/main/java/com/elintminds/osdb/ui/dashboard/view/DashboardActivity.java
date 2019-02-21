@@ -141,7 +141,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
             case 3:
                 mTextMessage.setText(R.string.title_poll);
 
-
+                changeFragment(PollFragment.newInstance(), PollFragment.TAG);
                 break;
             case 4:
                 mTextMessage.setText(R.string.title_discussion);

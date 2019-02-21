@@ -71,7 +71,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     }
 
     private void loadNewsData() {
-        String[] newsArray = getResources().getStringArray(R.array.sampl_news);
+        String[] newsArray = context.getResources().getStringArray(R.array.sampl_news);
         for (String nws : newsArray) {
             NewsAdapterBean item = new NewsAdapterBean();
             item.setTitle(nws);

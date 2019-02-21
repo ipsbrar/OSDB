@@ -57,7 +57,7 @@
     <string name="title_home">Home</string>
     <string name="title_latest">Latest</string>
     <string name="title_live_scores">Live Scores</string>
-    <string name="title_poll">Poll</string>
+    <string name="title_poll">Polls</string>
     <string name="title_discussion">Discussion</string>
     <string name="home_logo">Home Logo</string>
     <string name="sport_icon">Sport Icon</string>
@@ -169,6 +169,7 @@
     <string name="show_password_button">Show password button</string>
     <string name="submit">Submit</string>
     <string name="save">Save</string>
+    <string name="report">Report</string>
 
 
     <string-array name="months">

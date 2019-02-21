@@ -46,7 +46,7 @@ public class LatestFragment extends BaseFragment
 
     private void setupViewPager(ViewPager upViewPager)
     {
-        LatestViewPagerFragment adapter = new LatestViewPagerFragment(getActivity().getSupportFragmentManager());
+        LatestViewPagerFragment adapter = new LatestViewPagerFragment(getChildFragmentManager());
         adapter.addFragment(NewsFragment.getInstance(), "News");
         adapter.addFragment(EventsFragment.getInstance(), "Events");
         upViewPager.setAdapter(adapter);
