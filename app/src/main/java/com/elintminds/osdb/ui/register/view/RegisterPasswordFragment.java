@@ -4,19 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.view.DashboardActivity;
+import com.elintminds.osdb.utils.Utils;
 
 public class RegisterPasswordFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = "RegisterPasswordFragment";
     private TextView createAccountBtn;
     private EditText signupPassEt, signupConfPassEt;
+    private ImageView showPassBtn, showConfPassBtn;
+    private boolean isPassShown = false, isConfPassShown = false;
 
     public static RegisterPasswordFragment newInstance() {
         return new RegisterPasswordFragment();
@@ -30,23 +37,38 @@ public class RegisterPasswordFragment extends BaseFragment implements View.OnCli
     }
 
     @Override
-    protected void setUp(View view) {
+    protected void setUp(View view)
+    {
         createAccountBtn = view.findViewById(R.id.createAccountBtn);
         signupPassEt = view.findViewById(R.id.signupPassEt);
         signupConfPassEt = view.findViewById(R.id.signupConfPassEt);
+        showPassBtn = view.findViewById(R.id.show_password_btn);
+        showConfPassBtn = view.findViewById(R.id.show_conf_password_btn);
 
         createAccountBtn.setOnClickListener(this);
+        showPassBtn.setOnClickListener(this);
+        showConfPassBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.createAccountBtn: {
+        switch (view.getId())
+        {
+            case R.id.createAccountBtn:
                 if (validate()) {
                     startActivity(new Intent(getContext(), DashboardActivity.class));
                 }
                 break;
-            }
+
+            case R.id.show_password_btn:
+                Utils.showHidePass(signupPassEt, isPassShown);
+                isPassShown = !isPassShown;
+                break;
+
+            case R.id.show_conf_password_btn:
+                Utils.showHidePass(signupConfPassEt, isConfPassShown);
+                isConfPassShown = !isConfPassShown;
+                break;
         }
     }
 

@@ -14,22 +14,29 @@
                 android:layout_alignParentBottom="true"
                 android:text="@string/account_exists_text"
                 android:gravity="center"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/color_8798AD"
+                android:fontFamily="@font/rubik_light"
                 android:layout_centerHorizontal="true"
-                android:padding="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:padding="15dp"/>
 
         <View
+                android:id="@+id/options_separator"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/dp_1"
             android:layout_above="@id/signin_tab"
-            android:background="@color/color_8798AD"/>
+            android:background="@color/color_E8ECF0"/>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/options_separator"
+            android:gravity="center">
 
         <ImageView
                 android:id="@+id/app_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:contentDescription="@string/logo"
                 app:srcCompat="@drawable/ic_logo_purple"
                 android:layout_centerHorizontal="true"/>
@@ -39,11 +46,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/welcome_to_osdb"
-                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_25"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/app_logo"
-                android:textSize="28sp"
-
+                android:textSize="@dimen/sp_28"
+                android:fontFamily="@font/rubik_bold"
                 android:textColor="@color/color_2E384D"/>
         <TextView
                 android:id="@+id/welcome_sub_text"
@@ -53,103 +60,103 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/welcome_heading"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="@dimen/dp_5"
                 android:layout_marginTop="10dp"
-                android:textSize="15sp"
+                android:textSize="@dimen/sp_15"
+                android:fontFamily="@font/rubik_light"
                 android:textColor="@color/color_8798AD"/>
 
-    <LinearLayout
-            android:id="@+id/fb_btn_lay"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/fb_btn_bg"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:gravity="center"
-            android:layout_below="@id/welcome_sub_text"
-            android:layout_marginTop="45dp">
+        <LinearLayout
+                android:id="@+id/fb_btn_lay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:background="@drawable/fb_btn_bg"
+                android:layout_marginLeft="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_25"
+                android:gravity="center"
+                android:layout_below="@id/welcome_sub_text"
+                android:layout_marginTop="40dp">
 
-        <TextView
-                android:id="@+id/fb_login_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_white"
+            <TextView
+                    android:id="@+id/fb_login_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/sp_15"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@string/continue_with_facebook"
+                    android:drawableStart="@drawable/ic_facebook"
+                    android:drawablePadding="10dp"/>
+        </LinearLayout>
 
-                android:textSize="15sp"
-                android:text="@string/continue_with_facebook"
-                android:drawableLeft="@drawable/ic_facebook"
-                android:drawableStart="@drawable/ic_facebook"
-                android:drawablePadding="10dp"/>
-    </LinearLayout>
+        <LinearLayout
+                android:id="@+id/google_btn_lay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:background="@drawable/google_btn_bg"
+                android:layout_marginLeft="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_25"
+                android:gravity="center"
+                android:layout_below="@id/fb_btn_lay"
+                android:layout_marginTop="@dimen/dp_10">
+            <TextView
+                    android:id="@+id/google_login_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_white"
+                    android:fontFamily="@font/rubik_medium"
+                    android:textSize="@dimen/sp_15"
+                    android:text="@string/continue_with_gmail"
+                    android:drawableStart="@drawable/ic_gplus"
+                    android:drawablePadding="10dp"/>
+        </LinearLayout>
 
-    <LinearLayout
-            android:id="@+id/google_btn_lay"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/google_btn_bg"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:gravity="center"
-            android:layout_below="@id/fb_btn_lay"
-            android:layout_marginTop="10dp">
-        <TextView
-                android:id="@+id/google_login_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_white"
+        <LinearLayout
+                android:id="@+id/amazon_btn_lay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:background="@drawable/amazon_btn_bg"
+                android:layout_marginLeft="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_25"
+                android:gravity="center"
+                android:layout_below="@id/google_btn_lay"
+                android:layout_marginTop="@dimen/dp_10">
+            <TextView
+                    android:id="@+id/amazon_login_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_white"
+                    android:fontFamily="@font/rubik_medium"
+                    android:textSize="@dimen/sp_15"
+                    android:text="@string/continue_with_amazon"
+                    android:drawableLeft="@drawable/ic_amazon"
+                    android:drawableStart="@drawable/ic_amazon"
+                    android:drawablePadding="10dp"/>
+        </LinearLayout>
 
-                android:textSize="15sp"
-                android:text="@string/continue_with_gmail"
-                android:drawableLeft="@drawable/ic_gplus"
-                android:drawableStart="@drawable/ic_gplus"
-                android:drawablePadding="10dp"/>
-    </LinearLayout>
+        <LinearLayout
+                android:id="@+id/create_account_lay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:background="@drawable/create_account_btn_bg"
+                android:layout_marginLeft="@dimen/dp_25"
+                android:layout_marginRight="@dimen/dp_25"
+                android:gravity="center"
+                android:layout_below="@id/amazon_btn_lay"
+                android:layout_marginTop="@dimen/dp_10">
+            <TextView
+                    android:id="@+id/create_account_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/sp_15"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@string/create_account"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="30dp"
+                    android:paddingEnd="20dp"/>
+        </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
-            android:id="@+id/amazon_btn_lay"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/amazon_btn_bg"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:gravity="center"
-            android:layout_below="@id/google_btn_lay"
-            android:layout_marginTop="10dp">
-        <TextView
-                android:id="@+id/amazon_login_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_white"
-
-                android:textSize="15sp"
-                android:text="@string/continue_with_amazon"
-                android:drawableLeft="@drawable/ic_amazon"
-                android:drawableStart="@drawable/ic_amazon"
-                android:drawablePadding="10dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-            android:id="@+id/create_account_lay"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/create_account_btn_bg"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:gravity="center"
-            android:layout_below="@id/amazon_btn_lay"
-            android:layout_marginTop="10dp">
-        <TextView
-                android:id="@+id/create_account_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_white"
-
-                android:textSize="15sp"
-
-                android:text="@string/create_account"
-                android:drawableLeft="@drawable/ic_email"
-                android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="40dp"/>
-    </LinearLayout>
 
 </RelativeLayout>

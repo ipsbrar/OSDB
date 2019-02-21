@@ -25,7 +25,7 @@ public class WelcomeActivity extends BaseActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext;
+    private Button signInBtn, btnNext;
     private AppPreferenceHelperClass prefManager;
 
     @Override
@@ -48,7 +48,7 @@ public class WelcomeActivity extends BaseActivity {
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
+        signInBtn = (Button) findViewById(R.id.btn_sign_in);
         btnNext = (Button) findViewById(R.id.btn_next);
         viewPager.setPageTransformer(false, new MyPageTransformer());
 
@@ -69,7 +69,7 @@ public class WelcomeActivity extends BaseActivity {
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
+        signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 prefManager.setFirstTimeLaunch(false);

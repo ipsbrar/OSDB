@@ -8,6 +8,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.v4.content.ContextCompat;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.widget.EditText;
 
 public class Utils {
 
@@ -44,5 +47,14 @@ public class Utils {
                 state_normal_drawable);
 
         return drawable;
+    }
+
+    public static void showHidePass(EditText editText, boolean isShown)
+    {
+        if(isShown) {
+            editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        }else {
+            editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        }
     }
 }
