@@ -162,6 +162,10 @@
     <string name="thursday">Thus</string>
     <string name="friday">Fri</string>
     <string name="saturday">Sat</string>
+    <string name="search">Search</string>
+    <string name="calendar">Calendar</string>
+    <string name="add">Add</string>
+    <string name="historical_polls">Historical Polls</string>
 
 
     <string-array name="months">

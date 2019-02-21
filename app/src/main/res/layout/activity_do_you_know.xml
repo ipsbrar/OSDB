@@ -32,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/do_you_know"
+                android:fontFamily="@font/rubik_regular"
                 android:textColor="@color/color_black"
                 android:layout_centerInParent="true"
                 android:textSize="@dimen/sp_16"
@@ -64,6 +65,8 @@
                     android:text="@string/dummy_header_text"
                     android:textColor="@color/color_black"
                     android:maxLines="3"
+                    android:lineSpacingExtra="@dimen/dp_5"
+                    android:fontFamily="@font/rubik_medium"
                     android:textSize="@dimen/sp_20"
             />
             <TextView
@@ -74,7 +77,9 @@
                     android:textColor="@color/color_black"
                     android:layout_below="@+id/header_txt"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:textSize="@dimen/sp_14"
+                    android:lineSpacingExtra="@dimen/dp_5"
+                    android:fontFamily="@font/rubik_regular"
+                    android:textSize="@dimen/sp_16"
             />
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>

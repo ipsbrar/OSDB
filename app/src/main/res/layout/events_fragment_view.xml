@@ -36,6 +36,7 @@
                 android:textSize="14sp"
                 android:textColor="@color/color_A1A1A1"
                 android:width="155dp"
+
                 android:height="21dp"
                 android:visibility="visible"
                 android:fontFamily="@font/rubik_medium"

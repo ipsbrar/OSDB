@@ -16,6 +16,7 @@
             android:textColor="@color/color_565656"
             android:textSize="14sp"
             android:textAllCaps="true"
+            android:fontFamily="@font/rubik_medium"
             android:layout_marginLeft="25dp"
             android:layout_marginStart="25dp"/>
 

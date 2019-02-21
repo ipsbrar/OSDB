@@ -30,7 +30,7 @@ public class DetailActivity extends BaseActivity {
 
         //Set collapse & expanded title color
         collapsingToolbarLayout.setExpandedTitleColor(Color.TRANSPARENT);
-        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.BLACK);
 
         //Set the title on collapsing toolbar
         collapsingToolbarLayout.setTitle("News");
@@ -41,7 +41,6 @@ public class DetailActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
-        toolbar.setTitleTextColor(getResources().getColor(R.color.color_black));
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

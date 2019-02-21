@@ -29,7 +29,7 @@
                 android:layout_below="@id/app_logo"
                 android:textSize="28sp"
                 android:layout_marginTop="@dimen/dp_10"
-                android:textStyle="bold"
+
                 android:textColor="@color/color_2E384D"/>
         <TextView
                 android:id="@+id/welcome_sub_text"
@@ -97,7 +97,7 @@
                 android:gravity="center"
                 android:layout_marginTop="@dimen/dp_40"
                 android:textColor="@color/color_white"
-                android:textStyle="bold"
+
                 android:textSize="@dimen/sp_14"
                 android:text="@string/signin"
         />

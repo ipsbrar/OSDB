@@ -43,7 +43,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/app_logo"
                 android:textSize="28sp"
-                android:textStyle="bold"
+
                 android:textColor="@color/color_2E384D"/>
         <TextView
                 android:id="@+id/welcome_sub_text"
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_white"
-                android:textStyle="bold"
+
                 android:textSize="15sp"
                 android:text="@string/continue_with_facebook"
                 android:drawableLeft="@drawable/ic_facebook"
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_white"
-                android:textStyle="bold"
+
                 android:textSize="15sp"
                 android:text="@string/continue_with_gmail"
                 android:drawableLeft="@drawable/ic_gplus"
@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_white"
-                android:textStyle="bold"
+
                 android:textSize="15sp"
                 android:text="@string/continue_with_amazon"
                 android:drawableLeft="@drawable/ic_amazon"
@@ -143,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_white"
-                android:textStyle="bold"
+
                 android:textSize="15sp"
 
                 android:text="@string/create_account"

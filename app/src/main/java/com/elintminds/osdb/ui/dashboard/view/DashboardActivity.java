@@ -1,11 +1,11 @@
 package com.elintminds.osdb.ui.dashboard.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,11 +13,14 @@ import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 
+import java.util.Objects;
+
 public class DashboardActivity extends BaseActivity implements DashboardView {
 
     private TextView mTextMessage;
     private Toolbar toolbar;
     private String currentFrag = "Home";
+    private ImageView homelogo;
     private int[] mTabIcons = {
             R.drawable.home_icon,
             R.drawable.latest_icon_selctor,
@@ -37,12 +40,12 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
             R.color.live_color,
             R.color.poll_color,
             R.color.discussion_color};
+    private MenuItem searchItem, calendarItem, addItem;
 
+    private String[] TABS;
+    private TabLayout bottomTabLayout;
 
-    String[] TABS;
-    TabLayout bottomTabLayout;
-
-    ImageView icon;
+    private ImageView icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,6 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
 
         initialzeViews();
         initTab();
-
-
         //  getSupportFragmentManager().beginTransaction().add(R.id.dashboard_container, HomeFragment.newInstance()).commit();
 
         switchTab(0);
@@ -61,9 +62,11 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
     private void initialzeViews() {
         toolbar = findViewById(R.id.dashboard_toolbar);
         mTextMessage = findViewById(R.id.dashboard_title);
+        homelogo = findViewById(R.id.home_logo);
         bottomTabLayout = findViewById(R.id.navigation);
         bottomTabLayout.setSelectedTabIndicator(0);
         TABS = getResources().getStringArray(R.array.tab_names);
+        setSupportActionBar(toolbar);
 
         bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -111,15 +114,15 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
         icon.setImageResource(mTabIcons[position]);
         tabname.setText(mTabnames[position]);
         tabname.setTextColor(getResources().getColorStateList(mTabColor[position]));
+
         return view;
     }
 
 
     private void switchTab(int position) {
-
+        //   invalidateOptionsMenu();
         switch (position) {
             case 0:
-                mTextMessage.setText(R.string.title_home);
                 changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
 
                 break;
@@ -127,18 +130,23 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
             case 1:
                 mTextMessage.setText(R.string.title_latest);
                 changeFragment(LatestFragment.newInstance(), LatestFragment.TAG);
+
                 break;
             case 2:
                 mTextMessage.setText(R.string.title_live_scores);
+
                 changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
+
                 break;
             case 3:
                 mTextMessage.setText(R.string.title_poll);
-                changeFragment(PollFragment.newInstance(), PollFragment.TAG);
+
+
                 break;
             case 4:
                 mTextMessage.setText(R.string.title_discussion);
-               // startActivity(new Intent(DashboardActivity.this, PollCalendarActivity.class));
+
+                changeFragment(DiscussionFragment.newInstance(), DiscussionFragment.TAG);
                 break;
 
         }
@@ -146,34 +154,73 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        searchItem = menu.findItem(R.id.navigation_search);
+        calendarItem = menu.findItem(R.id.navigation_calendar);
+        addItem = menu.findItem(R.id.navigation_add);
+        switch (Objects.requireNonNull(getCurrentFragment().getTag())) {
+            case HomeFragment.TAG:
+                searchItem.setVisible(true);
+                calendarItem.setVisible(false);
+                addItem.setVisible(false);
+                invalidateOptionsMenu();
+                break;
+            case LatestFragment.TAG:
+                searchItem.setVisible(true);
+                calendarItem.setVisible(false);
+                addItem.setVisible(false);
+                invalidateOptionsMenu();
+                break;
+            case LiveScroresFragment.TAG:
+                searchItem.setVisible(false);
+                calendarItem.setVisible(false);
+                addItem.setVisible(false);
+                invalidateOptionsMenu();
+                break;
+            case PollFragment.TAG:
+                searchItem.setVisible(false);
+                calendarItem.setVisible(true);
+                addItem.setVisible(false);
+                invalidateOptionsMenu();
+                break;
 
+            case DiscussionFragment.TAG:
+                searchItem.setVisible(false);
+                calendarItem.setVisible(false);
+                addItem.setVisible(true);
+                invalidateOptionsMenu();
+                break;
 
-        switch (item.getItemId()) {
-            case R.id.navigation_home:
-                mTextMessage.setText(R.string.title_home);
-                changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
-
-                return true;
-            case R.id.navigation_latest:
-                mTextMessage.setText(R.string.title_latest);
-                changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
-                return true;
-            case R.id.navigation_live_scores:
-                mTextMessage.setText(R.string.title_live_scores);
-                return true;
-            case R.id.navigation_poll:
-                mTextMessage.setText(R.string.title_poll);
-                return true;
-            case R.id.navigation_discussion:
-                mTextMessage.setText(R.string.title_discussion);
-                return true;
+            default:
+                searchItem.setVisible(true);
+                calendarItem.setVisible(false);
+                addItem.setVisible(false);
+                invalidateOptionsMenu();
+                break;
         }
 
 
-        return super.onOptionsItemSelected(item);
-
+        return true;
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation, menu);
+
+        return true;
+    }
+
+    public Fragment getCurrentFragment() {
+
+        return getSupportFragmentManager().findFragmentById(R.id.dashboard_container);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
+    }
+
 /*    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -204,11 +251,22 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
     };*/
 
     public void changeFragment(Fragment fragment, String tag) {
-
+        toolbarMenuVisibility(tag);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.dashboard_container, fragment, tag)
                 .commit();
     }
 
+
+    public void toolbarMenuVisibility(String tag) {
+        if (tag.equals(HomeFragment.TAG)) {
+            mTextMessage.setVisibility(View.GONE);
+            homelogo.setVisibility(View.VISIBLE);
+        } else {
+            mTextMessage.setVisibility(View.VISIBLE);
+            homelogo.setVisibility(View.GONE);
+        }
+
+    }
 
 }

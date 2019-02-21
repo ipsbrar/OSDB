@@ -13,6 +13,7 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.adapters.PollAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.PollAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.PollOption;
 
 import java.util.ArrayList;
 
@@ -49,17 +50,39 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
     }
 
     private void getpollData() {
-        String[] list = getResources().getStringArray(R.array.sports_names);
-        for (String name : list) {
-            PollAdapterBean item = new PollAdapterBean();
-            item.setTitle(name);
-            item.setVisible(false);
-            ArrayList<String> pollOptionList = new ArrayList<>();
-            pollOptionList.add("A");
-            item.setPollOptions(pollOptionList);
-            pollList.add(item);
-        }
+        PollAdapterBean item = new PollAdapterBean();
+        item.setTitle("The new BFL starts this weekend. The MFL starts right after in February. What do you think?");
 
+        ArrayList<PollOption> pollOptionList = new ArrayList<>();
+
+        PollOption pollOption = new PollOption();
+        pollOption.setPollOptions("More football is better!");
+        pollOption.setPollLabel("A");
+        pollOptionList.add(pollOption);
+        PollOption pollOption1 = new PollOption();
+        pollOption1.setPollOptions("Backt-to-back leagues? That’s too much!");
+        pollOption1.setPollLabel("B");
+        pollOptionList.add(pollOption1);
+
+        item.setPollOptions(pollOptionList);
+        item.setVisible(false);
+        pollList.add(item);
+
+        ArrayList<PollOption> pollOptionList2 = new ArrayList<>();
+        PollAdapterBean item2 = new PollAdapterBean();
+        item2.setTitle("What sport delivers the hardest hits?");
+
+        PollOption pollOption2 = new PollOption();
+        pollOption2.setPollOptions("Rugby");
+        pollOption2.setPollLabel("A");
+        pollOptionList2.add(pollOption2);
+        PollOption pollOption3 = new PollOption();
+        pollOption3.setPollOptions("Football");
+        pollOption3.setPollLabel("B");
+        pollOptionList2.add(pollOption3);
+        item2.setPollOptions(pollOptionList2);
+        item2.setVisible(false);
+        pollList.add(item2);
 
     }
 

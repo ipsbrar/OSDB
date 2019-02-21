@@ -25,8 +25,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_black"
+                    android:fontFamily="@font/rubik_medium"
+                    android:textColor="@color/color_2E384D"
                     android:padding="@dimen/dp_10"
                     android:textSize="@dimen/sp_16"
             />
@@ -37,8 +37,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:id="@+id/textView"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_black"
+
+                    android:fontFamily="@font/rubik_medium"
+                    android:textColor="@color/color_2E384D"
                     android:padding="@dimen/dp_10"
                     android:textSize="@dimen/sp_16"
             />
@@ -54,7 +55,7 @@
                 android:text="SEMI-FINAL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:fontFamily="@font/rubik_medium"
                 android:layout_gravity="center"
                 android:textColor="@color/color_6849D7"
                 android:padding="@dimen/dp_10"
@@ -84,7 +85,9 @@
                         android:text="@string/real_madrid"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/color_black"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textColor="@color/color_2E384D"
+
                         android:padding="@dimen/dp_5"
                         android:textSize="@dimen/sp_14"
                 />
@@ -92,8 +95,9 @@
                         android:text="2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/color_black"
+
+                        android:fontFamily="@font/rubik_medium"
+                        android:textColor="@color/color_2E384D"
                         android:padding="@dimen/dp_10"
                         android:textSize="@dimen/sp_16"
                 />
@@ -130,8 +134,9 @@
                         android:text="2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/color_black"
+
+                        android:fontFamily="@font/rubik_medium"
+                        android:textColor="@color/color_2E384D"
                         android:padding="@dimen/dp_10"
                         android:textSize="@dimen/sp_16"
                 />
@@ -148,13 +153,17 @@
                       android:text="@string/metlife_stadium_east_rutherford"
                       android:gravity="center_vertical"
                       android:layout_alignParentLeft="true"
+                      android:fontFamily="@font/rubik_regular"
                       android:textColor="@color/color_8798AD"
+                      android:textSize="@dimen/sp_12"
                       android:layout_marginLeft="@dimen/dp_10"/>
 
             <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
                       android:text="Live"
                       android:gravity="center_vertical"
                       android:layout_alignParentRight="true"
+                      android:fontFamily="@font/rubik_regular"
+                      android:textSize="@dimen/sp_12"
                       android:textColor="@color/color_4CE1B6"
                       android:layout_marginRight="@dimen/dp_10"/>
         </RelativeLayout>
