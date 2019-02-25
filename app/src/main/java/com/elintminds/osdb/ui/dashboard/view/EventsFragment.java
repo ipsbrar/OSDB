@@ -75,7 +75,7 @@ public class EventsFragment extends BaseFragment implements DashboardView.Events
 
     private void loadNewsData()
     {
-        String[] newsArray = getResources().getStringArray(R.array.sampl_events);
+        String[] newsArray = context.getResources().getStringArray(R.array.sampl_events);
         for(String nws : newsArray)
         {
             EventsAdapterBean item = new EventsAdapterBean();

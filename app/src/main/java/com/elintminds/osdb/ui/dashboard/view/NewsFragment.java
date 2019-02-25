@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -73,15 +74,15 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
 
     private void loadNewsData()
     {
-        String[] newsArray = getResources().getStringArray(R.array.sampl_news);
-        for(String nws : newsArray)
-        {
+        Log.e("PAR FRAG", ""+context);
+        String[] newsArray = context.getResources().getStringArray(R.array.sampl_news);
+        for (String nws : newsArray) {
             NewsAdapterBean item = new NewsAdapterBean();
             item.setTitle(nws);
             newsList.add(item);
         }
 
-        Log.e("DATA",""+newsList.size());
+        Log.e("DATA", "" + newsList.size());
         adapter.setDataList(newsList);
         newsRecyclerView.hideShimmerAdapter();
     }
