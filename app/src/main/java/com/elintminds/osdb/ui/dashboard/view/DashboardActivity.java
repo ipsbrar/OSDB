@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.add_edit_discussion.view.AddEditDiscussionActivity;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
 import java.util.Objects;
 
@@ -223,6 +224,9 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.navigation_search:
+                startActivity(new Intent(this, SearchActivity.class));
+                break;
             case R.id.navigation_add:
                 startActivity(new Intent(this, AddEditDiscussionActivity.class));
                 return true;
@@ -232,6 +236,8 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+        return true;
     }
 
 

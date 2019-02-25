@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_20">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/player_image"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:layout_centerVertical="true"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/player_image"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+        <TextView
+                android:id="@+id/player_name"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:maxLines="1"
+                android:textSize="20sp"
+                android:textColor="@color/color_black"
+                android:fontFamily="@font/rubik_medium"
+                android:text="Aaron Rodgers"/>
+
+        <TextView
+                android:id="@+id/player_age"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:lineSpacingMultiplier="1.62"
+                android:textSize="10sp"
+                android:textAllCaps="true"
+                android:textColor="@color/color_black"
+                android:fontFamily="@font/rubik_light"
+                android:text="Age: 35 YEARS"
+                android:layout_marginTop="5dp"/>
+        <TextView
+                android:id="@+id/player_team"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:lineSpacingMultiplier="1.62"
+                android:textSize="10sp"
+                android:textAllCaps="true"
+                android:textColor="@color/color_black"
+                android:fontFamily="@font/rubik_light"
+                android:text="Team: Green Bay Packers"/>
+
+
+        <TextView
+                android:id="@+id/follow_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/follow"
+                android:textColor="@color/color_white"
+                android:background="@drawable/purple_capsule_bg"
+                android:textSize="13sp"
+                android:textAllCaps="true"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/rubik_regular"
+                android:paddingBottom="5dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

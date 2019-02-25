@@ -40,6 +40,7 @@
     <color name="color_38D8D8D8">#38D8D8D8</color>
     <color name="color_D8D8D8">#D8D8D8</color>
     <color name="color_E8ECF0">#E8ECF0</color>
+    <color name="color_EBEEF1">#EBEEF1</color>
 
 
     <color name="default_todayCircleColor">@color/colorPrimary</color>

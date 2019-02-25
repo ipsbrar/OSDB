@@ -9,7 +9,7 @@
             android:id="@+id/latest_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabBackground="@color/color_white"
+            app:tabBackground="@drawable/toolbar_bg"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/color_6849D7"
             app:tabMode="fixed"
