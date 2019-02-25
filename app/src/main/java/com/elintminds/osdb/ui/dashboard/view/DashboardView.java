@@ -18,8 +18,6 @@ public interface DashboardView extends BaseView
 
         void onOptionClick(int listPosition,int optionPosition);
 
-
     }
-
 
 }

@@ -1,5 +1,6 @@
 package com.elintminds.osdb.ui.dashboard.view;
 
+import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 public class LatestFragment extends BaseFragment
 {
     public static final String TAG = "LatestFragment";
+
     private TabLayout tabs;
 
     public static LatestFragment newInstance()
@@ -47,8 +49,8 @@ public class LatestFragment extends BaseFragment
     private void setupViewPager(ViewPager upViewPager)
     {
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getChildFragmentManager());
-        adapter.addFragment(NewsFragment.getInstance(), "News");
-        adapter.addFragment(EventsFragment.getInstance(), "Events");
+        adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
+        adapter.addFragment(EventsFragment.getInstance(), getString(R.string.events));
         upViewPager.setAdapter(adapter);
     }
 
