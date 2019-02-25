@@ -6,7 +6,7 @@
                                     android:layout_height="200dp"
                                     android:clipChildren="false"
                                     android:clipToPadding="false"
-                                   app:cardElevation="@dimen/dp_8"
+                                    app:cardElevation="@dimen/dp_8"
                                     app:cardCornerRadius="@dimen/dp_4"
                                     android:layout_marginLeft="@dimen/dp_10"
                                     android:layout_marginTop="@dimen/dp_20"
@@ -19,8 +19,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_50"
                 android:layout_alignParentLeft="true"
-                android:textStyle="bold"
-                android:textColor="@color/color_black"
+                android:fontFamily="@font/rubik_medium"
+                android:textColor="@color/color_2E384D"
                 android:padding="@dimen/dp_10"
                 android:textSize="@dimen/sp_16"
         />
@@ -56,8 +56,8 @@
                         android:text="@string/seahawck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
-                        android:textColor="@color/color_black"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textColor="@color/color_2E384D"
                         android:padding="@dimen/dp_5"
                         android:textSize="@dimen/sp_14"
                 />
@@ -71,48 +71,46 @@
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
                             android:gravity="center"
-                            android:textStyle="bold"
-
-                            android:textColor="@color/color_black"
-                            android:textSize="@dimen/sp_14"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/color_2E384D"
+                            android:textSize="@dimen/sp_12"
                     />
                     <TextView
                             android:text="2"
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
                             android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/color_black"
-
-                            android:textSize="@dimen/sp_14"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/color_2E384D"
+                            android:textSize="@dimen/sp_12"
                     />
                     <TextView
                             android:text="3"
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
                             android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/color_black"
-
-                            android:textSize="@dimen/sp_14"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/color_2E384D"
+                            android:textSize="@dimen/sp_12"
                     />
                     <TextView
                             android:text="4"
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            android:textColor="@color/color_black"
 
-                            android:textSize="@dimen/sp_14"
+                            android:gravity="center"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/color_2E384D"
+                            android:textSize="@dimen/sp_12"
                     />
                     <TextView
                             android:text="5"
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
-                            android:textStyle="bold"
+
                             android:gravity="center"
-                            android:textSize="@dimen/sp_14"
+                            android:textSize="@dimen/sp_12"
+                            android:fontFamily="@font/rubik_medium"
                             android:textColor="@color/white"
                             android:background="@drawable/black_view_bg"
                     />
@@ -136,8 +134,8 @@
                         android:text="@string/bufallo_bills"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
-                        android:textColor="@color/color_black"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textColor="@color/color_2E384D"
                         android:padding="@dimen/dp_5"
                         android:textSize="@dimen/sp_14"
                 />
@@ -151,48 +149,46 @@
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
                             android:gravity="center"
-                            android:textStyle="bold"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/color_2E384D"
+                            android:textSize="@dimen/sp_12"
 
-                            android:textColor="@color/color_black"
-                            android:textSize="@dimen/sp_14"
                     />
                     <TextView
                             android:text="2"
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
                             android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/color_black"
-
-                            android:textSize="@dimen/sp_14"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/color_2E384D"
+                            android:textSize="@dimen/sp_12"
                     />
                     <TextView
                             android:text="3"
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
                             android:gravity="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/color_black"
-
-                            android:textSize="@dimen/sp_14"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/color_2E384D"
+                            android:textSize="@dimen/sp_12"
                     />
                     <TextView
                             android:text="4"
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            android:textColor="@color/color_black"
 
-                            android:textSize="@dimen/sp_14"
+                            android:gravity="center"
+                            android:fontFamily="@font/rubik_medium"
+                            android:textColor="@color/color_2E384D"
+                            android:textSize="@dimen/sp_12"
                     />
                     <TextView
                             android:text="5"
                             android:layout_width="@dimen/dp_35"
                             android:layout_height="@dimen/dp_30"
-                            android:textStyle="bold"
+                            android:fontFamily="@font/rubik_medium"
                             android:gravity="center"
-                            android:textSize="@dimen/sp_14"
+                            android:textSize="@dimen/sp_12"
                             android:textColor="@color/white"
                             android:background="@drawable/black_view_bg"
                     />
@@ -211,6 +207,8 @@
                       android:gravity="center_vertical"
                       android:layout_alignParentLeft="true"
                       android:textColor="@color/color_8798AD"
+                      android:fontFamily="@font/rubik_regular"
+                      android:textSize="@dimen/sp_12"
                       android:layout_marginLeft="@dimen/dp_10"/>
 
             <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
@@ -218,6 +216,8 @@
                       android:gravity="center_vertical"
                       android:layout_alignParentRight="true"
                       android:textColor="@color/color_4CE1B6"
+                      android:fontFamily="@font/rubik_regular"
+                      android:textSize="@dimen/sp_12"
                       android:layout_marginRight="@dimen/dp_10"/>
         </RelativeLayout>
     </LinearLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,16 +23,16 @@ import com.elintminds.osdb.utils.CardPaddingItemDecoration;
 
 import java.util.ArrayList;
 
-public class NewsFragment extends BaseFragment implements DashboardView.NewsItemsClickListener {
+public class NewsFragment extends BaseFragment implements DashboardView.NewsItemsClickListener, View.OnClickListener {
     public static final String TAG = "NewsFragment";
 
     private Context context;
     private ShimmerRecyclerView newsRecyclerView;
     private ArrayList<NewsAdapterBean> newsList = new ArrayList<>();
     private NewsListAdapter adapter;
+    private CardView topNews;
 
-    public static NewsFragment getInstance()
-    {
+    public static NewsFragment getInstance() {
         return new NewsFragment();
     }
 
@@ -47,7 +48,8 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     {
         context = getContext();
         newsRecyclerView = view.findViewById(R.id.news_recycler_view);
-
+        topNews = view.findViewById(R.id.top_news);
+        topNews.setOnClickListener(this);
         setupRecyclerView();
     }
 
@@ -88,9 +90,20 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     }
 
     @Override
-    public void onNewsClick(int position)
-    {
-        Log.e("ON NEWS CLICK",""+position);
+    public void onNewsClick(int position) {
+        Log.e("ON NEWS CLICK", "" + position);
         startActivity(new Intent(context, DetailActivity.class));
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.top_news: {
+                onNewsClick(0);
+                break;
+            }
+
+        }
     }
 }

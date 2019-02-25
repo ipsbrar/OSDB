@@ -2,11 +2,13 @@ package com.elintminds.osdb.ui.dashboard.view;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
 
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elintminds.osdb.R;
@@ -19,14 +21,14 @@ import java.util.Calendar;
 public class PollCalendarActivity extends BaseActivity {
 
     private CalendarView calendarView;
-    // private EditText editText;
+     private ImageView closeImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //editText = (EditText) findViewById(R.id.editText);
+        closeImg = (ImageView) findViewById(R.id.closeImg);
         calendarView = (CalendarView) findViewById(R.id.calendarView);
         calendarView.addEvent(16,2,2019);
         calendarView.addEvent(17,2,2019);
@@ -34,7 +36,12 @@ public class PollCalendarActivity extends BaseActivity {
         calendarView.addEvent(19,2,2019);
 
 
-
+        closeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         calendarView.setOnDayClickListener(new CalendarView.OnDayClickListener() {
             @Override
             public void onClick(int day, int month, int year, boolean hasEvent) {

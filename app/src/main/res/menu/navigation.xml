@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-            android:id="@+id/navigation_home"
-            android:icon="@drawable/ic_home_select"
-            android:title="@string/title_home"
+            android:id="@+id/navigation_search"
+            android:icon="@drawable/ic_search"
+            android:title="@string/search"
+            app:showAsAction="always"
     />
-
     <item
-            android:id="@+id/navigation_latest"
-            android:icon="@drawable/ic_latest"
-            android:title="@string/title_latest"/>
-
+            android:id="@+id/navigation_calendar"
+            android:icon="@drawable/ic_calendar"
+            android:title="@string/calendar"
+            app:showAsAction="always"
+    />
     <item
-            android:id="@+id/navigation_live_scores"
-            android:icon="@drawable/ic_live_scores"
-            android:title="@string/title_live_scores"/>
+            android:id="@+id/navigation_add"
+            android:icon="@drawable/ic_add"
+            android:title="@string/report"
 
-    <item
-            android:id="@+id/navigation_poll"
-            android:icon="@drawable/ic_polls"
-            android:title="@string/title_poll"/>
+            app:showAsAction="ifRoom|withText"/>
 
-    <item
-            android:id="@+id/navigation_discussion"
-            android:icon="@drawable/ic_discussions"
-            android:title="@string/title_discussion"/>
 </menu>

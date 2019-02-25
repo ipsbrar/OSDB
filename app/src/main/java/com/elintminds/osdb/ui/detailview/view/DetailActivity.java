@@ -30,7 +30,7 @@ public class DetailActivity extends BaseActivity {
 
         //Set collapse & expanded title color
         collapsingToolbarLayout.setExpandedTitleColor(Color.TRANSPARENT);
-        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.BLACK);
 
         //Set the title on collapsing toolbar
         collapsingToolbarLayout.setTitle("News");

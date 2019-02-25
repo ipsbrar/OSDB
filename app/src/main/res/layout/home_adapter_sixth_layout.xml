@@ -27,6 +27,7 @@
                 android:textSize="11sp"
                 android:textAllCaps="true"
                 android:paddingLeft="12dp"
+                android:fontFamily="@font/rubik_regular"
                 android:paddingRight="12dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"/>
@@ -39,6 +40,7 @@
                 android:textSize="18sp"
                 android:text="@string/sample_text_6"
                 android:layout_gravity="center"
+                android:fontFamily="@font/rubik_regular"
                 android:layout_marginTop="15dp"
                 android:layout_below="@id/view_6_heading"/>
     </RelativeLayout>

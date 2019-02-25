@@ -57,8 +57,8 @@
     <string name="title_home">Home</string>
     <string name="title_latest">Latest</string>
     <string name="title_live_scores">Live Scores</string>
-    <string name="title_poll">Poll</string>
-    <string name="title_discussion">Discussion</string>
+    <string name="title_poll">Polls</string>
+    <string name="title_discussion">Discussions</string>
     <string name="home_logo">Home Logo</string>
     <string name="sport_icon">Sport Icon</string>
     <string name="on_this_day">On this day</string>
@@ -162,9 +162,21 @@
     <string name="thursday">Thus</string>
     <string name="friday">Fri</string>
     <string name="saturday">Sat</string>
+    <string name="search">Search</string>
+    <string name="calendar">Calendar</string>
+    <string name="add">Add</string>
+    <string name="historical_polls">Historical Polls</string>
     <string name="show_password_button">Show password button</string>
     <string name="submit">Submit</string>
     <string name="save">Save</string>
+    <string name="report">Report</string>
+    <string name="add_your_comment">Add your comment</string>
+    <string name="add_discussion">Add Discussion</string>
+    <string name="add_your_discussion">Add your discussion</string>
+    <string name="im_not_intrested_in_this_discussion">Im not intrested in this Discussion</string>
+    <string name="it_s_spam">It’s spam</string>
+    <string name="it_s_absuive_or_harmful">It’s absuive or harmful</string>
+    <string name="send">Send</string>
 
 
     <string-array name="months">

@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.PollAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.PollOption;
 import com.elintminds.osdb.ui.dashboard.view.DashboardView;
 
 import java.util.ArrayList;
@@ -39,7 +40,8 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull PollAdapter.ViewHolder holder, final int i) {
 
         holder.pollOptionParentLay.removeAllViews();
-        final ArrayList<String> pollOptionsList = dataList.get(i).getPollOptions();
+        holder.pollHeading.setText(dataList.get(i).getTitle());
+        final ArrayList<PollOption> pollOptionsList = dataList.get(i).getPollOptions();
 
         for (int j = 0; j < pollOptionsList.size(); j++) {
             View pollOptionView = LayoutInflater.from(context).inflate(R.layout.poll_options_view, null);
@@ -49,16 +51,18 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
             TextView progressPer = pollOptionView.findViewById(R.id.progress_percentage);
             TextView pollLabel = pollOptionView.findViewById(R.id.poll_label);
             TextView pollName = pollOptionView.findViewById(R.id.poll_name);
+            pollLabel.setText(pollOptionsList.get(j).getPollLabel());
+            pollName.setText(pollOptionsList.get(j).getPollOptions());
             if (dataList.get(i).getVisible()) {
                 progressBar.setProgress(40);
-                progressPer.setText(progressBar.getProgress()+"%");
+                progressPer.setText(progressBar.getProgress() + "%");
                 pollName.setTextColor(context.getResources().getColor(R.color.color_white));
                 pollLabel.setTextColor(context.getResources().getColor(R.color.color_white));
             } else {
                 progressBar.setProgress(0);
                 progressPer.setText("");
-                pollName.setTextColor(context.getResources().getColor(R.color.color_black));
-                pollLabel.setTextColor(context.getResources().getColor(R.color.color_black));
+                pollName.setTextColor(context.getResources().getColor(R.color.color_2E384D));
+                pollLabel.setTextColor(context.getResources().getColor(R.color.color_2E384D));
             }
 
 

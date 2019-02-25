@@ -16,7 +16,7 @@ public class PollAdapterBean {
         isVisible = visible;
     }
 
-    private ArrayList<String> pollOptions;
+    private ArrayList<PollOption> pollOptions;
     public void setTitle(String title) {
         this.title = title;
     }
@@ -36,11 +36,11 @@ public class PollAdapterBean {
 
 
 
-    public ArrayList<String> getPollOptions() {
+    public ArrayList<PollOption> getPollOptions() {
         return pollOptions;
     }
 
-    public void setPollOptions(ArrayList<String> pollOptions) {
+    public void setPollOptions(ArrayList<PollOption> pollOptions) {
         this.pollOptions = pollOptions;
     }
 }

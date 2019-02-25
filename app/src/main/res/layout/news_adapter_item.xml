@@ -19,7 +19,8 @@
                 android:id="@+id/news_preview_image"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:background="@drawable/img_video"
+                android:scaleType="centerCrop"
+                android:background="@drawable/category_img_nfl"
                 android:contentDescription="@string/item_image"/>
 
         <TextView

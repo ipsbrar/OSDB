@@ -9,6 +9,7 @@
               android:text="Feb 9,2019"
               android:gravity="center"
               android:background="@color/color_white"
+              android:fontFamily="@font/rubik_medium"
               android:textSize="@dimen/sp_12"
               android:textColor="@color/color_6849D7"/>
 

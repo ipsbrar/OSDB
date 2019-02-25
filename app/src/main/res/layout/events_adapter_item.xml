@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textAllCaps="true"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/rubik_medium"
                     android:textColor="@color/color_6849D7"
                     android:text="Feb"/>
 
@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/rubik_medium"
                     android:textAllCaps="true"
                     android:textColor="@color/color_black"
                     android:text="08"/>
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
                     android:textAllCaps="true"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/rubik_medium"
                     android:textColor="@color/color_black"
                     android:text="Fri"/>
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_black"
                 android:textSize="12sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/rubik_medium"
                 android:textAllCaps="true"
                 android:maxLines="2"
                 android:layout_below="@id/news_frag_image"
@@ -89,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="MetLife Stadium,  East Rutherford"
                 android:textSize="11sp"
+                android:fontFamily="@font/rubik_regular"
                 android:textColor="@color/color_474747"
                 android:layout_below="@id/event_title"
                 android:layout_toRightOf="@id/event_date_separator"
@@ -111,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/show_details"
                 android:textColor="@color/color_8798AD"
-                android:textStyle="bold"
+                android:fontFamily="@font/rubik_medium"
                 android:gravity="center"
                 android:layout_below="@id/show_details_separator"
                 android:textSize="12sp"
