@@ -1,9 +1,12 @@
 package com.elintminds.osdb.ui.dashboard.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.ui.add_edit_discussion.view.AddEditDiscussionActivity;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 
 import java.util.Objects;
@@ -218,37 +222,19 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.navigation_add:
+                startActivity(new Intent(this, AddEditDiscussionActivity.class));
+                return true;
+            case R.id.navigation_calendar:
+                startActivity(new Intent(this, PollCalendarActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
-/*    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
-                    return true;
-                case R.id.navigation_latest:
-                    mTextMessage.setText(R.string.title_latest);
-                    changeFragment(LatestFragment.newInstance(), LatestFragment.TAG);
-                    changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
-                    return true;
-                case R.id.navigation_live_scores:
-                    mTextMessage.setText(R.string.title_live_scores);
-                    return true;
-                case R.id.navigation_poll:
-                    mTextMessage.setText(R.string.title_poll);
-                    return true;
-                case R.id.navigation_discussion:
-                    mTextMessage.setText(R.string.title_discussion);
-                    return true;
-            }
-            return false;
-        }
-    };*/
 
     public void changeFragment(Fragment fragment, String tag) {
         toolbarMenuVisibility(tag);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.elintminds.osdb">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -20,9 +20,17 @@
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyC8fFpWGfRMA28hHluiOQtxzeApLis9N-k" />
+                android:value="AIzaSyC8fFpWGfRMA28hHluiOQtxzeApLis9N-k"/>
 
         <activity android:name=".ui.event_details.view.EventDetailsActivity">
+        </activity>
+
+        <activity android:name=".ui.splash.view.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
                 android:name=".ui.dashboard.view.DashboardActivity"
@@ -43,13 +51,9 @@
                 android:name=".ui.register.view.RegisterActivity"
                 android:windowSoftInputMode="adjustPan"/>
         <activity
-                android:name=".ui.splash.view.SplashScreenActivity"
+                android:name=".ui.report.view.ReportActivity"
                 android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".ui.detailview.view.DetailActivity"
@@ -59,6 +63,11 @@
                 android:windowSoftInputMode="adjustPan">
         </activity>
         <activity android:name=".ui.dashboard.view.PollCalendarActivity"/>
+        <activity android:name=".ui.discussion_comments.view.DiscussionCommentsActivity"/>
+
+        <activity android:name=".ui.add_edit_discussion.view.AddEditDiscussionActivity"
+                  android:windowSoftInputMode="stateAlwaysVisible|adjustPan|adjustResize"/>
+        <activity android:name=".ui.settings.view.SettingsActivity"/>
     </application>
 
 </manifest>

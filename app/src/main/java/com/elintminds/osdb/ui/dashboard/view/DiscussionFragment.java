@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.adapters.DiscussionAdapter;
-import com.elintminds.osdb.ui.dashboard.adapters.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
 
 import java.util.ArrayList;
 

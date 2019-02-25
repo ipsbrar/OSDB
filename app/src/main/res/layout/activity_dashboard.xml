@@ -48,7 +48,7 @@
             app:tabPaddingStart="9dp"
             app:tabPaddingEnd="9dp"
             app:tabGravity="fill"
-            app:tabMinWidth="0dp"
+
             android:background="@color/white"
             android:layout_alignParentBottom="true"
     />

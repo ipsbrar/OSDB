@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:orientation="vertical">
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/white"
+            android:elevation="@dimen/dp_4"
+
+    >
+
+
+        <TextView
+                android:id="@+id/header_txt"
+                android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:textSize="@dimen/sp_18"
+                  android:gravity="center"
+                  android:layout_centerInParent="true"
+                  android:textColor="@color/color_black"
+                  android:fontFamily="@font/rubik_medium"
+                  android:text="@string/add_discussion"/>
+
+        <ImageView
+                android:id="@+id/backImg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_back_black"
+                android:padding="@dimen/dp_10"
+                android:layout_alignParentLeft="true"/>
+        <ImageView
+                android:id="@+id/deleteImg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_delete"
+                android:padding="@dimen/dp_10"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+        />
+
+    </RelativeLayout>
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/color_38D8D8D8"
+    />
+
+
+    <EditText android:layout_width="match_parent"
+              android:layout_height="350dp"
+              android:background="#0000"
+              android:textColor="@color/color_black"
+              android:gravity="top"
+              android:textColorHint="@color/color_D8D8D8"
+              android:layout_marginTop="@dimen/dp_10"
+              android:padding="@dimen/dp_20"
+              android:fontFamily="@font/rubik_regular"
+              android:hint="@string/add_your_discussion"
+    />
+
+    <TextView
+            android:id="@+id/add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/create_account_btn_bg"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_30"
+            android:textColor="@color/color_white"
+            android:fontFamily="@font/rubik_medium"
+            android:textSize="@dimen/sp_16"
+            android:textAllCaps="true"
+            android:text="@string/add"/>
+</LinearLayout>

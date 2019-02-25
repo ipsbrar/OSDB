@@ -7,7 +7,7 @@ import com.elintminds.osdb.ui.base.model.BaseInteractorClass
 
 
 class DoYouKnowInterctorClass(prefHelper: PreferenceHelper, context: Context) : BaseInteractorClass(prefHelper, context),
-    DoYouKnowInteractor {
+    DiscussionCommentsInteractor {
 
 
 }

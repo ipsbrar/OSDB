@@ -2,13 +2,13 @@ package com.elintminds.osdb.ui.splash.presenter
 
 import android.content.Context
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass
-import com.elintminds.osdb.ui.do_you_know.model.DoYouKnowInteractor
+import com.elintminds.osdb.ui.do_you_know.model.DiscussionCommentsInteractor
 
-import com.elintminds.osdb.ui.splash.view.DoYouKnowView
+import com.elintminds.osdb.ui.splash.view.DiscussionCommentsView
 
-class DoYouKnowPresenterClass<V : DoYouKnowView, I : DoYouKnowInteractor>
+class DoYouKnowPresenterClass<V : DiscussionCommentsView, I : DiscussionCommentsInteractor>
 private constructor(context: Context, interactor: I, view: V) : BasePresenterClass<V, I>(context, interactor, view),
-    DoYouKnowPresenter<V, I> {
+    DiscussionCommentsPresenter<V, I> {
 
 
 
