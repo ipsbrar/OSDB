@@ -16,6 +16,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ui.particular_sport_screen.view.SportsActivity"
+                    android:label="">
+        </activity>
         <activity android:name=".ui.search_finding_screen.view.SearchFindingsActivity">
         </activity>
         <activity android:name=".ui.search_screen.view.SearchActivity">
@@ -63,7 +66,7 @@
                 android:name=".ui.do_you_know.view.DoYouKnowActivity"
                 android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".ui.dashboard.view.PollCalendarActivity"/>
+        <activity android:name=".ui.calendar_screen.view.PollCalendarActivity"/>
         <activity android:name=".ui.discussion_comments.view.DiscussionCommentsActivity"/>
         <activity
                 android:name=".ui.add_edit_discussion.view.AddEditDiscussionActivity"

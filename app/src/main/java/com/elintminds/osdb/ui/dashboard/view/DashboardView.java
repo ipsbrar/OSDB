@@ -20,4 +20,9 @@ public interface DashboardView extends BaseView
 
     }
 
+    interface SportsAdapterItemClickListener
+    {
+        void onSportsIconClick(int position);
+    }
+
 }

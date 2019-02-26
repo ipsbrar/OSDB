@@ -191,6 +191,9 @@
     <string name="schedule">Schedule</string>
     <string name="events">Events</string>
     <string name="follow">Follow</string>
+    <string name="add_to_watchlist">Add to Watchlist</string>
+    <string name="teams">Teams</string>
+    <string name="following">Following</string>
 
 
     <string-array name="months">

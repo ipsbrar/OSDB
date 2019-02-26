@@ -1,6 +1,7 @@
 package com.elintminds.osdb.ui.dashboard.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,10 +15,11 @@ import com.elintminds.osdb.ui.dashboard.adapters.HomeListAdapter;
 import com.elintminds.osdb.ui.dashboard.adapters.SportsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.HomeAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
+import com.elintminds.osdb.ui.particular_sport_screen.view.SportsActivity;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements DashboardView.SportsAdapterItemClickListener {
     public static final String TAG = "HomeFragment";
 
     private Context context;
@@ -45,7 +47,7 @@ public class HomeFragment extends BaseFragment {
         homeItemsRecyclerView = view.findViewById(R.id.homes_items_list);
 
         getSportsData();
-        sportsListAdapter = new SportsListAdapter(context, sportsList);
+        sportsListAdapter = new SportsListAdapter(context, sportsList, this);
         sportsRecyclerView.setAdapter(sportsListAdapter);
 
         getHomeData();
@@ -74,5 +76,13 @@ public class HomeFragment extends BaseFragment {
 
             homeItemsList.add(item);
         }
+    }
+
+    @Override
+    public void onSportsIconClick(int position)
+    {
+        Intent sportIntent = new Intent(context, SportsActivity.class);
+        sportIntent.putExtra("SPORT_ID",position);
+        startActivity(sportIntent);
     }
 }
