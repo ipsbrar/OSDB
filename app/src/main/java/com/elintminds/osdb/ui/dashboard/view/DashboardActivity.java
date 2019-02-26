@@ -17,6 +17,7 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.add_edit_discussion.view.AddEditDiscussionActivity;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.profile.view.ProfileActivity;
+import com.elintminds.osdb.ui.calendar_screen.view.PollCalendarActivity;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
 import java.util.Objects;

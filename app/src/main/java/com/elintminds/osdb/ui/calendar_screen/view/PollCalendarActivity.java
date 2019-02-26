@@ -1,8 +1,7 @@
-package com.elintminds.osdb.ui.dashboard.view;
+package com.elintminds.osdb.ui.calendar_screen.view;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
@@ -18,8 +17,8 @@ import com.elintminds.osdb.ui.calendarview.view.CalendarView;
 
 import java.util.Calendar;
 
-public class PollCalendarActivity extends BaseActivity {
-
+public class PollCalendarActivity extends BaseActivity implements PollsCalendarView
+{
     private CalendarView calendarView;
      private ImageView closeImg;
 

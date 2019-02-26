@@ -89,5 +89,6 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
         Intent intent = new Intent(this, SearchFindingsActivity.class);
         intent.putExtra("TITLE", dataList.get(position).getSearchName());
         startActivity(intent);
+        finish();
     }
 }

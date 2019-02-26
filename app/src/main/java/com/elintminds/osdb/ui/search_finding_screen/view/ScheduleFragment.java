@@ -23,10 +23,26 @@ public class ScheduleFragment extends BaseFragment
     private RecyclerView scheduleRV;
     private SchedulesAdapter adapter;
     private ArrayList<ScheduleBean> dataList = new ArrayList<>();
+    private int scheduleCount = 0;
 
-    public static ScheduleFragment getInstance()
+    public static ScheduleFragment getInstance(Bundle args)
     {
-        return new ScheduleFragment();
+        ScheduleFragment fragment = new ScheduleFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        assert getArguments() != null;
+        scheduleCount = getArguments().getInt("SCHEDULES");
+
+        for(int i=0; i<scheduleCount; i++) {
+            ScheduleBean item = new ScheduleBean();
+            dataList.add(item);
+        }
     }
 
     @Nullable

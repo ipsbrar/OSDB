@@ -213,6 +213,9 @@
     <string name="take_photo">Take Photo</string>
     <string name="choose_photo">Choose Photo</string>
     <string name="cancel">Cancel</string>
+    <string name="add_to_watchlist">Add to Watchlist</string>
+    <string name="teams">Teams</string>
+    <string name="following">Following</string>
 
 
     <string-array name="months">

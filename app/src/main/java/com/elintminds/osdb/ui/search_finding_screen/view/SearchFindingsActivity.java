@@ -56,16 +56,20 @@ public class SearchFindingsActivity extends BaseActivity implements SearchFindin
 
     private void setupViewPager(ViewPager upViewPager)
     {
+        Bundle args = new Bundle();
+        args.putInt("SCHEDULES", 1);
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
         adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
         adapter.addFragment(PlayerFragment.getInstance(), getString(R.string.player));
-        adapter.addFragment(ScheduleFragment.getInstance(), getString(R.string.schedule));
+        adapter.addFragment(ScheduleFragment.getInstance(args), getString(R.string.schedule));
         upViewPager.setAdapter(adapter);
     }
 
-    private void setDividerForTabs(){
+    private void setDividerForTabs()
+    {
         View root = tabs.getChildAt(0);
-        if (root instanceof LinearLayout) {
+        if (root instanceof LinearLayout)
+        {
             ((LinearLayout) root).setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setColor(getResources().getColor(R.color.color_EFEFEF));

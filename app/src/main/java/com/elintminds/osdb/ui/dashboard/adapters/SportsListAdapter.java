@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
+import com.elintminds.osdb.ui.dashboard.view.DashboardView;
 
 import java.util.ArrayList;
 
@@ -17,11 +18,13 @@ public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.Vi
 {
     private Context context;
     private ArrayList<SportsAdapterListBean> dataList;
+    private DashboardView.SportsAdapterItemClickListener listener;
 
-    public SportsListAdapter(Context context, ArrayList<SportsAdapterListBean> sportsIconsList)
+    public SportsListAdapter(Context context, ArrayList<SportsAdapterListBean> sportsIconsList, DashboardView.SportsAdapterItemClickListener listener)
     {
         this.context = context;
         this.dataList = sportsIconsList;
+        this.listener = listener;
     }
     @NonNull
     @Override
@@ -54,6 +57,13 @@ public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.Vi
             super(itemView);
             sportsIcon = itemView.findViewById(R.id.item_icon);
             sportsName = itemView.findViewById(R.id.sports_name);
+
+            sportsIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onSportsIconClick(getAdapterPosition());
+                }
+            });
         }
     }
 }
