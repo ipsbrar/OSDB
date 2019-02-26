@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:clipChildren="false"
+                                    android:clipToPadding="false"
+                                    app:cardElevation="@dimen/dp_8"
+                                    app:cardCornerRadius="@dimen/dp_4"
+                                    android:layout_marginLeft="@dimen/dp_10"
+                                    android:layout_marginRight="@dimen/dp_10"
+                                    android:layout_marginTop="@dimen/dp_20"
+                                    android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_marginTop="@dimen/dp_20"
+                  android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center"
+                      android:weightSum="3"
+                      android:layout_marginLeft="@dimen/dp_20"
+                      android:layout_marginRight="@dimen/dp_20"
+                      android:orientation="horizontal">
+            <LinearLayout
+                    android:id="@+id/team_1"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                <TextView
+                        android:text="@string/real_madrid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textColor="@color/color_2E384D"
+
+                        android:padding="@dimen/dp_5"
+                        android:textSize="@dimen/sp_14"
+                />
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@drawable/ic_football_2"/>
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:gravity="center"
+                          android:orientation="vertical">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="@dimen/sp_16"
+                          android:textColor="@color/color_2E384D"
+                          android:text="Wed, 25 Jan"/>
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_20"
+                          android:text="1:30 AM"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_below="@+id/round_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@drawable/ic_footbal_1" android:contentDescription="image"/>
+
+                <TextView
+                        android:text="@string/barcelona"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_black"
+
+                        android:padding="@dimen/dp_5"
+                        android:textSize="@dimen/sp_14"
+                />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/color_8798AD"
+                android:layout_marginRight="@dimen/dp_50"
+                android:layout_marginLeft="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_10"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="@string/metlife_stadium_east_rutherford"
+                  android:layout_gravity="center_horizontal"
+                  android:padding="@dimen/dp_20"
+                  android:fontFamily="@font/rubik_regular"
+                  android:textColor="@color/color_8798AD"
+                  android:textSize="@dimen/sp_12"
+        />
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/color_8798AD"
+                />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="@string/remove_from_list"
+                  android:layout_gravity="center_horizontal"
+                  android:padding="@dimen/dp_20"
+                  android:fontFamily="@font/rubik_medium"
+                  android:textColor="@color/color_DD4B39"
+                  android:textSize="@dimen/sp_16"
+        />
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+            android:id="@+id/edit_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="center"
+            android:background="@color/white">
+
+        <ImageView
+                android:id="@+id/back_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                app:srcCompat="@drawable/ic_back_black"/>
+
+
+        <ImageView android:id="@+id/notification_icon" android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:srcCompat="@drawable/ic_notification"
+                   android:layout_centerVertical="true"
+                   android:padding="@dimen/dp_10"
+                   android:layout_toLeftOf="@+id/settings_icon"
+        />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:srcCompat="@drawable/ic_settings"
+                   android:id="@+id/settings_icon"
+                   android:padding="@dimen/dp_10"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/image_lay"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_120"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_below="@+id/edit_toolbar">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                app:civ_circle_background_color="@color/color_D8D8D8"
+                android:src="@drawable/ic_user_image"
+        />
+        <ImageView
+                android:id="@+id/edit_img_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/dp_10"
+                app:srcCompat="@drawable/ic_edit_pic"
+        />
+    </RelativeLayout>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/sp_22"
+              android:text="Rafeeda El Nouri"
+              android:textColor="@color/color_2E384D"
+              android:layout_gravity="center_horizontal"
+              android:fontFamily="@font/rubik_medium"
+              android:layout_marginTop="@dimen/dp_10"/>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+          android:background="@color/color_D8D8D8"
+    android:layout_marginTop="@dimen/dp_20"/>
+
+    <android.support.design.widget.TabLayout
+            android:id="@+id/profile_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@drawable/toolbar_bg"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/color_6849D7"
+            app:tabMode="fixed"
+            android:background="@color/color_white"
+            app:tabSelectedTextColor="@color/color_6849D7"
+            app:tabTextAppearance="@style/tab_text"/>
+
+    <android.support.v4.view.ViewPager
+            android:id="@+id/profile_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

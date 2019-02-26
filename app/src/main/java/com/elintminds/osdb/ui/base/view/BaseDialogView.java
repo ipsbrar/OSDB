@@ -16,6 +16,7 @@ public interface BaseDialogView extends BaseView
     {
         void onFromCameraClick();
         void onFromGalleryClick();
+        void deleteImg();
     }
 
     interface ProfileSelectorDialogListener

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.add_edit_discussion.view.AddEditDiscussionActivity;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.ui.profile.view.ProfileActivity;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
 import java.util.Objects;
@@ -72,6 +73,13 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
         bottomTabLayout.setSelectedTabIndicator(0);
         TABS = getResources().getStringArray(R.array.tab_names);
         setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
+            }
+        });
 
         bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
