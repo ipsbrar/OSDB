@@ -40,13 +40,13 @@
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/user_Image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="@dimen/dp_20"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:src="@drawable/ic_user_image"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/user_Image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:src="@drawable/ic_user_image"/>
 
         <RelativeLayout android:id="@+id/commentlay"
                         android:layout_width="match_parent"

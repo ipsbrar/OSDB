@@ -17,8 +17,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.particular_sport_screen.view.SportsActivity"
-                    android:label="">
+        <activity android:name=".ui.team_details_screen.view.TeamDetailsActivity">
+        </activity>
+        <activity
+                android:name=".ui.particular_sport_screen.view.SportsActivity"
+                android:label="">
         </activity>
         <activity android:name=".ui.search_finding_screen.view.SearchFindingsActivity">
         </activity>
@@ -76,6 +79,8 @@
         <activity android:name=".ui.profile.view.ProfileActivity"/>
         <activity android:name=".ui.profile.view.NotificationActivity"/>
         <activity android:name=".ui.edit_profile.view.EditProfileActivity"/>
+
+        <activity android:name=".ui.player_details_screen.view.PlayerDetailsActivity"/>
     </application>
 
 </manifest>

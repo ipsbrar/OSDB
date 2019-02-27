@@ -53,6 +53,13 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         setupRecyclerView();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+    }
+
     private void setupRecyclerView()
     {
         CardPaddingItemDecoration itemDecoration = new CardPaddingItemDecoration(context, 10f, 10f, 7f,7f);
@@ -76,7 +83,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
 
     private void loadNewsData()
     {
-        Log.e("PAR FRAG", ""+context);
+        newsList.clear();
         String[] newsArray = context.getResources().getStringArray(R.array.sampl_news);
         for (String nws : newsArray) {
             NewsAdapterBean item = new NewsAdapterBean();

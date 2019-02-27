@@ -43,6 +43,10 @@
     <color name="color_E8ECF0">#E8ECF0</color>
     <color name="color_EBEEF1">#EBEEF1</color>
     <color name="color_828282">#828282</color>
+    <color name="color_727272">#727272</color>
+    <color name="color_212934">#212934</color>
+    <color name="color_202020">#202020</color>
+    <color name="color_B3000000">#B3000000</color>
 
 
     <color name="default_todayCircleColor">@color/colorPrimary</color>

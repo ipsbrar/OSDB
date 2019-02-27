@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:layout_marginTop="2dp"
+        android:background="@color/color_white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/player_image"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_centerVertical="true"
+            android:src="@drawable/img_player_empty"/>
+
+    <TextView
+            android:id="@+id/player_name"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/player_image"
+            android:layout_marginStart="20dp"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/color_black"
+            android:fontFamily="@font/rubik_medium"
+            android:text="Aaron Rodgers"/>
+
+</RelativeLayout>

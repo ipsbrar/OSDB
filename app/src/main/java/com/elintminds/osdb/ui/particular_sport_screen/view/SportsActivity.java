@@ -128,7 +128,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
         {
             case R.id.sport_screen_title:
                 dropdownMenu = optionsPopupView(dropdownList);
-                dropdownMenu.showAsDropDown(title, -100, 10);
+                dropdownMenu.showAsDropDown(title, 0, 20);
                 break;
         }
     }
@@ -140,7 +140,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
         LayoutInflater inflater = LayoutInflater.from(this);
         View popupView = inflater.inflate(R.layout.popup_menu_layout, toolbar, false);
         popupWindow.setFocusable(true);
-        popupWindow.setWidth(getResources().getDimensionPixelOffset(R.dimen.dp_200));
+        popupWindow.setWidth(ListPopupWindow.MATCH_PARENT);
         popupWindow.setHeight(ListPopupWindow.WRAP_CONTENT);
         popupWindow.setContentView(popupView);
         popupWindow.setElevation(2f);

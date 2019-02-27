@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:background="@color/color_EFEFEF"
+                android:layout_height="match_parent">
+
+    <TextView android:layout_width="match_parent"
+              android:background="@color/color_white"
+              android:id="@+id/txt_bio"
+              android:textColor="#212934"
+              android:layout_marginTop="@dimen/dp_13"
+              android:paddingTop="@dimen/dp_16"
+              android:paddingRight="@dimen/dp_25"
+              android:paddingLeft="@dimen/dp_25"
+              android:gravity="start"
+              android:paddingBottom="@dimen/dp_10"
+              android:textSize="@dimen/sp_16"
+              android:layout_marginBottom="@dimen/dp_45"
+              android:text="@string/sample_bio"
+              android:fontFamily="@font/rubik_light"
+              android:layout_height="match_parent"/>
+
+
+</android.support.v4.widget.NestedScrollView>

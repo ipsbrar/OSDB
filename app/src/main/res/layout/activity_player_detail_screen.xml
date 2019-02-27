@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/white">
+
+        <TextView
+                android:id="@+id/follow_btn"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:fontFamily="@font/rubik_light"
+                android:text="@string/follow"
+                android:background="@drawable/follow_following_btn_bg"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_13"
+                android:textColor="@color/follow_following_text_color"/>
+
+        <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_back_black"
+                android:padding="@dimen/dp_10"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/back_button"/>
+
+        <TextView
+                android:id="@+id/player_details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/sp_20"
+                android:layout_toStartOf="@id/follow_btn"
+                android:layout_toEndOf="@id/back_btn"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:textColor="@color/color_black"
+                android:fontFamily="@font/rubik_medium"
+                android:text="Aaron Rodgers"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/toolbar_bg">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_Image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_user_image"/>
+        <RelativeLayout
+                android:layout_toRightOf="@+id/user_Image"
+                android:layout_marginLeft="@dimen/dp_22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView android:height="17dp"
+                      android:id="@+id/d_age"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:lineSpacingMultiplier="1.62"
+                      android:text="@string/age_details"
+                      android:fontFamily="@font/rubik_medium"
+                      android:textSize="@dimen/sp_10"/>
+
+            <TextView android:height="17dp"
+                      android:id="@+id/user_age"
+                      android:layout_toRightOf="@+id/d_age"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:lineSpacingMultiplier="1.62"
+                      android:text="35 YEARS"
+                      android:layout_marginLeft="@dimen/dp_10"
+                      android:fontFamily="@font/rubik_medium"
+                      android:textSize="@dimen/sp_10"/>
+
+
+            <TextView android:height="17dp"
+                      android:id="@+id/d_date_of_birth"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:layout_below="@+id/d_age"
+                      android:lineSpacingMultiplier="1.62"
+                      android:text="@string/date_of_birth_details"
+                      android:fontFamily="@font/rubik_medium"
+                      android:textSize="@dimen/sp_10"/>
+
+            <TextView android:height="17dp"
+                      android:id="@+id/user_date_of_birth"
+                      android:layout_toRightOf="@+id/d_date_of_birth"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:lineSpacingMultiplier="1.62"
+                      android:text="Dec 2, 1983"
+                      android:layout_below="@+id/d_age"
+                      android:layout_marginLeft="@dimen/dp_10"
+                      android:fontFamily="@font/rubik_medium"
+                      android:textSize="@dimen/sp_10"/>
+
+            <TextView android:height="17dp"
+                      android:id="@+id/d_team"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:layout_below="@+id/d_date_of_birth"
+                      android:lineSpacingMultiplier="1.62"
+                      android:text="@string/team_details"
+                      android:fontFamily="@font/rubik_medium"
+                      android:textSize="@dimen/sp_10"/>
+
+            <TextView android:height="17dp"
+                      android:id="@+id/user_team"
+                      android:layout_toRightOf="@+id/d_team"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:lineSpacingMultiplier="1.62"
+                      android:text="Green Bay Packers"
+                      android:layout_below="@+id/d_date_of_birth"
+                      android:layout_marginLeft="@dimen/dp_10"
+                      android:fontFamily="@font/rubik_medium"
+                      android:textSize="@dimen/sp_10"/>
+
+            <TextView android:height="17dp"
+                      android:id="@+id/d_zone"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:layout_below="@+id/d_team"
+                      android:lineSpacingMultiplier="1.62"
+                      android:text="@string/zone_details"
+                      android:fontFamily="@font/rubik_medium"
+                      android:textSize="@dimen/sp_10"/>
+
+            <TextView android:height="17dp"
+                      android:id="@+id/user_zone"
+                      android:layout_toRightOf="@+id/d_zone"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:lineSpacingMultiplier="1.62"
+                      android:text="NFC North"
+                      android:layout_below="@+id/d_team"
+                      android:layout_marginLeft="@dimen/dp_10"
+                      android:fontFamily="@font/rubik_medium"
+                      android:textSize="@dimen/sp_10"/>
+
+            <ImageView
+                    android:id="@+id/insta_details"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/user_zone"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_insta"/>
+            <ImageView
+                    android:id="@+id/fb_details"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/user_zone"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/insta_details"
+                    app:srcCompat="@drawable/ic_fb"/>
+            <ImageView
+                    android:id="@+id/twitter_details"
+                    android:layout_width="wrap_content"
+                    android:padding="10dp"
+                    android:layout_toRightOf="@+id/fb_details"
+                    android:layout_below="@+id/user_zone"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_twitter"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <android.support.design.widget.TabLayout
+            android:id="@+id/player_details_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@drawable/toolbar_bg"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/color_6849D7"
+            app:tabMode="scrollable"
+            android:background="@color/color_white"
+            app:tabSelectedTextColor="@color/color_6849D7"
+            app:tabTextAppearance="@style/tab_text"/>
+
+    <android.support.v4.view.ViewPager
+            android:id="@+id/player_details_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+</LinearLayout>
