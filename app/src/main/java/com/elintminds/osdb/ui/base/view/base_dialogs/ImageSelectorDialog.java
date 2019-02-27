@@ -68,7 +68,12 @@ public class ImageSelectorDialog extends BaseDialogFragment implements View.OnCl
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.camera_picker_btn:
+            case R.id.editBtn:
+                mListener.editProfileClick();
+                dismissDialog();
+                break;
+
+                case R.id.camera_picker_btn:
                 mListener.onFromCameraClick();
                 dismissDialog();
                 break;

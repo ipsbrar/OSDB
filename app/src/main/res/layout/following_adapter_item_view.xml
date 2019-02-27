@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:padding="22dp"
+        android:background="@color/color_white">
+
+    <ImageView
+            android:id="@+id/team_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/team_logo"
+            android:src="@drawable/ic_nfl_1"
+            android:layout_centerVertical="true"/>
+
+    <TextView
+            android:id="@+id/follow_btn"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:fontFamily="@font/rubik_light"
+            android:text="@string/follow"
+            android:background="@drawable/follow_following_btn_bg"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_13"
+            android:textColor="@color/follow_following_text_color" />
+
+    <TextView
+            android:id="@+id/teamName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/rubik_medium"
+            android:layout_toEndOf="@id/team_logo"
+            android:layout_toStartOf="@id/follow_btn"
+            android:layout_centerVertical="true"
+            android:maxLines="1"
+            android:textSize="@dimen/sp_15"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/color_black" />
+</RelativeLayout>

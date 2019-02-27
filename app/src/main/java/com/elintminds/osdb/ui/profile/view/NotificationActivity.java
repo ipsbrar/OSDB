@@ -56,8 +56,5 @@ public class NotificationActivity extends BaseActivity {
             item.setTitle(nws);
             notificationsList.add(item);
         }
-
-
     }
-
 }

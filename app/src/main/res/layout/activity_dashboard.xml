@@ -1,42 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/container"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.dashboard.view.DashboardActivity">
+        android:layout_width="match_parent">
+    <android.support.design.widget.CoordinatorLayout
 
-    <android.support.design.widget.AppBarLayout
-            android:id="@+id/dashboard_appBar"
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/dashboard_toolbar"
+            android:layout_height="match_parent"
+            android:layout_above="@id/navigation"
+            tools:context=".ui.dashboard.view.DashboardActivity">
+
+        <android.support.design.widget.AppBarLayout
+                android:id="@+id/dashboard_appBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:navigationIcon="@drawable/user_icon">
-            <TextView
-                    android:id="@+id/dashboard_title"
-                    android:layout_width="wrap_content"
+        >
+            <android.support.v7.widget.Toolbar
+                    android:id="@+id/dashboard_toolbar"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_home"
-                    android:textSize="@dimen/sp_18"
-                    android:textColor="@color/color_black"
-                    android:fontFamily="@font/rubik_medium"
-                    android:layout_gravity="center"/>
-            <ImageView
-                    android:id="@+id/home_logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_30"
-                    app:srcCompat="@drawable/ic_logo_purple"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/home_logo"
-                    android:visibility="gone"/>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:navigationIcon="@drawable/user_icon">
+                <TextView
+                        android:id="@+id/dashboard_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_home"
+                        android:textSize="@dimen/sp_18"
+                        android:textColor="@color/color_black"
+                        android:fontFamily="@font/rubik_medium"
+                        android:layout_gravity="center"/>
+                <ImageView
+                        android:id="@+id/home_logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_30"
+                        app:srcCompat="@drawable/ic_logo_purple"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/home_logo"
+                        android:visibility="gone"/>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
 
+
+        <FrameLayout
+                android:id="@+id/dashboard_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        </FrameLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.TabLayout
             android:id="@+id/navigation"
@@ -48,18 +66,8 @@
             app:tabPaddingStart="9dp"
             app:tabPaddingEnd="9dp"
             app:tabGravity="fill"
-
+            app:tabMinWidth="0dp"
             android:background="@color/white"
             android:layout_alignParentBottom="true"
     />
-
-    <FrameLayout
-            android:id="@+id/dashboard_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/dashboard_appBar"
-            android:layout_above="@id/navigation">
-
-    </FrameLayout>
-
 </RelativeLayout>

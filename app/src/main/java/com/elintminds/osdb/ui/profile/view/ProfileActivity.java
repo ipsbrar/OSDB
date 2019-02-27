@@ -1,14 +1,20 @@
 package com.elintminds.osdb.ui.profile.view;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -18,8 +24,10 @@ import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.base.view.BaseDialogView;
+import com.elintminds.osdb.ui.base.view.BaseView;
 import com.elintminds.osdb.ui.base.view.base_dialogs.ImageSelectorDialog;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
+import com.elintminds.osdb.ui.edit_profile.view.EditProfileActivity;
 import com.elintminds.osdb.ui.search_finding_screen.view.PlayerFragment;
 import com.elintminds.osdb.ui.settings.view.SettingsActivity;
 import com.elintminds.osdb.utils.AppConstants;
@@ -27,18 +35,23 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileActivity extends BaseActivity implements View.OnClickListener, ProfileView, BaseDialogView.ImageSelectorDialogListener {
 
 
-    private   int PIC_FROM_GALLERY = 101;
-    private   int CAPTURE_FROM_CAMERA = 102;
+    private int PIC_FROM_GALLERY = 101;
+    private int CAPTURE_FROM_CAMERA = 102;
+    private static final int REQUEST_WRITE_PERMISSION = 103;
+    private static final int MY_CAMERA_PERMISSION_CODE = 104;
     private TabLayout tabs;
     private TextView title;
-    private ImageView settingsImg, notificationImg,edit_img_btn;
+    private ImageView settingsImg, notificationImg, edit_img_btn,backImg;
     private String imagePathNew;
     Bitmap bm;
     CircleImageView profImg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +67,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         tabs = findViewById(R.id.profile_tabs);
         settingsImg = findViewById(R.id.settings_icon);
         edit_img_btn = findViewById(R.id.edit_img_btn);
+        backImg = findViewById(R.id.back_img);
         profImg = findViewById(R.id.profImg);
         notificationImg = findViewById(R.id.notification_icon);
         ViewPager viewPager = findViewById(R.id.profile_viewpager);
@@ -63,13 +77,14 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         settingsImg.setOnClickListener(this);
         notificationImg.setOnClickListener(this);
         edit_img_btn.setOnClickListener(this);
+        backImg.setOnClickListener(this);
         setDividerForTabs();
     }
 
     private void setupViewPager(ViewPager upViewPager) {
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
         adapter.addFragment(MyWatchListFragment.getInstance(), getString(R.string.mywatchlist));
-        adapter.addFragment(PlayerFragment.getInstance(), getString(R.string.following));
+        adapter.addFragment(FollowingFragment.getInstance(), getString(R.string.following));
 
         upViewPager.setAdapter(adapter);
     }
@@ -86,6 +101,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onClick(View view) {
 
@@ -106,10 +122,42 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 
             case R.id.edit_img_btn: {
 
-                callImagePickerDialog();
+                if (checkAndRequestPermissions()) {
+                    Log.e("ON CAM CLICK", "" + checkAppPermission(BaseView.CAMERA_PERMISSION));
+                    callImagePickerDialog();
+                } else {
+                    checkAndRequestPermissions();
+                }
+                break;
+            }
+
+            case R.id.back_img:{
+
+                finish();
                 break;
             }
         }
+    }
+
+    private boolean checkAndRequestPermissions() {
+        int camera = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA);
+        int storage = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (camera != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.CAMERA);
+        }
+        if (storage != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray
+                    (new String[listPermissionsNeeded.size()]), MY_CAMERA_PERMISSION_CODE);
+            return false;
+        }
+        return true;
     }
 
     private void callImagePickerDialog() {
@@ -148,15 +196,20 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 
     }
 
+    @Override
+    public void editProfileClick() {
+        startActivity(new Intent(this, EditProfileActivity.class));
+    }
+
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.e("ACT DATA", "" + requestCode);
         if (requestCode == CAPTURE_FROM_CAMERA) {
             if (resultCode == Activity.RESULT_OK) {
 
-                Log.e("path image", "" + imagePathNew);
 
-                if (imagePathNew != null) {
+
+           /*     if (imagePathNew != null) {
                     bm = AppConstants.decodeBitmapFromSDCard(imagePathNew, 200, 200);
                     int rotation = AppConstants.rotationAngle(imagePathNew);
                     if (rotation != 0) {
@@ -168,27 +221,43 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                             bm = rotatedBitmap;
                     }
 
-                }
+                }*/
 
                 if (bm != null) {
                     Uri imgUri = AppConstants.getImageUri(this, bm);
                     File finalFile = new File(AppConstants.getRealPathFromURI(this, imgUri));
+                    Log.e("path image", "" + finalFile);
                     profImg.setImageBitmap(bm);
 
                 }
-            } else if (requestCode == PIC_FROM_GALLERY) {
+            } }else if (requestCode == PIC_FROM_GALLERY) {
                 if (resultCode == Activity.RESULT_OK) {
                     Uri imgUri = data.getData();
                     // val fileName =  File(imgUri!!.path)
                     File fileName = new File(AppConstants.getRealPathFromURI(this, imgUri));
                     try {
                         Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), imgUri);
+                        Log.e("path image", "" + fileName);
                         profImg.setImageBitmap(bitmapImage);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
             }
+
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case MY_CAMERA_PERMISSION_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    callImagePickerDialog();
+                }
+                break;
         }
     }
+
+
 }
