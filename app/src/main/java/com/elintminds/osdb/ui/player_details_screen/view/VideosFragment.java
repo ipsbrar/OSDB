@@ -27,7 +27,9 @@ public class VideosFragment extends BaseFragment implements PlayerDetailsView.Vi
     private ShimmerRecyclerView videosRecyclerView;
     private ArrayList<VideosBean> videosList = new ArrayList<>();
     private VideosAdapter adapter;
-    private ShimmerRecyclerView videosRecyclerView1;
+    private String[] sampleTitles = {"Kris Bryant Placed on Disabled List...", "Arkansas Beats Heimlich, Oregon State in CWS..."
+            , "Kris Bryant Placed on Disabled List...", "Arkansas Beats Heimlich, Oregon State in CWS..."
+            , "Kris Bryant Placed on Disabled List...", "Arkansas Beats Heimlich, Oregon State in CWS..."};
 
     public static VideosFragment getInstance()
     {
@@ -38,22 +40,33 @@ public class VideosFragment extends BaseFragment implements PlayerDetailsView.Vi
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.photo_player_details_fragment, container, false);
+        return inflater.inflate(R.layout.videos_fragment_view, container, false);
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+        for (String nws : sampleTitles) {
+            VideosBean item = new VideosBean();
+            item.setVideoTitle(nws);
+            videosList.add(item);
+        }
+    }
 
     @Override
     protected void setUp(View view)
     {
         context = getContext();
-        videosRecyclerView = view.findViewById(R.id.rcv_photo_player_details);
+        videosRecyclerView = view.findViewById(R.id.video_recyclerview);
 
         setupRecyclerView();
     }
 
     private void setupRecyclerView()
     {
-        CardPaddingItemDecoration itemDecoration = new CardPaddingItemDecoration(context, 10f, 10f, 7f,7f);
+        CardPaddingItemDecoration itemDecoration = new CardPaddingItemDecoration(context, 10f, 10f, 6f,6f);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context, 2);
         adapter = new VideosAdapter(context, videosList, this);
 
@@ -62,7 +75,6 @@ public class VideosFragment extends BaseFragment implements PlayerDetailsView.Vi
         videosRecyclerView.setNestedScrollingEnabled(false);
         videosRecyclerView.setAdapter(adapter);
         videosRecyclerView.showShimmerAdapter();
-
         videosRecyclerView.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -74,14 +86,6 @@ public class VideosFragment extends BaseFragment implements PlayerDetailsView.Vi
 
     private void loadPhotoData()
     {
-        videosList.clear();
-        String[] newsArray = context.getResources().getStringArray(R.array.sampl_news);
-        for (String nws : newsArray) {
-            VideosBean item = new VideosBean();
-            videosList.add(item);
-        }
-
-        Log.e("DATA", "" + videosList.size());
         adapter.setDataList(videosList);
         videosRecyclerView.hideShimmerAdapter();
     }

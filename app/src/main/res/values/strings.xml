@@ -248,6 +248,57 @@
     <string name="bio">Bio</string>
     <string name="videos">Videos</string>
     <string name="photos">Photos</string>
+    <string name="sample_bio"><p>Given name Aaron Charles Rodgers…Born in Chico, Calif. …Nicknamed “A-Rod”…Father, Ed,
+        played offensive guard at Chico State from 1973-76 and then lined up for three-plus seasons (three games in
+        1978, 1979-81) with the Twin City Cougars, a semi-pro football team in Marysville, Calif.; the Cougars captured
+        the 1980 semi-pro national championship by defeating the Delavan (Wis.) Red Devils, 37-20…Younger brother,
+        Jordan, played quarterback at Vanderbilt and spent time on Tampa Bay’s practice squad in 2013…Was a contestant
+        on Celebrity Jeopardy! on an episode that aired in May 2015, defeating Kevin O’Leary from Shark Tank and former
+        astronaut Mark Kelly to win $50,000 for the Midwest Athletes Against Childhood Cancer (MACC) Fund…In May 2018,
+        received an honorary doctorate of humanities degree from the Medical College of Wisconsin for his commitment to
+        end childhood cancer and blood disorders.</p>
+        <p> High school: A two-time all-section choice (2000-01) at Pleasant
+        Valley High School in Chico, Calif., he passed for 4,419 yards over the course of his junior and senior seasons
+        and set the single-season school record for passing yards his senior year (2,303)…Also pitched for his high
+        school baseball team as a senior…Community involvement: Has become particularly active with the MACC Fund and
+        has raised $2.8 million for the organization through various campaigns and events…Hosted the fundraising banquet
+        “An Evening With Aaron Rodgers” in Milwaukee each year from 2010-14 on behalf of the organization…In January
+        2015, was selected as one of three finalists for the Walter Payton Man of the Year Award, the only league award
+        that recognizes a player’s off-the-field community service as well as his playing excellence…Won the Bart Starr
+        Award in 2014, which annually recognizes one NFL player for outstanding character and leadership on the field
+        and in the community…In December 2011, hosted “A Pack Lunch With Aaron Rodgers,” where MACC Fund donors joined
+        him for an afternoon lunch hour in Green Bay…In December 2016 and December 2017, supported The Salvation
+        Army’s Red Kettle Campaign by signing autographs in exchange for monetary donations…</p>
+        <p> Also matched each donation
+        that was made during weekly autograph signings that teammates participated in during the holiday season…In 2009,
+        worked with The Salvation Army to have “Twelve’s Day of Christmas,” a benefit partnering with Shopko to give
+        holiday gifts to underprivileged children…Co-hosted a charity golf tournament with Young Life from 2006-08…Plays
+        annually in the Andy North and Friends Golf Getaway, an event that raises money and awareness for the University
+        of Wisconsin Paul P. Carbone Comprehensive Cancer Center…A scratch golfer, plays regularly and has played in the
+        American Century Celebrity Golf Championship in Lake Tahoe, Nev., 14 times…Has participated in the Edgar Bennett
+        Celebrity Bowl-A-Thon, the Vince Lombardi Golf Classic and the 2009 ESPY Celebrity Golf Classic…While at Cal, he
+        and WR Geoff McArthur participated in a fundraiser, “Touchdown for Kids,” with money donated to local youth
+        programs for every TD pass connection authored by the two.</p>
+    </string>
+    <string name="play_icon">Play icon</string>
+    <string name="hide">Hide</string>
+    <string name="charity_sample_text">Aaron Rodgers is the founder with David Gruber co-creator, of “itsAaron” with a
+        mission of creating awareness for organizations and people who are changing the world. Pro Player Foundation-The
+        mission of the Pro Player Foundation is to address the needs of underserved children by raising dollars and
+        awareness through special events and programs. Pro Player Foundation partners with athletes to achieve
+        philanthropic and community needs. Midwest Athletes Against Childhood Cancer (MACC) The MACC funds goal is to
+        find a cure to childhood cancer and related blood disorders by providing funding and research. Aaron plays
+        annually in the Andy North and Friends Golf Getaway, which raises money for the University of Wisconsin Paul P.
+        Carbone Comprehensive Cancer Center
+    </string>
+    <string name="community_sample_text">Aaron Rodgers Norcal Fire Fun supports the victims of the Camp Fire in Butte
+        County, CA and, in addition to meeting their basic needs, will focus on Kids Programs (in school, after school,
+        extracurricular) Youth and High School Sports and Housing (temporary structures for displaced Paradise residents
+        as they rebuild) Aaron received a community service award with the Green Bay Chamber of commerce for his
+        outstanding philanthropic work
+    </string>
+    <string name="career_sample_text">
+        <![CDATA[Highest career passer rating in regular season with a minimum of 1,500 passing attempts (103.2) Most consecutive seasons with a passer rating of over 100.0, with 6 (2009–2014) 5th highest postseason passer rating (99.4) Lowest career pass interception % (1.5%) Best touchdown to interception ratio in NFL history (4.23) Best passing yards to interception ratio (511.49:1) (36,827:72) First player in NFL history to pass for over 4,000 yards in each of the first two seasons as a starting QB Most consecutive pass attempts without an interception (402) Most consecutive touchdown passes at home without an interception, (including playoffs) (49) Most consecutive pass attempts without a pick six (3,807) November 8, 2009–present Fewest pick sixes per attempts (1 pick six: 4,458 ATT)  Most consecutive passes without an interception at home, (including playoffs) (587) One of only six quarterbacks (Kurt Warner, Eli Manning, Peyton Manning, Joe Flacco and Dan Marino) to pass for over 1,000 yards in a single postseason   Most consecutive games without throwing multiple interceptions (41). Threw the fewest interceptions (42) before throwing 150th career touchdown (Dan Marino threw 69 interceptions) Threw the fewest interceptions (53) before throwing 200th career touchdown (Tom Brady threw 88 interceptions) 21,332 passing yards from 2008 to 2012, the most by a QB in his first five seasons as a starter. Fewest attempts to get to 30,000 passing yards, with 3,652 Third-most touchdown passes of 70+ yards (16) (Trails Eli Manning and Drew Brees) Most seasons with a passer rating over 100.0 (8). Most seasons with an interception percentage below 1.5% (6). One of only three quarterbacks to have a passer rating of at least 110 in multiple seasons. One of four quarterbacks to pass for 40 touchdowns in multiple seasons. One of four quarterbacks to pass for at least 35 touchdowns in four seasons. Highest touchdown passing percentage (6.4%) in the Super Bowl Era. Only QB with a touchdown passing percentage above 6.0% in the Super Bowl Era.]]></string>
 
 
 </resources>

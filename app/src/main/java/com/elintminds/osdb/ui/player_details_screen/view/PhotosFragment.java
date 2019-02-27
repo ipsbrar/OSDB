@@ -19,7 +19,8 @@ import com.elintminds.osdb.utils.CardPaddingItemDecoration;
 
 import java.util.ArrayList;
 
-public class PhotosFragment extends BaseFragment implements PlayerDetailsView.VideoPhotoAdapterListener {
+public class PhotosFragment extends BaseFragment implements PlayerDetailsView.VideoPhotoAdapterListener
+{
     public static final String TAG = "PhotosFragment";
 
     private Context context;
