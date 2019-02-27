@@ -216,4 +216,27 @@
         <item>Nfl cup 2019 opening ceremony performers</item>
         <item>WASHINGTON WIZARDS VS NEW YORKS KNICKS AT BK STADIUM</item>
     </string-array>
+
+    <string name="age_details">Age:</string>
+    <string name="team_details">TEAM:</string>
+    <string name="zone_details">ZONE:</string>
+    <string name="date_of_birth_details">DATE OF BIRTH:</string>
+
+    <string name="height_info">Height:</string>
+    <string name="weight_info">Weight:</string>
+    <string name="college_info">College:</string>
+    <string name="place_of_birth_info">Place of birth:</string>
+    <string name="position_info">Position:</string>
+    <string name="fan_mail_address_info">Fan Mail Address:</string>
+    <string name="sports_agent_info">Sports Agent:</string>
+    <string name="television_agent_info">Television Agent:</string>
+    <string name="current_contract_info">Current Contract:</string>
+    <string name="business_ventures_info">Business ventures:</string>
+    <string name="endorsement_deals_info">Endorsement Deals:</string>
+    <string name="charities_affiliated_info">Charities Affiliated</string>
+    <string name="community_work_info">Community Work</string>
+    <string name="career_highlights_info">Career Highlights</string>
+    <string name="_view">View</string>
+
+
 </resources>
