@@ -4,6 +4,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/dp_10"
-        android:fontFamily="@font/rubik_regular">
+        android:fontFamily="@font/rubik_bold">
 
 </TextView>
