@@ -242,6 +242,11 @@
     <string name="community_work_info">Community Work</string>
     <string name="career_highlights_info">Career Highlights</string>
     <string name="_view">View</string>
+    <string name="info">Info</string>
+    <string name="career">Career</string>
+    <string name="bio">Bio</string>
+    <string name="videos">Videos</string>
+    <string name="photos">Photos</string>
 
 
 </resources>

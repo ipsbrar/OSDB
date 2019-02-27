@@ -1,6 +1,7 @@
 package com.elintminds.osdb.ui.team_details_screen.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
+import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsActivity;
 import com.elintminds.osdb.ui.team_details_screen.adapters.TeamPlayersAdapter;
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean;
 
@@ -68,6 +70,9 @@ public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView
     @Override
     public void onPlayerItemClick(int position)
     {
+        Intent intent = new Intent(context, PlayerDetailsActivity.class);
+        intent.putExtra("TITLE", dataList.get(position).getPlayerName());
 
+        startActivity(intent);
     }
 }

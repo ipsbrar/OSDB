@@ -7,17 +7,16 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/white"
-            android:elevation="@dimen/dp_4">
+            android:background="@color/white">
 
         <TextView
                 android:id="@+id/follow_btn"
-                android:layout_width="80dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_marginEnd="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_10"
                 android:fontFamily="@font/rubik_light"
                 android:text="@string/follow"
                 android:background="@drawable/follow_following_btn_bg"
@@ -26,44 +25,42 @@
                 android:textSize="@dimen/sp_13"
                 android:textColor="@color/follow_following_text_color"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
-                  android:textSize="@dimen/sp_20"
-                  android:gravity="center"
-                  android:layout_centerInParent="true"
-                  android:textColor="@color/color_black"
-                  android:fontFamily="@font/rubik_medium"
-                  android:text="Aaron Rodgers"/>
-
         <ImageView
-                android:id="@+id/backImg"
+                android:id="@+id/back_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/ic_back_black"
                 android:padding="@dimen/dp_10"
-                android:layout_alignParentLeft="true"
-        />
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/back_button"/>
+
+        <TextView
+                android:id="@+id/player_details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/sp_20"
+                android:layout_toStartOf="@id/follow_btn"
+                android:layout_toEndOf="@id/back_btn"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:textColor="@color/color_black"
+                android:fontFamily="@font/rubik_medium"
+                android:text="Aaron Rodgers"/>
 
     </RelativeLayout>
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/color_38D8D8D8"
-    />
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/toolbar_bg">
 
         <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/user_Image"
-                android:layout_width="102dp"
-                android:layout_height="102dp"
-                android:layout_marginTop="@dimen/dp_23"
-                android:layout_marginLeft="@dimen/dp_25"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/ic_user_image"/>
         <RelativeLayout
-                android:layout_marginTop="@dimen/dp_22"
                 android:layout_toRightOf="@+id/user_Image"
                 android:layout_marginLeft="@dimen/dp_22"
                 android:layout_width="match_parent"
@@ -185,16 +182,10 @@
                     app:srcCompat="@drawable/ic_back_black"
             />
         </RelativeLayout>
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/user_Image"
-                android:layout_marginTop="@dimen/dp_22"
-                android:background="@color/color_38D8D8D8"
-        />
+
     </RelativeLayout>
     <android.support.design.widget.TabLayout
-            android:id="@+id/search_findings_tabs"
+            android:id="@+id/player_details_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabBackground="@drawable/toolbar_bg"
@@ -206,7 +197,7 @@
             app:tabTextAppearance="@style/tab_text"/>
 
     <android.support.v4.view.ViewPager
-            android:id="@+id/search_findings_viewpager"
+            android:id="@+id/player_details_viewpager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 </LinearLayout>
