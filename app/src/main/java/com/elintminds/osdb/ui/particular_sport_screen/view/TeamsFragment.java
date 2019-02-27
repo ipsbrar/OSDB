@@ -1,9 +1,11 @@
 package com.elintminds.osdb.ui.particular_sport_screen.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,11 @@ import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.particular_sport_screen.adapters.TeamsViewAdapter;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamClubBean;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamsBean;
+import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsActivity;
 
 import java.util.ArrayList;
 
-public class TeamsFragment extends BaseFragment
-{
+public class TeamsFragment extends BaseFragment implements SportScreenView.TeamsExpandableItemsListener {
     public static final String TAG = "TeamsFragment";
 
     private Context context;
@@ -62,7 +64,7 @@ public class TeamsFragment extends BaseFragment
     private void setupExpandableView()
     {
         getSampleData();
-        adapter = new TeamsViewAdapter(context, dataList);
+        adapter = new TeamsViewAdapter(context, dataList, this);
         teamsEpView.setAdapter(adapter);
     }
 
@@ -85,5 +87,14 @@ public class TeamsFragment extends BaseFragment
 
             dataList.add(clubBean);
         }
+    }
+
+    @Override
+    public void onTeamClick(int groupPos, int childPos)
+    {
+        String teamName = dataList.get(groupPos).getTeamsList().get(childPos).getTeamName();
+        Intent intent = new Intent(context, TeamDetailsActivity.class);
+        intent.putExtra("TITLE", teamName);
+        startActivity(intent);
     }
 }

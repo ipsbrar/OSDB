@@ -188,12 +188,17 @@
     <string name="search_hint">Search news, players, teams</string>
     <string name="news">News</string>
     <string name="player">Player</string>
+    <string name="players">Players</string>
     <string name="schedule">Schedule</string>
     <string name="events">Events</string>
     <string name="follow">Follow</string>
     <string name="add_to_watchlist">Add to Watchlist</string>
     <string name="teams">Teams</string>
     <string name="following">Following</string>
+    <string name="back_button">Back button</string>
+    <string name="head_coach">HEAD COACH:</string>
+    <string name="stadium">STADIUM:</string>
+    <string name="stats">Stats</string>
 
 
     <string-array name="months">

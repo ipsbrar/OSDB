@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamClubBean;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamsBean;
+import com.elintminds.osdb.ui.particular_sport_screen.view.SportScreenView;
 
 import java.util.ArrayList;
 
@@ -17,11 +18,13 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
 {
     private Context context;
     private ArrayList<TeamClubBean> dataList;
+    private SportScreenView.TeamsExpandableItemsListener listener;
 
-    public TeamsViewAdapter(Context context, ArrayList<TeamClubBean> dataList)
+    public TeamsViewAdapter(Context context, ArrayList<TeamClubBean> dataList, SportScreenView.TeamsExpandableItemsListener listener)
     {
         this.context = context;
         this.dataList = dataList;
+        this.listener = listener;
     }
     @Override
     public int getGroupCount() {
@@ -78,7 +81,7 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
     }
 
     @Override
-    public View getChildView(int i, int i1, boolean b, View view, ViewGroup parent)
+    public View getChildView(final int i, final int i1, boolean b, View view, ViewGroup parent)
     {
         ChildViewHolder holder;
         TeamsBean childItem = (TeamsBean) getChild(i, i1);
@@ -105,6 +108,14 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
             holder.followBtn.setSelected(childItem.isFollowing());
         }
 
+        holder.teamName.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onTeamClick(i, i1);
+            }
+        });
 
         return view;
     }

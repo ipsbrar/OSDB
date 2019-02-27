@@ -41,8 +41,7 @@
             android:layout_centerVertical="true"
             android:maxLines="1"
             android:textSize="@dimen/sp_15"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:padding="@dimen/dp_10"
             android:textColor="@color/color_black" />
 
 </RelativeLayout>
