@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_10"
-        android:fontFamily="@font/rubik_bold">
+        android:padding="15dp">
 
-</TextView>
+    <ImageView
+            android:id="@+id/sport_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/sport_icon"
+            android:src="@drawable/ic_nfl_2"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+    <TextView
+            android:id="@+id/dd_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:fontFamily="@font/rubik_bold"
+            android:layout_toEndOf="@id/sport_logo"/>
+
+</RelativeLayout>

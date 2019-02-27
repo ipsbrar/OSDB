@@ -19,6 +19,8 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
+import com.elintminds.osdb.ui.particular_sport_screen.adapters.DropDownAdapter;
+import com.elintminds.osdb.ui.particular_sport_screen.beans.DropdownBean;
 import com.elintminds.osdb.ui.search_finding_screen.view.ScheduleFragment;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
@@ -31,7 +33,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
     private TabLayout tabs;
     private TextView title;
     private PopupWindow dropdownMenu;
-    private ArrayList<String> dropdownList = new ArrayList<>();
+    private ArrayList<DropdownBean> dropdownList2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,7 +45,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
 
         int selectedSport = getIntent().getIntExtra("SPORT_ID", -1);
         Log.e("SPORT_ID",""+selectedSport);
-        title.setText(dropdownList.get(selectedSport));
+        title.setText(dropdownList2.get(selectedSport).getItemName());
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +62,13 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
         tabs = findViewById(R.id.sport_screen_tabs);
         ViewPager viewPager = findViewById(R.id.sport_screen_viewpager);
 
-        dropdownList.addAll(Arrays.asList(getResources().getStringArray(R.array.sports_names)));
+        String[] arr = getResources().getStringArray(R.array.sports_names);
+        for (String item: arr)
+        {
+            DropdownBean ddItem = new DropdownBean();
+            ddItem.setItemName(item);
+            dropdownList2.add(ddItem);
+        }
 
         setSupportActionBar(toolbar);
 
@@ -127,7 +135,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
         switch (view.getId())
         {
             case R.id.sport_screen_title:
-                dropdownMenu = optionsPopupView(dropdownList);
+                dropdownMenu = optionsPopupView(dropdownList2);
                 dropdownMenu.showAsDropDown(title, 0, 20);
                 break;
         }
@@ -135,7 +143,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private PopupWindow optionsPopupView(ArrayList<String> items){
+    private PopupWindow optionsPopupView(ArrayList<DropdownBean> items){
         final PopupWindow popupWindow = new PopupWindow();
         LayoutInflater inflater = LayoutInflater.from(this);
         View popupView = inflater.inflate(R.layout.popup_menu_layout, toolbar, false);
@@ -145,13 +153,13 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
         popupWindow.setContentView(popupView);
         popupWindow.setElevation(2f);
         ListView popupList = popupView.findViewById(R.id.popup_list);
-        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.simple_list_item, items);
-        popupList.setAdapter(adapter);
+        DropDownAdapter adapter1 = new DropDownAdapter(this, items);
+        popupList.setAdapter(adapter1);
 
         popupList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                title.setText(dropdownList.get(i));
+                title.setText(dropdownList2.get(i).getItemName());
                 popupWindow.dismiss();
             }
         });
