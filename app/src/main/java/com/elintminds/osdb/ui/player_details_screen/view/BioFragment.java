@@ -25,7 +25,7 @@ public class BioFragment extends BaseFragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.info_fragment, container, false);
+        return inflater.inflate(R.layout.bio_fragment, container, false);
     }
 
 
