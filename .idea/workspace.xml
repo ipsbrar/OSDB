@@ -13,23 +13,13 @@
     <list default="true" id="007a0441-b0a2-47db-b9b4-e373a9bbae30" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -217,11 +207,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+            <state relative-caret-position="431">
+              <caret line="74" column="7" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
               <folding>
                 <element signature="e#1690#1691#0" expanded="true" />
                 <element signature="e#1731#1732#0" expanded="true" />
@@ -239,10 +229,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="488">
               <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
             </state>
           </provider>
@@ -2864,7 +2854,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <hideEmptyPackages AndroidView="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
@@ -2886,6 +2876,30 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
@@ -2966,28 +2980,13 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build.gradle</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/network/ApiHelper.kt</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/network/WebserviceUrls.kt</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/adapters/SportsListAdapter.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/SportsAdapterListBean.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/LiveScroresInteractor.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/LiveScroresInteractorClass.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/LiveScroresPresenter.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/LiveScroresPresenterClass.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/LiveScroresFragment.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/model/LoginInteractor.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/model/LoginInteractorClass.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/presenter/LoginPresenter.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/presenter/LoginPresenterClass.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/view/LoginActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/view/LoginView.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/photo_player_details_fragment.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/sports_list_adapter_item.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/videos_fragment_view.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build.gradle</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/gradlew.bat</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/LiveScroresView.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/live_scores_fragment_view.xml</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -2995,84 +2994,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.DS_Store</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_9_0_jar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_9_0_jar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/.DS_Store</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/HomeFragmentInteractor.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/HomeFragmentInteractorClass.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/HomeFragmentPresenter.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/HomeFragmentPresenterClass.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragmentView.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/beans/UserBean.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-11-34-19-720.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-11-34-19-720.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-11-34-33-462.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-11-34-33-462.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-11-36-01-478.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-11-36-01-478.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-11-41-00-833.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-11-41-00-833.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-14-24-322.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-14-24-322.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-17-33-605.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-17-33-605.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-18-35-307.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-18-35-307.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-20-35-251.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-20-35-251.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-20-57-832.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-20-57-832.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-25-24-693.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-25-24-693.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-40-22-123.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-13-40-22-123.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-14-53-22-767.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-14-53-22-767.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-14-55-38-506.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-14-55-38-506.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-15-04-06-114.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-15-04-06-114.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-11-18-968.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-11-18-968.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-11-28-035.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-11-28-035.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-15-35-611.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-15-35-611.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-19-01-686.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-19-01-686.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-19-10-931.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-19-10-931.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-19-40-164.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-19-40-164.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-20-31-931.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-20-31-931.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-22-06-890.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-22-06-890.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-28-41-751.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-28-41-751.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-32-03-958.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-32-03-958.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-33-12-235.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-33-12-235.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-35-05-284.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-35-05-284.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-38-20-589.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-38-20-589.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-49-21-916.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-49-21-916.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-53-46-410.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-53-46-410.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-54-58-474.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-16-54-58-474.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-17-00-02-901.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-17-00-02-901.rawproto</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-17-52-09-497.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-17-52-09-497.rawproto</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-18-17-00-531.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-18-17-00-531.rawproto</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-18-18-11-044.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/android-profile/profile-2019-02-28-18-18-11-044.rawproto</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -3416,7 +3341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551357144500</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Home fragment UI changes according to api">
+      <created>1551358663862</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1551358663862</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3430,6 +3362,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
@@ -3454,7 +3387,7 @@
       <window_info anchor="right" id="Gradle" order="2" weight="0.32956383" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Preview" order="5" visible="true" weight="0.24232633" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.24232633" />
       <window_info anchor="right" id="Fabric" order="6" />
     </layout>
     <layout-to-restore>
@@ -3866,24 +3799,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+        <state relative-caret-position="431">
+          <caret line="74" column="7" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
           <folding>
             <element signature="e#1690#1691#0" expanded="true" />
             <element signature="e#1731#1732#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
   <component name="masterDetails">
