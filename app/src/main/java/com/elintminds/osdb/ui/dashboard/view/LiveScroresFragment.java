@@ -68,7 +68,7 @@ public class LiveScroresFragment extends BaseFragment implements DashboardView.S
         for (int name : imgRes) {
             SportsAdapterListBean item = new SportsAdapterListBean();
 
-            item.setImgRes(name);
+//            item.setImgRes(name);
             sportsList.add(item);
         }
     }

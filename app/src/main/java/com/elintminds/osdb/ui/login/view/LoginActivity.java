@@ -11,17 +11,18 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.view.DashboardActivity;
 import com.elintminds.osdb.ui.forgot_password.view.ForgotPasswordActivity;
+import com.elintminds.osdb.ui.login.presenter.LoginPresenterClass;
 import com.elintminds.osdb.ui.register.view.RegisterActivity;
 import com.elintminds.osdb.utils.Utils;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginView {
 
     TextView signInBtn, forgotPassTxt, signUpTab;
     EditText loginEmailEt, loginPassEt;
     private Toolbar toolbar;
     private ImageView showPassBtn;
     private boolean isPassShown = false;
-
+    private LoginPresenterClass loginPresenterClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         });
     }
 
-    private void initializeViews()
-    {
+    private void initializeViews() {
         toolbar = findViewById(R.id.login_toolbar);
         signInBtn = findViewById(R.id.signin_btn);
         signUpTab = findViewById(R.id.signup_tab);
@@ -48,6 +48,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         loginPassEt = findViewById(R.id.password_email_et);
         showPassBtn = findViewById(R.id.show_password_btn);
 
+        loginPresenterClass=new LoginPresenterClass(this,this);
 
         signInBtn.setOnClickListener(this);
         signUpTab.setOnClickListener(this);
@@ -56,15 +57,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     @Override
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.signin_btn:
-                if (validate()) {
+//                if (validate()) {
+//                    loginPresenterClass.sendUserValue(loginEmailEt.getText().toString(),loginPassEt.getText().toString());
                     startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                     finish();
-                }
+//                }
                 break;
 
             case R.id.signup_tab:
@@ -102,4 +102,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             return true;
         }
     }
+
+
+    @Override
+    public void onSuccess(Object obj) {
+
+    }
+
+    @Override
+    public void onError(String error) {
+
+    }
+
+
 }
