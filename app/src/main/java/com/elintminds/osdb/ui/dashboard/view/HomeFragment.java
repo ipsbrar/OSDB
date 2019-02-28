@@ -27,11 +27,11 @@ public class HomeFragment extends BaseFragment implements DashboardView.SportsAd
 
     private Context context;
     private ShimmerRecyclerView sportsRecyclerView;
-    private ShimmerRecyclerView homeItemsRecyclerView;
+//    private ShimmerRecyclerView homeItemsRecyclerView;
     private SportsListAdapter sportsListAdapter;
-    private HomeListAdapter homeListAdapter;
+//    private HomeListAdapter homeListAdapter;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
-    private ArrayList<HomeAdapterListBean> homeItemsList = new ArrayList<>();
+//    private ArrayList<HomeAdapterListBean> homeItemsList = new ArrayList<>();
     private HomeFragmentPresenterClass homeFragmentPresenterClass;
 
     public static HomeFragment newInstance() {
@@ -49,7 +49,7 @@ public class HomeFragment extends BaseFragment implements DashboardView.SportsAd
         context = getContext();
         sportsRecyclerView = view.findViewById(R.id.sportsList);
         sportsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-        homeItemsRecyclerView = view.findViewById(R.id.homes_items_list);
+//        homeItemsRecyclerView = view.findViewById(R.id.homes_items_list);
 
         homeFragmentPresenterClass=new HomeFragmentPresenterClass(getActivity(),this);
 
@@ -57,9 +57,9 @@ public class HomeFragment extends BaseFragment implements DashboardView.SportsAd
         homeFragmentPresenterClass.getHomeData();
 
 
-this.getHomeData();
-        homeListAdapter = new HomeListAdapter(context, homeItemsList);
-        homeItemsRecyclerView.setAdapter(homeListAdapter);
+//        getHomeData();
+//        homeListAdapter = new HomeListAdapter(context, homeItemsList);
+//        homeItemsRecyclerView.setAdapter(homeListAdapter);
     }
 
 //    private void getSportsData() {
@@ -74,7 +74,7 @@ this.getHomeData();
 //        }
 //    }
 //
-    private void getHomeData() {
+    /*private void getHomeData() {
         String[] types = getResources().getStringArray(R.array.home_item_types);
         for (String type : types) {
             HomeAdapterListBean item = new HomeAdapterListBean();
@@ -83,7 +83,7 @@ this.getHomeData();
 
             homeItemsList.add(item);
         }
-    }
+    }*/
 
     @Override
     public void onSportsIconClick(int position) {
@@ -101,8 +101,8 @@ this.getHomeData();
 
     @Override
     public void getHomesData(ArrayList<HomeAdapterListBean> homesData) {
-        homeItemsList=homesData;
-        homeListAdapter.notifyDataSetChanged();
+//        homeItemsList=homesData;
+//        homeListAdapter.notifyDataSetChanged();
     }
 
     @Override

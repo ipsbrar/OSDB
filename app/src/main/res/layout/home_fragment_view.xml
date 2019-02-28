@@ -21,7 +21,7 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
 
-    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
+    <!--<com.cooltechworks.views.shimmer.ShimmerRecyclerView
             android:id="@+id/homes_items_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -31,9 +31,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/sportsList"/>
+            app:layout_constraintTop_toBottomOf="@+id/sportsList"/>-->
 
-    <!--<android.support.v4.widget.NestedScrollView
+    <android.support.v4.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipToPadding="false"
@@ -56,7 +56,7 @@
             <include layout="@layout/home_adapter_sixth_layout"/>
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>-->
+    </android.support.v4.widget.NestedScrollView>
 
 
 </android.support.constraint.ConstraintLayout>
