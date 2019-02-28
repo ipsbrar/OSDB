@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 public class FollowingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-    public static final int HEADING_TYPE = 101;
-    public static final int ITEM_TYPE = 102;
+    private static final int HEADING_TYPE = 101;
+    private static final int ITEM_TYPE = 102;
 
     private Context context;
     private ArrayList<SearchBean> dataList;

@@ -11,7 +11,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="007a0441-b0a2-47db-b9b4-e373a9bbae30" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars____Users_elintminds_04_AndroidStudioProjects_local_OSDB_OSDB_app_libs_login_with_amazon_sdk_jar_unspecified_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_27_0_2_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_common_4_38_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_4_38_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_4_38_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_16_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_api_phone_16_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_base_16_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_zxing_core_3_3_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_parse_bolts_bolts_android_1_4_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_parse_bolts_bolts_applinks_1_4_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_parse_bolts_bolts_tasks_1_4_0_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_26_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_27_0_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_26_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customtabs_27_0_2_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login_options/view/LoginOptionsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login_options/view/LoginOptionsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/adapter/FollowingAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/adapter/FollowingAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/splash/view/SplashScreenActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/splash/view/SplashScreenActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -171,40 +204,53 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="88" />
-          <entry key="xml" value="70" />
+          <entry key="assets" value="1" />
+          <entry key="class" value="2" />
+          <entry key="gradle" value="1" />
+          <entry key="java" value="89" />
+          <entry key="kt" value="1" />
+          <entry key="txt" value="1" />
+          <entry key="xml" value="73" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="88" />
-          <entry key="XML" value="70" />
+          <entry key="CLASS" value="2" />
+          <entry key="Groovy" value="1" />
+          <entry key="JAVA" value="89" />
+          <entry key="Kotlin" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="XML" value="73" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="45" />
-          <entry key="java" value="2427" />
+          <entry key="gradle" value="1" />
+          <entry key="java" value="2755" />
+          <entry key="kt" value="13" />
           <entry key="txt" value="16" />
-          <entry key="xml" value="2012" />
+          <entry key="xml" value="2019" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2427" />
+          <entry key="Groovy" value="1" />
+          <entry key="JAVA" value="2755" />
+          <entry key="Kotlin" value="13" />
           <entry key="PLAIN_TEXT" value="61" />
-          <entry key="XML" value="2012" />
+          <entry key="XML" value="2019" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/adapter/FollowingAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="59" column="65" selection-start-line="59" selection-start-column="59" selection-end-line="59" selection-end-column="65" />
+            <state relative-caret-position="288">
+              <caret line="78" column="55" lean-forward="true" selection-start-line="78" selection-start-column="55" selection-end-line="78" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1793#1794#0" expanded="true" />
@@ -214,66 +260,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login_options/view/LoginOptionsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="44" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="44" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/player_profile_adapter_item.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/FollowingFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="806">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="399">
+              <caret line="255" column="28" lean-forward="true" selection-start-line="255" selection-start-column="28" selection-end-line="255" selection-end-column="28" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#756#757#0" expanded="true" />
-                <element signature="e#804#805#0" expanded="true" />
+                <element signature="e#4458#4647#0" expanded="true" />
+                <element signature="e#4646#4647#0" expanded="true" />
+                <element signature="e#6131#6331#0" expanded="true" />
+                <element signature="e#6330#6331#0" expanded="true" />
+                <element signature="e#10516#10517#0" expanded="true" />
+                <element signature="e#10555#10556#0" expanded="true" />
+                <element signature="e#10724#11620#0" expanded="true" />
+                <element signature="e#11619#11620#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_adapter_header_view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -2705,18 +2708,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/search_finding_screen/beans/PlayersProfileBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/search_finding_screen/adapters/PlayerProfileAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/search_finding_screen/view/PlayerFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/player_profile_adapter_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/model/SettingsInteractorClass.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/model/ProfileInteractorClass.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/ProfileView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/my_watchlist_fragment_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/beans/WatchListBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/adapter/WatchListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/MyWatchListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
@@ -2731,12 +2728,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/utils/AppConstants.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/image_picker_options_dialog.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/settings/view/FeedbackFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/settings/view/SettingsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/NotificationActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/presenter/ProfilePresenterClass.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/view/EditProfileView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/presenter/EditProfilePresenter.java" />
@@ -2751,18 +2746,26 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_adapter_item_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/following_adapter_item_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_adapter_header_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/adapter/FollowingAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/FollowingFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/following_adapter_header_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/splash/view/SplashScreenActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/assets" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/api_key.txt" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login_options/view/LoginOptionsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/adapter/FollowingAdapter.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="820" />
+    <option name="width" value="1161" />
+    <option name="height" value="819" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -2861,9 +2864,11 @@
             <path>
               <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
@@ -2883,6 +2888,12 @@
               <item name="OSDB" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="OSDB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OSDB" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -2898,7 +2909,7 @@
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="device.picker.selection" value="5549564332573398" />
+    <property name="device.picker.selection" value="Nexus_5X_API_27" />
     <property name="format" value="PNG" />
     <property name="lastFolderRoot" value="$USER_HOME$/Desktop/OSDB Games/xhdpi/tennis copy.png" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
@@ -2916,6 +2927,9 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/do_you_know" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.elintminds.osdb.ui.search_finding_screen.view" />
@@ -3245,7 +3259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551275032210</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="27-Feb-2019">
+      <created>1551275281834</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1551275281834</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3258,29 +3279,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="820" extended-state="1" />
+    <frame x="0" y="23" width="1440" height="820" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49862638" visible="true" weight="0.22961374" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49862638" visible="true" weight="0.22961374" />
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" sideWeight="0.50137365" side_tool="true" weight="0.22961374" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="0" />
-      <window_info anchor="bottom" id="TODO" order="1" weight="0.32970452" />
+      <window_info anchor="bottom" id="TODO" order="1" weight="0.32967034" />
       <window_info anchor="bottom" id="Android Profiler" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3282967" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.32970452" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.32692307" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.32967034" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" weight="0.32967034" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32967034" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.28983516" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32967034" />
       <window_info anchor="bottom" id="Logcat" order="9" weight="0.30357143" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" weight="0.32956383" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.32904148" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info anchor="right" id="Preview" order="5" weight="0.24177396" />
@@ -3371,79 +3393,16 @@
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login_options/view/LoginOptionsActivity.java</url>
+          <line>260</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recover_password.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/NotificationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/register_form_screen.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="125" column="45" selection-start-line="125" selection-start-column="37" selection-end-line="125" selection-end-column="45" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_do_you_know.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="21" selection-start-line="7" selection-start-column="2" selection-end-line="39" selection-end-column="21" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2775">
-          <caret line="185" column="17" selection-start-line="185" selection-start-column="17" selection-end-line="185" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/search_finding_screen/adapters/PlayerProfileAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="29" column="73" selection-start-line="29" selection-start-column="73" selection-end-line="29" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/schedules_adapter_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="58" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/search_finding_screen/adapters/SchedulesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/beans/editProfileBean.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/presenter/EditProfilePresenterClass.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -3787,14 +3746,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/player_profile_adapter_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/following_adapter_header_view.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -3810,13 +3761,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -3844,22 +3788,141 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-327">
+          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/player_profile_adapter_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1386#1405#0" expanded="true" />
+            <element signature="e#1419#1440#0" expanded="true" />
+            <element signature="e#1454#1480#0" expanded="true" />
+            <element signature="e#1494#1513#0" expanded="true" />
+            <element signature="e#1527#1552#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/android/content/ContextWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="87" column="18" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
+          <folding>
+            <element signature="e#2408#2409#0" expanded="true" />
+            <element signature="e#2459#2460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/splash/view/SplashScreenActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="58" column="55" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
+          <folding>
+            <element signature="e#45#515#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login_options.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="137" column="28" selection-start-line="137" selection-start-column="28" selection-end-line="137" selection-end-column="28" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1258" selection-start-column="1258" selection-end-column="1258" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/api_key.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1346" selection-start-column="1346" selection-end-column="1346" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
+          <folding>
+            <element signature="e#1181#1206#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/libs/login-with-amazon-sdk.jar!/com/amazon/identity/auth/device/api/authorization/ProfileScope.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#327#328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login_options/view/LoginOptionsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="255" column="28" lean-forward="true" selection-start-line="255" selection-start-column="28" selection-end-line="255" selection-end-column="28" />
+          <folding>
+            <element signature="e#4458#4647#0" expanded="true" />
+            <element signature="e#4646#4647#0" expanded="true" />
+            <element signature="e#6131#6331#0" expanded="true" />
+            <element signature="e#6330#6331#0" expanded="true" />
+            <element signature="e#10516#10517#0" expanded="true" />
+            <element signature="e#10555#10556#0" expanded="true" />
+            <element signature="e#10724#11620#0" expanded="true" />
+            <element signature="e#11619#11620#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/adapter/FollowingAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="59" column="65" selection-start-line="59" selection-start-column="59" selection-end-line="59" selection-end-column="65" />
+        <state relative-caret-position="288">
+          <caret line="78" column="55" lean-forward="true" selection-start-line="78" selection-start-column="55" selection-end-line="78" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1793#1794#0" expanded="true" />
             <element signature="e#1854#1855#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
