@@ -8,17 +8,15 @@ object WebserviceUrls {
     // Apis base urls
     internal val GOOGEL_PLACES = "https://maps.googleapis.com/maps/api/place/"
 
-    internal val BASE_URL = "http://introducem.elintminds.work/api/"
+    internal val BASE_URL = "https://staging.osdb.pro:81/api/v1/"
 
 
     fun isInternetIsAvailable(mContext: Context): Boolean {
         val connectivity = mContext
             .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivity != null) {
-            val networkInfo = connectivity.activeNetworkInfo
-            if (networkInfo != null && networkInfo.isConnected) {
-                return true
-            }
+        val networkInfo = connectivity.activeNetworkInfo
+        if (networkInfo != null && networkInfo.isConnected) {
+            return true
         }
         return false
     }

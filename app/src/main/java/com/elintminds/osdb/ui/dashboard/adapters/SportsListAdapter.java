@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.view.DashboardView;
@@ -39,8 +40,9 @@ public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.Vi
     {
         SportsAdapterListBean item = dataList.get(i);
 
-        //holder.sportsName.setText(item.getGameName());
-        holder.sportsIcon.setImageResource(item.getImgRes());
+        holder.sportsName.setText(item.getName());
+        Glide.with(context).load(item.getLogo().getFileName()).into(holder.sportsIcon);
+//        holder.sportsIcon.setImageResource(item.getImgRes());
     }
 
     @Override
