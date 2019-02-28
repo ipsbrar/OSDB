@@ -19,12 +19,4 @@ public interface BaseDialogView extends BaseView
         void deleteImg();
         void editProfileClick();
     }
-
-    interface ProfileSelectorDialogListener
-    {
-        void onPersonalProfileClick();
-        void onBusinesProfileClick();
-        void onDatingProfileClick();
-        void onCancelClick();
-    }
 }

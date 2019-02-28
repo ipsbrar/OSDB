@@ -14,11 +14,9 @@ object WebserviceUrls {
     fun isInternetIsAvailable(mContext: Context): Boolean {
         val connectivity = mContext
             .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivity != null) {
-            val networkInfo = connectivity.activeNetworkInfo
-            if (networkInfo != null && networkInfo.isConnected) {
-                return true
-            }
+        val networkInfo = connectivity.activeNetworkInfo
+        if (networkInfo != null && networkInfo.isConnected) {
+            return true
         }
         return false
     }

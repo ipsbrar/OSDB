@@ -33,5 +33,30 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/sportsList"/>
 
+    <!--<android.support.v4.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sportsList">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <include layout="@layout/home_adapter_first_layout"/>
+            <include layout="@layout/home_adapter_second_layout"/>
+            <include layout="@layout/home_adapter_third_layout"/>
+            <include layout="@layout/home_adapter_fourth_layout"/>
+            <include layout="@layout/home_adapter_fifth_layout"/>
+            <include layout="@layout/home_adapter_sixth_layout"/>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>-->
+
 
 </android.support.constraint.ConstraintLayout>
