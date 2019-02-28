@@ -8,7 +8,7 @@ object WebserviceUrls {
     // Apis base urls
     internal val GOOGEL_PLACES = "https://maps.googleapis.com/maps/api/place/"
 
-    internal val BASE_URL = "http://introducem.elintminds.work/api/"
+    internal val BASE_URL = "https://staging.osdb.pro:81/api/v1/"
 
 
     fun isInternetIsAvailable(mContext: Context): Boolean {

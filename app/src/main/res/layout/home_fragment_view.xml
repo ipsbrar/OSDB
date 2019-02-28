@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
+    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
             android:id="@+id/sportsList"
             android:layout_width="0dp"
             android:layout_height="100dp"
@@ -21,7 +21,7 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
 
-    <android.support.v7.widget.RecyclerView
+    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
             android:id="@+id/homes_items_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
