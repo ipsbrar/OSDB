@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:background="@color/color_D8D8D8"
+              android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/editBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+
+            android:text="@string/edit_profile"
+            android:fontFamily="@font/rubik_regular"
+            android:textColor="@color/color_black" />
+
+    <TextView
+            android:id="@+id/camera_picker_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@color/color_white"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/dp_1"
+            android:text="@string/take_photo"
+            android:fontFamily="@font/rubik_regular"
+            android:textColor="@color/color_black" />
+
+    <TextView
+            android:id="@+id/gallery_picker_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@color/color_white"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dp_1"
+            android:padding="@dimen/dp_12"
+            android:text="@string/choose_photo"
+            android:fontFamily="@font/rubik_regular"
+            android:textColor="@color/color_black" />
+
+    <TextView
+            android:id="@+id/deleteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@color/color_white"
+            android:layout_marginTop="@dimen/dp_1"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="@string/delete_photo"
+            android:fontFamily="@font/rubik_regular"
+            android:textColor="@color/color_DD4B39" />
+    <TextView
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@color/color_white"
+            android:layout_marginTop="@dimen/dp_1"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="@string/cancel"
+            android:fontFamily="@font/rubik_regular"
+            android:textColor="@color/color_black" />
+
+
+</LinearLayout>

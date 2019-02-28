@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
             android:allowBackup="true"
@@ -75,6 +76,9 @@
                 android:name=".ui.add_edit_discussion.view.AddEditDiscussionActivity"
                 android:windowSoftInputMode="stateAlwaysVisible|adjustPan|adjustResize"/>
         <activity android:name=".ui.settings.view.SettingsActivity"/>
+        <activity android:name=".ui.profile.view.ProfileActivity"/>
+        <activity android:name=".ui.profile.view.NotificationActivity"/>
+        <activity android:name=".ui.edit_profile.view.EditProfileActivity"/>
 
         <activity android:name=".ui.player_details_screen.view.PlayerDetailsActivity"/>
     </application>
