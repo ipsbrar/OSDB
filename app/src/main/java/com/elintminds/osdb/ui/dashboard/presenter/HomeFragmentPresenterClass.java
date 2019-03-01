@@ -5,6 +5,8 @@ import android.util.Log;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
 import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.DoYouKnow;
+import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor;
 import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractorClass;
@@ -37,23 +39,6 @@ public class HomeFragmentPresenterClass<V extends HomeFragmentView, I extends Ho
                                public void accept(ArrayList<SportsAdapterListBean> sportsList) throws Exception {
                                    Log.e("SportsData","Success======="+   sportsList.get(0).getName());
                                    getMvpView().getSportsData(sportsList);
-//                                       LoginResponseBean response = loginBean.getResponse();
-//                                       if (response.getStatus().equals(WebserviceUrls.STATUSONE))
-//                                       {
-//                                           // saving user credentials in app preferences
-//                                           LoginDataBean data = response.getData();
-//
-//                                           if(data.getTypeOfUser().equals("1")) {
-//                                               getSeekerUserDetails(data.getAccessKey());
-//                                           }else if(data.getTypeOfUser().equals("2")){
-//                                               getProviderUserDetails(data.getAccessKey());
-//                                           }
-//
-//                                       } else {
-//                                           getMvpView().hideDialog();
-//                                           getMvpView().showError(response.getMessage());
-//                                       }
-
                                }
                            },
                         new Consumer<Throwable>() {
@@ -62,9 +47,6 @@ public class HomeFragmentPresenterClass<V extends HomeFragmentView, I extends Ho
                             {
                                 Log.e("SportsData","Error=======    "+   throwable.toString());
                                 getMvpView().getError(throwable.toString());
-//                                    getMvpView().hideDialog();
-//                                    getMvpView().showErrorToast(context.getString(R.string.some_error));
-//                                    Log.e("LOGIN ERROR",""+throwable.toString());
                             }
                         }));
 
@@ -98,4 +80,50 @@ public class HomeFragmentPresenterClass<V extends HomeFragmentView, I extends Ho
                             }
                         }));
     }
+
+    @Override
+    public void getBreakingNewsData() {
+        getCompositeDisposable().add(getInteractor()
+                .getAllNewsList()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<NewsAdapterBean>() {
+                               @Override
+                               public void accept(NewsAdapterBean newsList) throws Exception {
+                                   Log.e("NewsData","Success======="+   newsList.getData().size());
+                                    getMvpView().getBreakingNews(newsList.getBreakingNews());
+                               }
+                           },
+                        new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception
+                            {
+                                Log.e("NewsData","Error=======    "+   throwable.toString());
+                                getMvpView().getError(throwable.toString());
+                            }
+                        }));
+    }
+
+    @Override
+    public void getDoYouKnow() {
+        getCompositeDisposable().add(getInteractor()
+                .getDoYouKnow()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<ArrayList<DoYouKnow>>()
+                           {
+                               @Override
+                               public void accept(ArrayList<DoYouKnow> doYouKnows) throws Exception {
+                                   getMvpView().getDoYouKnow(doYouKnows);
+                               }
+                           },
+                        new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception
+                            {
+                                getMvpView().getError(throwable.toString());
+                            }
+                        }));
+    }
+
 }

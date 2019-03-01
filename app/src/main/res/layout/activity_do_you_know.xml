@@ -65,6 +65,7 @@
                     android:text="@string/dummy_header_text"
                     android:textColor="@color/color_black"
                     android:maxLines="3"
+                    android:visibility="gone"
                     android:lineSpacingExtra="@dimen/dp_5"
                     android:fontFamily="@font/rubik_medium"
                     android:textSize="@dimen/sp_20"

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.EventsAdapterBean;
-import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.view.DashboardView;
 
 import java.util.ArrayList;

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.view.DashboardView;
 
@@ -67,5 +68,14 @@ public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.Vi
                 }
             });
         }
+    }
+    public void setDataList(ArrayList<SportsAdapterListBean> data)
+    {
+        if(data == null || data.isEmpty())
+        {
+            return;
+        }
+
+        this.dataList = data;
     }
 }

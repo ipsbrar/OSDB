@@ -8,4 +8,6 @@ public interface HomeFragmentPresenter<V extends HomeFragmentView, I extends Hom
     void getSportsData();
     void getHomeData();
     void getBornTodayData(String currentDate, String limit);
+    void getBreakingNewsData();
+    void getDoYouKnow();
 }

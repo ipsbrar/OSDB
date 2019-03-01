@@ -3,7 +3,6 @@ package com.elintminds.osdb.ui.search_finding_screen.view;
 import android.graphics.drawable.GradientDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
-import com.elintminds.osdb.ui.dashboard.view.EventsFragment;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
 
 public class SearchFindingsActivity extends BaseActivity implements SearchFindingView

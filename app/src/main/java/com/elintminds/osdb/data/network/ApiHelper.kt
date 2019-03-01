@@ -2,6 +2,8 @@ package com.elintminds.osdb.data.network
 
 
 import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean
+import com.elintminds.osdb.ui.dashboard.beans.DoYouKnow
+import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean
 import com.elintminds.osdb.ui.login.beans.UserBean
 import io.reactivex.Observable
@@ -28,4 +30,9 @@ interface ApiHelper {
     @GET("born-today?")
     fun fetchBornTodayData(@Query("currentdate") curDate: String, @Query("limit") limit: String): Observable<ArrayList<BornTodayAdapterBean>>
 
+    @GET("news")
+    fun fetchAllNews(): Observable<NewsAdapterBean>
+
+    @GET("did-you-know")
+    fun fetchDoYouKnow(): Observable<ArrayList<DoYouKnow>>
 }

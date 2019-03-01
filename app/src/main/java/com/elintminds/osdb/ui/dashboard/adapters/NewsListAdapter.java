@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.view.DashboardView;
@@ -18,10 +19,10 @@ import java.util.ArrayList;
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHolder>
 {
     private Context context;
-    private ArrayList<NewsAdapterBean> dataList;
+    private ArrayList<NewsAdapterBean.Datum> dataList;
     private DashboardView.NewsItemsClickListener listener;
 
-    public NewsListAdapter(Context context, ArrayList<NewsAdapterBean> dataList, DashboardView.NewsItemsClickListener listener)
+    public NewsListAdapter(Context context, ArrayList<NewsAdapterBean.Datum> dataList, DashboardView.NewsItemsClickListener listener)
     {
         this.context = context;
         this.dataList = dataList;
@@ -39,7 +40,10 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i)
     {
-        NewsAdapterBean item = dataList.get(i);
+        NewsAdapterBean.Datum item = dataList.get(i);
+        if (item.getImageUrl()!=null && !item.getImageUrl().equals(""))
+            Glide.with(context).load(item.getImageUrl()).into(holder.newsPreviewImage);
+        if (item.getTitle()!=null)
         holder.newsTitle.setText(item.getTitle());
     }
 
@@ -71,7 +75,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
         }
     }
 
-    public void setDataList(ArrayList<NewsAdapterBean> data)
+    public void setDataList(ArrayList<NewsAdapterBean.Datum> data)
     {
         Log.e("DATA",""+data);
         if(data == null || data.isEmpty())

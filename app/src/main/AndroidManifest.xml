@@ -81,9 +81,6 @@
                 android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
-                android:name=".ui.detailview.view.DetailActivity"
-                android:windowSoftInputMode="adjustPan"/>
-        <activity
                 android:name=".ui.do_you_know.view.DoYouKnowActivity"
                 android:windowSoftInputMode="adjustPan">
         </activity>
@@ -98,6 +95,7 @@
         <activity android:name=".ui.edit_profile.view.EditProfileActivity"/>
 
         <activity android:name=".ui.player_details_screen.view.PlayerDetailsActivity"/>
+        <activity android:name=".ui.detailview.view.DetailActivity"/>
     </application>
 
 </manifest>

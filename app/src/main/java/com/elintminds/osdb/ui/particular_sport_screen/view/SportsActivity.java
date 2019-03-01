@@ -25,7 +25,6 @@ import com.elintminds.osdb.ui.search_finding_screen.view.ScheduleFragment;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SportsActivity extends BaseActivity implements SportScreenView, View.OnClickListener {
 

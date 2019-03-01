@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
-import com.elintminds.osdb.ui.profile.beans.WatchListBean;
 
 import java.util.ArrayList;
 

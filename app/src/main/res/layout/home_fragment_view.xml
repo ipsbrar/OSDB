@@ -13,9 +13,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:shimmer_demo_child_count="10"
-            app:shimmer_demo_layout="@layout/sports_list_adapter_item"
             app:shimmer_demo_angle="20"
+            app:shimmer_demo_child_count="5"
+            app:shimmer_demo_layout="@layout/born_today_shimmer_layout"
             app:shimmer_demo_layout_manager_type="linear_horizontal"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -23,7 +23,6 @@
             android:clipChildren="false"
             android:clipToPadding="false"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
-
 
     <!--<com.cooltechworks.views.shimmer.ShimmerRecyclerView
             android:id="@+id/homes_items_list"

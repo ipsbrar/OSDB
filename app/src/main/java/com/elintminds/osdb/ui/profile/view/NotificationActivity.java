@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
-import com.elintminds.osdb.ui.dashboard.beans.EventsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
 import com.elintminds.osdb.ui.profile.adapter.NotificationAdapter;
 
@@ -31,7 +29,7 @@ public class NotificationActivity extends BaseActivity {
         recyclerView = findViewById(R.id.notification_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        loadNotificationData();
+//        loadNotificationData();
 
         notificationAdapter= new NotificationAdapter(this,notificationsList);
         recyclerView.setAdapter(notificationAdapter);
@@ -48,13 +46,13 @@ public class NotificationActivity extends BaseActivity {
     }
 
 
-    private void loadNotificationData() {
-
-        String[] newsArray = getResources().getStringArray(R.array.sampl_news);
-        for (String nws : newsArray) {
-            NewsAdapterBean item = new NewsAdapterBean();
-            item.setTitle(nws);
-            notificationsList.add(item);
-        }
-    }
+//    private void loadNotificationData() {
+//
+//        String[] newsArray = getResources().getStringArray(R.array.sampl_news);
+//        for (String nws : newsArray) {
+//            NewsAdapterBean item = new NewsAdapterBean();
+//            item.setTitle(nws);
+//            notificationsList.add(item);
+//        }
+//    }
 }

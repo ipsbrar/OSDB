@@ -48,8 +48,13 @@ public class LiveScroresFragment extends BaseFragment implements DashboardView.S
     @Override
     protected void setUp(View view) {
         context = getContext();
+
         sportsRecyclerView = view.findViewById(R.id.sportsList);
         sportsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        sportsListAdapter = new SportsListAdapter(context, sportsList, this);
+        sportsRecyclerView.setAdapter(sportsListAdapter);
+        sportsRecyclerView.showShimmerAdapter();
+
         latestItemsRecyclerView = view.findViewById(R.id.latest_items_list);
         liveScroresPresenterClass = new LiveScroresPresenterClass(getActivity(), this);
         liveScroresPresenterClass.getSportsData();
@@ -92,8 +97,8 @@ public class LiveScroresFragment extends BaseFragment implements DashboardView.S
     @Override
     public void getSportsData(ArrayList<SportsAdapterListBean> sportsList) {
         this.sportsList = sportsList;
-        sportsListAdapter = new SportsListAdapter(context, sportsList, this);
-        sportsRecyclerView.setAdapter(sportsListAdapter);
+        sportsListAdapter.setDataList(this.sportsList);
+        sportsRecyclerView.hideShimmerAdapter();
 
     }
 
