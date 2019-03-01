@@ -17,8 +17,25 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+
+        <activity android:name="com.amazon.identity.auth.device.workflow.WorkflowActivity"
+                  android:theme="@android:style/Theme.NoDisplay"
+                  android:allowTaskReparenting="true"
+                  android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!-- android:host must use the full package name found in Manifest General Attributes -->
+                <data android:host="com.elintminds.osdb" android:scheme="amzn"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.team_details_screen.view.TeamDetailsActivity">
         </activity>
+
+        <meta-data
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id" />
         <activity
                 android:name=".ui.particular_sport_screen.view.SportsActivity"
                 android:label="">

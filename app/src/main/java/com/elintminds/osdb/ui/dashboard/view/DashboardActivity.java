@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +17,6 @@ import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.profile.view.ProfileActivity;
 import com.elintminds.osdb.ui.calendar_screen.view.PollCalendarActivity;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
-
 import java.util.Objects;
 
 public class DashboardActivity extends BaseActivity implements DashboardView {

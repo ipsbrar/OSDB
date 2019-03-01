@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">OSDB</string>
     <string name="next">Next</string>
+    <string name="facebook_app_id">619731638474322</string>
     <string name="get_started">Get Started</string>
     <string name="skip">Skip</string>
     <string name="signin">Sign In</string>
