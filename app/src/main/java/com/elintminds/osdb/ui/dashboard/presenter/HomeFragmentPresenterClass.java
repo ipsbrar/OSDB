@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
+import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor;
 import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractorClass;
@@ -73,5 +74,28 @@ public class HomeFragmentPresenterClass<V extends HomeFragmentView, I extends Ho
     @Override
     public void getHomeData() {
 
+    }
+
+    @Override
+    public void getBornTodayData(String currentDate, String limit)
+    {
+        getCompositeDisposable().add(getInteractor()
+                .getBornTodayList(currentDate, limit)
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<ArrayList<BornTodayAdapterBean>>()
+                           {
+                               @Override
+                               public void accept(ArrayList<BornTodayAdapterBean> sportsList) throws Exception {
+                                   getMvpView().getBornTodayData(sportsList);
+                               }
+                           },
+                        new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception
+                            {
+                                getMvpView().getError(throwable.toString());
+                            }
+                        }));
     }
 }

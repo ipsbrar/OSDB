@@ -132,23 +132,23 @@ public class LoginOptionsActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onStart() {
         super.onStart();
-        Scope[] scopes = {ProfileScope.profile(), ProfileScope.postalCode()};
+        /*Scope[] scopes = {ProfileScope.profile(), ProfileScope.postalCode()};
         AuthorizationManager.getToken(this, scopes, new Listener<AuthorizeResult, AuthError>() {
             @Override
             public void onSuccess(AuthorizeResult result) {
                 if (result.getAccessToken() != null) {
-                    /* The user is signed in */
+                    *//* The user is signed in *//*
                     fetchUserProfile();
                 } else {
-                    /* The user is not signed in */
+                    *//* The user is not signed in *//*
                 }
             }
 
             @Override
             public void onError(AuthError ae) {
-                /* The user is not signed in */
+                *//* The user is not signed in *//*
             }
-        });
+        });*/
     }
 
 

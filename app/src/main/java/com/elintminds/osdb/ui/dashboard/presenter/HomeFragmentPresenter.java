@@ -7,4 +7,5 @@ import com.elintminds.osdb.ui.dashboard.view.HomeFragmentView;
 public interface HomeFragmentPresenter<V extends HomeFragmentView, I extends HomeFragmentInteractor> extends BasePresenter<V,I> {
     void getSportsData();
     void getHomeData();
+    void getBornTodayData(String currentDate, String limit);
 }

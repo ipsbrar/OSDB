@@ -20,13 +20,16 @@
             android:layout_marginLeft="25dp"
             android:layout_marginStart="25dp"/>
 
-    <android.support.v7.widget.RecyclerView
+    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
             android:id="@+id/born_today_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
-            android:nestedScrollingEnabled="false"
+            app:shimmer_demo_child_count="5"
+            app:shimmer_demo_layout="@layout/born_today_shimmer_layout"
+            app:shimmer_demo_angle="20"
+            app:shimmer_demo_layout_manager_type="linear_horizontal"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:targetApi="lollipop"/>
 </LinearLayout>

@@ -7,31 +7,39 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
+import com.elintminds.osdb.ui.dashboard.adapters.BornTodayAdapter;
 import com.elintminds.osdb.ui.dashboard.adapters.HomeListAdapter;
 import com.elintminds.osdb.ui.dashboard.adapters.SportsListAdapter;
+import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.HomeAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.presenter.HomeFragmentPresenterClass;
 import com.elintminds.osdb.ui.particular_sport_screen.view.SportsActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class HomeFragment extends BaseFragment implements DashboardView.SportsAdapterItemClickListener, HomeFragmentView {
     public static final String TAG = "HomeFragment";
 
     private Context context;
     private ShimmerRecyclerView sportsRecyclerView;
-//    private ShimmerRecyclerView homeItemsRecyclerView;
+    private ShimmerRecyclerView bornTodayRecyclerView;
     private SportsListAdapter sportsListAdapter;
+    private BornTodayAdapter bornTodayAdapter;
 //    private HomeListAdapter homeListAdapter;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
-//    private ArrayList<HomeAdapterListBean> homeItemsList = new ArrayList<>();
+    private ArrayList<BornTodayAdapterBean> bornTodayList = new ArrayList<>();
     private HomeFragmentPresenterClass homeFragmentPresenterClass;
 
     public static HomeFragment newInstance() {
@@ -47,14 +55,20 @@ public class HomeFragment extends BaseFragment implements DashboardView.SportsAd
     @Override
     protected void setUp(View view) {
         context = getContext();
-        sportsRecyclerView = view.findViewById(R.id.sportsList);
-        sportsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-//        homeItemsRecyclerView = view.findViewById(R.id.homes_items_list);
-
         homeFragmentPresenterClass=new HomeFragmentPresenterClass(getActivity(),this);
 
+        sportsRecyclerView = view.findViewById(R.id.sportsList);
+        bornTodayRecyclerView = view.findViewById(R.id.born_today_recycler);
+
+        sportsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        bornTodayRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+
+        bornTodayAdapter = new BornTodayAdapter(context, bornTodayList);
+        bornTodayRecyclerView.setAdapter(bornTodayAdapter);
+        bornTodayRecyclerView.showShimmerAdapter();
+
         homeFragmentPresenterClass.getSportsData();
-        homeFragmentPresenterClass.getHomeData();
+        homeFragmentPresenterClass.getBornTodayData(getCurrentDate(),"10");
 
 
 //        getHomeData();
@@ -106,8 +120,32 @@ public class HomeFragment extends BaseFragment implements DashboardView.SportsAd
     }
 
     @Override
+    public void getBornTodayData(ArrayList<BornTodayAdapterBean> bornTodayData)
+    {
+        bornTodayList.clear();
+        bornTodayList.addAll(bornTodayData);
+        bornTodayAdapter.setDataList(bornTodayList);
+        bornTodayRecyclerView.hideShimmerAdapter();
+
+    }
+
+    @Override
     public void getError(String error) {
 
+    }
+
+
+    private String getCurrentDate()
+    {
+        SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String date = null;
+
+        Date currDate = Calendar.getInstance().getTime();
+        date = spf.format(currDate);
+
+        Log.e("Date", ""+date);
+
+        return date;
     }
 
 }
