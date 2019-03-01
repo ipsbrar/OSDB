@@ -27,6 +27,7 @@ import com.elintminds.osdb.ui.dashboard.presenter.HomeFragmentPresenterClass;
 import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.ui.do_you_know.view.DoYouKnowActivity;
 import com.elintminds.osdb.ui.particular_sport_screen.view.SportsActivity;
+import io.supercharge.shimmerlayout.ShimmerLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private SportsListAdapter sportsListAdapter;
     private BornTodayAdapter bornTodayAdapter;
     //    private HomeListAdapter homeListAdapter;
+    private ShimmerLayout shimmer_breaking_news,shimmer_do_you_know;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
     private ArrayList<BornTodayAdapterBean> bornTodayList = new ArrayList<>();
     private HomeFragmentPresenterClass homeFragmentPresenterClass;
@@ -80,7 +82,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         view_5_image = view.findViewById(R.id.view_5_image);
 
         rl_breaking_news = view.findViewById(R.id.rl_breaking_news);
+        rl_breaking_news.setVisibility(View.GONE);
+        shimmer_breaking_news = view.findViewById(R.id.shimmer_breaking_news);
+        shimmer_breaking_news.setVisibility(View.VISIBLE);
+        shimmer_breaking_news.startShimmerAnimation();
+
+        shimmer_do_you_know=view.findViewById(R.id.shimmer_do_you_know);
         rl_do_you_know = view.findViewById(R.id.rl_do_you_know);
+        rl_do_you_know.setVisibility(View.GONE);
+        shimmer_do_you_know.setVisibility(View.VISIBLE);
+        shimmer_do_you_know.startShimmerAnimation();
 
         sportsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         sportsListAdapter = new SportsListAdapter(context, sportsList, this);
@@ -93,8 +104,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         bornTodayRecyclerView.showShimmerAdapter();
 
         homeFragmentPresenterClass.getSportsData();
-        homeFragmentPresenterClass.getBornTodayData(getCurrentDate(), "10");
         homeFragmentPresenterClass.getBreakingNewsData();
+        homeFragmentPresenterClass.getBornTodayData(getCurrentDate(), "10");
         homeFragmentPresenterClass.getDoYouKnow();
 
         rl_breaking_news.setOnClickListener(this);
@@ -130,27 +141,38 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getBreakingNews(ArrayList<NewsAdapterBean.BreakingNews> breakingNews) {
-        breakingNewsFrag = breakingNews.get(0);
-        if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
-            Glide.with(getActivity()).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
+        Log.e("getBreakingNewWorking","Breaking News Working");
+        if (breakingNews.size()>0) {
+            breakingNewsFrag = breakingNews.get(0);
+            if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
+                Glide.with(getActivity()).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
 
-        if (breakingNewsFrag.getTitle() != null)
-            view_1_msg_text.setText(breakingNewsFrag.getTitle());
+            if (breakingNewsFrag.getTitle() != null) {
+                view_1_msg_text.setText(breakingNewsFrag.getTitle());
+            }
+        }
+        shimmer_breaking_news.stopShimmerAnimation();
+        shimmer_breaking_news.setVisibility(View.GONE);
+        rl_breaking_news.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void getError(String error) {
-Log.e("HomeFragmentError===     ",error.toString());
+Log.e("HomeFragmentError===  ",error.toString());
     }
 
     @Override
     public void getDoYouKnow(ArrayList<DoYouKnow> doYouKnows) {
-        doYouKnow = doYouKnows.get(0);
+        if (doYouKnows.size()>0) {
+            doYouKnow = doYouKnows.get(0);
 
-        if (doYouKnow.getContent() != null)
-            view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
-
+            if (doYouKnow.getContent() != null)
+                view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
+        }
+        shimmer_do_you_know.stopShimmerAnimation();
+        shimmer_do_you_know.setVisibility(View.GONE);
+        rl_do_you_know.setVisibility(View.VISIBLE);
     }
 
 
