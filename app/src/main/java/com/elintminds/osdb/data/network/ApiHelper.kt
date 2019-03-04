@@ -1,25 +1,13 @@
 package com.elintminds.osdb.data.network
 
 
-import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean
-import com.elintminds.osdb.ui.dashboard.beans.DoYouKnow
-import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean
-import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean
+import com.elintminds.osdb.ui.dashboard.beans.*
+import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean
 import com.elintminds.osdb.ui.login.beans.UserBean
 import com.elintminds.osdb.ui.register.beans.RegisterBean
 import io.reactivex.Observable
-import io.reactivex.Single
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.http.*
-import retrofit2.http.POST
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import java.util.ArrayList
-import io.reactivex.Completable
-import retrofit2.http.PUT
-
-
+import java.util.*
 
 
 @JvmSuppressWildcards
@@ -27,15 +15,16 @@ interface ApiHelper {
 
     @FormUrlEncoded
     @POST("login")
-    fun getUserLogin(@Field("email") email : String, @Field("password") password:String): Observable<UserBean>
+    fun getUserLogin(@Field("email") email: String, @Field("password") password: String): Observable<UserBean>
 
     @FormUrlEncoded
     @POST("register")
-    fun getUserRegister(@Field("name") name : String,
-                        @Field("email") email : String,
-                        @Field("password") password: String,
-                        @Field("phone_number") phoneNumber:String,
-                        @Field("type") type: String
+    fun getUserRegister(
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("phone_number") phoneNumber: String,
+        @Field("type") type: String
     ): Observable<RegisterBean>
 
 
