@@ -4,13 +4,10 @@ import android.content.Context
 import android.util.Log
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass
-import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionAdapterBean
 import com.elintminds.osdb.ui.do_you_know.model.DiscussionCommentsInteractor
 import com.elintminds.osdb.ui.do_you_know.model.DiscussionCommentsInterctorClass
-import com.elintminds.osdb.ui.login.model.LoginInteractorClass
 
 import com.elintminds.osdb.ui.splash.view.DiscussionCommentsView
-import io.reactivex.functions.Consumer
 
 public class DiscussionCommentsPresenterClass<V : DiscussionCommentsView, I : DiscussionCommentsInteractor>
 
@@ -19,10 +16,11 @@ public constructor(context: Context,  view: V) : BasePresenterClass<V, I>(contex
     DiscussionCommentsInterctorClass(AppPreferenceHelperClass(context), context) as I, view),
     DiscussionCommentsPresenter<V, I> {
 
-    override fun getDiscussion() {
+
+    override fun getDiscussion(id :String) {
         compositeDisposable.add(
             interactor
-                .getDiscussion()
+                .getDiscussion(id)
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribe(

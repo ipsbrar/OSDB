@@ -9,16 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
-import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
 import com.elintminds.osdb.utils.Utils;
 
 import java.util.ArrayList;
 
 public class InnerCommentsAdapter extends RecyclerView.Adapter<InnerCommentsAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<DiscussionAdapterBean.Threads> dataList;
+    private ArrayList<DiscussionCommentsBean.Comments> dataList;
 
-    public InnerCommentsAdapter(Context context, ArrayList<DiscussionAdapterBean.Threads> dataList) {
+    public InnerCommentsAdapter(Context context, ArrayList<DiscussionCommentsBean.Comments> dataList) {
         this.context = context;
         this.dataList = dataList;
         Log.e("DATA BORN", "" + dataList.size());

@@ -4,17 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
-import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
 import com.elintminds.osdb.ui.discussion_comments.adapter.DiscussionCommentsAdapter;
 import com.elintminds.osdb.ui.discussion_comments.adapter.InnerCommentsAdapter;
+import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
 import com.elintminds.osdb.ui.report.view.ReportActivity;
 import com.elintminds.osdb.ui.splash.presenter.DiscussionCommentsPresenterClass;
 import com.elintminds.osdb.ui.splash.view.DiscussionCommentsView;
@@ -24,12 +26,18 @@ import java.util.ArrayList;
 
 public class DiscussionCommentsActivity extends BaseActivity implements View.OnClickListener, DiscussionCommentsView {
 
-    private ImageView backImg;
+    private ImageView backImg, user_Image;
     private ShimmerRecyclerView discussionCommentsRecyclerView;
-    private ArrayList<DiscussionAdapterBean.Threads> discussionList = new ArrayList<>();
+    private TextView player_name, hours_txt, comment_txt, comments_number;
+
+
+    private ArrayList<DiscussionCommentsBean.Comments> discussionList = new ArrayList<>();
     private DiscussionCommentsAdapter discussionAdapter;
     private LinearLayout reportLay;
     private DiscussionCommentsPresenterClass discussionCommentsPresenterClass;
+
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,15 +47,30 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
 
         discussionCommentsRecyclerView = findViewById(R.id.comments_recycler_view);
         backImg = findViewById(R.id.backImg);
+        user_Image = findViewById(R.id.user_Image);
+
         reportLay = findViewById(R.id.reportLay);
+
+        player_name = findViewById(R.id.player_name);
+        hours_txt = findViewById(R.id.hours_txt);
+        comment_txt = findViewById(R.id.comment_txt);
+        comments_number = findViewById(R.id.comments_number);
+
+
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         discussionCommentsRecyclerView.setLayoutManager(llm);
         discussionCommentsRecyclerView.showShimmerAdapter();
 
 //        getComments();
-        discussionCommentsPresenterClass=new DiscussionCommentsPresenterClass(this,this);
-        discussionCommentsPresenterClass.getDiscussion();
+        if (getIntent()!= null) {
+          String id=  getIntent().getStringExtra("id");
+            discussionCommentsPresenterClass=new DiscussionCommentsPresenterClass(this,this);
+            discussionCommentsPresenterClass.getDiscussion(id);
+
+        }else{
+            showToast("No Id comes");
+        }
 
         Log.e("DiscussionScreen===> ",getIntent().getBooleanExtra("isInnerComment", false)+"");
         if (getIntent().getBooleanExtra("isInnerComment", false)) {
@@ -90,11 +113,16 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
 
     @NotNull
     @Override
-    public void getSuccess(DiscussionAdapterBean discussionAdapterBean) {
-        if (discussionAdapterBean.getThreads().size()>0){
-            discussionAdapter.setDataList(discussionAdapterBean.getThreads());
+    public void getSuccess(DiscussionCommentsBean discussionCommentsBean) {
+        player_name.setText(discussionCommentsBean.getCreated_by().getName() != null ? discussionCommentsBean.getCreated_by().getName() : "");
+        comment_txt.setText(discussionCommentsBean.getDescription() != null ? Html.fromHtml(discussionCommentsBean.getDescription()) : "");
+        comments_number.setText(discussionCommentsBean.getComments_count() != null ? discussionCommentsBean.getComments_count() : "");
+
+        if (discussionCommentsBean.getComments().size()>0){
+            discussionAdapter.setDataList(discussionCommentsBean.getComments());
         }
         discussionCommentsRecyclerView.hideShimmerAdapter();
+
     }
 
     @NotNull

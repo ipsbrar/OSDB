@@ -13,20 +13,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
-import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.dashboard.Interfaces.DiscussionOnClick;
+import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
 import com.elintminds.osdb.ui.discussion_comments.view.DiscussionCommentsActivity;
 import com.elintminds.osdb.ui.report.view.ReportActivity;
-import com.elintminds.osdb.utils.Utils;
 
 import java.util.ArrayList;
 
 public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.ViewHolder> {
     private Context context;
     private ArrayList<DiscussionAdapterBean.Threads> dataList;
-
-    public DiscussionAdapter(Context context, ArrayList<DiscussionAdapterBean.Threads> dataList) {
+private DiscussionOnClick discussionOnClick;
+    public DiscussionAdapter(Context context, ArrayList<DiscussionAdapterBean.Threads> dataList,DiscussionOnClick discussionOnClick) {
         this.context = context;
         this.dataList = dataList;
+        this.discussionOnClick=discussionOnClick;
         Log.e("DATA BORN", "" + dataList.size());
     }
 
@@ -48,7 +49,7 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return 10;
+        return dataList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -70,13 +71,15 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
                 @Override
                 public void onClick(View view) {
                     if (dataList.get(getAdapterPosition()).getComments_count() != null && Integer.parseInt(dataList.get(getAdapterPosition()).getComments_count())>0)
-                    context.startActivity(new Intent(context, DiscussionCommentsActivity.class).putExtra("isInnerComment", false));
+                        discussionOnClick.discussionOnClick(getAdapterPosition(),dataList.get(getAdapterPosition()).getId());
+
                 }
             });
             reportLay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context, ReportActivity.class));
+                    discussionOnClick.discussionReportOnClick(getAdapterPosition(),dataList.get(getAdapterPosition()).getId());
+
                 }
             });
         }

@@ -12,17 +12,17 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
-import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
 import com.elintminds.osdb.ui.discussion_comments.view.DiscussionCommentsActivity;
-import com.elintminds.osdb.utils.Utils;
 
 import java.util.ArrayList;
 
 public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCommentsAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<DiscussionAdapterBean.Threads> dataList;
+    private ArrayList<DiscussionCommentsBean.Comments> dataList;
 
-    public DiscussionCommentsAdapter(Context context, ArrayList<DiscussionAdapterBean.Threads> dataList) {
+    public DiscussionCommentsAdapter(Context context, ArrayList<DiscussionCommentsBean.Comments> dataList) {
         this.context = context;
         this.dataList = dataList;
         Log.e("DATA BORN", "" + dataList.size());
@@ -40,7 +40,7 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
 
 //        Utils.justify(viewHolder.commentTxt);
         viewHolder.playerName.setText(dataList.get(i).getCreated_by().getName());
-        viewHolder.commentTxt.setText(Html.fromHtml(dataList.get(i).getDescription()));
+        viewHolder.commentTxt.setText(Html.fromHtml(dataList.get(i).getComment()));
     }
 
     @Override
@@ -64,12 +64,14 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
             commentMainLay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context, DiscussionCommentsActivity.class).putExtra("isInnerComment",true));
+                    context.startActivity(new Intent(context, DiscussionCommentsActivity.class)
+                            .putExtra("isInnerComment", false)
+                            .putExtra("id", dataList.get(getAdapterPosition()).getId()));
                 }
             });
         }
     }
-    public void setDataList(ArrayList<DiscussionAdapterBean.Threads> data)
+    public void setDataList(ArrayList<DiscussionCommentsBean.Comments> data)
     {
         Log.e("DATA",""+data);
         if(data == null || data.isEmpty())
