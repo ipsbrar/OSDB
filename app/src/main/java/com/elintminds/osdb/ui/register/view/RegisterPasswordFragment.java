@@ -14,19 +14,30 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.view.DashboardActivity;
+import com.elintminds.osdb.ui.register.beans.RegisterBean;
+import com.elintminds.osdb.ui.register.presenter.RegisterPresenterClass;
 import com.elintminds.osdb.utils.Utils;
 
-public class RegisterPasswordFragment extends BaseFragment implements View.OnClickListener {
+public class RegisterPasswordFragment extends BaseFragment implements RegisterView, View.OnClickListener {
     public static final String TAG = "RegisterPasswordFragment";
     private TextView createAccountBtn;
     private EditText signupPassEt, signupConfPassEt;
     private ImageView showPassBtn, showConfPassBtn;
     private boolean isPassShown = false, isConfPassShown = false;
-
-    public static RegisterPasswordFragment newInstance() {
-        return new RegisterPasswordFragment();
+    private RegisterPresenterClass registerPresenterClass;
+    private String userName,userEmail,userNumber;
+    public static RegisterPasswordFragment newInstance(String name, String email, String phoneNumber) {
+//        userName=name;
+        RegisterPasswordFragment registerPasswordFragment=new RegisterPasswordFragment();
+        Bundle bundle=new Bundle();
+        bundle.putString("name",name);
+        bundle.putString("email",email);
+        bundle.putString("phoneNumber",phoneNumber);
+        registerPasswordFragment.setArguments(bundle);
+        return registerPasswordFragment;
     }
 
     @Nullable
@@ -39,11 +50,19 @@ public class RegisterPasswordFragment extends BaseFragment implements View.OnCli
     @Override
     protected void setUp(View view)
     {
+
+        userName = getArguments() != null ? getArguments().getString("name") : "";
+        userEmail = getArguments() != null ? getArguments().getString("email") : "";
+        userNumber = getArguments() != null ? getArguments().getString("phoneNumber") : "";
+
         createAccountBtn = view.findViewById(R.id.createAccountBtn);
         signupPassEt = view.findViewById(R.id.signupPassEt);
         signupConfPassEt = view.findViewById(R.id.signupConfPassEt);
         showPassBtn = view.findViewById(R.id.show_password_btn);
         showConfPassBtn = view.findViewById(R.id.show_conf_password_btn);
+
+        registerPresenterClass=new RegisterPresenterClass(getActivity(),this);
+
 
         createAccountBtn.setOnClickListener(this);
         showPassBtn.setOnClickListener(this);
@@ -56,7 +75,8 @@ public class RegisterPasswordFragment extends BaseFragment implements View.OnCli
         {
             case R.id.createAccountBtn:
                 if (validate()) {
-                    startActivity(new Intent(getContext(), DashboardActivity.class));
+                    showProgressDialog();
+                    registerPresenterClass.getRegisterData(userName,userEmail,signupPassEt.getText().toString().trim(),userNumber,"1");
                 }
                 break;
 
@@ -86,10 +106,25 @@ public class RegisterPasswordFragment extends BaseFragment implements View.OnCli
         } else if (!signupPassEt.getText().toString().equals(signupConfPassEt.getText().toString())) {
             showToast("Password not matched");
             return false;
-        } else {
+        } else if (userName.equalsIgnoreCase("") || userName.equalsIgnoreCase("") || userName.equalsIgnoreCase("")) {
+            showToast("Something went wrong");
+            return false;
+        }else {
             return true;
         }
     }
 
 
+    @Override
+    public void getSuccess(RegisterBean registerBean) {
+        hideProgressDialog();
+        AppPreferenceHelperClass appPreferenceHelperClass=new AppPreferenceHelperClass(getActivity());
+        appPreferenceHelperClass.saveToken(registerBean.getVerification_code(),registerBean.getId());
+        startActivity(new Intent(getContext(), DashboardActivity.class));
+    }
+
+    @Override
+    public void getError(String msg) {
+        hideProgressDialog();
+    }
 }

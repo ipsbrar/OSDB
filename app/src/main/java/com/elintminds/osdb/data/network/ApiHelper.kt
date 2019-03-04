@@ -5,7 +5,9 @@ import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean
 import com.elintminds.osdb.ui.dashboard.beans.DoYouKnow
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean
+import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionAdapterBean
 import com.elintminds.osdb.ui.login.beans.UserBean
+import com.elintminds.osdb.ui.register.beans.RegisterBean
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.MultipartBody
@@ -24,6 +26,16 @@ interface ApiHelper {
     @POST("login")
     fun getUserLogin(@Field("email") email : String, @Field("password") password:String): Observable<UserBean>
 
+    @FormUrlEncoded
+    @POST("register")
+    fun getUserRegister(@Field("name") name : String,
+                        @Field("email") email : String,
+                        @Field("password") password: String,
+                        @Field("phone_number") phoneNumber:String,
+                        @Field("type") type: String
+    ): Observable<RegisterBean>
+
+
     @GET("sports/list")
     fun fetchAllSportsList(): Observable<ArrayList<SportsAdapterListBean>>
 
@@ -35,4 +47,7 @@ interface ApiHelper {
 
     @GET("did-you-know")
     fun fetchDoYouKnow(): Observable<ArrayList<DoYouKnow>>
+
+    @GET("discussion-board/threads")
+    fun fetchDiscussions(): Observable<DiscussionAdapterBean>
 }

@@ -1,27 +1,24 @@
 package com.elintminds.osdb.ui.discussion_comments.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
-import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
-import com.elintminds.osdb.ui.discussion_comments.view.DiscussionCommentsActivity;
+import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionAdapterBean;
 import com.elintminds.osdb.utils.Utils;
 
 import java.util.ArrayList;
 
 public class InnerCommentsAdapter extends RecyclerView.Adapter<InnerCommentsAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<DiscussionAdapterBean> dataList;
+    private ArrayList<DiscussionAdapterBean.Threads> dataList;
 
-    public InnerCommentsAdapter(Context context, ArrayList<DiscussionAdapterBean> dataList) {
+    public InnerCommentsAdapter(Context context, ArrayList<DiscussionAdapterBean.Threads> dataList) {
         this.context = context;
         this.dataList = dataList;
         Log.e("DATA BORN", "" + dataList.size());
@@ -38,14 +35,14 @@ public class InnerCommentsAdapter extends RecyclerView.Adapter<InnerCommentsAdap
     public void onBindViewHolder(@NonNull InnerCommentsAdapter.ViewHolder viewHolder, int i) {
 
         Utils.justify(viewHolder.commentTxt);
-        viewHolder.playerName.setText(dataList.get(i).getPlayerName());
-        viewHolder.commentTxt.setText(dataList.get(i).getComment());
-
-        if(i == dataList.size()-1){
-            viewHolder.nestedView.setVisibility(View.GONE);
-        }else{
-            viewHolder.nestedView.setVisibility(View.VISIBLE);
-        }
+//        viewHolder.playerName.setText(dataList.get(i).getPlayerName());
+//        viewHolder.commentTxt.setText(dataList.get(i).getComment());
+//
+//        if(i == dataList.size()-1){
+//            viewHolder.nestedView.setVisibility(View.GONE);
+//        }else{
+//            viewHolder.nestedView.setVisibility(View.VISIBLE);
+//        }
     }
 
     @Override
