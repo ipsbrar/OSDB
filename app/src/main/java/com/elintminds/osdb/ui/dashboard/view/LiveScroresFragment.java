@@ -58,10 +58,7 @@ public class LiveScroresFragment extends BaseFragment implements DashboardView.S
         latestItemsRecyclerView = view.findViewById(R.id.latest_items_list);
         liveScroresPresenterClass = new LiveScroresPresenterClass(getActivity(), this);
         liveScroresPresenterClass.getSportsData();
-
         getLatestData();
-
-
         liveScroresListAdapter = new LiveScroresListAdapter(context, latestItemsList);
         latestItemsRecyclerView.setAdapter(liveScroresListAdapter);
     }

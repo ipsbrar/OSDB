@@ -56,18 +56,25 @@
         </FrameLayout>
     </android.support.design.widget.CoordinatorLayout>
 
-    <android.support.design.widget.TabLayout
-            android:id="@+id/navigation"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            app:tabSelectedTextColor="@color/color_6849D7"
-            app:tabMode="scrollable"
-            app:tabPaddingTop="0dp"
-            app:tabPaddingStart="9dp"
-            app:tabPaddingEnd="9dp"
-            app:tabGravity="fill"
-            app:tabMinWidth="0dp"
-            android:background="@color/white"
-            android:layout_alignParentBottom="true"
-    />
+    <!--    <android.support.design.widget.TabLayout
+                android:id="@+id/navigation"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                app:tabSelectedTextColor="@color/color_6849D7"
+                app:tabMode="scrollable"
+                app:tabPaddingTop="0dp"
+                app:tabPaddingStart="9dp"
+                app:tabPaddingEnd="9dp"
+                app:tabGravity="fill"
+                app:tabMinWidth="0dp"
+                android:background="@color/white"
+                android:layout_alignParentBottom="true"
+        />-->
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:id="@+id/navigation"
+                  android:orientation="horizontal"
+                  android:layout_alignParentBottom="true">
+        <include layout="@layout/tab_item_bottom"/>
+    </LinearLayout>
 </RelativeLayout>

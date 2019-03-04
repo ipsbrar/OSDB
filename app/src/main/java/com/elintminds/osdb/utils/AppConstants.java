@@ -3,7 +3,6 @@ package com.elintminds.osdb.utils;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-
 import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
 import android.media.MediaMetadataRetriever;
@@ -15,7 +14,9 @@ import android.util.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -134,5 +135,44 @@ public class AppConstants {
         Bitmap bmFrame = mediaMetadataRetriever.getFrameAtTime(1000); //unit in microsecond
         return bmFrame;
     }
+
+
+    public static String getCurrentDate() {
+        Date date = Calendar.getInstance().getTime();
+        String newDate = null;
+        SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return spf.format(date);
+    }
+
+
+    public static String convertDateFormat(String date) {
+
+        SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
+        Date newDate = null;
+        try {
+            newDate = spf.parse(date);
+            spf = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+            date = spf.format(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+
+    private String getDobFormat(String dob) {
+        //1989-02-25
+        SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date newDate = null;
+        try {
+            newDate = spf.parse(dob);
+            spf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            dob = spf.format(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dob;
+    }
+
 
 }

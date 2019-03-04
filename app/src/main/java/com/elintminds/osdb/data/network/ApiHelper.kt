@@ -1,10 +1,7 @@
 package com.elintminds.osdb.data.network
 
 
-import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean
-import com.elintminds.osdb.ui.dashboard.beans.DoYouKnow
-import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean
-import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean
+import com.elintminds.osdb.ui.dashboard.beans.*
 import com.elintminds.osdb.ui.login.beans.UserBean
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -35,4 +32,8 @@ interface ApiHelper {
 
     @GET("did-you-know")
     fun fetchDoYouKnow(): Observable<ArrayList<DoYouKnow>>
+
+
+    @GET("polls/{date}")
+    fun getPollsData(@Path("date") curDate: String, @Query("user_id") user_id: String): Observable<ArrayList<PollAdapterBean>>
 }
