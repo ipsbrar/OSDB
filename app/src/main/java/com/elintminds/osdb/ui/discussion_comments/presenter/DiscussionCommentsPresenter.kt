@@ -6,6 +6,5 @@ import com.elintminds.osdb.ui.do_you_know.model.DiscussionCommentsInteractor
 import com.elintminds.osdb.ui.splash.view.DiscussionCommentsView
 
 interface DiscussionCommentsPresenter<V : DiscussionCommentsView, I : DiscussionCommentsInteractor> : BasePresenter<V, I> {
-
-
+     fun getDiscussion(id : String)
 }

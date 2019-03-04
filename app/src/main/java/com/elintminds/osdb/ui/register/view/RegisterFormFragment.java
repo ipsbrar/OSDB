@@ -48,7 +48,10 @@ public class RegisterFormFragment extends BaseFragment implements View.OnClickLi
         switch (view.getId()) {
             case R.id.continue_btn: {
                 if (validate()) {
-                    activity.changeFragment(RegisterPasswordFragment.newInstance(), RegisterPasswordFragment.TAG,"2");
+                    String name =userNameEt.getText().toString().trim();
+                    String email=emailEt.getText().toString().trim();
+                    String phoneNumber =phoneNumEt.getText().toString().trim();
+                    activity.changeFragment(RegisterPasswordFragment.newInstance(name,email,phoneNumber), RegisterPasswordFragment.TAG,"2");
 
                 }
                 break;

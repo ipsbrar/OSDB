@@ -55,10 +55,9 @@ public class AppPreferenceHelperClass implements PreferenceHelper {
 
 
     @Override
-    public void saveToken(String saveToken, String userId, String touchId) {
+    public void saveToken(String saveToken, String userId) {
         editor.putString(TOKEN, saveToken);
         editor.putString(USER_ID, userId);
-        editor.putString(TOUCH_ID, touchId);
         editor.commit();
     }
 

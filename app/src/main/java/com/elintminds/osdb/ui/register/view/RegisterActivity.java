@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 
-public class RegisterActivity extends BaseActivity implements RegisterView, View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements  View.OnClickListener {
     private TextView pageCount;
     private ImageView backImg;
     private Toolbar toolbar;
@@ -28,7 +28,6 @@ public class RegisterActivity extends BaseActivity implements RegisterView, View
         pageCount = findViewById(R.id.page_count);
         toolbar = findViewById(R.id.register_toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back_gray));
-
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
