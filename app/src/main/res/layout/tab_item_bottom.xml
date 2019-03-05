@@ -17,7 +17,7 @@
                 android:id="@+id/tab_icon_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_home"/>
+                app:srcCompat="@drawable/home_icon"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:gravity="center"
@@ -25,6 +25,7 @@
                   android:id="@+id/tab_name_home"
                   android:layout_gravity="center"
                   android:text="@string/title_home"
+                  android:textColor="@color/home_color"
                   android:layout_marginTop="@dimen/dp_5"
                   android:textSize="@dimen/sp_12"
         />
@@ -47,6 +48,7 @@
                   android:gravity="center"
                   android:fontFamily="@font/rubik_regular"
                   android:id="@+id/tab_name_latest"
+                  android:textColor="@color/latest_color"
                   android:layout_gravity="center"
                   android:text="@string/title_latest"
                   android:layout_marginTop="@dimen/dp_5"
@@ -72,6 +74,7 @@
                   android:id="@+id/tab_name_live"
                   android:layout_gravity="center"
                   android:text="@string/title_live_scores"
+                  android:textColor="@color/live_color"
                   android:layout_marginTop="@dimen/dp_5"
                   android:textSize="@dimen/sp_12"
         />
@@ -94,6 +97,7 @@
                   android:id="@+id/tab_name_polls"
                   android:layout_gravity="center"
                   android:text="@string/title_poll"
+                  android:textColor="@color/poll_color"
                   android:layout_marginTop="@dimen/dp_5"
                   android:textSize="@dimen/sp_12"
         />
@@ -105,7 +109,7 @@
                   android:gravity="center"
                   android:layout_weight="1">
         <ImageView
-                android:id="@+id/tab_icon_decription"
+                android:id="@+id/tab_icon_discussion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/discussion_icon_selector"/>
@@ -113,8 +117,9 @@
                   android:layout_height="wrap_content"
                   android:gravity="center"
                   android:fontFamily="@font/rubik_regular"
-                  android:id="@+id/tab_name"
+                  android:id="@+id/tab_name_discussion"
                   android:layout_gravity="center"
+                  android:textColor="@color/discussion_color"
                   android:text="@string/title_discussion"
                   android:layout_marginTop="@dimen/dp_5"
                   android:textSize="@dimen/sp_12"

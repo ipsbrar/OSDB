@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.adapters.BornTodayAdapter;
-import com.elintminds.osdb.ui.dashboard.adapters.HomeListAdapter;
 import com.elintminds.osdb.ui.dashboard.adapters.SportsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.*;
 import com.elintminds.osdb.ui.dashboard.presenter.HomeFragmentPresenterClass;
@@ -43,14 +41,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private ShimmerRecyclerView bornTodayRecyclerView;
     private SportsListAdapter sportsListAdapter;
     private BornTodayAdapter bornTodayAdapter;
-    //    private HomeListAdapter homeListAdapter;
-    private ShimmerLayout shimmer_breaking_news,shimmer_do_you_know;
+    private ShimmerLayout shimmer_breaking_news, shimmer_do_you_know;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
     private ArrayList<BornTodayAdapterBean> bornTodayList = new ArrayList<>();
     private HomeFragmentPresenterClass homeFragmentPresenterClass;
     private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_5_msg_text;
     private ImageView view_1_image, view_5_image;
-    private RelativeLayout rl_breaking_news,rl_do_you_know;
+    private RelativeLayout rl_breaking_news, rl_do_you_know;
     private NewsAdapterBean.BreakingNews breakingNewsFrag;
     private DoYouKnow doYouKnow;
 
@@ -87,7 +84,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         shimmer_breaking_news.setVisibility(View.VISIBLE);
         shimmer_breaking_news.startShimmerAnimation();
 
-        shimmer_do_you_know=view.findViewById(R.id.shimmer_do_you_know);
+        shimmer_do_you_know = view.findViewById(R.id.shimmer_do_you_know);
         rl_do_you_know = view.findViewById(R.id.rl_do_you_know);
         rl_do_you_know.setVisibility(View.GONE);
         shimmer_do_you_know.setVisibility(View.VISIBLE);
@@ -141,8 +138,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getBreakingNews(ArrayList<NewsAdapterBean.BreakingNews> breakingNews) {
-        Log.e("getBreakingNewWorking","Breaking News Working");
-        if (breakingNews.size()>0) {
+        Log.e("getBreakingNewWorking", "Breaking News Working");
+        if (breakingNews.size() > 0) {
             breakingNewsFrag = breakingNews.get(0);
             if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
                 Glide.with(getActivity()).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
@@ -159,12 +156,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getError(String error) {
-Log.e("HomeFragmentError===  ",error.toString());
+        Log.e("HomeFragmentError===  ", error.toString());
     }
 
     @Override
     public void getDoYouKnow(ArrayList<DoYouKnow> doYouKnows) {
-        if (doYouKnows.size()>0) {
+        if (doYouKnows.size() > 0) {
             doYouKnow = doYouKnows.get(0);
 
             if (doYouKnow.getContent() != null)
@@ -204,7 +201,7 @@ Log.e("HomeFragmentError===  ",error.toString());
                 }
 
             }
-            case R.id.rl_do_you_know:{
+            case R.id.rl_do_you_know: {
                 if (breakingNewsFrag != null) {
                     Intent intent = new Intent(context, DoYouKnowActivity.class);
 //                    intent.putExtra("imgUrl", (String) breakingNewsFrag.getImageUrl());
