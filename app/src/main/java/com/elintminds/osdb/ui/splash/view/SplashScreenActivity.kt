@@ -10,6 +10,7 @@ import android.util.Log
 import com.elintminds.osdb.R
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass
 import com.elintminds.osdb.ui.base.view.BaseActivity
+import com.elintminds.osdb.ui.dashboard.view.DashboardActivity
 import com.elintminds.osdb.ui.login.view.LoginActivity
 import com.elintminds.osdb.ui.login_options.view.LoginOptionsActivity
 import com.elintminds.osdb.ui.welcome_screen.view.WelcomeActivity
@@ -26,11 +27,15 @@ class SplashScreenActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         getUniqueId();
+
         Handler().postDelayed({
             if (AppPreferenceHelperClass(this@SplashScreenActivity).isFirstTimeLaunch!!) {
 
                 startActivity(Intent(this@SplashScreenActivity, WelcomeActivity::class.java))
             } else {
+                if(appPreferenceHelperClass.loginStatus)
+                    startActivity(Intent(this@SplashScreenActivity, DashboardActivity::class.java))
+                    else
                 startActivity(Intent(this@SplashScreenActivity, LoginOptionsActivity::class.java))
             }
             finish()

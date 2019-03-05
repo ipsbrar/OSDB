@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.utils.ValidationChecks;
 
 
@@ -29,13 +30,14 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     private BaseDialogView mDialogView;
     private ValidationChecks validationChecks;
     private Context context;
-
+    private AppPreferenceHelperClass appPreferenceHelperClass;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
         validationChecks = new ValidationChecks(context);
+        appPreferenceHelperClass=new AppPreferenceHelperClass(context);
     }
 
     @Override
@@ -203,5 +205,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
         snackbar.show();
     }
-
+    public AppPreferenceHelperClass getAppPreferenceHelperClass(){
+        return appPreferenceHelperClass;
+    }
 }
