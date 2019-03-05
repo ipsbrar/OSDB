@@ -1,24 +1,13 @@
 package com.elintminds.osdb.data.network
 
 
-import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean
-import com.elintminds.osdb.ui.dashboard.beans.DoYouKnow
-import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean
-import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean
-import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean
+import com.elintminds.osdb.ui.dashboard.beans.*
 import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean
 import com.elintminds.osdb.ui.login.beans.UserBean
 import com.elintminds.osdb.ui.register.beans.RegisterBean
 import io.reactivex.Observable
 import retrofit2.http.*
-import retrofit2.http.POST
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import java.util.ArrayList
-import io.reactivex.Completable
-import retrofit2.http.PUT
-
-
+import java.util.*
 
 
 @JvmSuppressWildcards
@@ -26,15 +15,16 @@ interface ApiHelper {
 
     @FormUrlEncoded
     @POST("login")
-    fun getUserLogin(@Field("email") email : String, @Field("password") password:String): Observable<UserBean>
+    fun getUserLogin(@Field("email") email: String, @Field("password") password: String): Observable<UserBean>
 
     @FormUrlEncoded
     @POST("register")
-    fun getUserRegister(@Field("name") name : String,
-                        @Field("email") email : String,
-                        @Field("password") password: String,
-                        @Field("phone_number") phoneNumber:String,
-                        @Field("type") type: String
+    fun getUserRegister(
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("phone_number") phoneNumber: String,
+        @Field("type") type: String
     ): Observable<RegisterBean>
 
 
@@ -49,6 +39,10 @@ interface ApiHelper {
 
     @GET("did-you-know")
     fun fetchDoYouKnow(): Observable<ArrayList<DoYouKnow>>
+
+
+    @GET("polls/{date}")
+    fun getPollsData(@Path("date") curDate: String, @Query("user_id") user_id: String): Observable<ArrayList<PollAdapterBean>>
 
     @GET("discussion-board/threads")
     fun fetchDiscussions(): Observable<DiscussionAdapterBean>

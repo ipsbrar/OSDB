@@ -14,8 +14,11 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.PollAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.PollOption;
 import com.elintminds.osdb.ui.dashboard.view.DashboardView;
+import com.elintminds.osdb.ui.dashboard.view.PollFragment;
+import com.elintminds.osdb.utils.AppConstants;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
 
@@ -40,9 +43,10 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull PollAdapter.ViewHolder holder, final int i) {
 
         holder.pollOptionParentLay.removeAllViews();
-        holder.pollHeading.setText(dataList.get(i).getTitle());
-        final ArrayList<PollOption> pollOptionsList = dataList.get(i).getPollOptions();
-
+        holder.pollHeading.setText(dataList.get(i).getText());
+        PollFragment.dateTxt.setText(AppConstants.convertDateFormat(dataList.get(i).getPublishedDate()));
+        final List<PollOption> pollOptionsList = dataList.get(i).getOptions();
+        String[] options = context.getResources().getStringArray(R.array.option_type);
         for (int j = 0; j < pollOptionsList.size(); j++) {
             View pollOptionView = LayoutInflater.from(context).inflate(R.layout.poll_options_view, null);
             holder.pollOptionParentLay.addView(pollOptionView);
@@ -51,9 +55,10 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
             TextView progressPer = pollOptionView.findViewById(R.id.progress_percentage);
             TextView pollLabel = pollOptionView.findViewById(R.id.poll_label);
             TextView pollName = pollOptionView.findViewById(R.id.poll_name);
-            pollLabel.setText(pollOptionsList.get(j).getPollLabel());
-            pollName.setText(pollOptionsList.get(j).getPollOptions());
-            if (dataList.get(i).getVisible()) {
+            pollLabel.setText(options[j]);
+            pollLabel.setTextColor(context.getResources().getColor(R.color.color_2E384D));
+            pollName.setText(pollOptionsList.get(j).getText());
+        /*    if (dataList.get(i).getVisible()) {
                 progressBar.setProgress(40);
                 progressPer.setText(progressBar.getProgress() + "%");
                 pollName.setTextColor(context.getResources().getColor(R.color.color_white));
@@ -63,17 +68,9 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
                 progressPer.setText("");
                 pollName.setTextColor(context.getResources().getColor(R.color.color_2E384D));
                 pollLabel.setTextColor(context.getResources().getColor(R.color.color_2E384D));
-            }
+            }*/
 
 
-            holder.pollOptionParentLay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dataList.get(i).setVisible(true);
-                    listner.onOptionClick(i, view.getId());
-
-                }
-            });
         }
     }
 
@@ -94,6 +91,15 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
 
             pollHeading = itemView.findViewById(R.id.poll_heading_text);
             pollOptionParentLay = itemView.findViewById(R.id.poll_option_parent);
+
+            pollOptionParentLay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //dataList.get(i).setVisible(true);
+                    listner.onOptionClick(getAdapterPosition(), view.getId());
+
+                }
+            });
         }
     }
 }

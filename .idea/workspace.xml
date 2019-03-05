@@ -7,12 +7,19 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+<<<<<<< HEAD
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4f1b084-88b3-4f39-b5ed-f2f63668b11c" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/Application/MyApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" afterDir="false" />
+=======
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="007a0441-b0a2-47db-b9b4-e373a9bbae30" name="Default Changelist" comment="">
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -26,6 +33,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
@@ -108,6 +116,9 @@
       <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2019-02-28-18-17-00-531.rawproto" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2019-02-28-18-18-11-044.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2019-02-28-18-18-11-044.rawproto" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/network/ApiHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/network/ApiHelper.kt" afterDir="false" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,56 +134,228 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="OSDB" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="OSDB" type="f1a62948:ProjectNode" />
+                <item name="OSDB" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="OSDB" type="f1a62948:ProjectNode" />
+                <item name="OSDB" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="OSDB" type="f1a62948:ProjectNode" />
+                <item name="OSDB" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="android" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="-1891527503">
+    <session id="2077508937">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+<<<<<<< HEAD
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.opened" value="3" />
+=======
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+<<<<<<< HEAD
           <entry key="class" value="1" />
           <entry key="gradle" value="4" />
           <entry key="java" value="149" />
           <entry key="kt" value="36" />
           <entry key="png" value="2" />
           <entry key="xml" value="55" />
+=======
+          <entry key="class" value="2" />
+          <entry key="gradle" value="1" />
+          <entry key="java" value="36" />
+          <entry key="kt" value="11" />
+          <entry key="png" value="7" />
+          <entry key="xml" value="50" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+<<<<<<< HEAD
           <entry key="CLASS" value="1" />
           <entry key="Groovy" value="4" />
           <entry key="Image" value="2" />
           <entry key="JAVA" value="149" />
           <entry key="Kotlin" value="36" />
           <entry key="XML" value="55" />
+=======
+          <entry key="CLASS" value="2" />
+          <entry key="Groovy" value="1" />
+          <entry key="Image" value="7" />
+          <entry key="JAVA" value="36" />
+          <entry key="Kotlin" value="11" />
+          <entry key="XML" value="50" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+<<<<<<< HEAD
           <entry key="gradle" value="11" />
           <entry key="java" value="3566" />
           <entry key="kt" value="521" />
           <entry key="txt" value="2" />
           <entry key="xml" value="563" />
+=======
+          <entry key="dummy" value="39" />
+          <entry key="java" value="1855" />
+          <entry key="kt" value="41" />
+          <entry key="txt" value="5" />
+          <entry key="xml" value="1489" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="JAVA" value="1855" />
+          <entry key="Kotlin" value="41" />
+          <entry key="PLAIN_TEXT" value="44" />
+          <entry key="XML" value="1489" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="1510823669">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="gradle" value="3" />
+          <entry key="java" value="5109" />
+          <entry key="txt" value="262" />
+          <entry key="xml" value="3446" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Groovy" value="3" />
+          <entry key="JAVA" value="5109" />
+          <entry key="PLAIN_TEXT" value="262" />
+          <entry key="XML" value="3446" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="1" />
+          <entry key="gradle" value="4" />
+          <entry key="java" value="110" />
+          <entry key="kt" value="4" />
+          <entry key="map_style" value="1" />
+          <entry key="png" value="11" />
+          <entry key="ttf" value="7" />
+          <entry key="xml" value="103" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="1" />
+          <entry key="Font" value="7" />
+          <entry key="Groovy" value="4" />
+          <entry key="Image" value="11" />
+          <entry key="JAVA" value="110" />
+          <entry key="Kotlin" value="4" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="XML" value="103" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="5" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="-1014461963">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="assets" value="1" />
+          <entry key="class" value="2" />
+          <entry key="gradle" value="5" />
+          <entry key="java" value="159" />
+          <entry key="kt" value="6" />
+          <entry key="txt" value="1" />
+          <entry key="xml" value="94" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="2" />
+          <entry key="Groovy" value="5" />
+          <entry key="JAVA" value="159" />
+          <entry key="Kotlin" value="6" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="XML" value="94" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="45" />
+          <entry key="gradle" value="1" />
+          <entry key="java" value="4061" />
+          <entry key="kt" value="54" />
+          <entry key="txt" value="23" />
+          <entry key="xml" value="2642" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+<<<<<<< HEAD
           <entry key="Groovy" value="11" />
           <entry key="JAVA" value="3566" />
           <entry key="Kotlin" value="521" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="XML" value="563" />
+=======
+          <entry key="Groovy" value="1" />
+          <entry key="JAVA" value="4061" />
+          <entry key="Kotlin" value="54" />
+          <entry key="PLAIN_TEXT" value="68" />
+          <entry key="XML" value="2642" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </counts>
       </usages-collector>
     </session>
@@ -180,6 +363,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings_fragment_view.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
@@ -194,9 +378,32 @@
                 <element signature="e#8434#8448#0" expanded="true" />
                 <element signature="e#10873#10887#0" expanded="true" />
                 <element signature="e#13302#13316#0" expanded="true" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tab_item_bottom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
+              <folding>
+                <element signature="e#1252#1272#0" expanded="true" />
+                <element signature="e#1316#1329#0" expanded="true" />
+                <element signature="e#1365#1379#0" expanded="true" />
+                <element signature="e#2293#2315#0" expanded="true" />
+                <element signature="e#2359#2372#0" expanded="true" />
+                <element signature="e#2408#2422#0" expanded="true" />
+                <element signature="e#3335#3362#0" expanded="true" />
+                <element signature="e#3406#3419#0" expanded="true" />
+                <element signature="e#3455#3469#0" expanded="true" />
+                <element signature="e#4308#4328#0" expanded="true" />
+                <element signature="e#4372#4385#0" expanded="true" />
+                <element signature="e#4421#4435#0" expanded="true" />
+                <element signature="e#5279#5305#0" expanded="true" />
+                <element signature="e#5349#5362#0" expanded="true" />
+                <element signature="e#5398#5412#0" expanded="true" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
               </folding>
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
@@ -209,11 +416,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_adapter_header_view.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragmentView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="11" column="64" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="64" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
             </state>
           </provider>
         </entry>
@@ -221,6 +435,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="1553">
               <caret line="143" selection-start-line="143" selection-end-line="143" />
             </state>
@@ -241,6 +456,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="134" selection-start-line="134" selection-end-line="134" />
+=======
+            <state relative-caret-position="146">
+              <caret line="63" column="48" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
               <folding>
                 <element signature="e#4850#4851#0" expanded="true" />
               </folding>
@@ -249,40 +468,96 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/search_screen/view/SearchActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="31">
               <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_adapter_first_layout.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="285" selection-start-line="285" selection-end-line="285" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1375#1394#0" expanded="true" />
+                <element signature="e#1408#1429#0" expanded="true" />
+                <element signature="e#1443#1469#0" expanded="true" />
+                <element signature="e#1483#1502#0" expanded="true" />
+                <element signature="e#1516#1541#0" expanded="true" />
+                <element signature="e#3016#3225#0" expanded="true" />
+                <element signature="e#3224#3225#0" expanded="true" />
+                <element signature="e#4921#4942#0" expanded="true" />
+                <element signature="e#5108#5134#0" expanded="true" />
+                <element signature="e#5311#5330#0" expanded="true" />
+                <element signature="e#5492#5517#0" expanded="true" />
+                <element signature="e#9327#9348#0" expanded="true" />
+                <element signature="e#9528#9554#0" expanded="true" />
+                <element signature="e#9731#9750#0" expanded="true" />
+                <element signature="e#9912#9937#0" expanded="true" />
+              </folding>
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
               <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/network/ApiHelper.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="50" column="38" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="38" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/HomeFragmentPresenterClass.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="188">
               <caret line="92" selection-start-line="92" selection-end-line="92" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/beans/RegisterBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/view/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="690">
               <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
             </state>
           </provider>
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="58" column="51" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="51" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </entry>
       </file>
     </leaf>
@@ -290,15 +565,22 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
-        <option value="Interface" />
-        <option value="Class" />
         <option value="valueResourceFile" />
+        <option value="resourceFile" />
+        <option value="Interface" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="Class" />
+<<<<<<< HEAD
+        <option value="valueResourceFile" />
+=======
+        <option value="layoutResourceFile" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
       <find>bornTodayRecyclerView</find>
       <find>BornTodayAdapter</find>
       <find>newsList.get(position)</find>
@@ -332,6 +614,39 @@
       <replace>drawableLeft</replace>
       <replace>com.elintminds.osdb.utils.CustomTextView</replace>
       <replace>AppConstants</replace>
+=======
+      <find>them</find>
+      <find>signup_email_et</find>
+      <find>#0D131A</find>
+      <find>#2E384D</find>
+      <find>#30000000</find>
+      <find>#2E2F41</find>
+      <find>#8798AD</find>
+      <find>#E8ECF0</find>
+      <find>color_D8D8D8</find>
+      <find>#EBEEF1</find>
+      <find>#9FA2A4</find>
+      <find>#DCE0E6</find>
+      <find>#6849D7</find>
+      <find>80dp</find>
+      <find>colorWhite</find>
+      <find>Button</find>
+      <find>CAPTURE_FROM_CAMERA</find>
+      <find>70dp</find>
+      <find>sp_18</find>
+      <find>SearchAdapter</find>
+      <find>bornTodayList</find>
+      <find>dataList</find>
+      <find>tab_name</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>75dp</replace>
+      <replace>white</replace>
+      <replace>TextView</replace>
+      <replace>60dp</replace>
+      <replace>sp_16</replace>
+      <replace>FollowingAdapter</replace>
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -2712,13 +3027,16 @@
     </option>
     <option name="projectSyncType">
       <map>
+        <entry key="$PROJECT_DIR$/../../OSDB" value="PREVIEW" />
         <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+        <entry key="$PROJECT_DIR$/../../usbaudiovideoapp" value="PREVIEW" />
       </map>
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/beans/RegisterBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/model/RegisterInteractor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/model/RegisterInteractorClass.java" />
@@ -2770,22 +3088,149 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/settings_fragment_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/search_screen/adapters/SearchAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_adapter_header_view.xml" />
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/settings/view/FeedbackFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/settings/view/SettingsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/NotificationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/presenter/ProfilePresenterClass.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/view/EditProfileView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/presenter/EditProfilePresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile/view/EditProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/base/view/BaseDialogView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/base/view/base_dialogs/ImageSelectorDialog.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/watchlist_adapter_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_next_arrow.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/settings_fragment_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/ProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/following_fragment_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/search_adapter_item_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/following_adapter_item_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/search_adapter_header_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/FollowingFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/following_adapter_header_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/splash/view/SplashScreenActivity.kt" />
+        <option value="$PROJECT_DIR$/app/assets" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/api_key.txt" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login_options/view/LoginOptionsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/adapter/FollowingAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/PollsDataBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/PollsPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/PollsInteractor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/PollsInterctorClass.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/PollView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/Option.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/PollOption.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/PollAdapterBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/PollsPresenterClass.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/poll_options_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/utils/AppConstants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/adapters/PollAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/LiveScroresFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/PollFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/poll_fragment_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/polls_shimmer_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/utils/CustomTabLayout.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/tab_item_bottom.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/network/ApiHelper.kt" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
+<<<<<<< HEAD
     <option name="width" value="1280" />
     <option name="height" value="740" />
+=======
+    <option name="width" value="1440" />
+    <option name="height" value="820" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java interop issuesKotlin</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Kotlin Android</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+          <State>
+            <id>Naming conventionsKotlin</id>
+          </State>
+          <State>
+            <id>Other problemsKotlin</id>
+          </State>
+          <State>
+            <id>PerformanceLintAndroid</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsGroovy</id>
+          </State>
+          <State>
+            <id>Probable bugsKotlin</id>
+          </State>
+          <State>
+            <id>Redundant constructsKotlin</id>
+          </State>
+          <State>
+            <id>Style issuesKotlin</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <hideEmptyPackages AndroidView="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
       <pane id="ProjectPane" />
       <pane id="PackagesPane">
@@ -2799,11 +3244,34 @@
               <item name="OSDB" type="58d84e3e:PackageViewProjectNode" />
               <item name="app" type="616d4139:PackageViewModuleNode" />
               <item name="drawable-xxxhdpi" type="1f31426a:PackageElementNode" />
+=======
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="OSDB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OSDB" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="OSDB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OSDB" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="OSDB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OSDB" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="PackagesPane" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2866,6 +3334,7 @@
               <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2883,6 +3352,8 @@
               <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="login" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2890,6 +3361,7 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -2901,30 +3373,41 @@
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="settings" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="splash" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="splash" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
+=======
               <item name="utils" type="462c0819:PsiDirectoryNode" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+            </path>
+            <path>
+              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+<<<<<<< HEAD
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="splash" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+            </path>
+            <path>
+              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+<<<<<<< HEAD
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="osdb" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="splash" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+            </path>
+            <path>
+              <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="OSDB" type="1abcf292:AndroidViewProjectNode" />
@@ -2934,23 +3417,194 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_g960w-5549564332573398" />
+    <property name="DEBUGGABLE_PROCESS" value="com.elintminds.osdb" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="algorithm" value="Scalr" />
+    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="KVJFIR5LPVORPFNJ" />
+    <property name="format" value="PNG" />
+    <property name="lastFolderRoot" value="$USER_HOME$/Desktop/OSDB Games/xhdpi/tennis copy.png" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="method" value="Automatic" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="resolutions" value="HDPI&#10;XXHDPI&#10;XHDPI&#10;MDPI" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="sourceResolution" value="XHDPI" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/detailview/view" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/adapters" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/edit_profile" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/do_you_know" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="com.elintminds.osdb.ui.search_finding_screen.view" />
+      <recent name="com.elintminds.osdb.ui.search_screen.view" />
+      <recent name="com.elintminds.osdb.ui.event_details.view" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.elintminds.osdb.ui.profile.view" />
+    </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/app_prefs/AppPreferenceHelperClass.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/app_prefs/PreferenceHelper.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/network/ApiHelper.kt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/adapters/DiscussionAdapter.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/DiscussionAdapterBean.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DiscussionFragment.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/adapter/DiscussionCommentsAdapter.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/adapter/InnerCommentsAdapter.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/model/DiscussionCommentsInteractor.kt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/model/DiscussionCommentsInterctorClass.kt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/presenter/DiscussionCommentsPresenter.kt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/presenter/DiscussionCommentsPresenterClass.kt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/view/DiscussionCommentsActivity.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/view/DiscussionCommentsView.kt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/do_you_know/model/DoYouKnowInterctorClass.kt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/do_you_know/presenter/DoYouKnowPresenterClass.kt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/model/RegisterInteractor.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/model/RegisterInteractorClass.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/presenter/RegisterPresenter.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/presenter/RegisterPresenterClass.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/view/RegisterActivity.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/view/RegisterFormFragment.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/view/RegisterPasswordFragment.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/view/RegisterView.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_discussion_comment_detail.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/dashboard_fragment_view.xml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/Interfaces/DiscussionOnClick.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/DiscussionInteractor.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/DiscussionInteractorClass.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/DiscussionPresenter.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/DiscussionPresenterClass.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DiscussionView.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/beans/DiscussionCommentsBean.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/beans/RegisterBean.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -2964,7 +3618,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -3024,21 +3696,171 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OSDB [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Gradle.OSDB [signingReport]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.OSDB [signingReport]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a4f1b084-88b3-4f39-b5ed-f2f63668b11c" name="Default Changelist" comment="" />
-      <created>1551428638447</created>
+      <changelist id="007a0441-b0a2-47db-b9b4-e373a9bbae30" name="Default Changelist" comment="" />
+      <created>1550469929188</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1551428638447</updated>
+      <updated>1550469929188</updated>
     </task>
+    <task id="LOCAL-00001" summary="20-Feb-2019">
+      <created>1550639347639</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1550639347639</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Screen designing: &#10;Latest-News New&#10;Latest-Event&#10;Latest-Event 2&#10;Latest-Event opening ceremony">
+      <created>1550668906281</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1550668906281</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Splash, Login, Registration, and forgot password screen design correction and font implementation.">
+      <created>1550742901541</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1550742901541</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Splash, Login, Registration, and forgot password screen design correction and font implementation.">
+      <created>1550742963469</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1550742963469</updated>
+    </task>
+    <task id="LOCAL-00005" summary="25-Feb-2019">
+      <created>1551075649033</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1551075649033</updated>
+    </task>
+    <task id="LOCAL-00006" summary="25-Feb-2019">
+      <created>1551076503962</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1551076503962</updated>
+    </task>
+    <task id="LOCAL-00007" summary="26-Feb-2019">
+      <created>1551184952959</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1551184952960</updated>
+    </task>
+    <task id="LOCAL-00008" summary="27-Feb-2019">
+      <created>1551271209194</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1551271209194</updated>
+    </task>
+    <task id="LOCAL-00009" summary="27-Feb-2019">
+      <created>1551275032210</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1551275032210</updated>
+    </task>
+    <task id="LOCAL-00010" summary="27-Feb-2019">
+      <created>1551275281834</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1551275281834</updated>
+    </task>
+    <task id="LOCAL-00011" summary="28-Feb-2019">
+      <created>1551360042531</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1551360042531</updated>
+    </task>
+    <task id="LOCAL-00012" summary="28-Feb-2019">
+      <created>1551360196914</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1551360196914</updated>
+    </task>
+    <task id="LOCAL-00013" summary="28-Feb-2019">
+      <created>1551360972657</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1551360972657</updated>
+    </task>
+    <task id="LOCAL-00014" summary="4-March-2019">
+      <created>1551704393273</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1551704393274</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="0" y="23" width="1280" height="740" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -3059,17 +3881,74 @@
       <window_info anchor="bottom" id="Version Control" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32739726" />
       <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.3287037" />
+=======
+    <frame x="0" y="23" width="1440" height="820" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49862638" visible="true" weight="0.22961374" />
+      <window_info id="Structure" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" sideWeight="0.50137365" side_tool="true" weight="0.22961374" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="0" weight="0.32967034" />
+      <window_info anchor="bottom" id="TODO" order="1" weight="0.32967034" />
+      <window_info anchor="bottom" id="Android Profiler" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.32692307" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.32967034" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" weight="0.32967034" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.32967034" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.28983516" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32967034" />
+      <window_info anchor="bottom" id="Logcat" order="9" weight="0.30357143" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.32904148" />
       <window_info anchor="right" id="Theme Preview" order="3" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Preview" order="4" weight="0.19386107" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
+=======
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.24177396" />
+      <window_info anchor="right" id="Fabric" order="6" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
     </layout>
+    <layout-to-restore>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49862638" visible="true" weight="0.22961374" />
+      <window_info id="Structure" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" sideWeight="0.50137365" side_tool="true" weight="0.22961374" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="0" weight="0.32967034" />
+      <window_info anchor="bottom" id="TODO" order="1" weight="0.32967034" />
+      <window_info anchor="bottom" id="Android Profiler" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.32692307" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.32967034" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" weight="0.32967034" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.32967034" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.28983516" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32967034" />
+      <window_info anchor="bottom" id="Logcat" order="9" visible="true" weight="0.30357143" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.32904148" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.24177396" />
+      <window_info anchor="right" id="Fabric" order="6" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+<<<<<<< HEAD
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
@@ -3154,10 +4033,159 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="105" column="39" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
+=======
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="20-Feb-2019" />
+    <MESSAGE value="Screen designing: &#10;Latest-News New&#10;Latest-Event&#10;Latest-Event 2&#10;Latest-Event opening ceremony" />
+    <MESSAGE value="Splash, Login, Registration, and forgot password screen design correction and font implementation." />
+    <MESSAGE value="25-Feb-2019" />
+    <MESSAGE value="26-Feb-2019" />
+    <MESSAGE value="27-Feb-2019" />
+    <MESSAGE value="28-Feb-2019" />
+    <MESSAGE value="4-March-2019" />
+    <option name="LAST_COMMIT_MESSAGE" value="4-March-2019" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/view/RegisterFormFragment.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/view/RegisterFormFragment.java</url>
+          <line>56</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/view/RegisterFormFragment.java</url>
+          <line>77</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/ProfileActivity.java</url>
+          <line>126</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/ProfileActivity.java</url>
+          <line>240</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/ProfileActivity.java</url>
+          <line>242</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/profile/view/ProfileActivity.java</url>
+          <line>236</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login_options/view/LoginOptionsActivity.java</url>
+          <line>260</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/LiveScroresView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/DashboardPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="119" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/NewsFragmentPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/NewsFragmentInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/NewsFragmentInteractorClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/NewsFragmentPresenterClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/PollsDataBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="129" column="5" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="129" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/PollsPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1212">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/HomeFragmentPresenterClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/HomeFragmentPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/adapter/InnerCommentsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -3190,12 +4218,56 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="76" selection-end-column="37" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/adapters/SportsListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="71" column="2" selection-start-line="71" selection-start-column="2" selection-end-line="79" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/Option.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/PollOption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/PollsInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/beans/PollAdapterBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/discussion_comments/view/DiscussionCommentsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -3247,9 +4319,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/model/PollsInterctorClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/PollsPresenterClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#1336#1789#0" expanded="true" />
+            <element signature="e#1788#1789#0" expanded="true" />
+            <element signature="e#1735#2119#0" expanded="true" />
+            <element signature="e#2118#2119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/PollView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/adapters/BornTodayAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/DashboardPresenterClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/poll_options_view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/Application/MyApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -3264,9 +4394,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
           <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="116" column="24" selection-start-line="116" selection-start-column="24" selection-end-line="116" selection-end-column="24" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/poll_list_adapter_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/utils/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="815">
@@ -3288,10 +4433,31 @@
           <folding>
             <element signature="e#954#972#0" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/utils/AppConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/LiveScroresFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="120" column="42" selection-start-line="120" selection-start-column="35" selection-end-line="120" selection-end-column="42" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/utils/CustomTextView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -3303,31 +4469,68 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/view/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/PollFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </state>
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_feedback.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/born_today_shimmer_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="13" lean-forward="true" selection-end-line="46" selection-end-column="37" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/app_prefs/PreferenceHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="16" column="24" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="24" />
         </state>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_adapter_third_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1170" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/view/RegisterPasswordFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="121" column="8" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="60" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_adapter_second_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/base/view/BaseFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -3335,17 +4538,52 @@
           <folding>
             <element signature="e#3910#3911#0" expanded="true" />
             <element signature="e#3956#3957#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/adapters/PollAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="62" column="55" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
+          <folding>
+            <element signature="e#4028#4280#0" expanded="true" />
+            <element signature="e#4279#4280#0" expanded="true" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/app_prefs/AppPreferenceHelperClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
           <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/poll_fragment_view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/polls_shimmer_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+          <folding>
+            <element signature="e#356#369#0" expanded="true" />
+            <element signature="e#399#412#0" expanded="true" />
+            <element signature="e#531#545#0" expanded="true" />
+            <element signature="e#892#907#0" expanded="true" />
+            <element signature="e#1064#1078#0" expanded="true" />
+            <element signature="e#1406#1420#0" expanded="true" />
+            <element signature="e#1407#1420#0" expanded="true" />
+          </folding>
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/settings/view/SettingsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -3368,9 +4606,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="36" column="85" selection-start-line="36" selection-start-column="85" selection-end-line="36" selection-end-column="85" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_adapter_first_layout.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_home.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_demo_grid.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="55" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="55" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/latest_icon_selctor.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/login/view/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
@@ -3392,10 +4655,24 @@
             <element signature="e#10873#10887#0" expanded="true" />
             <element signature="e#13302#13316#0" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragmentView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="64" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-end-line="15" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/presenter/HomeFragmentPresenterClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -3425,16 +4702,84 @@
           <folding>
             <element signature="e#4850#4851#0" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_fragment_view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="63" column="48" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/utils/CustomTabLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="58" column="51" selection-start-line="58" selection-start-column="51" selection-end-line="58" selection-end-column="51" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/search_screen/view/SearchActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
           <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tab_item_bottom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
+          <folding>
+            <element signature="e#1252#1272#0" expanded="true" />
+            <element signature="e#1316#1329#0" expanded="true" />
+            <element signature="e#1365#1379#0" expanded="true" />
+            <element signature="e#2293#2315#0" expanded="true" />
+            <element signature="e#2359#2372#0" expanded="true" />
+            <element signature="e#2408#2422#0" expanded="true" />
+            <element signature="e#3335#3362#0" expanded="true" />
+            <element signature="e#3406#3419#0" expanded="true" />
+            <element signature="e#3455#3469#0" expanded="true" />
+            <element signature="e#4308#4328#0" expanded="true" />
+            <element signature="e#4372#4385#0" expanded="true" />
+            <element signature="e#4421#4435#0" expanded="true" />
+            <element signature="e#5279#5305#0" expanded="true" />
+            <element signature="e#5349#5362#0" expanded="true" />
+            <element signature="e#5398#5412#0" expanded="true" />
+          </folding>
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_adapter_header_view.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -3454,8 +4799,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-92">
           <caret line="56" selection-start-line="56" selection-end-line="56" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/dashboard/view/DashboardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="285" selection-start-line="285" selection-end-line="285" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1375#1394#0" expanded="true" />
+            <element signature="e#1408#1429#0" expanded="true" />
+            <element signature="e#1443#1469#0" expanded="true" />
+            <element signature="e#1483#1502#0" expanded="true" />
+            <element signature="e#1516#1541#0" expanded="true" />
+            <element signature="e#3016#3225#0" expanded="true" />
+            <element signature="e#3224#3225#0" expanded="true" />
+            <element signature="e#4921#4942#0" expanded="true" />
+            <element signature="e#5108#5134#0" expanded="true" />
+            <element signature="e#5311#5330#0" expanded="true" />
+            <element signature="e#5492#5517#0" expanded="true" />
+            <element signature="e#9327#9348#0" expanded="true" />
+            <element signature="e#9528#9554#0" expanded="true" />
+            <element signature="e#9731#9750#0" expanded="true" />
+            <element signature="e#9912#9937#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/ui/register/beans/RegisterBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/elintminds/osdb/data/network/ApiHelper.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="50" column="38" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="38" />
+>>>>>>> bfc5429f17b176da1bc66267da093ac79dcbf1b0
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

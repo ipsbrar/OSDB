@@ -57,6 +57,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
+
                     android:layout_toEndOf="@id/team_1_logo"
                     android:layout_toRightOf="@id/team_1_logo"/>
 

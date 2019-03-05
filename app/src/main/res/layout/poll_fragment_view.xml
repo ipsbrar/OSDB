@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView android:layout_width="match_parent" android:layout_height="@dimen/dp_30"
+    <TextView
+            android:id="@+id/date_txt" android:layout_width="match_parent" android:layout_height="@dimen/dp_30"
               android:text="Feb 9,2019"
               android:gravity="center"
               android:background="@color/color_white"
@@ -14,11 +15,14 @@
               android:textColor="@color/color_6849D7"/>
 
 
-    <android.support.v7.widget.RecyclerView
+    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
             android:id="@+id/poll_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:shimmer_demo_angle="40"
+            app:shimmer_demo_child_count="3"
+            app:shimmer_demo_layout="@layout/polls_shimmer_layout"
     >
-    </android.support.v7.widget.RecyclerView>
+    </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 
 </LinearLayout>

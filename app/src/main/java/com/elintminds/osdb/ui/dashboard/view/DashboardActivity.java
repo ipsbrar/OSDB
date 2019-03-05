@@ -2,7 +2,6 @@ package com.elintminds.osdb.ui.dashboard.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -10,19 +9,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.add_edit_discussion.view.AddEditDiscussionActivity;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
-import com.elintminds.osdb.ui.profile.view.ProfileActivity;
 import com.elintminds.osdb.ui.calendar_screen.view.PollCalendarActivity;
+import com.elintminds.osdb.ui.profile.view.ProfileActivity;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
+
 import java.util.Objects;
 
-public class DashboardActivity extends BaseActivity implements DashboardView {
+public class DashboardActivity extends BaseActivity implements DashboardView, View.OnClickListener {
 
     private TextView mTextMessage;
     private Toolbar toolbar;
+
+    private LinearLayout home_lay, latest_lay;
     private String currentFrag = "Home";
     private ImageView homelogo;
     private int[] mTabIcons = {
@@ -47,7 +50,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
     private MenuItem searchItem, calendarItem, addItem;
 
     private String[] TABS;
-    private TabLayout bottomTabLayout;
+    //  private TabLayout bottomTabLayout;
 
     private ImageView icon;
 
@@ -57,18 +60,23 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
         setContentView(R.layout.activity_dashboard);
 
         initialzeViews();
-        initTab();
+        //initTab();
         //  getSupportFragmentManager().beginTransaction().add(R.id.dashboard_container, HomeFragment.newInstance()).commit();
 
-        switchTab(0);
+        changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
     }
 
     private void initialzeViews() {
         toolbar = findViewById(R.id.dashboard_toolbar);
         mTextMessage = findViewById(R.id.dashboard_title);
         homelogo = findViewById(R.id.home_logo);
-        bottomTabLayout = findViewById(R.id.navigation);
-        bottomTabLayout.setSelectedTabIndicator(0);
+        findViewById(R.id.home_lay).setOnClickListener(this);
+        findViewById(R.id.latest_lay).setOnClickListener(this);
+        findViewById(R.id.live_scores_lay).setOnClickListener(this);
+        findViewById(R.id.polls_lay).setOnClickListener(this);
+        findViewById(R.id.discussion_lay).setOnClickListener(this);
+
+
         TABS = getResources().getStringArray(R.array.tab_names);
         setSupportActionBar(toolbar);
 
@@ -79,34 +87,34 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
             }
         });
 
-        bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-
-                switchTab(tab.getPosition());
-
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-
-                switchTab(tab.getPosition());
-
-
-            }
-        });
+//        bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+//
+//                switchTab(tab.getPosition());
+//
+//
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//
+//                switchTab(tab.getPosition());
+//
+//
+//            }
+//        });
 
     }
 
-    private void initTab() {
+    /*private void initTab() {
         if (bottomTabLayout != null) {
             for (int i = 0; i < TABS.length; i++) {
                 bottomTabLayout.addTab(bottomTabLayout.newTab());
@@ -116,11 +124,11 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
                     tab.setCustomView(getTabView(i));
             }
         }
-    }
+    }*/
 
     private View getTabView(int position) {
         View view = LayoutInflater.from(this).inflate(R.layout.tab_item_bottom, null);
-        icon = (ImageView) view.findViewById(R.id.tab_icon);
+        // icon = (ImageView) view.findViewById(R.id.tab_icon);
         TextView tabname = (TextView) view.findViewById(R.id.tab_name);
         icon.setImageResource(mTabIcons[position]);
         tabname.setText(mTabnames[position]);
@@ -247,7 +255,6 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
     }
 
 
-
     public void changeFragment(Fragment fragment, String tag) {
         toolbarMenuVisibility(tag);
         getSupportFragmentManager().beginTransaction()
@@ -267,4 +274,39 @@ public class DashboardActivity extends BaseActivity implements DashboardView {
 
     }
 
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+
+            case R.id.home_lay: {
+                changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
+                break;
+            }
+
+            case R.id.latest_lay: {
+                mTextMessage.setText(R.string.title_latest);
+                changeFragment(LatestFragment.newInstance(), LatestFragment.TAG);
+                break;
+            }
+
+            case R.id.live_scores_lay:
+                mTextMessage.setText(R.string.title_live_scores);
+
+                changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
+
+                break;
+            case R.id.polls_lay:
+                mTextMessage.setText(R.string.title_poll);
+
+                changeFragment(PollFragment.newInstance(), PollFragment.TAG);
+                break;
+            case R.id.discussion_lay:
+                mTextMessage.setText(R.string.title_discussion);
+
+                changeFragment(DiscussionFragment.newInstance(), DiscussionFragment.TAG);
+                break;
+
+        }
+    }
 }
