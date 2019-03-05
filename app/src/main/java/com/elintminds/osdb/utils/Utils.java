@@ -8,6 +8,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.os.Build;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
 import android.text.SpannableString;
@@ -150,5 +152,35 @@ public class Utils {
         });
         popupMenu.inflate(R.menu.report);
         popupMenu.show();
+    }
+    public static void setVectorForPreLollipop(TextView textView, int resourceId, Context activity, int position) {
+        Drawable icon;
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            icon = VectorDrawableCompat.create(activity.getResources(), resourceId,
+                    activity.getTheme());
+        } else {
+            icon = activity.getResources().getDrawable(resourceId, activity.getTheme());
+        }
+        switch (position) {
+            case AppConstants.DRAWABLE_LEFT:
+                textView.setCompoundDrawablesWithIntrinsicBounds(icon, null, null,
+                        null);
+                break;
+
+            case AppConstants.DRAWABLE_RIGHT:
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, null, icon,
+                        null);
+                break;
+
+            case AppConstants.DRAWABLE_TOP:
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, icon, null,
+                        null);
+                break;
+
+            case AppConstants.DRAWABLE_BOTTOM:
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, null, null,
+                        icon);
+                break;
+        }
     }
 }

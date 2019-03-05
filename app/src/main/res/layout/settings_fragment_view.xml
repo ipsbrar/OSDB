@@ -19,13 +19,25 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical">
+
+
+            <ImageView android:layout_width="wrap_content"
+                       android:id="@+id/img_change_password"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_feedback"
+                       android:layout_marginLeft="@dimen/dp_20"
+                       android:layout_alignParentStart="true"
+                       android:layout_centerVertical="true"
+            />
+
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="match_parent"
                       android:text="@string/change_password"
-                      android:drawableLeft="@drawable/ic_feedback"
                       android:drawablePadding="@dimen/dp_20"
                       android:layout_marginLeft="@dimen/dp_20"
                       android:textSize="@dimen/sp_16"
+                      android:layout_toRightOf="@+id/img_change_password"
                       android:gravity="center_vertical"
                       android:textColor="@color/color_828282"
                       android:fontFamily="@font/rubik_regular"
@@ -53,10 +65,22 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical">
+
+
+            <ImageView android:layout_width="wrap_content"
+                       android:id="@+id/img_feedback"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_feedback"
+                       android:layout_marginLeft="@dimen/dp_20"
+                       android:layout_alignParentStart="true"
+                       android:layout_centerVertical="true"
+            />
+
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="match_parent"
                       android:text="@string/feedback"
-                      android:drawableLeft="@drawable/ic_feedback"
+                      android:layout_toRightOf="@+id/img_feedback"
                       android:drawablePadding="@dimen/dp_20"
                       android:layout_marginLeft="@dimen/dp_20"
                       android:textSize="@dimen/sp_16"
@@ -87,10 +111,21 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:id="@+id/img_help"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_help"
+                       android:layout_marginLeft="@dimen/dp_20"
+                       android:layout_alignParentStart="true"
+                       android:layout_centerVertical="true"
+            />
+
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="match_parent"
                       android:text="@string/help"
-                      android:drawableStart="@drawable/ic_help"
+                      android:layout_toRightOf="@+id/img_help"
                       android:drawablePadding="@dimen/dp_20"
                       android:layout_marginLeft="@dimen/dp_20"
                       android:textSize="@dimen/sp_16"
@@ -121,10 +156,21 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:id="@+id/img_term_and_condition"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_terms"
+                       android:layout_marginLeft="@dimen/dp_20"
+                       android:layout_alignParentStart="true"
+                       android:layout_centerVertical="true"
+            />
+
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="match_parent"
                       android:text="@string/terms_conditions"
-                      android:drawableLeft="@drawable/ic_terms"
+                      android:layout_toRightOf="@+id/img_term_and_condition"
                       android:drawablePadding="@dimen/dp_20"
                       android:layout_marginLeft="@dimen/dp_20"
                       android:textSize="@dimen/sp_16"
@@ -155,10 +201,21 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:id="@+id/img_policy"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_policy"
+                       android:layout_marginLeft="@dimen/dp_20"
+                       android:layout_alignParentStart="true"
+                       android:layout_centerVertical="true"
+            />
+
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="match_parent"
                       android:text="@string/privacy_policy"
-                      android:drawableLeft="@drawable/ic_policy"
+                      android:layout_toRightOf="@+id/img_policy"
                       android:drawablePadding="@dimen/dp_20"
                       android:layout_marginLeft="@dimen/dp_20"
                       android:textSize="@dimen/sp_16"
@@ -188,10 +245,21 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:id="@+id/img_logout"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_logout"
+                       android:layout_marginLeft="@dimen/dp_20"
+                       android:layout_alignParentStart="true"
+                       android:layout_centerVertical="true"
+            />
+
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="match_parent"
                       android:text="@string/logout"
-                      android:drawableLeft="@drawable/ic_logout"
+                      android:layout_toRightOf="@+id/img_logout"
                       android:drawablePadding="@dimen/dp_20"
                       android:layout_marginLeft="@dimen/dp_20"
                       android:textSize="@dimen/sp_16"

@@ -118,8 +118,8 @@ public class RegisterPasswordFragment extends BaseFragment implements RegisterVi
     @Override
     public void getSuccess(RegisterBean registerBean) {
         hideProgressDialog();
-        AppPreferenceHelperClass appPreferenceHelperClass=new AppPreferenceHelperClass(getActivity());
-        appPreferenceHelperClass.saveToken(registerBean.getVerification_code(),registerBean.getId());
+        getAppPreferenceHelperClass().saveToken(registerBean.getVerification_code(),registerBean.getId());
+        getAppPreferenceHelperClass().saveLoginStatus(true);
         startActivity(new Intent(getContext(), DashboardActivity.class));
     }
 

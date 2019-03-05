@@ -54,11 +54,11 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         SearchBean item = dataList.get(i);
         if(viewHolder instanceof HeaderViewHolder)
         {
-            ((HeaderViewHolder) viewHolder).headerTV.setText(item.getSearchName());
+            ((HeaderViewHolder) viewHolder).headerTV.setText(item.getSearchName()!= null ? item.getSearchName() : "");
         }
         else if(viewHolder instanceof ItemViewHolder)
         {
-            ((ItemViewHolder) viewHolder).itemTV.setText(item.getSearchName());
+            ((ItemViewHolder) viewHolder).itemTV.setText(item.getSearchName() != null ? item.getSearchName() : "");
         }
     }
 

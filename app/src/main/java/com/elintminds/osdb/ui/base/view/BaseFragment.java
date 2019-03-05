@@ -7,11 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Toast;
+import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.utils.ValidationChecks;
 
 public abstract class BaseFragment extends Fragment implements BaseView {
     private BaseActivity mActivity;
     private ValidationChecks validationChecks;
+    private AppPreferenceHelperClass appPreferenceHelperClass;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         if (context instanceof BaseActivity) {
             this.mActivity = (BaseActivity) context;
             validationChecks = new ValidationChecks(context);
+            appPreferenceHelperClass=new AppPreferenceHelperClass(context);
         }
     }
 
@@ -156,4 +159,8 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
 
     protected abstract void setUp(View view);
+
+    public AppPreferenceHelperClass getAppPreferenceHelperClass(){
+        return appPreferenceHelperClass;
+    }
 }

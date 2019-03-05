@@ -62,6 +62,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             case R.id.signin_btn:
 //                if (validate()) {
 //                    loginPresenterClass.sendUserValue(loginEmailEt.getText().toString(),loginPassEt.getText().toString());
+                    getAppPreferenceHelperClass().saveLoginStatus(true);
                     startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                     finish();
 //                }

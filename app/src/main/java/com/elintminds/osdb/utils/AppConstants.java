@@ -25,6 +25,10 @@ public class AppConstants {
 
 
     public static final int MY_CAMERA_PERMISSION_CODE = 11;
+    public static final int DRAWABLE_LEFT = 0;
+    public static final int DRAWABLE_RIGHT = 1;
+    public static final int DRAWABLE_TOP = 2;
+    public static final int DRAWABLE_BOTTOM = 3;
 
 
     public static Uri getOutputMediaFileUri(Context context) {

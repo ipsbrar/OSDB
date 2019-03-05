@@ -1,5 +1,6 @@
 package com.elintminds.osdb.ui.settings.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,13 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
+import com.elintminds.osdb.ui.login_options.view.LoginOptionsActivity;
 
 import java.util.Objects;
 
 public class SettingsFragment extends BaseFragment implements View.OnClickListener {
 
     private CardView changePassView, helpView, feedbackView, privacyView, termsView, logoutView;
-
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
     }
@@ -82,7 +83,14 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
                 break;
             }
 
+            case R.id.logout_view: {
+                getAppPreferenceHelperClass().clearUserData();
+                Intent intent = new Intent(getActivity(), LoginOptionsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
 
+
+            }
 
         }
     }
