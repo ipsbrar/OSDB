@@ -13,7 +13,8 @@ import android.widget.TextView;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
-import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.base.view.BaseDialogView;
+import com.elintminds.osdb.ui.base.view.base_dialogs.ConfirmationDialog;
 import com.elintminds.osdb.ui.discussion_comments.adapter.DiscussionCommentsAdapter;
 import com.elintminds.osdb.ui.discussion_comments.adapter.InnerCommentsAdapter;
 import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class DiscussionCommentsActivity extends BaseActivity implements View.OnClickListener, DiscussionCommentsView {
+public class DiscussionCommentsActivity extends BaseActivity implements View.OnClickListener, DiscussionCommentsView, BaseDialogView.ConfirmationDialogListener {
 
     private ImageView backImg, user_Image;
     private ShimmerRecyclerView discussionCommentsRecyclerView;
@@ -35,8 +36,7 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
     private DiscussionCommentsAdapter discussionAdapter;
     private LinearLayout reportLay;
     private DiscussionCommentsPresenterClass discussionCommentsPresenterClass;
-
-
+    private Bundle args;
 
 
     @Override
@@ -63,16 +63,16 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
         discussionCommentsRecyclerView.showShimmerAdapter();
 
 //        getComments();
-        if (getIntent()!= null) {
-          String id=  getIntent().getStringExtra("id");
-            discussionCommentsPresenterClass=new DiscussionCommentsPresenterClass(this,this);
+        if (getIntent() != null) {
+            String id = getIntent().getStringExtra("id");
+            discussionCommentsPresenterClass = new DiscussionCommentsPresenterClass(this, this);
             discussionCommentsPresenterClass.getDiscussion(id);
 
-        }else{
+        } else {
             showToast("No Id comes");
         }
 
-        Log.e("DiscussionScreen===> ",getIntent().getBooleanExtra("isInnerComment", false)+"");
+        Log.e("DiscussionScreen===> ", getIntent().getBooleanExtra("isInnerComment", false) + "");
         if (getIntent().getBooleanExtra("isInnerComment", false)) {
             InnerCommentsAdapter innerCommentAdapter = new InnerCommentsAdapter(this, discussionList);
             discussionCommentsRecyclerView.setAdapter(innerCommentAdapter);
@@ -93,11 +93,23 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
                 break;
 
             case R.id.reportLay:
-                startActivity(new Intent(this, ReportActivity.class));
+                args = new Bundle();
+                args.putString("DIALOG_TITLE", getString(R.string.report));
+                args.putString("MESSAGE", getString(R.string.report_msg));
+                args.putString("BUTTON_TEXT", getString(R.string.report));
+
+                ConfirmationDialog confirmationDialog = ConfirmationDialog.newInstance(args);
+                confirmationDialog.setListener(this);
+                showDialog(confirmationDialog);
                 break;
         }
     }
 
+
+    @Override
+    public void onConfirmOkClick(int dialogId) {
+        startActivity(new Intent(this, ReportActivity.class));
+    }
 //    private void getComments() {
 //
 //        DiscussionAdapterBean item1 = new DiscussionAdapterBean();
@@ -118,7 +130,7 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
         comment_txt.setText(discussionCommentsBean.getDescription() != null ? Html.fromHtml(discussionCommentsBean.getDescription()) : "");
         comments_number.setText(discussionCommentsBean.getComments_count() != null ? discussionCommentsBean.getComments_count() : "");
 
-        if (discussionCommentsBean.getComments().size()>0){
+        if (discussionCommentsBean.getComments().size() > 0) {
             discussionAdapter.setDataList(discussionCommentsBean.getComments());
         }
         discussionCommentsRecyclerView.hideShimmerAdapter();
