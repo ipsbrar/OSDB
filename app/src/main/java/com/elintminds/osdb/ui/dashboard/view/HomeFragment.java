@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,9 +19,9 @@ import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.adapters.BornTodayAdapter;
-import com.elintminds.osdb.ui.dashboard.adapters.HomeListAdapter;
 import com.elintminds.osdb.ui.dashboard.adapters.SportsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.*;
+import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor;
 import com.elintminds.osdb.ui.dashboard.presenter.HomeFragmentPresenterClass;
 import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.ui.do_you_know.view.DoYouKnowActivity;
@@ -31,10 +30,7 @@ import com.elintminds.osdb.utils.Utils;
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener, DashboardView.SportsAdapterItemClickListener, HomeFragmentView {
     public static final String TAG = "HomeFragment";
@@ -44,16 +40,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private ShimmerRecyclerView bornTodayRecyclerView;
     private SportsListAdapter sportsListAdapter;
     private BornTodayAdapter bornTodayAdapter;
-    //    private HomeListAdapter homeListAdapter;
     private ShimmerLayout shimmer_breaking_news, shimmer_do_you_know;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
     private ArrayList<BornTodayAdapterBean> bornTodayList = new ArrayList<>();
-    private HomeFragmentPresenterClass homeFragmentPresenterClass;
+    private HomeFragmentPresenterClass<HomeFragment, com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor> homeFragmentPresenterClass;
     private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_5_msg_text;
     private ImageView view_1_image, view_5_image;
     private RelativeLayout rl_breaking_news, rl_do_you_know;
     private NewsAdapterBean.BreakingNews breakingNewsFrag;
     private DoYouKnow doYouKnow;
+    View view;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -62,15 +58,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_fragment_view, container, false);
-        Log.e("Fragment___LifeCycle", "onCreate");
-        return view;
+
+        return inflater.inflate(R.layout.home_fragment_view, container, false);
+
     }
 
     @Override
     protected void setUp(View view) {
         context = getContext();
-        homeFragmentPresenterClass = new HomeFragmentPresenterClass(getActivity(), this);
+        homeFragmentPresenterClass = new HomeFragmentPresenterClass<HomeFragment, HomeFragmentInteractor>(getActivity(), this);
 
         sportsRecyclerView = view.findViewById(R.id.sportsList);
         bornTodayRecyclerView = view.findViewById(R.id.born_today_recycler);
@@ -148,7 +144,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         if (breakingNews.size() > 0) {
             breakingNewsFrag = breakingNews.get(0);
             if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
-                Glide.with(getActivity()).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
+                Glide.with(Objects.requireNonNull(getActivity())).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
 
             if (breakingNewsFrag.getTitle() != null) {
                 view_1_msg_text.setText(breakingNewsFrag.getTitle());
@@ -163,7 +159,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getError(String error) {
-        Log.e("HomeFragmentError===  ", error.toString());
+        Log.e("HomeFragmentError===  ", error);
     }
 
     @Override
@@ -183,7 +179,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private String getCurrentDate() {
         SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        String date = null;
+        String date;
 
         Date currDate = Calendar.getInstance().getTime();
         date = spf.format(currDate);
@@ -191,6 +187,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         Log.e("Date", "" + date);
 
         return date;
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.e("Destroy", "Call");
     }
 
     @Override

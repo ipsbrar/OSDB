@@ -9,7 +9,7 @@
             android:layout_height="wrap_content">
 
         <View
-                android:id="@+id/news_frag_image"
+                android:id="@+id/news_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@color/demo_dark_transparent"/>
@@ -18,7 +18,7 @@
                 android:layout_width="50dp"
                 android:layout_height="16dp"
                 android:background="@color/demo_dark_transparent"
-                android:layout_below="@id/news_frag_image"
+                android:layout_below="@id/news_image"
                 android:layout_marginTop="14dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginStart="13dp"/>
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:background="@color/demo_dark_transparent"
-                android:layout_below="@id/news_frag_image"
+                android:layout_below="@id/news_image"
                 android:layout_toRightOf="@id/event_date_layout"
                 android:layout_toEndOf="@id/event_date_layout"
                 android:layout_marginTop="14dp"

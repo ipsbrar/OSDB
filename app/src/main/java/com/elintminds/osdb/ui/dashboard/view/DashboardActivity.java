@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,31 +27,10 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     private LinearLayout home_lay, latest_lay;
     private String currentFrag = "Home";
     private ImageView homelogo;
-    private int[] mTabIcons = {
-            R.drawable.home_icon,
-            R.drawable.latest_icon_selctor,
-            R.drawable.live_icon_selector,
-            R.drawable.poll_icon_selector,
-            R.drawable.discussion_icon_selector};
-    private int[] mTabnames = {
-            R.string.title_home,
-            R.string.title_latest,
-            R.string.title_live_scores,
-            R.string.title_poll,
-            R.string.title_discussion};
 
-    private int[] mTabColor = {
-            R.color.home_color,
-            R.color.latest_color,
-            R.color.live_color,
-            R.color.poll_color,
-            R.color.discussion_color};
     private MenuItem searchItem, calendarItem, addItem;
-
-    private String[] TABS;
-    //  private TabLayout bottomTabLayout;
-
-    private ImageView icon;
+    private ImageView tabHomeIcon, tabLatestIcon, tabliveIcon, tabPollIcon, tabDiscussionIcon;
+    private TextView tabHomeTxt, tabLatestTxt, tabliveTxt, tabPollTxt, tabDiscussionTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +40,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         initialzeViews();
         //initTab();
         //  getSupportFragmentManager().beginTransaction().add(R.id.dashboard_container, HomeFragment.newInstance()).commit();
-
+        homeSelected();
         changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
     }
 
@@ -76,8 +54,17 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         findViewById(R.id.polls_lay).setOnClickListener(this);
         findViewById(R.id.discussion_lay).setOnClickListener(this);
 
+        tabHomeIcon = findViewById(R.id.tab_icon_home);
+        tabLatestIcon = findViewById(R.id.tab_icon_latest);
+        tabliveIcon = findViewById(R.id.tab_icon_live);
+        tabPollIcon = findViewById(R.id.tab_icon_polls);
+        tabDiscussionIcon = findViewById(R.id.tab_icon_discussion);
 
-        TABS = getResources().getStringArray(R.array.tab_names);
+        tabHomeTxt = findViewById(R.id.tab_name_home);
+        tabLatestTxt = findViewById(R.id.tab_name_latest);
+        tabliveTxt = findViewById(R.id.tab_name_live);
+        tabPollTxt = findViewById(R.id.tab_name_polls);
+        tabDiscussionTxt = findViewById(R.id.tab_name_discussion);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -86,90 +73,6 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
             }
         });
-
-//        bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//
-//
-//                switchTab(tab.getPosition());
-//
-//
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//
-//                switchTab(tab.getPosition());
-//
-//
-//            }
-//        });
-
-    }
-
-    /*private void initTab() {
-        if (bottomTabLayout != null) {
-            for (int i = 0; i < TABS.length; i++) {
-                bottomTabLayout.addTab(bottomTabLayout.newTab());
-
-                TabLayout.Tab tab = bottomTabLayout.getTabAt(i);
-                if (tab != null)
-                    tab.setCustomView(getTabView(i));
-            }
-        }
-    }*/
-
-    private View getTabView(int position) {
-        View view = LayoutInflater.from(this).inflate(R.layout.tab_item_bottom, null);
-        // icon = (ImageView) view.findViewById(R.id.tab_icon);
-        TextView tabname = (TextView) view.findViewById(R.id.tab_name);
-        icon.setImageResource(mTabIcons[position]);
-        tabname.setText(mTabnames[position]);
-        tabname.setTextColor(getResources().getColorStateList(mTabColor[position]));
-
-        return view;
-    }
-
-
-    private void switchTab(int position) {
-        //   invalidateOptionsMenu();
-        switch (position) {
-            case 0:
-                changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
-
-                break;
-
-            case 1:
-                mTextMessage.setText(R.string.title_latest);
-                changeFragment(LatestFragment.newInstance(), LatestFragment.TAG);
-
-                break;
-            case 2:
-                mTextMessage.setText(R.string.title_live_scores);
-
-                changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
-
-                break;
-            case 3:
-                mTextMessage.setText(R.string.title_poll);
-
-                changeFragment(PollFragment.newInstance(), PollFragment.TAG);
-                break;
-            case 4:
-                mTextMessage.setText(R.string.title_discussion);
-
-                changeFragment(DiscussionFragment.newInstance(), DiscussionFragment.TAG);
-                break;
-
-        }
-//        updateToolbarTitle(position);
     }
 
     @Override
@@ -280,33 +183,130 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         switch (view.getId()) {
 
             case R.id.home_lay: {
+                homeSelected();
                 changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
                 break;
             }
 
             case R.id.latest_lay: {
+
+                latestSelected();
                 mTextMessage.setText(R.string.title_latest);
                 changeFragment(LatestFragment.newInstance(), LatestFragment.TAG);
                 break;
             }
 
             case R.id.live_scores_lay:
-                mTextMessage.setText(R.string.title_live_scores);
 
+                liveSelected();
+                mTextMessage.setText(R.string.title_live_scores);
                 changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
 
                 break;
             case R.id.polls_lay:
-                mTextMessage.setText(R.string.title_poll);
 
+                pollsSelected();
+                mTextMessage.setText(R.string.title_poll);
                 changeFragment(PollFragment.newInstance(), PollFragment.TAG);
                 break;
             case R.id.discussion_lay:
-                mTextMessage.setText(R.string.title_discussion);
 
+                discussionSelected();
+                mTextMessage.setText(R.string.title_discussion);
                 changeFragment(DiscussionFragment.newInstance(), DiscussionFragment.TAG);
                 break;
 
         }
+    }
+
+
+    private void homeSelected() {
+        tabHomeIcon.setSelected(true);
+        tabHomeTxt.setSelected(true);
+
+        tabLatestIcon.setSelected(false);
+        tabLatestTxt.setSelected(false);
+
+        tabliveIcon.setSelected(false);
+        tabliveTxt.setSelected(false);
+
+        tabPollIcon.setSelected(false);
+        tabPollIcon.setSelected(false);
+
+        tabDiscussionIcon.setSelected(false);
+        tabDiscussionTxt.setSelected(false);
+    }
+
+    private void latestSelected() {
+        tabHomeIcon.setSelected(false);
+        tabHomeTxt.setSelected(false);
+
+        tabLatestIcon.setSelected(true);
+        tabLatestTxt.setSelected(true);
+
+        tabliveIcon.setSelected(false);
+        tabliveTxt.setSelected(false);
+
+        tabPollIcon.setSelected(false);
+        tabPollIcon.setSelected(false);
+
+        tabDiscussionIcon.setSelected(false);
+        tabDiscussionTxt.setSelected(false);
+    }
+
+    private void liveSelected() {
+        tabHomeIcon.setSelected(false);
+        tabHomeTxt.setSelected(false);
+
+        tabLatestIcon.setSelected(false);
+        tabLatestTxt.setSelected(false);
+
+        tabliveIcon.setSelected(true);
+        tabliveTxt.setSelected(true);
+
+        tabPollIcon.setSelected(false);
+        tabPollIcon.setSelected(false);
+
+        tabDiscussionIcon.setSelected(false);
+        tabDiscussionTxt.setSelected(false);
+    }
+
+    private void pollsSelected() {
+        tabHomeIcon.setSelected(false);
+        tabHomeTxt.setSelected(false);
+
+        tabLatestIcon.setSelected(false);
+        tabLatestTxt.setSelected(false);
+
+        tabliveIcon.setSelected(false);
+        tabliveTxt.setSelected(false);
+
+        tabPollIcon.setSelected(true);
+        tabPollIcon.setSelected(true);
+
+        tabDiscussionIcon.setSelected(false);
+        tabDiscussionTxt.setSelected(false);
+    }
+
+    private void discussionSelected() {
+        tabHomeIcon.setSelected(false);
+        tabHomeTxt.setSelected(false);
+
+        tabLatestIcon.setSelected(false);
+        tabLatestTxt.setSelected(false);
+
+        tabliveIcon.setSelected(false);
+        tabliveTxt.setSelected(false);
+
+        tabPollIcon.setSelected(false);
+        tabPollIcon.setSelected(false);
+
+        tabDiscussionIcon.setSelected(true);
+        tabDiscussionTxt.setSelected(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

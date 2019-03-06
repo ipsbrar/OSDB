@@ -23,7 +23,7 @@
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 app:shimmer_animation_duration="1200">
-            <include layout="@layout/demo_layout_shimmer"/>
+            <include layout="@layout/events_shimmer_view"/>
         </io.supercharge.shimmerlayout.ShimmerLayout>
 
 
