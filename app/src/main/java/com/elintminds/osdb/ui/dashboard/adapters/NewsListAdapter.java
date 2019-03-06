@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.view.DashboardView;
+import com.elintminds.osdb.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -43,8 +44,11 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
         NewsAdapterBean.Datum item = dataList.get(i);
         if (item.getImageUrl()!=null && !item.getImageUrl().equals(""))
             Glide.with(context).load(item.getImageUrl()).into(holder.newsPreviewImage);
-        if (item.getTitle()!=null)
-        holder.newsTitle.setText(item.getTitle());
+        if (item.getTitle()!=null){
+            holder.newsTitle.setText(item.getTitle());
+            Utils.justify(holder.newsTitle);
+        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.elintminds.osdb.ui.detailview.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,9 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.utils.Utils;
 
 public class DetailActivity extends BaseActivity {
 
@@ -24,8 +27,9 @@ public class DetailActivity extends BaseActivity {
     private Menu collapsedMenu;
     private boolean appBarExpanded = true;
     private ImageView image;
-    private TextView header_txt,detail_txt;
-    String headerText,longText,imgUrl;
+    private TextView header_txt, detail_txt;
+    private String headerText, longText, imgUrl;
+    private ImageView locButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,22 +37,26 @@ public class DetailActivity extends BaseActivity {
         setContentView(R.layout.activity_detail);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
-        image=findViewById(R.id.image);
-        header_txt=findViewById(R.id.header_txt);
-        detail_txt=findViewById(R.id.detail_txt);
+        image = findViewById(R.id.image);
+        header_txt = findViewById(R.id.header_txt);
+        detail_txt = findViewById(R.id.detail_txt);
 
 
-        if (getIntent()!=null){
+        if (getIntent() != null) {
             imgUrl = getIntent().getStringExtra("imgUrl");
             headerText = getIntent().getStringExtra("title");
             longText = getIntent().getStringExtra("bigContent");
 
-            if (imgUrl!=null)
+            if (imgUrl != null)
                 Glide.with(this).load(imgUrl).into(image);
-            if (headerText!=null)
+            if (headerText != null) {
                 header_txt.setText(headerText);
-            if (longText!=null)
+                Utils.justify(header_txt);
+            }
+            if (longText != null) {
                 detail_txt.setText(Html.fromHtml(longText).toString());
+//                Utils.justify(detail_txt);
+            }
 
         }
 
@@ -79,16 +87,21 @@ public class DetailActivity extends BaseActivity {
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                Log.e("OFFSET", "onOffsetChanged: verticalOffset: " + verticalOffset);
+                Log.e("OFFSET", "onOffsetChanged: verticalOffset: " + Math.abs(verticalOffset));
 
                 //  Vertical offset == 0 indicates appBar is fully expanded.
-                if (Math.abs(verticalOffset) > 0) {
+
+                if (Math.abs(verticalOffset) > 270) {
                     appBarExpanded = false;
                     toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back_black));
+                    if (locButton != null)
+                        locButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_share_black));
                     invalidateOptionsMenu();
                 } else {
                     appBarExpanded = true;
                     toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
+                    if (locButton != null)
+                        locButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_share));
                     invalidateOptionsMenu();
                 }
             }
@@ -97,16 +110,20 @@ public class DetailActivity extends BaseActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+
         if (collapsedMenu != null
                 && (!appBarExpanded || collapsedMenu.size() != 1)) {
+
+            locButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_share_black));
             //collapsed
-            collapsedMenu.add("Share")
-                    .setIcon(R.drawable.ic_share_black)
-                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+//            collapsedMenu.add("")
+//                    .setIcon(R.drawable.ic_share_black)
+//                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         } else {
 //            collapsedMenu.add("Share")
 //                    .setIcon(R.drawable.ic_share)
 //                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            locButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_share));
         }
         return super.onPrepareOptionsMenu(collapsedMenu);
     }
@@ -115,12 +132,27 @@ public class DetailActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         collapsedMenu = menu;
+        locButton = (ImageView) menu.findItem(R.id.action_settings).getActionView();
+        locButton.setPadding(30, 0, 30, 0);
+locButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("*/*");
+        startActivity(Intent.createChooser(sharingIntent, "Share  using"));
+    }
+});
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+        if (item.getItemId() == R.id.action_settings) {
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("*/*");
+            startActivity(Intent.createChooser(sharingIntent, "Share  using"));
+            return true;
+        }else
         return super.onOptionsItemSelected(item);
     }
 

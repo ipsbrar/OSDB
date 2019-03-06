@@ -50,7 +50,6 @@
                 android:maxLines="5"
                 android:fontFamily="@font/rubik_regular"
                 android:text="@string/sample_text_5"
-                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"

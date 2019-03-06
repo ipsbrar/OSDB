@@ -24,6 +24,7 @@ import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.presenter.NewsFragmentPresenterClass;
 import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.utils.CardPaddingItemDecoration;
+import com.elintminds.osdb.utils.Utils;
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
 import java.util.ArrayList;
@@ -141,10 +142,14 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         if (newsList.getBreakingNews().size()>0){
             if (newsList.getBreakingNews().get(0).getImageUrl() != null && !newsList.getBreakingNews().get(0).getImageUrl().equals(""))
                 Glide.with(getActivity()).load(newsList.getBreakingNews().get(0).getImageUrl());
-            if (newsList.getBreakingNews().get(0).getTitle() != null)
+            if (newsList.getBreakingNews().get(0).getTitle() != null) {
                 news_title.setText(newsList.getBreakingNews().get(0).getTitle());
-            //if (newsList.getBreakingNews().get(0).getTitle() != null)
+                Utils.justify(news_title);
+            }
+            //if (newsList.getBreakingNews().get(0).getTitle() != null){
             //    news_frag_game_name.setText(newsList.getBreakingNews().get(0).getTitle());
+            //    Utils.justify(news_frag_game_name);
+            // }
             imgUrl = (String) newsList.getBreakingNews().get(0).getImageUrl();
             title = newsList.getBreakingNews().get(0).getTitle();
             bigContent = newsList.getBreakingNews().get(0).getLongContent();

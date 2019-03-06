@@ -27,6 +27,7 @@ import com.elintminds.osdb.ui.dashboard.presenter.HomeFragmentPresenterClass;
 import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.ui.do_you_know.view.DoYouKnowActivity;
 import com.elintminds.osdb.ui.particular_sport_screen.view.SportsActivity;
+import com.elintminds.osdb.utils.Utils;
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
 import java.text.SimpleDateFormat;
@@ -44,13 +45,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private SportsListAdapter sportsListAdapter;
     private BornTodayAdapter bornTodayAdapter;
     //    private HomeListAdapter homeListAdapter;
-    private ShimmerLayout shimmer_breaking_news,shimmer_do_you_know;
+    private ShimmerLayout shimmer_breaking_news, shimmer_do_you_know;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
     private ArrayList<BornTodayAdapterBean> bornTodayList = new ArrayList<>();
     private HomeFragmentPresenterClass homeFragmentPresenterClass;
     private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_5_msg_text;
     private ImageView view_1_image, view_5_image;
-    private RelativeLayout rl_breaking_news,rl_do_you_know;
+    private RelativeLayout rl_breaking_news, rl_do_you_know;
     private NewsAdapterBean.BreakingNews breakingNewsFrag;
     private DoYouKnow doYouKnow;
 
@@ -61,7 +62,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_fragment_view, container, false);
+        View view = inflater.inflate(R.layout.home_fragment_view, container, false);
+        Log.e("Fragment___LifeCycle", "onCreate");
+        return view;
     }
 
     @Override
@@ -87,7 +90,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         shimmer_breaking_news.setVisibility(View.VISIBLE);
         shimmer_breaking_news.startShimmerAnimation();
 
-        shimmer_do_you_know=view.findViewById(R.id.shimmer_do_you_know);
+        shimmer_do_you_know = view.findViewById(R.id.shimmer_do_you_know);
         rl_do_you_know = view.findViewById(R.id.rl_do_you_know);
         rl_do_you_know.setVisibility(View.GONE);
         shimmer_do_you_know.setVisibility(View.VISIBLE);
@@ -141,14 +144,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getBreakingNews(ArrayList<NewsAdapterBean.BreakingNews> breakingNews) {
-        Log.e("getBreakingNewWorking","Breaking News Working");
-        if (breakingNews.size()>0) {
+        Log.e("getBreakingNewWorking", "Breaking News Working");
+        if (breakingNews.size() > 0) {
             breakingNewsFrag = breakingNews.get(0);
             if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
                 Glide.with(getActivity()).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
 
             if (breakingNewsFrag.getTitle() != null) {
                 view_1_msg_text.setText(breakingNewsFrag.getTitle());
+                Utils.justify(view_1_msg_text);
             }
         }
         shimmer_breaking_news.stopShimmerAnimation();
@@ -159,16 +163,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getError(String error) {
-Log.e("HomeFragmentError===  ",error.toString());
+        Log.e("HomeFragmentError===  ", error.toString());
     }
 
     @Override
     public void getDoYouKnow(ArrayList<DoYouKnow> doYouKnows) {
-        if (doYouKnows.size()>0) {
+        if (doYouKnows.size() > 0) {
             doYouKnow = doYouKnows.get(0);
 
             if (doYouKnow.getContent() != null)
                 view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
+            Utils.justify(view_5_msg_text);
         }
         shimmer_do_you_know.stopShimmerAnimation();
         shimmer_do_you_know.setVisibility(View.GONE);
@@ -202,9 +207,9 @@ Log.e("HomeFragmentError===  ",error.toString());
 //            intent.putExtra("timeStamp", timeStamp);
                     startActivity(intent);
                 }
-
+                break;
             }
-            case R.id.rl_do_you_know:{
+            case R.id.rl_do_you_know: {
                 if (breakingNewsFrag != null) {
                     Intent intent = new Intent(context, DoYouKnowActivity.class);
 //                    intent.putExtra("imgUrl", (String) breakingNewsFrag.getImageUrl());
@@ -215,6 +220,7 @@ Log.e("HomeFragmentError===  ",error.toString());
 //            intent.putExtra("timeStamp", timeStamp);
                     startActivity(intent);
                 }
+                break;
             }
         }
     }
