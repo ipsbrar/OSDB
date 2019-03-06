@@ -305,5 +305,8 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         tabDiscussionTxt.setSelected(true);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

@@ -21,6 +21,7 @@ import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.adapters.BornTodayAdapter;
 import com.elintminds.osdb.ui.dashboard.adapters.SportsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.*;
+import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor;
 import com.elintminds.osdb.ui.dashboard.presenter.HomeFragmentPresenterClass;
 import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.ui.do_you_know.view.DoYouKnowActivity;
@@ -44,12 +45,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private ShimmerLayout shimmer_breaking_news, shimmer_do_you_know;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
     private ArrayList<BornTodayAdapterBean> bornTodayList = new ArrayList<>();
-    private HomeFragmentPresenterClass homeFragmentPresenterClass;
+    private HomeFragmentPresenterClass<HomeFragment, com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor> homeFragmentPresenterClass;
     private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_5_msg_text;
     private ImageView view_1_image, view_5_image;
     private RelativeLayout rl_breaking_news, rl_do_you_know;
     private NewsAdapterBean.BreakingNews breakingNewsFrag;
     private DoYouKnow doYouKnow;
+    View view;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -58,13 +60,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.home_fragment_view, container, false);
     }
 
     @Override
     protected void setUp(View view) {
         context = getContext();
-        homeFragmentPresenterClass = new HomeFragmentPresenterClass(getActivity(), this);
+        homeFragmentPresenterClass = new HomeFragmentPresenterClass<HomeFragment, HomeFragmentInteractor>(getActivity(), this);
 
         sportsRecyclerView = view.findViewById(R.id.sportsList);
         bornTodayRecyclerView = view.findViewById(R.id.born_today_recycler);
@@ -183,6 +186,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         Log.e("Date", "" + date);
 
         return date;
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.e("Destroy", "Call");
     }
 
     @Override
