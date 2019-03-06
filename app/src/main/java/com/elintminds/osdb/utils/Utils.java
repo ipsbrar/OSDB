@@ -38,7 +38,7 @@ public class Utils {
         Drawable state_pressed = ContextCompat.getDrawable(context, selected);
 
 
-        Bitmap state_normal_bitmap = ((BitmapDrawable)state_normal).getBitmap();
+        Bitmap state_normal_bitmap = ((BitmapDrawable) state_normal).getBitmap();
 
         // Setting alpha directly just didn't work, so we draw a new bitmap!
         Bitmap disabledBitmap = Bitmap.createBitmap(
@@ -53,8 +53,6 @@ public class Utils {
         BitmapDrawable state_normal_drawable = new BitmapDrawable(context.getResources(), disabledBitmap);
 
 
-
-
         StateListDrawable drawable = new StateListDrawable();
 
         drawable.addState(new int[]{android.R.attr.state_selected},
@@ -65,76 +63,81 @@ public class Utils {
         return drawable;
     }
 
-    public static void showHidePass(EditText editText, boolean isShown)
-    {
-        if(isShown) {
+    public static void showHidePass(EditText editText, boolean isShown) {
+        if (isShown) {
             editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        }else {
+        } else {
             editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
         }
     }
 
     public static void justify(final TextView textView) {
 
-        final AtomicBoolean isJustify = new AtomicBoolean(false);
+        if (textView.getText().toString().trim() != null) {
+            if (!textView.getText().toString().trim().equalsIgnoreCase("")) {
 
-        final String textString = textView.getText().toString();
 
-        final TextPaint textPaint = textView.getPaint();
+                final AtomicBoolean isJustify = new AtomicBoolean(false);
 
-        final SpannableStringBuilder builder = new SpannableStringBuilder();
+                final String textString = textView.getText().toString();
 
-        textView.post(new Runnable() {
-            @Override
-            public void run() {
+                final TextPaint textPaint = textView.getPaint();
 
-                if (!isJustify.get()) {
+                final SpannableStringBuilder builder = new SpannableStringBuilder();
 
-                    final int lineCount = textView.getLineCount();
-                    final int textViewWidth = textView.getWidth();
+                textView.post(new Runnable() {
+                    @Override
+                    public void run() {
 
-                    for (int i = 0; i < lineCount; i++) {
+                        if (!isJustify.get()) {
 
-                        int lineStart = textView.getLayout().getLineStart(i);
-                        int lineEnd = textView.getLayout().getLineEnd(i);
+                            final int lineCount = textView.getLineCount();
+                            final int textViewWidth = textView.getWidth();
 
-                        String lineString = textString.substring(lineStart, lineEnd);
+                            for (int i = 0; i < lineCount; i++) {
 
-                        if (i == lineCount - 1) {
-                            builder.append(new SpannableString(lineString));
-                            break;
-                        }
+                                int lineStart = textView.getLayout().getLineStart(i);
+                                int lineEnd = textView.getLayout().getLineEnd(i);
 
-                        String trimSpaceText = lineString.trim();
-                        String removeSpaceText = lineString.replaceAll(" ", "");
+                                String lineString = textString.substring(lineStart, lineEnd);
 
-                        float removeSpaceWidth = textPaint.measureText(removeSpaceText);
-                        float spaceCount = trimSpaceText.length() - removeSpaceText.length();
+                                if (i == lineCount - 1) {
+                                    builder.append(new SpannableString(lineString));
+                                    break;
+                                }
 
-                        float eachSpaceWidth = (textViewWidth - removeSpaceWidth) / spaceCount;
+                                String trimSpaceText = lineString.trim();
+                                String removeSpaceText = lineString.replaceAll(" ", "");
 
-                        SpannableString spannableString = new SpannableString(lineString);
-                        for (int j = 0; j < trimSpaceText.length(); j++) {
-                            char c = trimSpaceText.charAt(j);
-                            if (c == ' ') {
-                                Drawable drawable = new ColorDrawable(0x00ffffff);
-                                drawable.setBounds(0, 0, (int) eachSpaceWidth, 0);
-                                ImageSpan span = new ImageSpan(drawable);
-                                spannableString.setSpan(span, j, j + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                float removeSpaceWidth = textPaint.measureText(removeSpaceText);
+                                float spaceCount = trimSpaceText.length() - removeSpaceText.length();
+
+                                float eachSpaceWidth = (textViewWidth - removeSpaceWidth) / spaceCount;
+
+                                SpannableString spannableString = new SpannableString(lineString);
+                                for (int j = 0; j < trimSpaceText.length(); j++) {
+                                    char c = trimSpaceText.charAt(j);
+                                    if (c == ' ') {
+                                        Drawable drawable = new ColorDrawable(0x00ffffff);
+                                        drawable.setBounds(0, 0, (int) eachSpaceWidth, 0);
+                                        ImageSpan span = new ImageSpan(drawable);
+                                        spannableString.setSpan(span, j, j + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                    }
+                                }
+
+                                builder.append(spannableString);
                             }
+
+                            textView.setText(builder);
+                            isJustify.set(true);
                         }
-
-                        builder.append(spannableString);
                     }
-
-                    textView.setText(builder);
-                    isJustify.set(true);
-                }
+                });
             }
-        });
+        }
     }
 
-    public static void showReportPopupMenu(Context context,View v) {
+    public static void showReportPopupMenu(Context context, View v) {
 
         PopupMenu popupMenu = new PopupMenu(context, v);
 
@@ -143,7 +146,7 @@ public class Utils {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_report:
-                        Log.e("item","Clicked");
+                        Log.e("item", "Clicked");
                         return true;
                     default:
                         return false;
@@ -153,6 +156,7 @@ public class Utils {
         popupMenu.inflate(R.menu.report);
         popupMenu.show();
     }
+
     public static void setVectorForPreLollipop(TextView textView, int resourceId, Context activity, int position) {
         Drawable icon;
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {

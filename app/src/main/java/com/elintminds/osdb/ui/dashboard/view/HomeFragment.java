@@ -26,13 +26,11 @@ import com.elintminds.osdb.ui.dashboard.presenter.HomeFragmentPresenterClass;
 import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.ui.do_you_know.view.DoYouKnowActivity;
 import com.elintminds.osdb.ui.particular_sport_screen.view.SportsActivity;
+import com.elintminds.osdb.utils.Utils;
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener, DashboardView.SportsAdapterItemClickListener, HomeFragmentView {
     public static final String TAG = "HomeFragment";
@@ -62,6 +60,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.home_fragment_view, container, false);
+
     }
 
     @Override
@@ -145,10 +144,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         if (breakingNews.size() > 0) {
             breakingNewsFrag = breakingNews.get(0);
             if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
-                Glide.with(getActivity()).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
+                Glide.with(Objects.requireNonNull(getActivity())).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
 
             if (breakingNewsFrag.getTitle() != null) {
                 view_1_msg_text.setText(breakingNewsFrag.getTitle());
+                Utils.justify(view_1_msg_text);
             }
         }
         shimmer_breaking_news.stopShimmerAnimation();
@@ -159,7 +159,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getError(String error) {
-        Log.e("HomeFragmentError===  ", error.toString());
+        Log.e("HomeFragmentError===  ", error);
     }
 
     @Override
@@ -169,6 +169,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
             if (doYouKnow.getContent() != null)
                 view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
+            Utils.justify(view_5_msg_text);
         }
         shimmer_do_you_know.stopShimmerAnimation();
         shimmer_do_you_know.setVisibility(View.GONE);
@@ -178,7 +179,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private String getCurrentDate() {
         SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        String date = null;
+        String date;
 
         Date currDate = Calendar.getInstance().getTime();
         date = spf.format(currDate);
@@ -209,7 +210,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 //            intent.putExtra("timeStamp", timeStamp);
                     startActivity(intent);
                 }
-
+                break;
             }
             case R.id.rl_do_you_know: {
                 if (breakingNewsFrag != null) {
@@ -222,6 +223,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 //            intent.putExtra("timeStamp", timeStamp);
                     startActivity(intent);
                 }
+                break;
             }
         }
     }

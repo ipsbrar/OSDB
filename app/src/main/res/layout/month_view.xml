@@ -33,12 +33,18 @@
                 android:text="@string/tuesday"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/rubik_medium"
+                android:textColor="@color/color_9FA2A4"
+                android:textSize="@dimen/sp_12"
                 android:gravity="center"
         />
         <TextView
                 android:text="@string/wednesday"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/rubik_medium"
+                android:textColor="@color/color_9FA2A4"
+                android:textSize="@dimen/sp_12"
                 android:gravity="center"
         />
         <TextView
@@ -81,13 +87,13 @@
     />
     <TextView
             android:id="@+id/label_month"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom|center"
             android:text="Label"
+            android:layout_gravity="center_horizontal"
             android:layout_centerHorizontal="true"
-            android:layout_alignLeft="@id/weeks_container"
-            android:layout_alignStart="@id/weeks_container"
+            android:fontFamily="@font/rubik_medium"
             android:textSize="14sp"
     />
 

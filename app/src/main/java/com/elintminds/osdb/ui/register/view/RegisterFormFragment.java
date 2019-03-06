@@ -1,9 +1,11 @@
 package com.elintminds.osdb.ui.register.view;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,7 @@ import com.elintminds.osdb.ui.login.view.LoginActivity;
 
 public class RegisterFormFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = "RegisterFormFragment";
-    private TextView continueBtn;
+    private TextView continueBtn,txt_term_3;
     private RegisterActivity activity;
     private TextView signinTab;
     private EditText userNameEt, emailEt, phoneNumEt;
@@ -38,7 +40,12 @@ public class RegisterFormFragment extends BaseFragment implements View.OnClickLi
         userNameEt = view.findViewById(R.id.signup_name_et);
         emailEt = view.findViewById(R.id.signup_email_et);
         phoneNumEt = view.findViewById(R.id.signup_phn_et);
+        txt_term_3 = view.findViewById(R.id.txt_term_3);
 
+
+//        underline and color the text of term and condition
+        String text = "<u><font color=\"#0000FF\">Terms & Conditions</font></u>";
+        txt_term_3.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
         continueBtn.setOnClickListener(this);
         signinTab.setOnClickListener(this);
     }
