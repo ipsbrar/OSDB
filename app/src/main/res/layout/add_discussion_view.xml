@@ -50,11 +50,13 @@
     />
 
 
-    <EditText android:layout_width="match_parent"
+    <com.elintminds.osdb.utils.CustomEditText
+            android:layout_width="match_parent"
               android:layout_height="350dp"
               android:background="#0000"
               android:textColor="@color/color_black"
               android:gravity="top"
+            android:id="@+id/txt_add_comment"
               android:textColorHint="@color/color_D8D8D8"
               android:layout_marginTop="@dimen/dp_10"
               android:padding="@dimen/dp_20"

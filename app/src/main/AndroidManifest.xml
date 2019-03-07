@@ -89,7 +89,7 @@
         <activity android:name=".ui.discussion_comments.view.DiscussionCommentsActivity"/>
         <activity
                 android:name=".ui.add_edit_discussion.view.AddEditDiscussionActivity"
-                android:windowSoftInputMode="stateAlwaysVisible|adjustPan|adjustResize"/>
+                android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.settings.view.SettingsActivity"/>
         <activity android:name=".ui.profile.view.ProfileActivity"/>
         <activity android:name=".ui.profile.view.NotificationActivity"/>
