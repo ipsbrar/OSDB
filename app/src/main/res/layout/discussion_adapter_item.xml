@@ -52,12 +52,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_171717"
                 android:textSize="16sp"
+
                 android:layout_marginTop="@dimen/dp_5"
                 android:layout_below="@+id/player_name"
                 android:layout_marginRight="10dp"
-                android:text="@string/lorem"
+                android:text="@string/delete_photo"
                 android:fontFamily="@font/rubik_regular"
-                tools:targetApi="jelly_bean"/>
+               />
 
     </RelativeLayout>
 
