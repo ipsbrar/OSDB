@@ -100,8 +100,8 @@ public class AppPreferenceHelperClass implements PreferenceHelper {
         editor.remove(USER_CREDENTIALS);
         editor.remove(LOGIN_STR);
         editor.remove(USER_ID);
-        editor.remove(LOGIN_STR);
         editor.remove(TOKEN);
+        editor.remove(PREF_STORAGE_TYPE);
         editor.commit();
     }
 

@@ -47,7 +47,7 @@
     <string name="name">Name</string>
     <string name="sign_up_to_osdb">Sign up to OSDB</string>
     <string name="register_form_subtext">Please fill the fields below to continue.</string>
-    <string name="form_terms_line"><![CDATA[By continuing you’re accepting \n]]></string>
+    <string name="form_terms_line"><![CDATA[By continuing you’re accepting]]></string>
     <string name="protect_your_account">Protect your account</string>
     <string name="register_password_subtext">Add a password to keep your account safe.</string>
     <string name="password_min_8_characters">Password (Min. 8 Characters)</string>
