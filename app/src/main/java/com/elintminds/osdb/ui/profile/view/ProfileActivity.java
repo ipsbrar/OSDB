@@ -208,8 +208,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             if (resultCode == Activity.RESULT_OK) {
 
 
-
-           /*     if (imagePathNew != null) {
+                if (imagePathNew != null) {
                     bm = AppConstants.decodeBitmapFromSDCard(imagePathNew, 200, 200);
                     int rotation = AppConstants.rotationAngle(imagePathNew);
                     if (rotation != 0) {
@@ -221,13 +220,19 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                             bm = rotatedBitmap;
                     }
 
-                }*/
+                }
 
                 if (bm != null) {
                     Uri imgUri = AppConstants.getImageUri(this, bm);
                     File finalFile = new File(AppConstants.getRealPathFromURI(this, imgUri));
                     Log.e("path image", "" + finalFile);
-                    profImg.setImageBitmap(bm);
+                    try {
+                        Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), imgUri);
+                        Log.e("path image", "" + finalFile);
+                        profImg.setImageBitmap(bitmapImage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             } }else if (requestCode == PIC_FROM_GALLERY) {

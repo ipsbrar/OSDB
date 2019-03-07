@@ -19,4 +19,8 @@ public interface BaseDialogView extends BaseView
         void deleteImg();
         void editProfileClick();
     }
+
+    interface ConfirmationDialogListener{
+        void onConfirmOkClick(int dialogId);
+    }
 }

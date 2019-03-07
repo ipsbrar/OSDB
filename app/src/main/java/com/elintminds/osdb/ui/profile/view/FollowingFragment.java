@@ -59,7 +59,16 @@ public class FollowingFragment extends BaseFragment {
             itemBean.setSearchName(searchItem);
             dataList.add(itemBean);
         }
-
+        itemBean = new SearchBean();
+        itemBean.setSearchType(SearchAdapter.HEADING_TYPE);
+        itemBean.setSearchName("Team");
+        dataList.add(itemBean);
+        for (String searchItem : searchSampleData) {
+            itemBean = new SearchBean();
+            itemBean.setSearchType(SearchAdapter.ITEM_TYPE);
+            itemBean.setSearchName(searchItem);
+            dataList.add(itemBean);
+        }
         itemBean = new SearchBean();
         itemBean.setSearchType(SearchAdapter.HEADING_TYPE);
         itemBean.setSearchName("Players");
