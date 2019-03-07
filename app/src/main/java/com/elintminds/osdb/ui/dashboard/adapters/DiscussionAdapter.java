@@ -41,9 +41,12 @@ private DiscussionOnClick discussionOnClick;
     @Override
     public void onBindViewHolder(@NonNull DiscussionAdapter.ViewHolder viewHolder, int i) {
 //        Utils.justify(viewHolder.commentTxt);
+
+        String discription=Html.fromHtml(dataList.get(i).getDescription().trim()).toString();
+
         viewHolder.playerName.setText(dataList.get(i).getCreated_by().getName() != null ? dataList.get(i).getCreated_by().getName() :"");
         viewHolder.commentsNumber.setText(dataList.get(i).getComments_count()!= null ? dataList.get(i).getComments_count() :"");
-        viewHolder.commentTxt.setText(dataList.get(i).getDescription() != null ? Html.fromHtml(dataList.get(i).getDescription().trim()): "");
+        viewHolder.commentTxt.setText(dataList.get(i).getDescription() != null ? discription.trim() : "");
 
     }
 

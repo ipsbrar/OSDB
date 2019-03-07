@@ -115,8 +115,12 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
     @Override
     public void getSuccess(DiscussionCommentsBean discussionCommentsBean) {
         player_name.setText(discussionCommentsBean.getCreated_by().getName() != null ? discussionCommentsBean.getCreated_by().getName() : "");
-        comment_txt.setText(discussionCommentsBean.getDescription() != null ? Html.fromHtml(discussionCommentsBean.getDescription()) : "");
         comments_number.setText(discussionCommentsBean.getComments_count() != null ? discussionCommentsBean.getComments_count() : "");
+        if (discussionCommentsBean.getDescription() != null){
+            String discription = Html.fromHtml(discussionCommentsBean.getDescription()).toString();
+            comment_txt.setText(discription.trim());
+        }
+
 
         if (discussionCommentsBean.getComments().size()>0){
             discussionAdapter.setDataList(discussionCommentsBean.getComments());
