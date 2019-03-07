@@ -23,7 +23,12 @@ import com.elintminds.osdb.ui.splash.presenter.DiscussionCommentsPresenterClass;
 import com.elintminds.osdb.ui.splash.view.DiscussionCommentsView;
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class DiscussionCommentsActivity extends BaseActivity implements View.OnClickListener, DiscussionCommentsView, BaseDialogView.ConfirmationDialogListener {
 
@@ -67,7 +72,7 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
             String id = getIntent().getStringExtra("id");
             discussionCommentsPresenterClass = new DiscussionCommentsPresenterClass(this, this);
             discussionCommentsPresenterClass.getDiscussion(id);
-
+            showProgressDialog();
         } else {
             showToast("No Id comes");
         }
@@ -128,15 +133,18 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
     public void getSuccess(DiscussionCommentsBean discussionCommentsBean) {
         player_name.setText(discussionCommentsBean.getCreated_by().getName() != null ? discussionCommentsBean.getCreated_by().getName() : "");
         comments_number.setText(discussionCommentsBean.getComments_count() != null ? discussionCommentsBean.getComments_count() : "");
-        if (discussionCommentsBean.getDescription() != null){
+        if (discussionCommentsBean.getDescription() != null) {
             String discription = Html.fromHtml(discussionCommentsBean.getDescription()).toString();
             comment_txt.setText(discription.trim());
         }
-
+        if (discussionCommentsBean.getUpdated_at() != null) {
+            hours_txt.setText(getFormatedDate(discussionCommentsBean.getUpdated_at()));
+        }
 
         if (discussionCommentsBean.getComments().size() > 0) {
             discussionAdapter.setDataList(discussionCommentsBean.getComments());
         }
+        hideProgressDialog();
         discussionCommentsRecyclerView.hideShimmerAdapter();
 
     }
@@ -146,5 +154,20 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
     public void getError(String error) {
         discussionCommentsRecyclerView.hideShimmerAdapter();
 
+    }
+
+    private String getFormatedDate(String rawDate) {
+        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+        DateFormat targetFormat = new SimpleDateFormat("h:mm a. MMM dd, yyyy");
+//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+
+            Date date = originalFormat.parse(rawDate);
+            String formattedDate = targetFormat.format(date);
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

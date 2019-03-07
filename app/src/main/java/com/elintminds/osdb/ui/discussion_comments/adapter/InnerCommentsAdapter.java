@@ -13,7 +13,10 @@ import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
 import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
 import com.elintminds.osdb.utils.Utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class InnerCommentsAdapter extends RecyclerView.Adapter<InnerCommentsAdapter.ViewHolder> {
     private Context context;
@@ -67,5 +70,19 @@ public class InnerCommentsAdapter extends RecyclerView.Adapter<InnerCommentsAdap
 
 
         }
+    }
+
+    private long getLongTime(String rawDate) {
+        String string_date = rawDate;
+
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+            Date d = f.parse(string_date);
+            long milliseconds = d.getTime();
+            return milliseconds;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0L;
     }
 }

@@ -15,8 +15,12 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
 import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
 import com.elintminds.osdb.ui.discussion_comments.view.DiscussionCommentsActivity;
+import com.elintminds.osdb.utils.Utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCommentsAdapter.ViewHolder> {
     private Context context;
@@ -45,6 +49,13 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
             Log.d("DiscussionAdapter", "onBindViewHolder:    "+comment);
             viewHolder.commentTxt.setText(comment.trim());
         }
+
+        //        Utils.getTimeAgo();
+        long timeInLong = getLongTime(dataList.get(i).getUpdated_at() != null ? dataList.get(i).getUpdated_at() : "2019-02-21 03:24:54");
+//        Log.e("TimeCheckLong","long   "+timeInLong);
+//        String dateFor = Utils.getDate(timeInLong,"yyyy-dd-MM hh:mm:ss");
+//        Log.e("TimeCheckLong","date   "+dateFor);
+        viewHolder.hours_txt.setText(Utils.getTimeAgo(timeInLong));
     }
 
     @Override
@@ -54,7 +65,7 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView playerName;
+        TextView playerName, hours_txt;
         TextView commentTxt;
         RelativeLayout commentMainLay;
 
@@ -63,6 +74,7 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
             super(itemView);
             playerName = itemView.findViewById(R.id.player_name);
             commentTxt = itemView.findViewById(R.id.comment_txt);
+            hours_txt = itemView.findViewById(R.id.hours_txt);
             commentMainLay = itemView.findViewById(R.id.comment_main_lay);
 
             commentMainLay.setOnClickListener(new View.OnClickListener() {
@@ -85,5 +97,19 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
 
         this.dataList = data;
         Log.e("DA LIST",""+dataList.size());
+    }
+
+    private long getLongTime(String rawDate) {
+        String string_date = rawDate;
+
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+            Date d = f.parse(string_date);
+            long milliseconds = d.getTime();
+            return milliseconds;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0L;
     }
 }

@@ -26,9 +26,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Utils {
+
+    private static final int SECOND_MILLIS = 1000;
+    private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;
+    private static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
+    private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
 
     public static Drawable setDrawableSelector(Context context, int normal, int selected) {
 
@@ -186,5 +194,48 @@ public class Utils {
                         icon);
                 break;
         }
+    }
+
+
+    public static String getTimeAgo(long time) {
+        if (time < 1000000000000L) {
+            time *= 1000;
+        }
+
+        Date date = Calendar.getInstance().getTime();
+        long now=date.getTime();
+//        long now = System.currentTimeMillis();
+        if (time > now || time <= 0) {
+            return null;
+        }
+
+
+        final long diff = now - time;
+        if (diff < MINUTE_MILLIS) {
+            return "just now";
+        } else if (diff < 2 * MINUTE_MILLIS) {
+            return "a minute ago";
+        } else if (diff < 50 * MINUTE_MILLIS) {
+            return diff / MINUTE_MILLIS + " minutes ago";
+        } else if (diff < 90 * MINUTE_MILLIS) {
+            return "an hour ago";
+        } else if (diff < 24 * HOUR_MILLIS) {
+            return diff / HOUR_MILLIS + " hours ago";
+        } else if (diff < 48 * HOUR_MILLIS) {
+            return "yesterday";
+        } else {
+            return diff / DAY_MILLIS + " days ago";
+        }
+    }
+
+    public static String getDate(long milliSeconds, String dateFormat)
+    {
+        // Create a DateFormatter object for displaying date in specified format.
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+
+        // Create a calendar object that will convert the date and time value in milliseconds to date.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(milliSeconds);
+        return formatter.format(calendar.getTime());
     }
 }
