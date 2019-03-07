@@ -55,8 +55,8 @@
             android:id="@+id/et_lay" android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view">
-        <EditText
-                android:id="@+id/add_discussion_et"
+        <com.elintminds.osdb.utils.CustomEditText
+                android:id="@+id/txt_add_comment"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:background="#0000"
@@ -68,7 +68,7 @@
                 android:fontFamily="@font/rubik_regular"
                 android:hint="@string/add_your_discussion">
             <requestFocus/>
-        </EditText>
+        </com.elintminds.osdb.utils.CustomEditText>
     </RelativeLayout>
 
     <TextView
