@@ -147,8 +147,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 Glide.with(Objects.requireNonNull(getActivity())).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
 
             if (breakingNewsFrag.getTitle() != null) {
+                Log.e("getBreakingNewWorking","title    "+breakingNewsFrag.getTitle());
                 view_1_msg_text.setText(breakingNewsFrag.getTitle());
-                Utils.justify(view_1_msg_text);
+//                Utils.justify(view_1_msg_text);
             }
         }
         shimmer_breaking_news.stopShimmerAnimation();

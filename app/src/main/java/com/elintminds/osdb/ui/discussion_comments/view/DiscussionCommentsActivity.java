@@ -152,6 +152,7 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
     @NotNull
     @Override
     public void getError(String error) {
+        hideProgressDialog();
         discussionCommentsRecyclerView.hideShimmerAdapter();
 
     }
