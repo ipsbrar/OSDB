@@ -38,7 +38,7 @@
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot password?</string>
-    <string name="forgot_password_sub_heading">We will send password \nreset instructions on you email.</string>
+    <string name="forgot_password_sub_heading">We will send password reset\ninstructions on you email.</string>
     <string name="password_min_8">PASSWORD(MIN. 8 CHARACTERS)</string>
     <string name="conf_pass">CONFIRM PASSWORD</string>
     <string name="cont_n">Continue</string>
@@ -47,7 +47,7 @@
     <string name="name">Name</string>
     <string name="sign_up_to_osdb">Sign up to OSDB</string>
     <string name="register_form_subtext">Please fill the fields below to continue.</string>
-    <string name="form_terms_line"><![CDATA[By continuing you’re accepting \n the OSDB Terms & Conditions]]></string>
+    <string name="form_terms_line"><![CDATA[By continuing you’re accepting \n]]></string>
     <string name="protect_your_account">Protect your account</string>
     <string name="register_password_subtext">Add a password to keep your account safe.</string>
     <string name="password_min_8_characters">Password (Min. 8 Characters)</string>
