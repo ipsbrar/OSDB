@@ -1,57 +1,63 @@
 package com.elintminds.osdb.ui.add_edit_discussion.view;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.ui.login.view.LoginActivity;
+import com.elintminds.osdb.ui.register.view.RegisterActivity;
+import com.elintminds.osdb.utils.CustomEditText;
 
 public class AddEditDiscussionActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView addDiscussionBtn;
     private ImageView backImg;
-    private EditText addDiscussionEt;
-
+private CustomEditText customEditText;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_discussion_view);
 
         initializeViews();
     }
 
-    private void initializeViews() {
+    private void initializeViews()
+    {
         addDiscussionBtn = findViewById(R.id.add_btn);
-        addDiscussionEt = findViewById(R.id.add_discussion_et);
         backImg = findViewById(R.id.backImg);
-        addDiscussionEt.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+        customEditText = findViewById(R.id.txt_add_comment);
 
-                Log.e("KEYEVENT",keyCode+"");
-                if (event.getAction() == KeyEvent.KEYCODE_BACK) {
-                    finish();
-                } else if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    finish();
-                } else {
+        customEditText.setKeyImeChangeListener(new CustomEditText.KeyImeChange() {
+            @Override
+            public void onKeyIme(int keyCode, KeyEvent event) {
+                if (KeyEvent.KEYCODE_BACK == event.getKeyCode())
+                {
+                    // do something
+                    Log.e("AddDiscussion_activity","KeyEvent");
                     finish();
                 }
-                return false;
             }
-
         });
-        addDiscussionBtn.setOnClickListener(this);
 
+        addDiscussionBtn.setOnClickListener(this);
+        backImg.setOnClickListener(this);
 
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
             case R.id.add_btn:
                 finish();
                 break;
@@ -65,7 +71,19 @@ public class AddEditDiscussionActivity extends BaseActivity implements View.OnCl
 
     @Override
     public void onBackPressed() {
+        Log.e("AddDiscussion_activity","onBackPressed");
+        super.onBackPressed();
         finish();
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Checks whether a hardware keyboard is available
+        if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
+            Toast.makeText(this, "keyboard visible", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
+            Toast.makeText(this, "keyboard hidden", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
