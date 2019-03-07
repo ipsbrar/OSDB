@@ -39,8 +39,12 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
     public void onBindViewHolder(@NonNull DiscussionCommentsAdapter.ViewHolder viewHolder, int i) {
 
 //        Utils.justify(viewHolder.commentTxt);
-        viewHolder.playerName.setText(dataList.get(i).getCreated_by().getName());
-        viewHolder.commentTxt.setText(Html.fromHtml(dataList.get(i).getComment()));
+        viewHolder.playerName.setText(dataList.get(i).getCreated_by().getName() !=null ?dataList.get(i).getCreated_by().getName() : "");
+        if (dataList.get(i).getComment() != null) {
+            String comment = Html.fromHtml(dataList.get(i).getComment().trim()).toString();
+            Log.d("DiscussionAdapter", "onBindViewHolder:    "+comment);
+            viewHolder.commentTxt.setText(comment.trim());
+        }
     }
 
     @Override

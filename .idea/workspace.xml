@@ -3073,9 +3073,9 @@
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="device.picker.selection" value="Nexus_5X_API_27" />
+    <property name="device.picker.selection" value="KVJFIR5LPVORPFNJ" />
     <property name="format" value="PNG" />
-    <property name="lastFolderRoot" value="$USER_HOME$/Desktop/OSDB Games/xhdpi/tennis copy.png" />
+    <property name="lastFolderRoot" value="$PROJECT_DIR$/../../OSDB Games/xhdpi/tennis copy.png" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="method" value="Automatic" />

@@ -1,8 +1,9 @@
 package com.elintminds.osdb.ui.dashboard.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DiscussionAdapterBean {
+public class DiscussionAdapterBean implements Serializable {
 
     private ArrayList<Threads> threads;
 
@@ -28,7 +29,7 @@ public class DiscussionAdapterBean {
         this.totalCount = totalCount;
     }
     
-    public class Created_by
+    public class Created_by implements Serializable
     {
         private Assets[] assets;
 
@@ -67,7 +68,7 @@ public class DiscussionAdapterBean {
         }
 
     }
-    public class Assets
+    public class Assets implements Serializable
     {
         private String entity_type;
 
@@ -118,7 +119,7 @@ public class DiscussionAdapterBean {
         }
         
     }
-    public class Threads
+    public class Threads implements Serializable
     {
         private String delete_reason;
 
