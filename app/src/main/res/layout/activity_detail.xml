@@ -26,14 +26,47 @@
                     android:src="@drawable/category_img_baseball"
                     app:layout_collapseMode="parallax"
             />
-
             <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    android:theme="@style/AppTheme"
-            />
+                    android:theme="@style/AppTheme">
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:gravity="center_vertical"
+                        android:theme="@style/AppTheme">
+
+                    <ImageView android:id="@+id/shareImg"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_alignParentRight="true"
+                               android:padding="@dimen/dp_10"
+                               android:layout_marginRight="@dimen/dp_5"
+                               android:src="@drawable/ic_share"/>
+
+                    <TextView
+                            android:id="@+id/toolbarTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/news"
+                            android:layout_centerVertical="true"
+                            android:textSize="@dimen/sp_18"
+                            android:textColor="@color/color_black"
+                            android:fontFamily="@font/rubik_medium"
+                            android:layout_centerInParent="true"/>
+                    <ImageView
+                            android:id="@+id/backImg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:padding="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_5"
+                            app:srcCompat="@drawable/ic_back"/>
+
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView

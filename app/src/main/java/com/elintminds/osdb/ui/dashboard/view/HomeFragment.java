@@ -59,8 +59,45 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        Log.e("fragmentLifeCycle_","    onCreateView");
         return inflater.inflate(R.layout.home_fragment_view, container, false);
 
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.e("fragmentLifeCycle_","    onActivityCreated");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.e("fragmentLifeCycle_","    onStart");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.e("fragmentLifeCycle_","    onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e("fragmentLifeCycle_","    onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.e("fragmentLifeCycle_","    onStop");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.e("fragmentLifeCycle_","    onDestroyView");
     }
 
     @Override

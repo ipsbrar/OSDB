@@ -3,8 +3,9 @@ package com.elintminds.osdb.ui.dashboard.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ import com.elintminds.osdb.ui.calendar_screen.view.PollCalendarActivity;
 import com.elintminds.osdb.ui.profile.view.ProfileActivity;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
-import java.util.Objects;
+import java.util.ArrayList;
 
 public class DashboardActivity extends BaseActivity implements DashboardView, View.OnClickListener {
 
@@ -27,10 +28,13 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     private LinearLayout home_lay, latest_lay;
     private String currentFrag = "Home";
     private ImageView homelogo;
+    private ImageView optionMenuImg;
 
     private MenuItem searchItem, calendarItem, addItem;
     private ImageView tabHomeIcon, tabLatestIcon, tabliveIcon, tabPollIcon, tabDiscussionIcon;
     private TextView tabHomeTxt, tabLatestTxt, tabliveTxt, tabPollTxt, tabDiscussionTxt;
+
+    private ArrayList<String> tags = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +46,18 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         //  getSupportFragmentManager().beginTransaction().add(R.id.dashboard_container, HomeFragment.newInstance()).commit();
         homeSelected();
         changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
+        if (!tags.contains(HomeFragment.TAG)) {
+            tags.add(HomeFragment.TAG);
+        }
+
     }
 
     private void initialzeViews() {
         toolbar = findViewById(R.id.dashboard_toolbar);
         mTextMessage = findViewById(R.id.dashboard_title);
         homelogo = findViewById(R.id.home_logo);
+        optionMenuImg = findViewById(R.id.option_img);
+        optionMenuImg.setOnClickListener(this);
         findViewById(R.id.home_lay).setOnClickListener(this);
         findViewById(R.id.latest_lay).setOnClickListener(this);
         findViewById(R.id.live_scores_lay).setOnClickListener(this);
@@ -75,93 +85,17 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         });
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        searchItem = menu.findItem(R.id.navigation_search);
-        calendarItem = menu.findItem(R.id.navigation_calendar);
-        addItem = menu.findItem(R.id.navigation_add);
-        switch (Objects.requireNonNull(getCurrentFragment().getTag())) {
-            case HomeFragment.TAG:
-                searchItem.setVisible(true);
-                calendarItem.setVisible(false);
-                addItem.setVisible(false);
-                invalidateOptionsMenu();
-                break;
-            case LatestFragment.TAG:
-                searchItem.setVisible(true);
-                calendarItem.setVisible(false);
-                addItem.setVisible(false);
-                invalidateOptionsMenu();
-                break;
-            case LiveScroresFragment.TAG:
-                searchItem.setVisible(false);
-                calendarItem.setVisible(false);
-                addItem.setVisible(false);
-                invalidateOptionsMenu();
-                break;
-            case PollFragment.TAG:
-                searchItem.setVisible(false);
-                calendarItem.setVisible(true);
-                addItem.setVisible(false);
-                invalidateOptionsMenu();
-                break;
-
-            case DiscussionFragment.TAG:
-                searchItem.setVisible(false);
-                calendarItem.setVisible(false);
-                addItem.setVisible(true);
-                invalidateOptionsMenu();
-                break;
-
-            default:
-                searchItem.setVisible(true);
-                calendarItem.setVisible(false);
-                addItem.setVisible(false);
-                invalidateOptionsMenu();
-                break;
-        }
-
-
-        return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.navigation, menu);
-
-        return true;
-    }
 
     public Fragment getCurrentFragment() {
 
         return getSupportFragmentManager().findFragmentById(R.id.dashboard_container);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.navigation_search:
-                startActivity(new Intent(this, SearchActivity.class));
-                break;
-            case R.id.navigation_add:
-                startActivity(new Intent(this, AddEditDiscussionActivity.class));
-                return true;
-            case R.id.navigation_calendar:
-                startActivity(new Intent(this, PollCalendarActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-        return true;
-    }
-
 
     public void changeFragment(Fragment fragment, String tag) {
         toolbarMenuVisibility(tag);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.dashboard_container, fragment, tag)
+                .add(R.id.dashboard_container, fragment, tag)
                 .commit();
     }
 
@@ -179,12 +113,13 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     @Override
     public void onClick(View view) {
-
         switch (view.getId()) {
 
             case R.id.home_lay: {
                 homeSelected();
-                changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
+                showFragment(HomeFragment.newInstance(), HomeFragment.TAG);
+                //changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
+
                 break;
             }
 
@@ -192,7 +127,9 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
                 latestSelected();
                 mTextMessage.setText(R.string.title_latest);
-                changeFragment(LatestFragment.newInstance(), LatestFragment.TAG);
+
+                showFragment(LatestFragment.newInstance(), LatestFragment.TAG);
+                //  changeFragment(LatestFragment.newInstance(), LatestFragment.TAG);
                 break;
             }
 
@@ -200,27 +137,61 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
                 liveSelected();
                 mTextMessage.setText(R.string.title_live_scores);
-                changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
+                //changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
+                showFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
 
                 break;
             case R.id.polls_lay:
 
                 pollsSelected();
                 mTextMessage.setText(R.string.title_poll);
-                changeFragment(PollFragment.newInstance(), PollFragment.TAG);
+                showFragment(PollFragment.newInstance(), PollFragment.TAG);
                 break;
             case R.id.discussion_lay:
 
                 discussionSelected();
                 mTextMessage.setText(R.string.title_discussion);
-                changeFragment(DiscussionFragment.newInstance(), DiscussionFragment.TAG);
+                showFragment(DiscussionFragment.newInstance(), DiscussionFragment.TAG);
+                break;
+
+            case R.id.option_img:
+
+                optionClick(getCurrentFragment().getTag());
                 break;
 
         }
     }
 
+    private void optionClick(String tag) {
+
+        switch (tag) {
+            case HomeFragment.TAG:
+
+                startActivity(new Intent(this, SearchActivity.class));
+                break;
+            case LatestFragment.TAG:
+                startActivity(new Intent(this, SearchActivity.class));
+                break;
+            case LiveScroresFragment.TAG:
+
+                break;
+            case PollFragment.TAG:
+                startActivity(new Intent(this, PollCalendarActivity.class));
+                break;
+
+            case DiscussionFragment.TAG:
+                startActivity(new Intent(this, AddEditDiscussionActivity.class));
+                break;
+
+            default:
+                startActivity(new Intent(this, SearchActivity.class));
+                break;
+        }
+    }
+
 
     private void homeSelected() {
+        optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
         tabHomeIcon.setSelected(true);
         tabHomeTxt.setSelected(true);
 
@@ -238,6 +209,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     }
 
     private void latestSelected() {
+        optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -255,6 +227,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     }
 
     private void liveSelected() {
+        optionMenuImg.setImageDrawable(null);
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -272,6 +245,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     }
 
     private void pollsSelected() {
+        optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_calendar));
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -289,6 +263,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     }
 
     private void discussionSelected() {
+        optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_add));
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -308,5 +283,26 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+
+    private void showFragment(Fragment frag, String tag) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (tags.contains(tag)) {
+            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag(tag)).commit();
+        } else {
+
+            tags.add(tag);
+            fragmentManager.beginTransaction().add(R.id.dashboard_container, frag, tag).commit();
+        }
+        for (String tagStr : tags) {
+            if (!tagStr.equals(tag) && !fragmentManager.findFragmentByTag(tagStr).isHidden()) {
+                Log.e("CheckIsHidden","============");
+                fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag(tagStr)).commit();
+            }
+        }
+
+
     }
 }
