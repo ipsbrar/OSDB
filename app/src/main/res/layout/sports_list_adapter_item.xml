@@ -13,6 +13,7 @@
 
     <ImageView
             android:id="@+id/item_icon"
+            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/sport_icon"/>
@@ -22,8 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:singleLine="true"
+            android:background="@drawable/black_gradient"
             android:maxLines="1"
-            android:layout_marginBottom="@dimen/dp_3"
             android:layout_alignParentBottom="true"
             android:textColor="@color/color_white"
             android:textAllCaps="true"

@@ -22,7 +22,7 @@ public interface PreferenceHelper {
 
     Boolean isFirstTimeLaunch();
 
-    void saveToken(String saveToken, String userId);
+    void saveToken(String saveToken);
 
     String getToken();
 
@@ -44,5 +44,6 @@ public interface PreferenceHelper {
 
     void clearUserData();
 
+    void saveUserId(String userID);
 
 }

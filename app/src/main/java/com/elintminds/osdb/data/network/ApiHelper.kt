@@ -4,7 +4,9 @@ package com.elintminds.osdb.data.network
 import com.elintminds.osdb.ui.dashboard.beans.*
 import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean
 import com.elintminds.osdb.ui.login.beans.UserBean
+import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamInfoBean
 import com.elintminds.osdb.ui.register.beans.RegisterBean
+import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean
 import io.reactivex.Observable
 import retrofit2.http.*
 import java.util.*
@@ -51,4 +53,18 @@ interface ApiHelper {
     @GET("discussion-board/{id}/thread")
     fun fetchDiscussionById(@Path("id") noteId: String): Observable<DiscussionCommentsBean>
 
+    @GET("home?")
+    fun fetchHomeData(@Query("currentdate") curDate: String): Observable<HomeBean>
+
+    //    sports/NBA/teams
+    @GET("sports/{slug}/teams")
+    fun fetchAllTeams(@Path("slug") slug: String): Observable<TeamInfoBean>
+
+    @GET("teams/33/players")
+    fun fetchAllTeamPlayers(@Path("team_id") teamId: String): Observable<TeamPlayersBean>
+
+
+
+
+//
 }

@@ -60,5 +60,4 @@ public class PollOption {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 }

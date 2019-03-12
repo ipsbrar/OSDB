@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Html;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
@@ -42,14 +45,19 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private BornTodayAdapter bornTodayAdapter;
     private ShimmerLayout shimmer_breaking_news, shimmer_do_you_know;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
-    private ArrayList<BornTodayAdapterBean> bornTodayList = new ArrayList<>();
+    private ArrayList<HomeBean.BornToday> bornTodayList = new ArrayList<>();
     private HomeFragmentPresenterClass<HomeFragment, com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor> homeFragmentPresenterClass;
     private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_5_msg_text;
     private ImageView view_1_image, view_5_image;
-    private RelativeLayout rl_breaking_news, rl_do_you_know;
-    private NewsAdapterBean.BreakingNews breakingNewsFrag;
-    private DoYouKnow doYouKnow;
+    private RelativeLayout rl_breaking_news, rl_do_you_know, rl_main_breaking_news;
+    private LinearLayout ll_main_born_today;
+    private CardView cv_main_did_you_know;
+    private SwipeRefreshLayout swipe_refresh;
+    private HomeBean.BreakingNews breakingNewsFrag;
+    private HomeBean.DidYouKnow doYouKnow;
+    private ArrayList<DemoListBean> demoListBeans = new ArrayList<>();
     View view;
+
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -59,54 +67,56 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        Log.e("fragmentLifeCycle_","    onCreateView");
+        Log.e("HomeSwipeData", "   OnCreateView");
+        DemoListBean demoListBean = new DemoListBean("Davante Adams");
+        DemoListBean demoListBean1 = new DemoListBean("Aaron Rodgers");
+        DemoListBean demoListBean2 = new DemoListBean("JK Scott");
+        DemoListBean demoListBean3 = new DemoListBean("Jaire Alexander");
+        DemoListBean demoListBean4 = new DemoListBean("David Bakhtiari");
+        DemoListBean demoListBean5 = new DemoListBean("Evan Baylis");
+        DemoListBean demoListBean6 = new DemoListBean("Kapri Bibbs");
+        DemoListBean demoListBean7 = new DemoListBean("Tim Boyle");
+        demoListBeans.add(demoListBean);
+        demoListBeans.add(demoListBean1);
+        demoListBeans.add(demoListBean2);
+        demoListBeans.add(demoListBean3);
+        demoListBeans.add(demoListBean4);
+        demoListBeans.add(demoListBean5);
+        demoListBeans.add(demoListBean6);
+        demoListBeans.add(demoListBean7);
+
         return inflater.inflate(R.layout.home_fragment_view, container, false);
 
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.e("fragmentLifeCycle_","    onActivityCreated");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.e("fragmentLifeCycle_","    onStart");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.e("fragmentLifeCycle_","    onResume");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.e("fragmentLifeCycle_","    onPause");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.e("fragmentLifeCycle_","    onStop");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.e("fragmentLifeCycle_","    onDestroyView");
-    }
 
     @Override
     protected void setUp(View view) {
         context = getContext();
-        homeFragmentPresenterClass = new HomeFragmentPresenterClass<HomeFragment, HomeFragmentInteractor>(getActivity(), this);
-
+        Log.e("HomeSwipeData", "   setUpLayout");
+//      sports list data
         sportsRecyclerView = view.findViewById(R.id.sportsList);
+        sportsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        sportsListAdapter = new SportsListAdapter(context, sportsList, this);
+        sportsRecyclerView.setAdapter(sportsListAdapter);
+
+//       breaking news data
+        rl_breaking_news = view.findViewById(R.id.rl_breaking_news);
+        rl_main_breaking_news = view.findViewById(R.id.rl_main_breaking_news);
+        shimmer_breaking_news = view.findViewById(R.id.shimmer_breaking_news);
+
+//      born today data
         bornTodayRecyclerView = view.findViewById(R.id.born_today_recycler);
+        ll_main_born_today = view.findViewById(R.id.ll_main_born_today);
+        bornTodayRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        bornTodayAdapter = new BornTodayAdapter(context, bornTodayList);
+        bornTodayRecyclerView.setAdapter(bornTodayAdapter);
+
+//      did you know data
+        shimmer_do_you_know = view.findViewById(R.id.shimmer_do_you_know);
+        rl_do_you_know = view.findViewById(R.id.rl_do_you_know);
+        cv_main_did_you_know = view.findViewById(R.id.cv_main_did_you_know);
+
 
         view_1_msg_text = view.findViewById(R.id.view_1_msg_text);
         view_1_date = view.findViewById(R.id.view_1_date);
@@ -117,36 +127,47 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         view_1_image = view.findViewById(R.id.view_1_image);
         view_5_image = view.findViewById(R.id.view_5_image);
 
-        rl_breaking_news = view.findViewById(R.id.rl_breaking_news);
+        homeFragmentPresenterClass = new HomeFragmentPresenterClass<>(getActivity(), this);
+        setUpStartingData();
+
+        rl_breaking_news.setOnClickListener(this);
+        cv_main_did_you_know.setOnClickListener(this);
+
+        swipe_refresh = view.findViewById(R.id.swipe_refresh);
+        swipe_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.e("HomeSwipeData", "   Inside refresh layout");
+//                setUpStartingData();
+
+            }
+        });
+    }
+
+    private void setUpStartingData() {
+        //              sports list data
+        sportsRecyclerView.setVisibility(View.VISIBLE);
+        sportsRecyclerView.showShimmerAdapter();
+
+//              breaking news data
+        rl_main_breaking_news.setVisibility(View.VISIBLE);
         rl_breaking_news.setVisibility(View.GONE);
-        shimmer_breaking_news = view.findViewById(R.id.shimmer_breaking_news);
         shimmer_breaking_news.setVisibility(View.VISIBLE);
         shimmer_breaking_news.startShimmerAnimation();
 
-        shimmer_do_you_know = view.findViewById(R.id.shimmer_do_you_know);
-        rl_do_you_know = view.findViewById(R.id.rl_do_you_know);
+//              born today data
+        ll_main_born_today.setVisibility(View.VISIBLE);
+        bornTodayRecyclerView.showShimmerAdapter();
+
+//              did you know data
+        cv_main_did_you_know.setVisibility(View.VISIBLE);
         rl_do_you_know.setVisibility(View.GONE);
         shimmer_do_you_know.setVisibility(View.VISIBLE);
         shimmer_do_you_know.startShimmerAnimation();
 
-        sportsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        sportsListAdapter = new SportsListAdapter(context, sportsList, this);
-        sportsRecyclerView.setAdapter(sportsListAdapter);
-        sportsRecyclerView.showShimmerAdapter();
-
-        bornTodayRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        bornTodayAdapter = new BornTodayAdapter(context, bornTodayList);
-        bornTodayRecyclerView.setAdapter(bornTodayAdapter);
-        bornTodayRecyclerView.showShimmerAdapter();
-
-        homeFragmentPresenterClass.getSportsData();
-        homeFragmentPresenterClass.getBreakingNewsData();
-        homeFragmentPresenterClass.getBornTodayData(getCurrentDate(), "10");
-        homeFragmentPresenterClass.getDoYouKnow();
-
-        rl_breaking_news.setOnClickListener(this);
-        rl_do_you_know.setOnClickListener(this);
+        homeFragmentPresenterClass.getHomeData(getCurrentDate());
     }
+
 
     @Override
     public void onSportsIconClick(int position) {
@@ -163,35 +184,79 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     @Override
-    public void getHomesData(ArrayList<HomeAdapterListBean> homesData) {
+    public void getHomesData(HomeBean homesData) {
+        Log.e("HomeData", "Success  " + homesData.getSportsList().get(0).getDescription());
+
+//        set sports data
+        if (homesData.getSportsList() != null && homesData.getSportsList().size() > 0) {
+            this.sportsList = homesData.getSportsList();
+            sportsListAdapter.setDataList(this.sportsList);
+            sportsRecyclerView.hideShimmerAdapter();
+        } else {
+            sportsRecyclerView.setVisibility(View.GONE);
+
+        }
+
+//        set home data
+        if (homesData.getBreakingNews() != null && homesData.getBreakingNews().size() > 0) {
+            breakingNewsFrag = homesData.getBreakingNews().get(0);
+            if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
+                Glide.with(Objects.requireNonNull(getActivity())).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
+
+            if (breakingNewsFrag.getTitle() != null) {
+                Log.e("getBreakingNewWorking", "title    " + breakingNewsFrag.getTitle());
+                view_1_msg_text.setText(breakingNewsFrag.getTitle());
+//                Utils.justify(view_1_msg_text);
+            }
+
+            shimmer_breaking_news.stopShimmerAnimation();
+            shimmer_breaking_news.setVisibility(View.GONE);
+            rl_breaking_news.setVisibility(View.VISIBLE);
+        } else {
+            rl_main_breaking_news.setVisibility(View.GONE);
+
+        }
+
+//        born today data set
+        if (homesData.getBornToday() != null && homesData.getBornToday().size() > 0) {
+            bornTodayList = homesData.getBornToday();
+            bornTodayAdapter.setDataList(bornTodayList);
+            bornTodayRecyclerView.hideShimmerAdapter();
+        } else {
+            ll_main_born_today.setVisibility(View.GONE);
+
+        }
+
+//        Did you know data set
+
+        if (homesData.getDidYouKnow() != null && homesData.getDidYouKnow().size() > 0) {
+
+            doYouKnow = homesData.getDidYouKnow().get(0);
+
+            if (doYouKnow.getContent() != null)
+                view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
+            Utils.justify(view_5_msg_text);
+
+            shimmer_do_you_know.stopShimmerAnimation();
+            shimmer_do_you_know.setVisibility(View.GONE);
+            rl_do_you_know.setVisibility(View.VISIBLE);
+        } else {
+            cv_main_did_you_know.setVisibility(View.GONE);
+        }
+
+        swipe_refresh.setRefreshing(false);
 
     }
 
     @Override
-    public void getBornTodayData(ArrayList<BornTodayAdapterBean> bornTodayData) {
-        bornTodayList = bornTodayData;
-        bornTodayAdapter.setDataList(bornTodayList);
-        bornTodayRecyclerView.hideShimmerAdapter();
+    public void getBornTodayData(ArrayList<HomeBean.BornToday> bornTodayData) {
+
 
     }
 
     @Override
     public void getBreakingNews(ArrayList<NewsAdapterBean.BreakingNews> breakingNews) {
         Log.e("getBreakingNewWorking", "Breaking News Working");
-        if (breakingNews.size() > 0) {
-            breakingNewsFrag = breakingNews.get(0);
-            if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
-                Glide.with(Objects.requireNonNull(getActivity())).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
-
-            if (breakingNewsFrag.getTitle() != null) {
-                Log.e("getBreakingNewWorking","title    "+breakingNewsFrag.getTitle());
-                view_1_msg_text.setText(breakingNewsFrag.getTitle());
-//                Utils.justify(view_1_msg_text);
-            }
-        }
-        shimmer_breaking_news.stopShimmerAnimation();
-        shimmer_breaking_news.setVisibility(View.GONE);
-        rl_breaking_news.setVisibility(View.VISIBLE);
 
     }
 
@@ -202,16 +267,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getDoYouKnow(ArrayList<DoYouKnow> doYouKnows) {
-        if (doYouKnows.size() > 0) {
-            doYouKnow = doYouKnows.get(0);
 
-            if (doYouKnow.getContent() != null)
-                view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
-            Utils.justify(view_5_msg_text);
-        }
-        shimmer_do_you_know.stopShimmerAnimation();
-        shimmer_do_you_know.setVisibility(View.GONE);
-        rl_do_you_know.setVisibility(View.VISIBLE);
     }
 
 
@@ -250,7 +306,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 }
                 break;
             }
-            case R.id.rl_do_you_know: {
+            case R.id.cv_main_did_you_know: {
                 if (breakingNewsFrag != null) {
                     Intent intent = new Intent(context, DoYouKnowActivity.class);
 //                    intent.putExtra("imgUrl", (String) breakingNewsFrag.getImageUrl());

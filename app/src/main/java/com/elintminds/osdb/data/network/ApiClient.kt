@@ -2,6 +2,7 @@ package com.elintminds.osdb.data.network
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass
 import com.elintminds.osdb.data.network.WebserviceUrls
@@ -23,11 +24,10 @@ object ApiClient {
     var instance: ApiClient? = null
 
 
-    fun getClient(context: Context): Retrofit
-    {
+    fun getClient(context: Context): Retrofit {
         val httpClient = OkHttpClient.Builder()
 
-        if (retrofit == null) {
+//        if (retrofit == null ) {
             httpClient.connectTimeout(1000, TimeUnit.MINUTES)
             httpClient.readTimeout(2, TimeUnit.MINUTES)
             httpClient.writeTimeout(2, TimeUnit.MINUTES)
@@ -36,23 +36,28 @@ object ApiClient {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val builder = chain.request().newBuilder()
 
-                    Log.e("TOKEN",""+ AppPreferenceHelperClass(context).token);
+                    Log.e("TOKEN", "" + AppPreferenceHelperClass(context).token);
                     if (AppPreferenceHelperClass(context).token != "") {
-                        builder.addHeader("token", AppPreferenceHelperClass(context).token)
+                        builder.addHeader("Content-Type","application/x-www-form-urlencoded")
+                        builder.addHeader("Accept","application/json")
+                        builder.addHeader("Authorization", "Bearer "+"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc3RhZ2luZy5vc2RiLnBybzo4MVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1NTIzNzA2OTYsImV4cCI6MTU1MjgwMjY5NiwibmJmIjoxNTUyMzcwNjk2LCJqdGkiOiJERUpQVTN2cnZBZEIyQzZrIiwic3ViIjozNjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.IrSsXMjW-BWKhrfFuEMCiitdVS_ijN6bFBvfsE2_Cjk")
+//                        builder.addHeader("Authorization", "Bearer "+AppPreferenceHelperClass(context).token)
                     }
                     return chain.proceed(builder.build())
                 }
             })
-
-            retrofit = Retrofit.Builder()
+            try {
+                retrofit = Retrofit.Builder()
                     .baseUrl(WebserviceUrls.BASE_URL)
                     .client(httpClient.build())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build()
-
-        }
+            } catch (e: Exception) {
+                Toast.makeText(context, "${e.toString()}", Toast.LENGTH_LONG).show()
+            }
+//        }
 
         return retrofit!!
     }
@@ -60,10 +65,10 @@ object ApiClient {
 
     private fun okClient(): OkHttpClient {
         return OkHttpClient.Builder()
-                .connectTimeout(1000, TimeUnit.MINUTES)
-                .writeTimeout(1, TimeUnit.MINUTES)
-                .readTimeout(1, TimeUnit.MINUTES)
-                .build()
+            .connectTimeout(1000, TimeUnit.MINUTES)
+            .writeTimeout(1, TimeUnit.MINUTES)
+            .readTimeout(1, TimeUnit.MINUTES)
+            .build()
     }
 
     /*fun placeSearch(): Retrofit {

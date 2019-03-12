@@ -4,10 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
-import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
-import com.elintminds.osdb.ui.dashboard.beans.DoYouKnow;
-import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
-import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
+import com.elintminds.osdb.ui.dashboard.beans.*;
 import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor;
 import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractorClass;
 import com.elintminds.osdb.ui.dashboard.view.HomeFragmentView;
@@ -15,6 +12,7 @@ import com.elintminds.osdb.ui.login.beans.UserBean;
 import io.reactivex.functions.Consumer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomeFragmentPresenterClass<V extends HomeFragmentView, I extends HomeFragmentInteractor>
         extends BasePresenterClass< V, I> implements HomeFragmentPresenter<V, I>{
@@ -54,8 +52,28 @@ public class HomeFragmentPresenterClass<V extends HomeFragmentView, I extends Ho
 
 
     @Override
-    public void getHomeData() {
-
+    public void getHomeData(String currentDate) {
+        Log.e("HomeSwipeData", "   Inside Presenter");
+        getCompositeDisposable().add(getInteractor()
+                .getAllHomeList(currentDate)
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<HomeBean>()
+                           {
+                               @Override
+                               public void accept(HomeBean homeData) throws Exception {
+                                   Log.e("HomeSwipeData", "   Inside Success");
+                                   getMvpView().getHomesData(homeData);
+                               }
+                           },
+                        new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception
+                            {
+                                Log.e("HomeSwipeData", "   Inside Reject");
+                                getMvpView().getError(throwable.toString());
+                            }
+                        }));
     }
 
     @Override
@@ -69,7 +87,7 @@ public class HomeFragmentPresenterClass<V extends HomeFragmentView, I extends Ho
                            {
                                @Override
                                public void accept(ArrayList<BornTodayAdapterBean> sportsList) throws Exception {
-                                   getMvpView().getBornTodayData(sportsList);
+//                                   getMvpView().getBornTodayData(sportsList);
                                }
                            },
                         new Consumer<Throwable>() {

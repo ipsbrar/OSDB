@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.ui.dashboard.beans.HomeBean;
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean;
 import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsView;
 
@@ -16,10 +17,10 @@ import java.util.ArrayList;
 public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.ViewHolder>
 {
     private Context context;
-    private ArrayList<TeamPlayersBean> dataList;
+    private ArrayList<TeamPlayersBean.Player> dataList;
     private TeamDetailsView.TeamPlayersAdapterListener listener;
 
-    public TeamPlayersAdapter(Context context, ArrayList<TeamPlayersBean> dataList, TeamDetailsView.TeamPlayersAdapterListener listener)
+    public TeamPlayersAdapter(Context context, ArrayList<TeamPlayersBean.Player> dataList, TeamDetailsView.TeamPlayersAdapterListener listener)
     {
         this.context = context;
         this.dataList = dataList;
@@ -38,8 +39,8 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i)
     {
-        TeamPlayersBean item = dataList.get(i);
-        viewHolder.playerName.setText(item.getPlayerName());
+        TeamPlayersBean.Player item = dataList.get(i);
+        viewHolder.playerName.setText(item.getFullName());
     }
 
     @Override
@@ -62,5 +63,16 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
                 }
             });
         }
+    }
+
+
+    public void setDataList(ArrayList<TeamPlayersBean.Player> data)
+    {
+        if(data == null || data.isEmpty())
+        {
+            return;
+        }
+
+        this.dataList = data;
     }
 }

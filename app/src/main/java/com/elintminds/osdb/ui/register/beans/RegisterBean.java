@@ -1,5 +1,10 @@
 package com.elintminds.osdb.ui.register.beans;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class RegisterBean {
 
     private String name;
@@ -10,6 +15,18 @@ public class RegisterBean {
     private String updated_at;
     private String created_at;
     private String id;
+
+//    @SerializedName("email")
+//    @Expose
+//    private List<String> emailList = null;
+//
+//    public List<String> getEmailList() {
+//        return emailList;
+//    }
+//
+//    public void setEmail(List<String> emailList) {
+//        this.emailList = emailList;
+//    }
 
     public String getName() {
         return name;

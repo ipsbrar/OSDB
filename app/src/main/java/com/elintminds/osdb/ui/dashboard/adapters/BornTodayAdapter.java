@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
+import com.elintminds.osdb.ui.dashboard.beans.HomeBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 
 import java.text.ParseException;
@@ -21,9 +22,9 @@ import java.util.*;
 public class BornTodayAdapter extends RecyclerView.Adapter<BornTodayAdapter.ViewHolder>
 {
     private Context context;
-    private ArrayList<BornTodayAdapterBean> dataList;
+    private ArrayList<HomeBean.BornToday> dataList;
 
-    public BornTodayAdapter(Context context, ArrayList<BornTodayAdapterBean> dataList)
+    public BornTodayAdapter(Context context, ArrayList<HomeBean.BornToday> dataList)
     {
         this.context = context;
         this.dataList = dataList;
@@ -39,7 +40,7 @@ public class BornTodayAdapter extends RecyclerView.Adapter<BornTodayAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i)
     {
-        BornTodayAdapterBean item = dataList.get(i);
+        HomeBean.BornToday item = dataList.get(i);
 
         holder.playerNameTV.setText(item.getFullName());
         holder.birthDateTV.setText(getDobFormat(item.getDateOfBirth()));
@@ -65,7 +66,7 @@ public class BornTodayAdapter extends RecyclerView.Adapter<BornTodayAdapter.View
         }
     }
 
-    public void setDataList(ArrayList<BornTodayAdapterBean> data)
+    public void setDataList(ArrayList<HomeBean.BornToday> data)
     {
         if(data == null || data.isEmpty())
         {

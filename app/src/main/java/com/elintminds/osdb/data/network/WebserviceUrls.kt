@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 
-object WebserviceUrls {
+public object WebserviceUrls {
     // Apis base urls
     internal val GOOGEL_PLACES = "https://maps.googleapis.com/maps/api/place/"
 

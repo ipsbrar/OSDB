@@ -55,9 +55,8 @@ public class AppPreferenceHelperClass implements PreferenceHelper {
 
 
     @Override
-    public void saveToken(String saveToken, String userId) {
+    public void saveToken(String saveToken) {
         editor.putString(TOKEN, saveToken);
-        editor.putString(USER_ID, userId);
         editor.commit();
     }
 
@@ -102,6 +101,12 @@ public class AppPreferenceHelperClass implements PreferenceHelper {
         editor.remove(USER_ID);
         editor.remove(TOKEN);
         editor.remove(PREF_STORAGE_TYPE);
+        editor.commit();
+    }
+
+    @Override
+    public void saveUserId(String userID) {
+        editor.putString(USER_ID, userID);
         editor.commit();
     }
 

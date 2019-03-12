@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.data.network.WebserviceUrls;
 import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.HomeAdapterListBean;
+import com.elintminds.osdb.ui.dashboard.beans.HomeBean;
 
 import java.util.ArrayList;
 
@@ -57,12 +59,12 @@ public class HomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     {
         if(viewHolder instanceof SecondViewHolder)
         {
-            ArrayList<BornTodayAdapterBean> dataItems = new ArrayList<>(10);
-            for (int j=0; j<10; j++){
-                BornTodayAdapterBean item = new BornTodayAdapterBean();
-
-                dataItems.add(item);
-            }
+            ArrayList<HomeBean.BornToday> dataItems = new ArrayList<>(10);
+//            for (int j=0; j<10; j++){
+//                HomeBean.BornToday item = new HomeBean.BornToday();
+//
+//                dataItems.add(item);
+//            }
             BornTodayAdapter adapter = new BornTodayAdapter(context, dataItems);
             ((SecondViewHolder) viewHolder).bornTodayRecycler.setNestedScrollingEnabled(false);
             ((SecondViewHolder) viewHolder).bornTodayRecycler.setAdapter(adapter);

@@ -11,6 +11,8 @@ import com.elintminds.osdb.ui.register.model.RegisterInteractorClass;
 import com.elintminds.osdb.ui.register.view.RegisterView;
 import io.reactivex.functions.Consumer;
 
+import java.util.List;
+
 public class RegisterPresenterClass<V extends RegisterView, I extends RegisterInteractor> extends BasePresenterClass<V,I> implements RegisterPresenter<V,I>
 {
     private RegisterPresenterClass(Context context, I interactor, V view) {
@@ -23,6 +25,7 @@ public class RegisterPresenterClass<V extends RegisterView, I extends RegisterIn
 
     @Override
     public void getRegisterData(String name, String email, String password, String phoneNumber, String type) {
+        getMvpView().showProgressDialog();
         getCompositeDisposable().add(getInteractor()
                 .doServerRegister(name, email, password, phoneNumber, type)
                 .subscribeOn(getSchedulerProvider().io())
@@ -31,23 +34,13 @@ public class RegisterPresenterClass<V extends RegisterView, I extends RegisterIn
                                @Override
                                public void accept(RegisterBean registerBean) throws Exception {
                                    Log.e("loginstatuspresenter","Success=======");
+//                                   if (registerBean.getEmail() != null ) {
+//                                       getMvpView().getError(registerBean.getEmailList().get(0));
+//                                   }else{
+
+//                                   }
                                    getMvpView().getSuccess(registerBean);
-//                                       LoginResponseBean response = loginBean.getResponse();
-//                                       if (response.getStatus().equals(WebserviceUrls.STATUSONE))
-//                                       {
-//                                           // saving user credentials in app preferences
-//                                           LoginDataBean data = response.getData();
-//
-//                                           if(data.getTypeOfUser().equals("1")) {
-//                                               getSeekerUserDetails(data.getAccessKey());
-//                                           }else if(data.getTypeOfUser().equals("2")){
-//                                               getProviderUserDetails(data.getAccessKey());
-//                                           }
-//
-//                                       } else {
-//                                           getMvpView().hideDialog();
-//                                           getMvpView().showError(response.getMessage());
-//                                       }
+                                   getMvpView().hideProgressDialog();
 
                                }
                            },
@@ -57,9 +50,8 @@ public class RegisterPresenterClass<V extends RegisterView, I extends RegisterIn
                             {
                                 Log.e("loginstatuspresenter","Error=======    "+   throwable.toString());
                                 getMvpView().getError(throwable.toString());
-//                                    getMvpView().hideDialog();
-//                                    getMvpView().showErrorToast(context.getString(R.string.some_error));
-//                                    Log.e("LOGIN ERROR",""+throwable.toString());
+                                getMvpView().hideProgressDialog();
+
                             }
                         }));
 

@@ -9,9 +9,9 @@ public interface HomeFragmentView extends BaseView {
 
     void getSportsData(ArrayList<SportsAdapterListBean> sportsList);
 
-    void getHomesData(ArrayList<HomeAdapterListBean> homesData);
+    void getHomesData(HomeBean homesData);
 
-    void getBornTodayData(ArrayList<BornTodayAdapterBean> bornTodayData);
+    void getBornTodayData(ArrayList<HomeBean.BornToday> bornTodayData);
 
     void getBreakingNews(ArrayList<NewsAdapterBean.BreakingNews> breakingNews);
 

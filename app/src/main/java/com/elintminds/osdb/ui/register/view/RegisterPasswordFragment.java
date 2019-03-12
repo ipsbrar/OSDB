@@ -75,7 +75,6 @@ public class RegisterPasswordFragment extends BaseFragment implements RegisterVi
         {
             case R.id.createAccountBtn:
                 if (validate()) {
-                    showProgressDialog();
                     registerPresenterClass.getRegisterData(userName,userEmail,signupPassEt.getText().toString().trim(),userNumber,"1");
                 }
                 break;
@@ -117,14 +116,19 @@ public class RegisterPasswordFragment extends BaseFragment implements RegisterVi
 
     @Override
     public void getSuccess(RegisterBean registerBean) {
-        hideProgressDialog();
-        getAppPreferenceHelperClass().saveToken(registerBean.getVerification_code(),registerBean.getId());
+        getAppPreferenceHelperClass().saveToken(registerBean.getVerification_code());
+        getAppPreferenceHelperClass().saveUserId(registerBean.getVerification_code());
         getAppPreferenceHelperClass().saveLoginStatus(true);
-        startActivity(new Intent(getContext(), DashboardActivity.class));
+        Intent intent=new Intent(getActivity(), DashboardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        if (getActivity() != null)
+            getActivity().finish();
+
     }
 
     @Override
     public void getError(String msg) {
-        hideProgressDialog();
+
     }
 }

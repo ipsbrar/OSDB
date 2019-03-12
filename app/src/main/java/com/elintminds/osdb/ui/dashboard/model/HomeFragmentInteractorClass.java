@@ -20,8 +20,8 @@ public class HomeFragmentInteractorClass extends BaseInteractorClass implements 
     }
 
     @Override
-    public Observable<ArrayList<HomeAdapterListBean>> getAllHomeList() {
-        return null;
+    public Observable<HomeBean> getAllHomeList(String currentDate) {
+        return getApiInterface().fetchHomeData(currentDate);
     }
 
     @Override

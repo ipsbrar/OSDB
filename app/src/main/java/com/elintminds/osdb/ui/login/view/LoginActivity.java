@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.view.DashboardActivity;
 import com.elintminds.osdb.ui.forgot_password.view.ForgotPasswordActivity;
+import com.elintminds.osdb.ui.login.beans.UserBean;
 import com.elintminds.osdb.ui.login.presenter.LoginPresenterClass;
 import com.elintminds.osdb.ui.register.view.RegisterActivity;
 import com.elintminds.osdb.utils.Utils;
@@ -48,7 +50,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         loginPassEt = findViewById(R.id.password_email_et);
         showPassBtn = findViewById(R.id.show_password_btn);
 
-        loginPresenterClass=new LoginPresenterClass(this,this);
+        loginPresenterClass = new LoginPresenterClass(this, this);
 
         signInBtn.setOnClickListener(this);
         signUpTab.setOnClickListener(this);
@@ -61,10 +63,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         switch (view.getId()) {
             case R.id.signin_btn:
 //                if (validate()) {
-//                    loginPresenterClass.sendUserValue(loginEmailEt.getText().toString(),loginPassEt.getText().toString());
-                    getAppPreferenceHelperClass().saveLoginStatus(true);
-                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-                    finish();
+                loginPresenterClass.sendUserValue(loginEmailEt.getText().toString(), loginPassEt.getText().toString());
+
 //                }
                 break;
 
@@ -106,13 +106,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
 
     @Override
-    public void onSuccess(Object obj) {
+    public void onSuccess(UserBean obj) {
+        getAppPreferenceHelperClass().saveLoginStatus(true);
+        getAppPreferenceHelperClass().saveToken(obj.getToken());
 
+        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+        finish();
     }
 
     @Override
     public void onError(String error) {
-
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 
 

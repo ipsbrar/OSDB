@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:animateLayoutChanges="true"
+android:id="@+id/rl_main_breaking_news"
                 android:layout_height="wrap_content"
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 <RelativeLayout
