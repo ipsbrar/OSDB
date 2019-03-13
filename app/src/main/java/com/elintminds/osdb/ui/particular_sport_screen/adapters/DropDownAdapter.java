@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.DropdownBean;
 
 import java.util.ArrayList;
@@ -14,9 +17,9 @@ import java.util.ArrayList;
 public class DropDownAdapter extends BaseAdapter
 {
     private Context context;
-    private ArrayList<DropdownBean> dataList;
+    private ArrayList<SportsAdapterListBean> dataList;
 
-    public DropDownAdapter(Context context, ArrayList<DropdownBean> dataList)
+    public DropDownAdapter(Context context, ArrayList<SportsAdapterListBean> dataList)
     {
         this.context = context;
         this.dataList = dataList;
@@ -45,7 +48,7 @@ public class DropDownAdapter extends BaseAdapter
     {
         ViewHolder holder;
 
-        DropdownBean item = dataList.get(i);
+        SportsAdapterListBean item = dataList.get(i);
 
         if (view == null)
         {
@@ -58,7 +61,9 @@ public class DropDownAdapter extends BaseAdapter
             holder = (ViewHolder) view.getTag();
         }
 
-        holder.ddItem.setText(item.getItemName());
+        holder.ddItem.setText(item.getName() != null ? item.getName() : "");
+        if (item.getLogo().getFileName() != null &&  item.getLogo().getFileName().equalsIgnoreCase(""))
+            Glide.with(context).load(item.getLogo().getFileName()).into(holder.ddImageItem);
         return view;
     }
 
@@ -66,9 +71,11 @@ public class DropDownAdapter extends BaseAdapter
     public class ViewHolder
     {
         TextView ddItem;
+        ImageView ddImageItem;
         public ViewHolder(View view)
         {
             ddItem = view.findViewById(R.id.dd_item);
+            ddImageItem = view.findViewById(R.id.sport_logo);
         }
     }
 }

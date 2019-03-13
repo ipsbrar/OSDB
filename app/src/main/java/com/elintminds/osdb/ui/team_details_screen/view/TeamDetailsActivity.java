@@ -13,29 +13,34 @@ import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
 
-public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView, View.OnClickListener
-{
+public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView, View.OnClickListener {
     private TabLayout tabs;
     private TextView title, followBtn;
     private ImageView backBtn;
     private boolean isFollowing = false;
+    private String divisionName, teamName, teamId;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_details);
+        if (getIntent() != null) {
 
+            teamName = getIntent().getStringExtra("TEAM_NAME");
+            divisionName = getIntent().getStringExtra("DIVISION_NAME");
+            teamId = getIntent().getStringExtra("TEAM_ID");
+
+        }
         initializeViews();
 
-        String titleText = getIntent().getStringExtra("TITLE");
-        title.setText(titleText);
+
     }
 
 
-    private void initializeViews()
-    {
+    private void initializeViews() {
         title = findViewById(R.id.teamName);
+        title.setText(teamName != null ? teamName : "");
+
         tabs = findViewById(R.id.team_details_tabs);
         backBtn = findViewById(R.id.back_btn);
         followBtn = findViewById(R.id.follow_btn);
@@ -50,20 +55,17 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
         followBtn.setOnClickListener(this);
     }
 
-    private void setupViewPager(ViewPager upViewPager)
-    {
+    private void setupViewPager(ViewPager upViewPager) {
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
         adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
         adapter.addFragment(StatsFragment.getInstance(), getString(R.string.stats));
-        adapter.addFragment(TeamPlayersFragment.getInstance(), getString(R.string.players));
+        adapter.addFragment(TeamPlayersFragment.getInstance(teamName, divisionName, teamId), getString(R.string.players));
         upViewPager.setAdapter(adapter);
     }
 
-    private void setDividerForTabs()
-    {
+    private void setDividerForTabs() {
         View root = tabs.getChildAt(0);
-        if (root instanceof LinearLayout)
-        {
+        if (root instanceof LinearLayout) {
             ((LinearLayout) root).setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setColor(getResources().getColor(R.color.color_EFEFEF));
@@ -74,10 +76,8 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
     }
 
     @Override
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.back_btn:
                 onBackPressed();
                 break;
@@ -85,11 +85,9 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
             case R.id.follow_btn:
                 isFollowing = !isFollowing;
                 followBtn.setSelected(isFollowing);
-                if(isFollowing)
-                {
+                if (isFollowing) {
                     followBtn.setText(getString(R.string.following));
-                }
-                else {
+                } else {
                     followBtn.setText(getString(R.string.follow));
                 }
                 break;

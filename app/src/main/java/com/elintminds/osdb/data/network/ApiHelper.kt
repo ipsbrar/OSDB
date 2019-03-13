@@ -5,6 +5,7 @@ import com.elintminds.osdb.ui.dashboard.beans.*
 import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean
 import com.elintminds.osdb.ui.login.beans.UserBean
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamInfoBean
+import com.elintminds.osdb.ui.player_details_screen.beans.PlayersDetailBean
 import com.elintminds.osdb.ui.register.beans.RegisterBean
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean
 import io.reactivex.Observable
@@ -60,11 +61,11 @@ interface ApiHelper {
     @GET("sports/{slug}/teams")
     fun fetchAllTeams(@Path("slug") slug: String): Observable<TeamInfoBean>
 
-    @GET("teams/33/players")
+    @GET("teams/{team_id}/players")
     fun fetchAllTeamPlayers(@Path("team_id") teamId: String): Observable<TeamPlayersBean>
 
 
+//    @GET("teams/{team_id}/players")
+//    fun fetchPlayerDetail(@Path("team_id") teamId: String): Observable<PlayersDetailBean>
 
-
-//
 }

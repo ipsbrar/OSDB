@@ -60,7 +60,7 @@ public class TeamFragmentPresenterClass<V extends TeamFragmentView, I extends Te
                                        }
 
                                    }
-//                                   getMvpView().getAllListsOfTeam(homeData);
+                                   getMvpView().getAllListsOfTeam(teamClubBeans);
                                    getMvpView().hideProgressDialog();
                                }
                            },

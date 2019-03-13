@@ -65,9 +65,9 @@ public class HomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 //
 //                dataItems.add(item);
 //            }
-            BornTodayAdapter adapter = new BornTodayAdapter(context, dataItems);
-            ((SecondViewHolder) viewHolder).bornTodayRecycler.setNestedScrollingEnabled(false);
-            ((SecondViewHolder) viewHolder).bornTodayRecycler.setAdapter(adapter);
+//            BornTodayAdapter adapter = new BornTodayAdapter(context, dataItems);
+//            ((SecondViewHolder) viewHolder).bornTodayRecycler.setNestedScrollingEnabled(false);
+//            ((SecondViewHolder) viewHolder).bornTodayRecycler.setAdapter(adapter);
         }
     }
 

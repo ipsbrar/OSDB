@@ -24,6 +24,7 @@ public class LiveScroresPresenterClass<V extends LiveScroresView, I extends Live
 
     @Override
     public void getSportsData() {
+        getMvpView().showProgressDialog();
         getCompositeDisposable().add(getInteractor()
                 .getAllSportsList()
                 .subscribeOn(getSchedulerProvider().io())
@@ -33,23 +34,7 @@ public class LiveScroresPresenterClass<V extends LiveScroresView, I extends Live
                                public void accept(ArrayList<SportsAdapterListBean> sportsList) throws Exception {
                                    Log.e("SportsData","Success======="+   sportsList.get(0).getName());
                                    getMvpView().getSportsData(sportsList);
-//                                       LoginResponseBean response = loginBean.getResponse();
-//                                       if (response.getStatus().equals(WebserviceUrls.STATUSONE))
-//                                       {
-//                                           // saving user credentials in app preferences
-//                                           LoginDataBean data = response.getData();
-//
-//                                           if(data.getTypeOfUser().equals("1")) {
-//                                               getSeekerUserDetails(data.getAccessKey());
-//                                           }else if(data.getTypeOfUser().equals("2")){
-//                                               getProviderUserDetails(data.getAccessKey());
-//                                           }
-//
-//                                       } else {
-//                                           getMvpView().hideDialog();
-//                                           getMvpView().showError(response.getMessage());
-//                                       }
-
+                                   getMvpView().hideProgressDialog();
                                }
                            },
                         new Consumer<Throwable>() {
@@ -58,9 +43,7 @@ public class LiveScroresPresenterClass<V extends LiveScroresView, I extends Live
                             {
                                 Log.e("SportsData","Error=======    "+   throwable.toString());
                                 getMvpView().getError(throwable.toString());
-//                                    getMvpView().hideDialog();
-//                                    getMvpView().showErrorToast(context.getString(R.string.some_error));
-//                                    Log.e("LOGIN ERROR",""+throwable.toString());
+                                getMvpView().hideProgressDialog();
                             }
                         }));
 

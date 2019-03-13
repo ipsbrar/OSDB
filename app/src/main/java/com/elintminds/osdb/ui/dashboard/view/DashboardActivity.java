@@ -42,14 +42,11 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         setContentView(R.layout.activity_dashboard);
 
         initialzeViews();
-        //initTab();
-        //  getSupportFragmentManager().beginTransaction().add(R.id.dashboard_container, HomeFragment.newInstance()).commit();
         homeSelected();
-        changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
         if (!tags.contains(HomeFragment.TAG)) {
             tags.add(HomeFragment.TAG);
         }
-
+        changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
     }
 
     private void initialzeViews() {
@@ -155,18 +152,23 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 break;
 
             case R.id.option_img:
-
-                optionClick(getCurrentFragment().getTag());
+                optionClick();
                 break;
 
         }
     }
 
-    private void optionClick(String tag) {
-
+    private void optionClick() {
+        String tag = null;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        for (String tagStr : tags) {
+            if (!fragmentManager.findFragmentByTag(tagStr).isHidden()) {
+                Log.e("CheckIsHidden",tagStr);
+                tag = tagStr;
+            }
+        }
         switch (tag) {
             case HomeFragment.TAG:
-
                 startActivity(new Intent(this, SearchActivity.class));
                 break;
             case LatestFragment.TAG:

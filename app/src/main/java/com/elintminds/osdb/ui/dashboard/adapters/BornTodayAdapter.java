@@ -2,6 +2,7 @@ package com.elintminds.osdb.ui.dashboard.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.ui.dashboard.Interfaces.BornTodayOnClick;
 import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.HomeBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
@@ -23,11 +26,12 @@ public class BornTodayAdapter extends RecyclerView.Adapter<BornTodayAdapter.View
 {
     private Context context;
     private ArrayList<HomeBean.BornToday> dataList;
-
-    public BornTodayAdapter(Context context, ArrayList<HomeBean.BornToday> dataList)
+private  BornTodayOnClick bornTodayOnClick;
+    public BornTodayAdapter(Context context, ArrayList<HomeBean.BornToday> dataList, BornTodayOnClick bornTodayOnClick)
     {
         this.context = context;
         this.dataList = dataList;
+        this.bornTodayOnClick=bornTodayOnClick;
         Log.e("DATA BORN",""+dataList.size());
     }
     @NonNull
@@ -56,6 +60,7 @@ public class BornTodayAdapter extends RecyclerView.Adapter<BornTodayAdapter.View
     {
         ImageView playerImage;
         TextView playerNameTV, ageTV, birthDateTV;
+        private CardView cardView;
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
@@ -63,9 +68,22 @@ public class BornTodayAdapter extends RecyclerView.Adapter<BornTodayAdapter.View
             playerNameTV = itemView.findViewById(R.id.playerName);
             ageTV = itemView.findViewById(R.id.ageTxt);
             birthDateTV = itemView.findViewById(R.id.bornTxt);
+            cardView = itemView.findViewById(R.id.cv_born_today);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
+                    bornTodayOnClick.bornTodayOnCLick(dataList.get(getAdapterPosition()).getDateOfBirth(),
+                            "NFL",
+                            "NFL",
+                            String.valueOf(dataList.get(getAdapterPosition()).getId()),
+                            dataList.get(getAdapterPosition()).getFullName()
+                            );
+                }
+            });
         }
     }
-
+    ////AGE,TEAM_NAME,DIVISION_NAME,PLAYER_ID,PLAYER_NAME
     public void setDataList(ArrayList<HomeBean.BornToday> data)
     {
         if(data == null || data.isEmpty())

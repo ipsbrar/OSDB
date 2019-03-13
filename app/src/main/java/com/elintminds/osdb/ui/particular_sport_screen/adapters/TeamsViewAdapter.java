@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamClubBean;
+import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamInfoBean;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamsBean;
 import com.elintminds.osdb.ui.particular_sport_screen.view.SportScreenView;
 
@@ -84,7 +85,7 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
     public View getChildView(final int i, final int i1, boolean b, View view, ViewGroup parent)
     {
         ChildViewHolder holder;
-        TeamsBean childItem = (TeamsBean) getChild(i, i1);
+        TeamInfoBean.Team childItem = (TeamInfoBean.Team) getChild(i, i1);
 
         if (view == null)
         {
@@ -98,15 +99,15 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
         }
 
         holder.teamName.setText(childItem.getTeamName());
-        if(childItem.isFollowing())
-        {
-            holder.followBtn.setText(context.getString(R.string.following));
-            holder.followBtn.setSelected(childItem.isFollowing());
-        }
-        else {
+//        if(childItem.isFollowing())
+//        {
+//            holder.followBtn.setText(context.getString(R.string.following));
+//            holder.followBtn.setSelected(childItem.isFollowing());
+//        }
+//        else {
             holder.followBtn.setText(context.getString(R.string.follow));
-            holder.followBtn.setSelected(childItem.isFollowing());
-        }
+//            holder.followBtn.setSelected(childItem.isFollowing());
+//        }
 
         holder.teamName.setOnClickListener(new View.OnClickListener()
         {

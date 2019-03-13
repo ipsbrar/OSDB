@@ -42,8 +42,14 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
             {true, false, false}
     };
 
-    public static TeamsFragment getInstance() {
-        return new TeamsFragment();
+    private  String SportsName;
+
+    public static TeamsFragment getInstance(String sportsName) {
+        TeamsFragment teamsFragment=new TeamsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("SPORTS_NAME",sportsName);
+        teamsFragment.setArguments(bundle);
+        return teamsFragment;
     }
 
     @Nullable
@@ -58,49 +64,35 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
         context = getContext();
         teamsEpView = view.findViewById(R.id.teams_expandable_view);
         teamFragmentPresenter = new TeamFragmentPresenterClass(getActivity(), this);
-        teamFragmentPresenter.getSlugName("NFL");
-//        setupExpandableView();
-    }
+        Bundle bundle = getArguments();
 
-//    private void setupExpandableView()
-//    {
-//        getSampleData();
-//        adapter = new TeamsViewAdapter(context, dataList, this);
-//        teamsEpView.setAdapter(adapter);
-//    }
-////
-////    private void getSampleData()
-////    {
-////        for (int i=0; i<clubNames.length; i++)
-////        {
-////            TeamClubBean clubBean = new TeamClubBean();
-////            clubBean.setTeamClubName(clubNames[i]);
-////            ArrayList<TeamsBean> teamsList = new ArrayList<>();
-////            for(int j=0; j<teamsNames[i].length; j++)
-////            {
-////                TeamsBean teamsBean = new TeamsBean();
-////                teamsBean.setTeamName(teamsNames[i][j]);
-////                teamsBean.setFollowing(isTeamFollowed[i][j]);
-////
-////                teamsList.add(teamsBean);
-////            }
-////            clubBean.setTeamsList(teamsList);
-////
-////            dataList.add(clubBean);
-////        }
-////    }
+        if (bundle != null){
+          SportsName=  bundle.getString("SPORTS_NAME");
+            teamFragmentPresenter.getSlugName(SportsName != null ? SportsName : "NFL");
+        }
+
+    }
 
     @Override
     public void onTeamClick(int groupPos, int childPos) {
         String teamName = dataList.get(groupPos).getTeamsList().get(childPos).getTeamName();
+        String divisionName=dataList.get(groupPos).getTeamClubName();
+        String teamID = String.valueOf(dataList.get(groupPos).getTeamsList().get(childPos).getId());
         Intent intent = new Intent(context, TeamDetailsActivity.class);
-        intent.putExtra("TITLE", teamName);
+        intent.putExtra("TEAM_NAME", teamName);
+        intent.putExtra("DIVISION_NAME", divisionName);
+        intent.putExtra("TEAM_ID", teamID);
         startActivity(intent);
     }
 
     @Override
-    public void getAllListsOfTeam(TeamClubBean teamClubBean) {
-
+    public void getAllListsOfTeam(ArrayList<TeamClubBean> teamClubBean) {
+        if (teamClubBean.size() > 0) {
+            this.dataList = teamClubBean;
+            adapter = new TeamsViewAdapter(context, this.dataList, this);
+            teamsEpView.setAdapter(adapter);
+//            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override

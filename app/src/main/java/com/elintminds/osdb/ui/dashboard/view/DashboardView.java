@@ -22,7 +22,7 @@ public interface DashboardView extends BaseView
 
     interface SportsAdapterItemClickListener
     {
-        void onSportsIconClick(int position);
+        void onSportsIconClick(int position, String name);
     }
 
 }

@@ -13,34 +13,57 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
+import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
+import com.elintminds.osdb.ui.player_details_screen.presenter.PlayerDetailsPresenterClass;
 import com.elintminds.osdb.ui.team_details_screen.view.StatsFragment;
 
-public class PlayerDetailsActivity extends BaseActivity implements PlayerDetailsView, View.OnClickListener
-{
+
+public class PlayerDetailsActivity extends BaseActivity implements PlayerDetailsView, View.OnClickListener {
     private TabLayout tabs;
-    private TextView title, followBtn;
+    private TextView title, followBtn, user_age, user_date_of_birth, user_team, user_zone;
     private ImageView backBtn;
     private boolean isFollowing = false;
+    private String age, teamName, divisionName, playerId, playerName;
+    private PlayerDetailsPresenterClass playerDetailsPresenterClass;
+    private PlayerDetailInfoBean playerDetailInfoBean;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState)
-    {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_detail_screen);
 
         initializeViews();
 
-        String titleText = getIntent().getStringExtra("TITLE");
-        title.setText(titleText);
     }
 
-    private void initializeViews()
-    {
+    private void initializeViews() {
         title = findViewById(R.id.player_details_title);
         tabs = findViewById(R.id.player_details_tabs);
         backBtn = findViewById(R.id.back_btn);
         followBtn = findViewById(R.id.follow_btn);
+        user_age = findViewById(R.id.user_age);
+        user_date_of_birth = findViewById(R.id.user_date_of_birth);
+        user_team = findViewById(R.id.user_team);
+        user_zone = findViewById(R.id.user_zone);
         ViewPager viewPager = findViewById(R.id.player_details_viewpager);
+        playerDetailsPresenterClass = new PlayerDetailsPresenterClass(this, this);
+        if (getIntent() != null) {
+
+            age = getIntent().getStringExtra("AGE");
+            teamName = getIntent().getStringExtra("TEAM_NAME");
+            divisionName = getIntent().getStringExtra("DIVISION_NAME");
+            playerId = getIntent().getStringExtra("PLAYER_ID");
+            playerName = getIntent().getStringExtra("PLAYER_NAME");
+            title.setText(playerName != null ? playerName : "");
+
+            playerDetailsPresenterClass.giveDate(age);
+            playerDetailsPresenterClass.getPlayerID(playerId, this);
+
+            user_team.setText(teamName);
+            user_zone.setText(divisionName);
+
+        }
+
 
         setupViewPager(viewPager);
         tabs.setupWithViewPager(viewPager);
@@ -51,8 +74,7 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
         followBtn.setOnClickListener(this);
     }
 
-    private void setupViewPager(ViewPager upViewPager)
-    {
+    private void setupViewPager(ViewPager upViewPager) {
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
         adapter.addFragment(InfoFragment.getInstance(), getString(R.string.info));
         adapter.addFragment(CareerFragment.getInstance(), getString(R.string.career));
@@ -64,11 +86,9 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
         upViewPager.setAdapter(adapter);
     }
 
-    private void setDividerForTabs()
-    {
+    private void setDividerForTabs() {
         View root = tabs.getChildAt(0);
-        if (root instanceof LinearLayout)
-        {
+        if (root instanceof LinearLayout) {
             ((LinearLayout) root).setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setColor(getResources().getColor(R.color.color_EFEFEF));
@@ -79,10 +99,8 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
     }
 
     @Override
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.back_btn:
                 onBackPressed();
                 break;
@@ -90,14 +108,33 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
             case R.id.follow_btn:
                 isFollowing = !isFollowing;
                 followBtn.setSelected(isFollowing);
-                if(isFollowing)
-                {
+                if (isFollowing) {
                     followBtn.setText(getString(R.string.following));
-                }
-                else {
+                } else {
                     followBtn.setText(getString(R.string.follow));
                 }
                 break;
         }
+    }
+
+
+    @Override
+    public void formattedDate(String stringDate) {
+        user_date_of_birth.setText(stringDate);
+    }
+
+    @Override
+    public void playersAge(String stringDate) {
+        user_age.setText(stringDate);
+    }
+
+    @Override
+    public void fetchPlayerDetailInfo(PlayerDetailInfoBean jsonObject) {
+        this.playerDetailInfoBean = jsonObject;
+    }
+
+    @Override
+    public void errorOccur(String error) {
+
     }
 }

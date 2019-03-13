@@ -64,7 +64,7 @@ public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.Vi
             sportsIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onSportsIconClick(getAdapterPosition());
+                    listener.onSportsIconClick(getAdapterPosition(),dataList.get(getAdapterPosition()).getName());
                 }
             });
         }

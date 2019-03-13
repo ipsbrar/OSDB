@@ -18,7 +18,7 @@ import com.elintminds.osdb.ui.team_details_screen.presenter.TeamDetailsPresenter
 
 import java.util.ArrayList;
 
-public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView.TeamPlayersAdapterListener ,TeamDetailsView.TeamPlayersView{
+public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView.TeamPlayersAdapterListener, TeamDetailsView.TeamPlayersView {
     public static final String TAG = "TeamPlayersFragment";
 
     private Context context;
@@ -27,58 +27,69 @@ public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView
     private ArrayList<TeamPlayersBean.Player> dataList = new ArrayList<>();
     private String[] samplePlayerNames = {"Davante Adams", "Aaron Rodgers", "JK Scott", "Jaire Alexander"
             , "David Bakhtiari", "Evan Baylis", "Kapri Bibbs", "Tim Boyle"};
-private TeamDetailsPresenterClass teamDetailsPresenterClass;
-    public static TeamPlayersFragment getInstance()
-    {
-        return new TeamPlayersFragment();
+    private TeamDetailsPresenterClass teamDetailsPresenterClass;
+
+    private String teamName, divisionName, teamID;
+
+    public static TeamPlayersFragment getInstance(String teamName, String divisionName, String teamId) {
+        TeamPlayersFragment teamPlayersFragment = new TeamPlayersFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("TEAM_NAME", teamName);
+        bundle.putString("DIVISION_NAME", divisionName);
+        bundle.putString("TEAM_ID", teamId);
+        teamPlayersFragment.setArguments(bundle);
+        return teamPlayersFragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        for (String pName: samplePlayerNames) {
-//            TeamPlayersBean item = new TeamPlayersBean();
-//            item.setPlayerName(pName);
-//            dataList.add(item);
-//        }
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.single_recycler_view, container, false);
     }
 
 
     @Override
-    protected void setUp(View view)
-    {
+    protected void setUp(View view) {
         context = getContext();
         statsRV = view.findViewById(R.id.recycler_view);
-        statsRV.setPadding(0,10,0,2);
-        adapter = new TeamPlayersAdapter(context, dataList, this);
-        statsRV.setAdapter(adapter);
+        statsRV.setPadding(0, 10, 0, 2);
 
-        teamDetailsPresenterClass=new TeamDetailsPresenterClass(getActivity(),this);
-        teamDetailsPresenterClass.getTeamID("33");
+        teamDetailsPresenterClass = new TeamDetailsPresenterClass(getActivity(), this);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            teamName = bundle.getString("TEAM_NAME");
+            divisionName = bundle.getString("DIVISION_NAME");
+            teamID = bundle.getString("TEAM_ID");
+
+            teamDetailsPresenterClass.getTeamID(teamID != null ? teamID : "33");
+        }
+
     }
 
 
-
     @Override
-    public void onPlayerItemClick(int position)
-    {
+    public void onPlayerItemClick(int position) {
         Intent intent = new Intent(context, PlayerDetailsActivity.class);
-//        intent.putExtra("TITLE", dataList.get(position).getPlayerName());
-
+        intent.putExtra("AGE", dataList.get(position).getDateOfBirth());
+        intent.putExtra("PLAYER_NAME", dataList.get(position).getFullName());
+        intent.putExtra("TEAM_NAME", teamName);
+        intent.putExtra("DIVISION_NAME", divisionName);
+        intent.putExtra("PLAYER_ID", String.valueOf(dataList.get(position).getId()));
         startActivity(intent);
     }
 
     @Override
     public void getPlayers(TeamPlayersBean teamPlayersBean) {
-        adapter.setDataList(teamPlayersBean.getPlayers());
+//        adapter.setDataList(teamPlayersBean.getPlayers());
+        this.dataList = teamPlayersBean.getPlayers();
+        adapter = new TeamPlayersAdapter(context, this.dataList, this);
+        statsRV.setAdapter(adapter);
     }
 
     @Override

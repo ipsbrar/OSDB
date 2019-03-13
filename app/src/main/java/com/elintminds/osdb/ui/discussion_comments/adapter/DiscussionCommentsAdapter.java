@@ -77,14 +77,14 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
             hours_txt = itemView.findViewById(R.id.hours_txt);
             commentMainLay = itemView.findViewById(R.id.comment_main_lay);
 
-            commentMainLay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    context.startActivity(new Intent(context, DiscussionCommentsActivity.class)
-                            .putExtra("isInnerComment", false)
-                            .putExtra("id", dataList.get(getAdapterPosition()).getId()));
-                }
-            });
+//            commentMainLay.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    context.startActivity(new Intent(context, DiscussionCommentsActivity.class)
+//                            .putExtra("isInnerComment", false)
+//                            .putExtra("id", dataList.get(getAdapterPosition()).getId()));
+//                }
+//            });
         }
     }
     public void setDataList(ArrayList<DiscussionCommentsBean.Comments> data)

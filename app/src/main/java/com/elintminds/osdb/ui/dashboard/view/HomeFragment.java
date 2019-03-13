@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
+import com.elintminds.osdb.ui.dashboard.Interfaces.BornTodayOnClick;
 import com.elintminds.osdb.ui.dashboard.adapters.BornTodayAdapter;
 import com.elintminds.osdb.ui.dashboard.adapters.SportsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.*;
@@ -29,13 +30,15 @@ import com.elintminds.osdb.ui.dashboard.presenter.HomeFragmentPresenterClass;
 import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.ui.do_you_know.view.DoYouKnowActivity;
 import com.elintminds.osdb.ui.particular_sport_screen.view.SportsActivity;
+import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsActivity;
 import com.elintminds.osdb.utils.Utils;
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener, DashboardView.SportsAdapterItemClickListener, HomeFragmentView {
+public class HomeFragment extends BaseFragment implements View.OnClickListener,
+        DashboardView.SportsAdapterItemClickListener, HomeFragmentView , BornTodayOnClick {
     public static final String TAG = "HomeFragment";
 
     private Context context;
@@ -55,7 +58,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private SwipeRefreshLayout swipe_refresh;
     private HomeBean.BreakingNews breakingNewsFrag;
     private HomeBean.DidYouKnow doYouKnow;
-    private ArrayList<DemoListBean> demoListBeans = new ArrayList<>();
     View view;
 
 
@@ -66,24 +68,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        Log.e("HomeSwipeData", "   OnCreateView");
-        DemoListBean demoListBean = new DemoListBean("Davante Adams");
-        DemoListBean demoListBean1 = new DemoListBean("Aaron Rodgers");
-        DemoListBean demoListBean2 = new DemoListBean("JK Scott");
-        DemoListBean demoListBean3 = new DemoListBean("Jaire Alexander");
-        DemoListBean demoListBean4 = new DemoListBean("David Bakhtiari");
-        DemoListBean demoListBean5 = new DemoListBean("Evan Baylis");
-        DemoListBean demoListBean6 = new DemoListBean("Kapri Bibbs");
-        DemoListBean demoListBean7 = new DemoListBean("Tim Boyle");
-        demoListBeans.add(demoListBean);
-        demoListBeans.add(demoListBean1);
-        demoListBeans.add(demoListBean2);
-        demoListBeans.add(demoListBean3);
-        demoListBeans.add(demoListBean4);
-        demoListBeans.add(demoListBean5);
-        demoListBeans.add(demoListBean6);
-        demoListBeans.add(demoListBean7);
 
         return inflater.inflate(R.layout.home_fragment_view, container, false);
 
@@ -109,7 +93,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         bornTodayRecyclerView = view.findViewById(R.id.born_today_recycler);
         ll_main_born_today = view.findViewById(R.id.ll_main_born_today);
         bornTodayRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        bornTodayAdapter = new BornTodayAdapter(context, bornTodayList);
+        bornTodayAdapter = new BornTodayAdapter(context, bornTodayList, this);
         bornTodayRecyclerView.setAdapter(bornTodayAdapter);
 
 //      did you know data
@@ -138,7 +122,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             @Override
             public void onRefresh() {
                 Log.e("HomeSwipeData", "   Inside refresh layout");
-//                setUpStartingData();
+                setUpStartingData();
 
             }
         });
@@ -170,9 +154,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
 
     @Override
-    public void onSportsIconClick(int position) {
+    public void onSportsIconClick(int position,String name) {
         Intent sportIntent = new Intent(context, SportsActivity.class);
         sportIntent.putExtra("SPORT_ID", position);
+        sportIntent.putExtra("SPORT_NAME", name);
+        sportIntent.putExtra("SPORT_LIST", sportsList);
         startActivity(sportIntent);
     }
 
@@ -307,7 +293,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 break;
             }
             case R.id.cv_main_did_you_know: {
-                if (breakingNewsFrag != null) {
+                Log.e("DidYouKnowClick","Clicked");
+                if (doYouKnow != null) {
                     Intent intent = new Intent(context, DoYouKnowActivity.class);
 //                    intent.putExtra("imgUrl", (String) breakingNewsFrag.getImageUrl());
                     intent.putExtra("title", doYouKnow.getContent());
@@ -321,4 +308,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             }
         }
     }
+
+    @Override
+    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName) {
+        Intent intent = new Intent(context, PlayerDetailsActivity.class);
+        intent.putExtra("AGE", age);
+        intent.putExtra("PLAYER_NAME", playerName);
+        intent.putExtra("TEAM_NAME", teamName);
+        intent.putExtra("DIVISION_NAME", divisionName);
+        intent.putExtra("PLAYER_ID", playerId);
+        startActivity(intent);
+    }
 }
+////AGE,TEAM_NAME,DIVISION_NAME,PLAYER_ID,PLAYER_NAME

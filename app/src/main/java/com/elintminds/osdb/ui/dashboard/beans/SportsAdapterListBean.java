@@ -3,7 +3,9 @@ package com.elintminds.osdb.ui.dashboard.beans;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SportsAdapterListBean
+import java.io.Serializable;
+
+public class SportsAdapterListBean implements Serializable
 {
     @SerializedName("id")
     @Expose
@@ -94,7 +96,7 @@ public class SportsAdapterListBean
         this.logo = logo;
     }
 
-    public class Logo {
+    public class Logo implements Serializable{
 
         @SerializedName("id")
         @Expose
