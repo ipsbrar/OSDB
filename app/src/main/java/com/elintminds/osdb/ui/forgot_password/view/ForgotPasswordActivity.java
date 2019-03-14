@@ -7,15 +7,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.ui.forgot_password.presenter.ForgotPasswordPresenterClass;
 import com.elintminds.osdb.ui.register.view.RegisterActivity;
 
-public class ForgotPasswordActivity extends BaseActivity implements View.OnClickListener
+public class ForgotPasswordActivity extends BaseActivity implements View.OnClickListener,ForgotPasswordView
 {
     TextView submitBtn, signupTab;
     EditText forgotEmailEt;
     private Toolbar toolbar;
+    private ForgotPasswordPresenterClass forgotPasswordPresenterClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +43,8 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
         signupTab = findViewById(R.id.signup_tab);
         forgotEmailEt = findViewById(R.id.forgot_email);
 
+        forgotPasswordPresenterClass = new ForgotPasswordPresenterClass(this,this);
+
         submitBtn.setOnClickListener(this);
         signupTab.setOnClickListener(this);
     }
@@ -59,7 +64,7 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
                     showToast("Please enter valid email");
                 }
                 else {
-                    finish();
+                    forgotPasswordPresenterClass.getEmailToSendResetLink(forgotEmailEt.getText().toString().trim(),this);
                 }
                 break;
 
@@ -68,5 +73,16 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void success(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void error(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

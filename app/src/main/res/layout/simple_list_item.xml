@@ -7,17 +7,19 @@
 
     <ImageView
             android:id="@+id/sport_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
             android:contentDescription="@string/sport_icon"
             android:src="@drawable/ic_nfl_2"
+            android:scaleType="fitXY"
             android:layout_centerVertical="true"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            />
     <TextView
             android:id="@+id/dd_item"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:textColor="@color/color_black"
             android:fontFamily="@font/rubik_bold"
             android:layout_toEndOf="@id/sport_logo"/>

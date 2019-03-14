@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.Interfaces.BornTodayOnClick;
 import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
@@ -49,6 +50,8 @@ private  BornTodayOnClick bornTodayOnClick;
         holder.playerNameTV.setText(item.getFullName());
         holder.birthDateTV.setText(getDobFormat(item.getDateOfBirth()));
         holder.ageTV.setText(getAge(item.getDateOfBirth()));
+        if (item.getHeadshot().get(0).getHref() != null )
+            Glide.with(context).load(item.getHeadshot().get(0).getHref()).into(holder.playerImage);
     }
 
     @Override

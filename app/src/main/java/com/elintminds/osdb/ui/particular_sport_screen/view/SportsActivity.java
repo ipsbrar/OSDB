@@ -25,6 +25,7 @@ import com.elintminds.osdb.ui.particular_sport_screen.beans.DropdownBean;
 import com.elintminds.osdb.ui.search_finding_screen.view.ScheduleFragment;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class SportsActivity extends BaseActivity implements SportScreenView, View.OnClickListener {
@@ -36,6 +37,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
     private ArrayList<SportsAdapterListBean> dropdownList = new ArrayList<>();
     private String sportsName;
     private int selectedSport;
+    public static TeamFragData teamFragData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,6 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
         setDividerForTabs();
 
 
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +85,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
     private void setupViewPager(ViewPager upViewPager) {
         Bundle args = new Bundle();
         args.putInt("SCHEDULES", 5);
+        args.putString("SLUG", sportsName);
 
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
         adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
@@ -156,6 +158,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 title.setText(dropdownList.get(i).getName());
                 sportsName = dropdownList.get(i).getName();
+                teamFragData.fetchTeamsData(sportsName);
                 popupWindow.dismiss();
             }
         });
@@ -163,5 +166,13 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
         popupWindow.setOutsideTouchable(true);
 
         return popupWindow;
+    }
+
+    public void setTeamInterFace(TeamFragData teamInterFace) {
+        this.teamFragData = teamInterFace;
+    }
+
+    public interface TeamFragData extends Serializable {
+        void fetchTeamsData(String sportsName);
     }
 }

@@ -9,5 +9,6 @@ public  interface PollView extends BaseView {
 
 
     void getPollData(ArrayList<PollAdapterBean> arrayList);
+    void error(String error);
 
 }

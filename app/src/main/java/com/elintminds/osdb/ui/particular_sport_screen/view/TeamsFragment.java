@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.particular_sport_screen.adapters.TeamsViewAdapter;
@@ -21,8 +23,12 @@ import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsActivity;
 
 import java.util.ArrayList;
 
-public class TeamsFragment extends BaseFragment implements SportScreenView.TeamsExpandableItemsListener, TeamFragmentView {
+public class TeamsFragment extends BaseFragment implements SportScreenView.TeamsExpandableItemsListener, TeamFragmentView, SportsActivity.TeamFragData {
     public static final String TAG = "TeamsFragment";
+
+    //    No data found layout
+    private ConstraintLayout no_data;
+    private TextView txt_no_data_title, txt_no_data_disp;
 
     private Context context;
     private ExpandableListView teamsEpView;
@@ -42,12 +48,12 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
             {true, false, false}
     };
 
-    private  String SportsName;
+    private String SportsName;
 
     public static TeamsFragment getInstance(String sportsName) {
-        TeamsFragment teamsFragment=new TeamsFragment();
+        TeamsFragment teamsFragment = new TeamsFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("SPORTS_NAME",sportsName);
+        bundle.putString("SPORTS_NAME", sportsName);
         teamsFragment.setArguments(bundle);
         return teamsFragment;
     }
@@ -63,11 +69,22 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
     protected void setUp(View view) {
         context = getContext();
         teamsEpView = view.findViewById(R.id.teams_expandable_view);
+        teamsEpView.setVisibility(View.VISIBLE);
+//        No data found Views
+        txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
+        txt_no_data_disp = view.findViewById(R.id.txt_no_data_disp);
+        no_data = view.findViewById(R.id.no_data);
+        txt_no_data_title.setText(getString(R.string.no_data_found));
+        txt_no_data_title.setText(getString(R.string.please_try_again));
+        no_data.setVisibility(View.GONE);
+
         teamFragmentPresenter = new TeamFragmentPresenterClass(getActivity(), this);
         Bundle bundle = getArguments();
+        SportsActivity sportsActivity = new SportsActivity();
+        sportsActivity.setTeamInterFace(this);
 
-        if (bundle != null){
-          SportsName=  bundle.getString("SPORTS_NAME");
+        if (bundle != null) {
+            SportsName = bundle.getString("SPORTS_NAME");
             teamFragmentPresenter.getSlugName(SportsName != null ? SportsName : "NFL");
         }
 
@@ -76,7 +93,7 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
     @Override
     public void onTeamClick(int groupPos, int childPos) {
         String teamName = dataList.get(groupPos).getTeamsList().get(childPos).getTeamName();
-        String divisionName=dataList.get(groupPos).getTeamClubName();
+        String divisionName = dataList.get(groupPos).getTeamClubName();
         String teamID = String.valueOf(dataList.get(groupPos).getTeamsList().get(childPos).getId());
         Intent intent = new Intent(context, TeamDetailsActivity.class);
         intent.putExtra("TEAM_NAME", teamName);
@@ -91,12 +108,22 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
             this.dataList = teamClubBean;
             adapter = new TeamsViewAdapter(context, this.dataList, this);
             teamsEpView.setAdapter(adapter);
+
 //            adapter.notifyDataSetChanged();
+        } else {
+            no_data.setVisibility(View.VISIBLE);
+            teamsEpView.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void getError(String error) {
 
+    }
+
+    @Override
+    public void fetchTeamsData(String sportsName) {
+        teamsEpView.setVisibility(View.VISIBLE);
+        teamFragmentPresenter.getSlugName(sportsName != null ? sportsName : "NFL");
     }
 }

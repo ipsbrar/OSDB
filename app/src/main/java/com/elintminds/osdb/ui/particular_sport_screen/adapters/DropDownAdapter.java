@@ -62,7 +62,7 @@ public class DropDownAdapter extends BaseAdapter
         }
 
         holder.ddItem.setText(item.getName() != null ? item.getName() : "");
-        if (item.getLogo().getFileName() != null &&  item.getLogo().getFileName().equalsIgnoreCase(""))
+        if (item.getLogo().getFileName() != null &&  !item.getLogo().getFileName().equalsIgnoreCase(""))
             Glide.with(context).load(item.getLogo().getFileName()).into(holder.ddImageItem);
         return view;
     }

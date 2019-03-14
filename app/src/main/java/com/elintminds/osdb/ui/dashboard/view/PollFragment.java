@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
@@ -52,7 +53,7 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
         pollRecyclerView.setLayoutManager(llm);
 
 
-        pollsPresenterClass.getPollsData("2019-02-23", "2");
+        pollsPresenterClass.getPollsData("2019-02-23", "362");
 
 //        pollsPresenterClass.getPollsData(AppConstants.getCurrentDate(), "2");
         pollAdapter = new PollAdapter(context, pollList, this);
@@ -115,5 +116,11 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
         pollList.addAll(arrayList);
         pollAdapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void error(String error) {
+        Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
+        pollRecyclerView.hideShimmerAdapter();
     }
 }

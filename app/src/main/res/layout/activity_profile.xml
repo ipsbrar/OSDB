@@ -68,6 +68,7 @@
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textSize="@dimen/sp_22"
+              android:id="@+id/txt_user_name"
               android:text="Rafeeda El Nouri"
               android:textColor="@color/color_2E384D"
               android:layout_gravity="center_horizontal"

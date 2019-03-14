@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.base.view.BaseDialogView;
@@ -28,6 +29,8 @@ import com.elintminds.osdb.ui.base.view.BaseView;
 import com.elintminds.osdb.ui.base.view.base_dialogs.ImageSelectorDialog;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.edit_profile.view.EditProfileActivity;
+import com.elintminds.osdb.ui.profile.beans.UserInfo;
+import com.elintminds.osdb.ui.profile.presenter.ProfilePresenterClass;
 import com.elintminds.osdb.ui.search_finding_screen.view.PlayerFragment;
 import com.elintminds.osdb.ui.settings.view.SettingsActivity;
 import com.elintminds.osdb.utils.AppConstants;
@@ -47,11 +50,12 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     private static final int MY_CAMERA_PERMISSION_CODE = 104;
     private TabLayout tabs;
     private TextView title;
-    private ImageView settingsImg, notificationImg, edit_img_btn,backImg;
+    private ImageView settingsImg, notificationImg, edit_img_btn, backImg;
     private String imagePathNew;
     Bitmap bm;
     CircleImageView profImg;
-
+    private ProfilePresenterClass profilePresenterClass;
+private TextView txt_user_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +73,11 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         edit_img_btn = findViewById(R.id.edit_img_btn);
         backImg = findViewById(R.id.back_img);
         profImg = findViewById(R.id.profImg);
+        txt_user_name = findViewById(R.id.txt_user_name);
         notificationImg = findViewById(R.id.notification_icon);
         ViewPager viewPager = findViewById(R.id.profile_viewpager);
+
+        profilePresenterClass = new ProfilePresenterClass(this,this);
 
         setupViewPager(viewPager);
         tabs.setupWithViewPager(viewPager);
@@ -79,6 +86,8 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         edit_img_btn.setOnClickListener(this);
         backImg.setOnClickListener(this);
         setDividerForTabs();
+
+        profilePresenterClass.getUserInfo();
     }
 
     private void setupViewPager(ViewPager upViewPager) {
@@ -131,7 +140,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 break;
             }
 
-            case R.id.back_img:{
+            case R.id.back_img: {
 
                 finish();
                 break;
@@ -235,20 +244,21 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                     }
 
                 }
-            } }else if (requestCode == PIC_FROM_GALLERY) {
-                if (resultCode == Activity.RESULT_OK) {
-                    Uri imgUri = data.getData();
-                    // val fileName =  File(imgUri!!.path)
-                    File fileName = new File(AppConstants.getRealPathFromURI(this, imgUri));
-                    try {
-                        Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), imgUri);
-                        Log.e("path image", "" + fileName);
-                        profImg.setImageBitmap(bitmapImage);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+            }
+        } else if (requestCode == PIC_FROM_GALLERY) {
+            if (resultCode == Activity.RESULT_OK) {
+                Uri imgUri = data.getData();
+                // val fileName =  File(imgUri!!.path)
+                File fileName = new File(AppConstants.getRealPathFromURI(this, imgUri));
+                try {
+                    Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), imgUri);
+                    Log.e("path image", "" + fileName);
+                    profImg.setImageBitmap(bitmapImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
+        }
 
     }
 
@@ -265,4 +275,15 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     }
 
 
+    @Override
+    public void success(UserInfo userBean) {
+        getAppPreferenceHelperClass().saveUserId(String.valueOf(userBean.getUser().getId()));
+        txt_user_name.setText(userBean.getUser().getName());
+
+    }
+
+    @Override
+    public void error(String error) {
+        Toast.makeText(this, ""+error, Toast.LENGTH_SHORT).show();
+    }
 }

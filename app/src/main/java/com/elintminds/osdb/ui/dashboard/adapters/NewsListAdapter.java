@@ -42,8 +42,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int i)
     {
         NewsAdapterBean.Datum item = dataList.get(i);
-        if (item.getImageUrl()!=null && !item.getImageUrl().equals(""))
-            Glide.with(context).load(item.getImageUrl()).into(holder.newsPreviewImage);
+        if (item.getAsset()!=null)
+            Glide.with(context).load(item.getAsset().getFileName()).into(holder.newsPreviewImage);
+
         if (item.getTitle()!=null){
             holder.newsTitle.setText(item.getTitle());
             Utils.justify(holder.newsTitle);

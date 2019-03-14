@@ -28,12 +28,13 @@ public class PollsPresenterClass<V extends PollView, I extends PollsInteractor>
                 .getPollsDataList(currentDate, userId)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<ArrayList<PollAdapterBean>>() {
+                .subscribe(new Consumer<PollAdapterBean>() {
                                @Override
-                               public void accept(ArrayList<PollAdapterBean> pollList) throws Exception {
-                                   Log.e("PollData", "Success=======" + pollList.get(0).getId());
-
-                                   getMvpView().getPollData(pollList);
+                               public void accept(PollAdapterBean pollList) throws Exception {
+                                   Log.e("PollData", "Success=======" + pollList.getPoll().getId());
+                                   ArrayList<PollAdapterBean> adapterBeanArrayList = new ArrayList<>();
+                                   adapterBeanArrayList.add(pollList);
+                                   getMvpView().getPollData(adapterBeanArrayList);
 
                                }
                            },
@@ -41,7 +42,7 @@ public class PollsPresenterClass<V extends PollView, I extends PollsInteractor>
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 Log.e("PollData", "Error=======    " + throwable.toString());
-                                // getMvpView().getError(throwable.toString());
+                                getMvpView().error(throwable.toString());
                             }
                         }));
 

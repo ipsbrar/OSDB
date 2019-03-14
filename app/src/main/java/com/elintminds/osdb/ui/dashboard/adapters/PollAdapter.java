@@ -43,9 +43,9 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull PollAdapter.ViewHolder holder, final int i) {
 
         holder.pollOptionParentLay.removeAllViews();
-        holder.pollHeading.setText(dataList.get(i).getText());
-        PollFragment.dateTxt.setText(AppConstants.convertDateFormat(dataList.get(i).getPublishedDate()));
-        final List<PollOption> pollOptionsList = dataList.get(i).getOptions();
+        holder.pollHeading.setText(dataList.get(i).getPoll().getText());
+        PollFragment.dateTxt.setText(AppConstants.convertDateFormat(dataList.get(i).getPoll().getPublishedDate()));
+        final List<PollAdapterBean.Option> pollOptionsList = dataList.get(i).getPoll().getOptions();
         String[] options = context.getResources().getStringArray(R.array.option_type);
         for (int j = 0; j < pollOptionsList.size(); j++) {
             View pollOptionView = LayoutInflater.from(context).inflate(R.layout.poll_options_view, null);

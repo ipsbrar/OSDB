@@ -42,7 +42,7 @@ getMvpView().showProgressDialog();
                                    if (loginBean.getToken() != null) {
                                        Log.e("loginstatuspresenter", loginBean.getToken());
                                        getMvpView().onSuccess(loginBean);
-                                   }
+                                   }else
                                    if (loginBean.getError() != null) {
                                        Log.e("loginstatuspresenter", loginBean.getError());
                                        getMvpView().onError(loginBean.getError());
