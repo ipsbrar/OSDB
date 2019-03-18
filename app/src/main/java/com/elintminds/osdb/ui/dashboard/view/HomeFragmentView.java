@@ -7,16 +7,16 @@ import java.util.ArrayList;
 
 public interface HomeFragmentView extends BaseView {
 
-    void getSportsData(ArrayList<SportsAdapterListBean> sportsList);
-
+//    void getSportsData(ArrayList<SportsAdapterListBean> sportsList);
+//
     void getHomesData(HomeBean homesData);
-
-    void getBornTodayData(ArrayList<HomeBean.BornToday> bornTodayData);
-
-    void getBreakingNews(ArrayList<NewsAdapterBean.BreakingNews> breakingNews);
+//
+//    void getBornTodayData(ArrayList<HomeBean.BornToday> bornTodayData);
+//
+//    void getBreakingNews(ArrayList<NewsAdapterBean.BreakingNews> breakingNews);
 
     void getError(String error);
 
-    void getDoYouKnow(ArrayList<DoYouKnow> doYouKnows);
+//    void getDoYouKnow(ArrayList<DoYouKnow> doYouKnows);
 
 }

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +20,29 @@ import com.elintminds.osdb.ui.dashboard.adapters.PollAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.PollAdapterBean;
 import com.elintminds.osdb.ui.dashboard.presenter.PollsPresenterClass;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class PollFragment extends BaseFragment implements DashboardView.PollOptionListner, PollView {
 
     public static final String TAG = "PollFragment";
 
+    //    No data found layout
+    private ConstraintLayout no_data;
+    private TextView txt_no_data_title, txt_no_data_disp;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
     private Context context;
     private ShimmerRecyclerView pollRecyclerView;
     private PollAdapter pollAdapter;
     public static TextView dateTxt;
     private ArrayList<PollAdapterBean> pollList = new ArrayList<>();
     private PollsPresenterClass<PollFragment, com.elintminds.osdb.ui.dashboard.model.PollsInteractor> pollsPresenterClass;
-
+private String currentDate;
     public static PollFragment newInstance() {
         return new PollFragment();
     }
@@ -43,67 +56,47 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
     @Override
     protected void setUp(View view) {
 
+        //        No data found Views
+        txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
+        txt_no_data_disp = view.findViewById(R.id.txt_no_data_disp);
+        no_data = view.findViewById(R.id.no_data);
+        txt_no_data_title.setText(getString(R.string.no_data_found));
+        txt_no_data_disp.setText(getString(R.string.please_try_again));
+        no_data.setVisibility(View.GONE);
 
         context = getContext();
         pollsPresenterClass = new PollsPresenterClass<PollFragment, com.elintminds.osdb.ui.dashboard.model.PollsInteractor>(context, this);
         pollRecyclerView = view.findViewById(R.id.poll_recycler_view);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
         dateTxt = view.findViewById(R.id.date_txt);
         LinearLayoutManager llm = new LinearLayoutManager(context);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         pollRecyclerView.setLayoutManager(llm);
 
-
-        pollsPresenterClass.getPollsData("2019-02-23", "362");
+currentDate= getCurrentDate();
+        pollsPresenterClass.getPollsData(currentDate != null ? currentDate :"2019-02-23", "166");
 
 //        pollsPresenterClass.getPollsData(AppConstants.getCurrentDate(), "2");
         pollAdapter = new PollAdapter(context, pollList, this);
         pollRecyclerView.setAdapter(pollAdapter);
         pollRecyclerView.showShimmerAdapter();
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pollRecyclerView.setVisibility(View.VISIBLE);
+                no_data.setVisibility(View.GONE);
+                pollsPresenterClass.getPollsData("2019-02-23", "166");
+            }
+        });
     }
 
-    private void getpollData() {
-
-
-//        PollAdapterBean item = new PollAdapterBean();
-//        item.setTitle("The new BFL starts this weekend. The MFL starts right after in February. What do you think?");
-//
-//        ArrayList<PollOption> pollOptionList = new ArrayList<>();
-//
-//        PollOption pollOption = new PollOption();
-//        pollOption.setPollOptions("More football is better!");
-//        pollOption.setPollLabel("A");
-//        pollOptionList.add(pollOption);
-//        PollOption pollOption1 = new PollOption();
-//        pollOption1.setPollOptions("Backt-to-back leagues? That’s too much!");
-//        pollOption1.setPollLabel("B");
-//        pollOptionList.add(pollOption1);
-//
-//        item.setPollOptions(pollOptionList);
-//        item.setVisible(false);
-//        pollList.add(item);
-//
-//        ArrayList<PollOption> pollOptionList2 = new ArrayList<>();
-//        PollAdapterBean item2 = new PollAdapterBean();
-//        item2.setTitle("What sport delivers the hardest hits?");
-//
-//        PollOption pollOption2 = new PollOption();
-//        pollOption2.setPollOptions("Rugby");
-//        pollOption2.setPollLabel("A");
-//        pollOptionList2.add(pollOption2);
-//        PollOption pollOption3 = new PollOption();
-//        pollOption3.setPollOptions("Football");
-//        pollOption3.setPollLabel("B");
-//        pollOptionList2.add(pollOption3);
-//        item2.setPollOptions(pollOptionList2);
-//        item2.setVisible(false);
-//        pollList.add(item2);
-
-    }
 
     @Override
-    public void onOptionClick(int listPosition, int optionPosition) {
-
+    public void onOptionClick(int pollId, int optionId) {
+        String defaultToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc3RhZ2luZy5vc2RiLnBybzo4MVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1NTIzNzA2OTYsImV4cCI6MTU1MjgwMjY5NiwibmJmIjoxNTUyMzcwNjk2LCJqdGkiOiJERUpQVTN2cnZBZEIyQzZrIiwic3ViIjozNjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.IrSsXMjW-BWKhrfFuEMCiitdVS_ijN6bFBvfsE2_Cjk";
+        String token = getAppPreferenceHelperClass().getToken() != null ? getAppPreferenceHelperClass().getToken() : defaultToken;
+        pollsPresenterClass.VotePolls(getActivity(), String.valueOf(pollId), String.valueOf(optionId), token);
 //        pollList.get(listPosition).setVisible(true);
 //        pollAdapter.notifyDataSetChanged();
 
@@ -111,16 +104,46 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
 
     @Override
     public void getPollData(ArrayList<PollAdapterBean> arrayList) {
-
+        if (arrayList.size() > 0) {
+            pollList.addAll(arrayList);
+            pollAdapter.notifyDataSetChanged();
+        } else {
+            pollRecyclerView.setVisibility(View.GONE);
+            no_data.setVisibility(View.VISIBLE);
+        }
         pollRecyclerView.hideShimmerAdapter();
-        pollList.addAll(arrayList);
-        pollAdapter.notifyDataSetChanged();
+        swipeRefreshLayout.setRefreshing(false);
 
     }
 
     @Override
-    public void error(String error) {
-        Toast.makeText(context, ""+error, Toast.LENGTH_SHORT).show();
-        pollRecyclerView.hideShimmerAdapter();
+    public void VotePolls(String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void error(String error, boolean isVisible) {
+
+        if (isVisible){
+            pollRecyclerView.setVisibility(View.GONE);
+            no_data.setVisibility(View.VISIBLE);
+            pollRecyclerView.hideShimmerAdapter();
+            swipeRefreshLayout.setRefreshing(false);
+        }
+        Toast.makeText(context, "" + error, Toast.LENGTH_SHORT).show();
+
+    }
+
+// get Current date
+private String getCurrentDate() {
+    SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    String date;
+
+    Date currDate = Calendar.getInstance().getTime();
+    date = spf.format(currDate);
+
+    Log.e("Date", "" + date);
+
+    return date;
+}
 }

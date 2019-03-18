@@ -3,14 +3,21 @@ package com.elintminds.osdb.ui.team_details_screen.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.data.network.WebserviceUrls;
 import com.elintminds.osdb.ui.dashboard.beans.HomeBean;
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean;
 import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsView;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -41,6 +48,21 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
     {
         TeamPlayersBean.Player item = dataList.get(i);
         viewHolder.playerName.setText(item.getFullName());
+        if (item.getHeadshots() != null && !item.getHeadshots().equalsIgnoreCase("")){
+            try {
+                JSONArray jsonArray = new JSONArray(item.getHeadshots());
+                for (int j = 0; j < jsonArray.length(); j++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    String imgUrl = jsonObject.getString("href");
+                    String urlImg = "https://s3-us-west-2.amazonaws.com/osdb/" +imgUrl;
+                    Log.e("MYIMAGEURL",urlImg);
+                    Glide.with(context).load(urlImg).into(viewHolder.player_image);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -50,11 +72,13 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView playerName;
+     private  TextView playerName;
+     private ImageView player_image;
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
             playerName = itemView.findViewById(R.id.player_name);
+            player_image = itemView.findViewById(R.id.player_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

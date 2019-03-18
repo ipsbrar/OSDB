@@ -3,12 +3,14 @@ package com.elintminds.osdb.ui.discussion_comments.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
@@ -31,11 +33,14 @@ import java.util.Date;
 import java.util.Locale;
 
 public class DiscussionCommentsActivity extends BaseActivity implements View.OnClickListener, DiscussionCommentsView, BaseDialogView.ConfirmationDialogListener {
+    //    No data found layout
+    private ConstraintLayout no_data;
+    private TextView txt_no_data_title, txt_no_data_disp;
 
     private ImageView backImg, user_Image;
     private ShimmerRecyclerView discussionCommentsRecyclerView;
     private TextView player_name, hours_txt, comment_txt, comments_number;
-
+private RelativeLayout rl_hide_layout;
 
     private ArrayList<DiscussionCommentsBean.Comments> discussionList = new ArrayList<>();
     private DiscussionCommentsAdapter discussionAdapter;
@@ -49,7 +54,15 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discussion_comment_detail);
 
+        //        No data found Views
+        txt_no_data_title = findViewById(R.id.txt_no_data_title);
+        txt_no_data_disp = findViewById(R.id.txt_no_data_disp);
+        no_data = findViewById(R.id.no_data);
+        txt_no_data_title.setText(getString(R.string.no_data_found));
+        txt_no_data_disp.setText(getString(R.string.please_try_again));
+        no_data.setVisibility(View.GONE);
 
+        rl_hide_layout = findViewById(R.id.rl_hide_layout);
         discussionCommentsRecyclerView = findViewById(R.id.comments_recycler_view);
         backImg = findViewById(R.id.backImg);
         user_Image = findViewById(R.id.user_Image);
@@ -143,6 +156,9 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
 
         if (discussionCommentsBean.getComments().size() > 0) {
             discussionAdapter.setDataList(discussionCommentsBean.getComments());
+        }else{
+            rl_hide_layout.setVisibility(View.GONE);
+            no_data.setVisibility(View.VISIBLE);
         }
         hideProgressDialog();
         discussionCommentsRecyclerView.hideShimmerAdapter();

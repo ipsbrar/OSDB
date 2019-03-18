@@ -9,6 +9,7 @@ import com.elintminds.osdb.ui.search_finding_screen.beans.ScheduleBeans;
 import com.elintminds.osdb.ui.search_finding_screen.model.ScheduleFragmentInteractor;
 import com.elintminds.osdb.ui.search_finding_screen.model.ScheduleFragmentInteractorClass;
 import com.elintminds.osdb.ui.search_finding_screen.view.ScheduleFragmentView;
+import com.elintminds.osdb.utils.ConnectivityReceiver;
 import io.reactivex.functions.Consumer;
 import org.json.JSONObject;
 
@@ -31,64 +32,69 @@ public class ScheduleFragmentPresenterClass<V extends ScheduleFragmentView, I ex
 
     @Override
     public void getSlugName(String slug) {
-        getMvpView().showProgressDialog();
-        Log.e("HomeSwipeData", "   Inside Presenter");
-        getCompositeDisposable().add(getInteractor()
-                .fetchSchedules(slug)
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<ScheduleBeans>() {
-                               @Override
-                               public void accept(ScheduleBeans scheduleBeans) throws Exception {
+        if (ConnectivityReceiver.isConnected()) {
+            getMvpView().showProgressDialog();
+            Log.e("HomeSwipeData", "   Inside Presenter");
+            getCompositeDisposable().add(getInteractor()
+                    .fetchSchedules(slug)
+                    .subscribeOn(getSchedulerProvider().io())
+                    .observeOn(getSchedulerProvider().ui())
+                    .subscribe(new Consumer<ScheduleBeans>() {
+                                   @Override
+                                   public void accept(ScheduleBeans scheduleBeans) throws Exception {
 
-                                   ArrayList<ScheduleBean> allSchedule = new ArrayList<>();
-                                   String vanueName = "" , vanueCity = "", vanueState = "", vanueCountry = "";
-                                   for (int i = 0; i < scheduleBeans.getSchedules().size(); i++) {
+                                       ArrayList<ScheduleBean> allSchedule = new ArrayList<>();
+                                       String vanueName = "", vanueCity = "", vanueState = "", vanueCountry = "";
+                                       for (int i = 0; i < scheduleBeans.getSchedules().size(); i++) {
 
-                                       for (int j = 0; j < scheduleBeans.getSchedules().get(i).getGames().size(); j++) {
-                                           ScheduleBean scheduleBean = new ScheduleBean();
-                                           if (scheduleBeans.getSchedules().get(i).getGames().get(j).getVenue() != null) {
-                                               JSONObject jsonObject = new JSONObject(scheduleBeans.getSchedules().get(i).getGames().get(j).getVenue());
-                                                vanueName =jsonObject.has("name") ? jsonObject.getString("name") : "";
-                                                vanueCity =jsonObject.has("city") ? jsonObject.getString("city") : "";
-                                                vanueState =jsonObject.has("state") ? jsonObject.getString("state") : "";
-                                                vanueCountry =jsonObject.has("country") ? jsonObject.getString("country") : "";
-                                           }
-                                           String matchAddress = vanueName + " " + vanueCity + " " + vanueState + " " + vanueCountry;
-                                           String eventTime = scheduleBeans.getSchedules().get(i).getGames().get(j).getScheduledDateTime();
-                                           String matchTiming = eventTime != null ? getFormatedDate(eventTime) : "none";
-                                           scheduleBean.setMatchAddres(matchAddress);
-                                           scheduleBean.setMatchTime(matchTiming);
-
-                                           for (int k = 0; k < scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().size(); k++) {
-                                               if (k == 0) {
-                                                   String teamOneName = scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().get(k).getTeams().getTeamName();
-                                                   String teamOneLogo = scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().get(k).getTeams().getLogo();
-                                                   scheduleBean.setTeamOneName(teamOneName);
-                                                   scheduleBean.setTeamOneLogo(teamOneLogo);
-                                               } else if (k == 1) {
-                                                   String teamTwoName = scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().get(k).getTeams().getTeamName();
-                                                   String teamTwoLogo = scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().get(k).getTeams().getLogo();
-                                                   scheduleBean.setTeamTwoName(teamTwoName);
-                                                   scheduleBean.setTeamTwoLogo(teamTwoLogo);
+                                           for (int j = 0; j < scheduleBeans.getSchedules().get(i).getGames().size(); j++) {
+                                               ScheduleBean scheduleBean = new ScheduleBean();
+                                               if (scheduleBeans.getSchedules().get(i).getGames().get(j).getVenue() != null) {
+                                                   JSONObject jsonObject = new JSONObject(scheduleBeans.getSchedules().get(i).getGames().get(j).getVenue());
+                                                   vanueName = jsonObject.has("name") ? jsonObject.getString("name") : "";
+                                                   vanueCity = jsonObject.has("city") ? jsonObject.getString("city") : "";
+                                                   vanueState = jsonObject.has("state") ? jsonObject.getString("state") : "";
+                                                   vanueCountry = jsonObject.has("country") ? jsonObject.getString("country") : "";
                                                }
-                                           }
-                                           allSchedule.add(scheduleBean);
-                                       }
-                                   }
+                                               String matchAddress = vanueName + " " + vanueCity + " " + vanueState + " " + vanueCountry;
+                                               String eventTime = scheduleBeans.getSchedules().get(i).getGames().get(j).getScheduledDateTime();
+                                               String matchTiming = eventTime != null ? getFormatedDate(eventTime) : "none";
+                                               scheduleBean.setMatchAddres(matchAddress);
+                                               scheduleBean.setMatchTime(matchTiming);
 
-                                   getMvpView().success(allSchedule);
-                                   getMvpView().hideProgressDialog();
-                               }
-                           },
-                        new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                getMvpView().error(throwable.toString());
-                                getMvpView().hideProgressDialog();
-                            }
-                        }));
+                                               for (int k = 0; k < scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().size(); k++) {
+                                                   if (k == 0) {
+                                                       String teamOneName = scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().get(k).getTeams().getTeamName();
+                                                       String teamOneLogo = scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().get(k).getTeams().getLogo();
+                                                       scheduleBean.setTeamOneName(teamOneName);
+                                                       scheduleBean.setTeamOneLogo(teamOneLogo);
+                                                   } else if (k == 1) {
+                                                       String teamTwoName = scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().get(k).getTeams().getTeamName();
+                                                       String teamTwoLogo = scheduleBeans.getSchedules().get(i).getGames().get(j).getParticipants().get(k).getTeams().getLogo();
+                                                       scheduleBean.setTeamTwoName(teamTwoName);
+                                                       scheduleBean.setTeamTwoLogo(teamTwoLogo);
+                                                   }
+                                               }
+                                               allSchedule.add(scheduleBean);
+                                           }
+                                       }
+
+                                       getMvpView().success(allSchedule);
+                                       getMvpView().hideProgressDialog();
+                                   }
+                               },
+                            new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    getMvpView().error(throwable.toString());
+                                    getMvpView().hideProgressDialog();
+                                }
+                            }));
+        } else {
+            getMvpView().error("No internet found");
+        }
     }
+
     private String getFormatedDate(String rawDate) {
         DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
         DateFormat targetFormat = new SimpleDateFormat("h:mm a");

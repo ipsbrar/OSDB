@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.particular_sport_screen.adapters.TeamsViewAdapter;
@@ -30,6 +32,7 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
     private ConstraintLayout no_data;
     private TextView txt_no_data_title, txt_no_data_disp;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private Context context;
     private ExpandableListView teamsEpView;
     private TeamsViewAdapter adapter;
@@ -75,9 +78,10 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
         txt_no_data_disp = view.findViewById(R.id.txt_no_data_disp);
         no_data = view.findViewById(R.id.no_data);
         txt_no_data_title.setText(getString(R.string.no_data_found));
-        txt_no_data_title.setText(getString(R.string.please_try_again));
+        txt_no_data_disp.setText(getString(R.string.please_try_again));
         no_data.setVisibility(View.GONE);
 
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
         teamFragmentPresenter = new TeamFragmentPresenterClass(getActivity(), this);
         Bundle bundle = getArguments();
         SportsActivity sportsActivity = new SportsActivity();
@@ -87,6 +91,15 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
             SportsName = bundle.getString("SPORTS_NAME");
             teamFragmentPresenter.getSlugName(SportsName != null ? SportsName : "NFL");
         }
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                no_data.setVisibility(View.GONE);
+                teamsEpView.setVisibility(View.VISIBLE);
+                teamFragmentPresenter.getSlugName(SportsName != null ? SportsName : "NFL");
+            }
+        });
 
     }
 
@@ -118,12 +131,15 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
 
     @Override
     public void getError(String error) {
-
+        Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+        no_data.setVisibility(View.VISIBLE);
+        teamsEpView.setVisibility(View.GONE);
     }
 
     @Override
     public void fetchTeamsData(String sportsName) {
         teamsEpView.setVisibility(View.VISIBLE);
+        no_data.setVisibility(View.GONE);
         teamFragmentPresenter.getSlugName(sportsName != null ? sportsName : "NFL");
     }
 }

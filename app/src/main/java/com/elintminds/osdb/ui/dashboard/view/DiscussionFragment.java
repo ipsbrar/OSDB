@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseDialogView;
@@ -25,6 +29,12 @@ import java.util.ArrayList;
 
 public class DiscussionFragment extends BaseFragment implements DiscussionView, DiscussionOnClick, BaseDialogView.ConfirmationDialogListener {
     public static final String TAG = "DiscussionFragment";
+
+    //    No data found layout
+    private ConstraintLayout no_data;
+    private TextView txt_no_data_title, txt_no_data_disp;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     private ArrayList<DiscussionAdapterBean.Threads> discussionList = new ArrayList<>();
     private DiscussionAdapter discussionAdapter;
     private ShimmerRecyclerView discussionRecyclerView;
@@ -38,6 +48,15 @@ public class DiscussionFragment extends BaseFragment implements DiscussionView, 
     @Override
     protected void setUp(View view) {
 
+        //        No data found Views
+        txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
+        txt_no_data_disp = view.findViewById(R.id.txt_no_data_disp);
+        no_data = view.findViewById(R.id.no_data);
+        txt_no_data_title.setText(getString(R.string.no_data_found));
+        txt_no_data_disp.setText(getString(R.string.please_try_again));
+        no_data.setVisibility(View.GONE);
+
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
         discussionRecyclerView = view.findViewById(R.id.disccusion_recycler_view);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -48,7 +67,15 @@ public class DiscussionFragment extends BaseFragment implements DiscussionView, 
 
         discussionPresenterClass = new DiscussionPresenterClass(getActivity(), this);
         discussionPresenterClass.getDiscussionData();
-
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                no_data.setVisibility(View.GONE);
+                discussionRecyclerView.setVisibility(View.VISIBLE);
+                discussionRecyclerView.showShimmerAdapter();
+                discussionPresenterClass.getDiscussionData();
+            }
+        });
     }
 
     @Nullable
@@ -62,13 +89,23 @@ public class DiscussionFragment extends BaseFragment implements DiscussionView, 
 
         if (discussData.getThreads().size() > 0) {
             discussionAdapter.setDataList(discussData.getThreads());
+        } else {
+            discussionRecyclerView.setVisibility(View.GONE);
+            no_data.setVisibility(View.VISIBLE);
         }
+        swipeRefreshLayout.setRefreshing(false);
         discussionRecyclerView.hideShimmerAdapter();
     }
 
     @Override
-    public void getError(@NotNull String error) {
-
+    public void getError(@NotNull String error, boolean isVisible) {
+        if (isVisible) {
+            discussionRecyclerView.setVisibility(View.GONE);
+            no_data.setVisibility(View.VISIBLE);
+        }
+        discussionRecyclerView.hideShimmerAdapter();
+        swipeRefreshLayout.setRefreshing(false);
+        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
     @Override

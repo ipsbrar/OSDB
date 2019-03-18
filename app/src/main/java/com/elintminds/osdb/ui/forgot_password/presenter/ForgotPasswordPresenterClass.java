@@ -11,6 +11,7 @@ import com.elintminds.osdb.ui.forgot_password.model.ForgotPasswordInteractorClas
 import com.elintminds.osdb.ui.forgot_password.view.ForgotPasswordView;
 import com.elintminds.osdb.ui.login.beans.UserBean;
 import io.reactivex.functions.Consumer;
+import retrofit2.Response;
 
 public class ForgotPasswordPresenterClass<V extends ForgotPasswordView, I extends ForgotPasswordInteractor> extends BasePresenterClass<V,I> implements ForgotPasswordPresenter<V,I>
 {
@@ -29,17 +30,19 @@ public class ForgotPasswordPresenterClass<V extends ForgotPasswordView, I extend
                 .getEmailResetLink(email)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<ForgotPasswordBean>() {
+                .subscribe(new Consumer<Response<ForgotPasswordBean>>() {
                                @Override
-                               public void accept(ForgotPasswordBean forgotPasswordBean) throws Exception {
+                               public void accept(Response<ForgotPasswordBean> forgotPasswordBean) throws Exception {
                                    Log.e("loginstatuspresenter", "Success=======");
-
-                                   if (forgotPasswordBean.getError() != null){
-                                       getMvpView().error(forgotPasswordBean.getError());
-
-                                   }else{
+                                   if (forgotPasswordBean.code() == 200){
                                        getMvpView().success(context.getString(R.string.forgot_password_link));
+                                   }else{
+                                       if (forgotPasswordBean.body().getError() != null){
+                                           getMvpView().error(forgotPasswordBean.body().getError());
+
+                                       }
                                    }
+
                                    getMvpView().hideProgressDialog();
                                }
                            },

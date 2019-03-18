@@ -96,7 +96,7 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     //dataList.get(i).setVisible(true);
-                    listner.onOptionClick(getAdapterPosition(), view.getId());
+                    listner.onOptionClick(dataList.get(getAdapterPosition()).getPoll().getId(), dataList.get(getAdapterPosition()).getPoll().getOptions().get(view.getId()).getId());
 
                 }
             });

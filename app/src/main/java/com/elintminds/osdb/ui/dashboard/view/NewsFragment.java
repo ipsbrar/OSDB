@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
@@ -40,8 +43,15 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     ShimmerLayout shimmer_break_latest;
     private NewsFragmentPresenterClass newsFragmentPresenterClass;
     private ImageView news_frag_image;
-    private TextView news_title, news_frag_game_name, txt_date_breaking_news, txt_time_stamp_breaking_news;
+    private TextView news_title, news_frag_game_name, txt_date_breaking_news, txt_time_stamp_breaking_news,load_more_news;
     String imgUrl, title, bigContent, teamName, date, timeStamp;
+
+
+    //    No data found layout
+    private ConstraintLayout no_data;
+    private TextView txt_no_data_title, txt_no_data_disp;
+    private RelativeLayout rl_hide_layout;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public static NewsFragment getInstance() {
         return new NewsFragment();
@@ -56,9 +66,20 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     @Override
     protected void setUp(View view) {
         context = getContext();
-        newsRecyclerView = view.findViewById(R.id.news_recycler_view);
 
-        shimmer_break_latest= view.findViewById(R.id.shimmer_break_latest);
+        //        No data found Views
+        txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
+        txt_no_data_disp = view.findViewById(R.id.txt_no_data_disp);
+        no_data = view.findViewById(R.id.no_data);
+        txt_no_data_title.setText(getString(R.string.no_data_found));
+        txt_no_data_disp.setText(getString(R.string.please_try_again));
+        no_data.setVisibility(View.GONE);
+
+        newsRecyclerView = view.findViewById(R.id.news_recycler_view);
+        newsFragmentPresenterClass = new NewsFragmentPresenterClass(getActivity(), this);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
+        rl_hide_layout = view.findViewById(R.id.rl_hide_layout);
+        shimmer_break_latest = view.findViewById(R.id.shimmer_break_latest);
         topNews = view.findViewById(R.id.top_news);
         topNews.setVisibility(View.GONE);
         shimmer_break_latest.startShimmerAnimation();
@@ -69,9 +90,23 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         news_frag_game_name = view.findViewById(R.id.news_frag_game_name);
         txt_date_breaking_news = view.findViewById(R.id.txt_date_breaking_news);
         txt_time_stamp_breaking_news = view.findViewById(R.id.txt_time_stamp_breaking_news);
+        load_more_news = view.findViewById(R.id.load_more_news);
 
         topNews.setOnClickListener(this);
         setupRecyclerView();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.e("HomeSwipeData", "   Inside refresh layout");
+                rl_hide_layout.setVisibility(View.VISIBLE);
+                no_data.setVisibility(View.GONE);
+                shimmer_break_latest.startShimmerAnimation();
+                newsRecyclerView.showShimmerAdapter();
+                newsFragmentPresenterClass.getNewsData();
+
+            }
+        });
     }
 
     @Override
@@ -91,7 +126,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         newsRecyclerView.setAdapter(adapter);
         newsRecyclerView.showShimmerAdapter();
 
-        newsFragmentPresenterClass = new NewsFragmentPresenterClass(getActivity(), this);
+
         newsFragmentPresenterClass.getNewsData();
 
 
@@ -104,7 +139,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         if (newsList.size() > 0) {
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("imgUrl", (String) newsList.get(position).getImageUrl());
-            intent.putExtra("title",  newsList.get(position).getTitle());
+            intent.putExtra("title", newsList.get(position).getTitle());
             intent.putExtra("bigContent", newsList.get(position).getLongContent());
 //            intent.putExtra("teamName", teamName);
 //            intent.putExtra("date", date);
@@ -131,6 +166,10 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
                 }
                 break;
             }
+            case R.id.load_more_news:{
+
+                break;
+            }
 
         }
     }
@@ -139,37 +178,49 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     @Override
     public void getNewsData(NewsAdapterBean newsList) {
         Log.e("DATA", "" + newsList.getData().size());
-        if (newsList.getBreakingNews().size()>0){
-            if (newsList.getBreakingNews().get(0).getImageUrl() != null && !newsList.getBreakingNews().get(0).getImageUrl().equals(""))
-                Glide.with(getActivity()).load(newsList.getBreakingNews().get(0).getImageUrl());
-            if (newsList.getBreakingNews().get(0).getTitle() != null) {
-                news_title.setText(newsList.getBreakingNews().get(0).getTitle());
-                Utils.justify(news_title);
-            }
-            //if (newsList.getBreakingNews().get(0).getTitle() != null){
-            //    news_frag_game_name.setText(newsList.getBreakingNews().get(0).getTitle());
-            //    Utils.justify(news_frag_game_name);
-            // }
-            imgUrl = (String) newsList.getBreakingNews().get(0).getImageUrl();
-            title = newsList.getBreakingNews().get(0).getTitle();
-            bigContent = newsList.getBreakingNews().get(0).getLongContent();
+        if (newsList != null) {
+            if (newsList.getBreakingNews().size() > 0) {
+                if (newsList.getBreakingNews().get(0).getImageUrl() != null && !newsList.getBreakingNews().get(0).getImageUrl().equals(""))
+                    Glide.with(getActivity()).load(newsList.getBreakingNews().get(0).getImageUrl());
+                if (newsList.getBreakingNews().get(0).getTitle() != null) {
+                    news_title.setText(newsList.getBreakingNews().get(0).getTitle());
+                    Utils.justify(news_title);
+                }
+                //if (newsList.getBreakingNews().get(0).getTitle() != null){
+                //    news_frag_game_name.setText(newsList.getBreakingNews().get(0).getTitle());
+                //    Utils.justify(news_frag_game_name);
+                // }
+                imgUrl = (String) newsList.getBreakingNews().get(0).getImageUrl();
+                title = newsList.getBreakingNews().get(0).getTitle();
+                bigContent = newsList.getBreakingNews().get(0).getLongContent();
 //        ,teamName,date,timeStamp;                 pending
+            }
+
+            topNews.setVisibility(View.VISIBLE);
+            shimmer_break_latest.stopShimmerAnimation();
+            shimmer_break_latest.setVisibility(View.GONE);
+
+            if (newsList.getData().size() > 0) {
+                this.newsList = newsList.getData();
+                adapter.setDataList(this.newsList);
+            }
+        }else{
+            rl_hide_layout.setVisibility(View.GONE);
+            no_data.setVisibility(View.VISIBLE);
         }
-
-        topNews.setVisibility(View.VISIBLE);
-        shimmer_break_latest.stopShimmerAnimation();
-        shimmer_break_latest.setVisibility(View.GONE);
-
-      if (newsList.getData().size()>0) {
-          this.newsList = newsList.getData();
-          adapter.setDataList(this.newsList);
-      }
+        swipeRefreshLayout.setRefreshing(false);
         newsRecyclerView.hideShimmerAdapter();
+        shimmer_break_latest.stopShimmerAnimation();
     }
 
     @Override
     public void getError(String error) {
         Toast.makeText(context, "error" + error, Toast.LENGTH_SHORT).show();
         Log.e("ErrorIS ", error);
+        rl_hide_layout.setVisibility(View.GONE);
+        no_data.setVisibility(View.VISIBLE);
+        swipeRefreshLayout.setRefreshing(false);
+        newsRecyclerView.hideShimmerAdapter();
+        shimmer_break_latest.stopShimmerAnimation();
     }
 }

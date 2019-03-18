@@ -12,6 +12,7 @@ import com.elintminds.osdb.ui.register.beans.RegisterBean
 import com.elintminds.osdb.ui.search_finding_screen.beans.ScheduleBeans
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean
 import io.reactivex.Observable
+import retrofit2.Response
 import retrofit2.http.*
 import java.util.*
 
@@ -23,8 +24,8 @@ interface ApiHelper {
     @POST("login")
     fun getUserLogin(@Field("email") email: String, @Field("password") password: String): Observable<UserBean>
 
-    @GET("home?")
-    fun sendForgotPasswordLink(@Query("email") email: String): Observable<ForgotPasswordBean>
+    @GET("forgot-password?")
+    fun sendForgotPasswordLink(@Query("email") email: String): Observable<Response<ForgotPasswordBean>>
 
 
     @FormUrlEncoded
@@ -76,6 +77,12 @@ interface ApiHelper {
 
     @GET("user")
     fun fetchUserData(): Observable<UserInfo>
+
+    @GET("discussion-board/{id}/report-comment")
+    fun fetchReportThread(@Path("id") slug: String): Observable<Response<ScheduleBeans>>
+
+    @GET("discussion-board/{id}/report-thread")
+    fun fetchReportComment(@Path("id") slug: String): Observable<Response<ReportThreadBean>>
 
 //    @GET("teams/{team_id}/players")
 //    fun fetchPlayerDetail(@Path("team_id") teamId: String): Observable<PlayersDetailBean>
