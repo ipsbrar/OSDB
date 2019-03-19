@@ -38,7 +38,7 @@
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot password?</string>
-    <string name="forgot_password_sub_heading">We will send password reset\ninstructions on you email.</string>
+    <string name="forgot_password_sub_heading">We will send password reset\ninstructions on your email.</string>
     <string name="password_min_8">PASSWORD(MIN. 8 CHARACTERS)</string>
     <string name="conf_pass">CONFIRM PASSWORD</string>
     <string name="cont_n">Continue</string>
@@ -344,6 +344,9 @@
     <string name="report_msg">Are you sure you want to report?</string>
     <string name="form_terms_line_2">the OSDB</string>
     <string name="form_terms_line_3"><![CDATA[ Terms & Conditions]]></string>
-
+<string name="verification_link">An verification link  sent on your email address</string>
+    <string name="forgot_password_link">An rest link  sent on your register email address</string>
+    <string name="no_data_found">No data found</string>
+    <string name="please_try_again">Please try again</string>
 
 </resources>

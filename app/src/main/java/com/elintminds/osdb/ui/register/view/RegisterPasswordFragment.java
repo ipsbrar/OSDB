@@ -13,10 +13,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.view.DashboardActivity;
+import com.elintminds.osdb.ui.login.view.LoginActivity;
 import com.elintminds.osdb.ui.register.beans.RegisterBean;
 import com.elintminds.osdb.ui.register.presenter.RegisterPresenterClass;
 import com.elintminds.osdb.utils.Utils;
@@ -116,14 +118,18 @@ public class RegisterPasswordFragment extends BaseFragment implements RegisterVi
 
     @Override
     public void getSuccess(RegisterBean registerBean) {
-        getAppPreferenceHelperClass().saveToken(registerBean.getVerification_code());
-        getAppPreferenceHelperClass().saveUserId(registerBean.getVerification_code());
-        getAppPreferenceHelperClass().saveLoginStatus(true);
-        Intent intent=new Intent(getActivity(), DashboardActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        if (getActivity() != null)
+//        getAppPreferenceHelperClass().saveToken(registerBean.getVerification_code());
+//        getAppPreferenceHelperClass().saveUserId(registerBean.getVerification_code());
+//        getAppPreferenceHelperClass().saveLoginStatus(true);
+//        Intent intent=new Intent(getActivity(), DashboardActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(intent);
+
+        if (getActivity() != null) {
+            Toast.makeText(getActivity(), getString(R.string.verification_link), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getContext(), LoginActivity.class));
             getActivity().finish();
+        }
 
     }
 

@@ -11,6 +11,7 @@ import com.elintminds.osdb.ui.particular_sport_screen.model.TeamFragmentInteract
 import com.elintminds.osdb.ui.particular_sport_screen.model.TeamFragmentInteractorClass;
 import com.elintminds.osdb.ui.particular_sport_screen.view.TeamFragmentView;
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean;
+import com.elintminds.osdb.utils.ConnectivityReceiver;
 import io.reactivex.functions.Consumer;
 
 import java.util.ArrayList;
@@ -27,50 +28,54 @@ public class TeamFragmentPresenterClass<V extends TeamFragmentView, I extends Te
 
     @Override
     public void getSlugName(String slugName) {
-        getMvpView().showProgressDialog();
-        Log.e("HomeSwipeData", "   Inside Presenter");
-        getCompositeDisposable().add(getInteractor()
-                .getTeamList(slugName)
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<TeamInfoBean>() {
-                               @Override
-                               public void accept(TeamInfoBean teamInfoBean) throws Exception {
+        if (ConnectivityReceiver.isConnected()) {
+            getMvpView().showProgressDialog();
+            Log.e("HomeSwipeData", "   Inside Presenter");
+            getCompositeDisposable().add(getInteractor()
+                    .getTeamList(slugName)
+                    .subscribeOn(getSchedulerProvider().io())
+                    .observeOn(getSchedulerProvider().ui())
+                    .subscribe(new Consumer<TeamInfoBean>() {
+                                   @Override
+                                   public void accept(TeamInfoBean teamInfoBean) throws Exception {
 
-                                   ArrayList<TeamClubBean> teamClubBeans = new ArrayList<>();
+                                       ArrayList<TeamClubBean> teamClubBeans = new ArrayList<>();
 
-                                   if (teamInfoBean.getTeams() != null && teamInfoBean.getTeams().size() > 0) {
+                                       if (teamInfoBean.getTeams() != null && teamInfoBean.getTeams().size() > 0) {
 
-                                       for (int i = 0; i < teamInfoBean.getTeams().size(); i++) {
-                                           boolean isFound = false;
-                                           for (int j = 0; j < teamClubBeans.size(); j++) {
-                                               if (teamClubBeans.get(j).getTeamClubName().equalsIgnoreCase(teamInfoBean.getTeams().get(i).getDivision().getName())) {
-                                                   isFound = true;
-                                                   teamClubBeans.get(j).getTeamsList().add(teamInfoBean.getTeams().get(i));
-                                                   break;
+                                           for (int i = 0; i < teamInfoBean.getTeams().size(); i++) {
+                                               boolean isFound = false;
+                                               for (int j = 0; j < teamClubBeans.size(); j++) {
+                                                   if (teamClubBeans.get(j).getTeamClubName().equalsIgnoreCase(teamInfoBean.getTeams().get(i).getDivision().getName())) {
+                                                       isFound = true;
+                                                       teamClubBeans.get(j).getTeamsList().add(teamInfoBean.getTeams().get(i));
+                                                       break;
+                                                   }
+
                                                }
+                                               if (!isFound) {
+                                                   TeamClubBean teamClubBean = new TeamClubBean();
+                                                   teamClubBean.setTeamClubName(teamInfoBean.getTeams().get(i).getDivision().getName());
+                                                   teamClubBean.setItemInList(teamInfoBean.getTeams().get(i));
+                                                   teamClubBeans.add(teamClubBean);
+                                               }
+                                           }
 
-                                           }
-                                           if (!isFound) {
-                                               TeamClubBean teamClubBean = new TeamClubBean();
-                                               teamClubBean.setTeamClubName(teamInfoBean.getTeams().get(i).getDivision().getName());
-                                               teamClubBean.setItemInList(teamInfoBean.getTeams().get(i));
-                                               teamClubBeans.add(teamClubBean);
-                                           }
                                        }
-
+                                       getMvpView().getAllListsOfTeam(teamClubBeans);
+                                       getMvpView().hideProgressDialog();
                                    }
-                                   getMvpView().getAllListsOfTeam(teamClubBeans);
-                                   getMvpView().hideProgressDialog();
-                               }
-                           },
-                        new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
+                               },
+                            new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
 
-                                getMvpView().getError(throwable.toString());
-                                getMvpView().hideProgressDialog();
-                            }
-                        }));
+                                    getMvpView().getError(throwable.toString());
+                                    getMvpView().hideProgressDialog();
+                                }
+                            }));
+        }else{
+            getMvpView().getError("Not internet found");
+        }
     }
 }

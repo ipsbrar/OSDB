@@ -26,9 +26,9 @@
             android:id="@+id/latest_items_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
-
             android:clipToPadding="false"
             android:clipChildren="false"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintBottom_toBottomOf="parent"
                   android:gravity="center"
-                  android:visibility="gone"
+                  android:visibility="visible"
                   android:orientation="vertical"
                   tools:layout_editor_absoluteX="139dp">
         <ImageView android:layout_width="wrap_content"

@@ -5,5 +5,6 @@ import com.elintminds.osdb.ui.base.view.BaseView
 
 interface ReportView : BaseView {
 
-    fun getConf()
+     fun getReportSuccess(reportMessage: String)
+     fun error(error : String)
 }

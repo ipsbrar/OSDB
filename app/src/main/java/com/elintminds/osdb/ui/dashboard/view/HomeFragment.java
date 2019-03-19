@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,6 +42,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         DashboardView.SportsAdapterItemClickListener, HomeFragmentView , BornTodayOnClick {
     public static final String TAG = "HomeFragment";
 
+    //    No data found layout
+    private ConstraintLayout no_data;
+    private TextView txt_no_data_title, txt_no_data_disp;
+
+    private RelativeLayout rl_hide_layout_home;
     private Context context;
     private ShimmerRecyclerView sportsRecyclerView;
     private ShimmerRecyclerView bornTodayRecyclerView;
@@ -76,6 +82,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     protected void setUp(View view) {
+
+        //        No data found Views
+        txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
+        txt_no_data_disp = view.findViewById(R.id.txt_no_data_disp);
+        no_data = view.findViewById(R.id.no_data);
+        txt_no_data_title.setText(getString(R.string.no_data_found));
+        txt_no_data_disp.setText(getString(R.string.please_try_again));
+        no_data.setVisibility(View.GONE);
+
         context = getContext();
         Log.e("HomeSwipeData", "   setUpLayout");
 //      sports list data
@@ -102,6 +117,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         cv_main_did_you_know = view.findViewById(R.id.cv_main_did_you_know);
 
 
+        rl_hide_layout_home = view.findViewById(R.id.rl_hide_layout_home);
         view_1_msg_text = view.findViewById(R.id.view_1_msg_text);
         view_1_date = view.findViewById(R.id.view_1_date);
         view_1_time_stamp = view.findViewById(R.id.view_1_time_stamp);
@@ -122,6 +138,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
             @Override
             public void onRefresh() {
                 Log.e("HomeSwipeData", "   Inside refresh layout");
+
                 setUpStartingData();
 
             }
@@ -162,99 +179,88 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         startActivity(sportIntent);
     }
 
-    @Override
-    public void getSportsData(ArrayList<SportsAdapterListBean> sportsList) {
-        this.sportsList = sportsList;
-        sportsListAdapter.setDataList(this.sportsList);
-        sportsRecyclerView.hideShimmerAdapter();
-    }
+
 
     @Override
     public void getHomesData(HomeBean homesData) {
-        Log.e("HomeData", "Success  " + homesData.getSportsList().get(0).getDescription());
+        if (homesData != null) {
+            Log.e("HomeData", "Success  " + homesData.getSportsList().get(0).getDescription());
 
 //        set sports data
-        if (homesData.getSportsList() != null && homesData.getSportsList().size() > 0) {
-            this.sportsList = homesData.getSportsList();
-            sportsListAdapter.setDataList(this.sportsList);
-            sportsRecyclerView.hideShimmerAdapter();
-        } else {
-            sportsRecyclerView.setVisibility(View.GONE);
+            if (homesData.getSportsList() != null && homesData.getSportsList().size() > 0) {
+                this.sportsList = homesData.getSportsList();
+                sportsListAdapter.setDataList(this.sportsList);
+                sportsRecyclerView.hideShimmerAdapter();
+            } else {
+                sportsRecyclerView.setVisibility(View.GONE);
 
-        }
-
-//        set home data
-        if (homesData.getBreakingNews() != null && homesData.getBreakingNews().size() > 0) {
-            breakingNewsFrag = homesData.getBreakingNews().get(0);
-            if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
-                Glide.with(Objects.requireNonNull(getActivity())).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
-
-            if (breakingNewsFrag.getTitle() != null) {
-                Log.e("getBreakingNewWorking", "title    " + breakingNewsFrag.getTitle());
-                view_1_msg_text.setText(breakingNewsFrag.getTitle());
-//                Utils.justify(view_1_msg_text);
             }
 
-            shimmer_breaking_news.stopShimmerAnimation();
-            shimmer_breaking_news.setVisibility(View.GONE);
-            rl_breaking_news.setVisibility(View.VISIBLE);
-        } else {
-            rl_main_breaking_news.setVisibility(View.GONE);
+//        set home data
+            if (homesData.getBreakingNews() != null && homesData.getBreakingNews().size() > 0) {
+                breakingNewsFrag = homesData.getBreakingNews().get(0);
+                if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
+                    Glide.with(Objects.requireNonNull(getActivity())).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
 
-        }
+                if (breakingNewsFrag.getTitle() != null) {
+                    Log.e("getBreakingNewWorking", "title    " + breakingNewsFrag.getTitle());
+                    view_1_msg_text.setText(breakingNewsFrag.getTitle());
+//                Utils.justify(view_1_msg_text);
+                }
+
+                shimmer_breaking_news.stopShimmerAnimation();
+                shimmer_breaking_news.setVisibility(View.GONE);
+                rl_breaking_news.setVisibility(View.VISIBLE);
+            } else {
+                rl_main_breaking_news.setVisibility(View.GONE);
+
+            }
 
 //        born today data set
-        if (homesData.getBornToday() != null && homesData.getBornToday().size() > 0) {
-            bornTodayList = homesData.getBornToday();
-            bornTodayAdapter.setDataList(bornTodayList);
-            bornTodayRecyclerView.hideShimmerAdapter();
-        } else {
-            ll_main_born_today.setVisibility(View.GONE);
+            if (homesData.getBornToday() != null && homesData.getBornToday().size() > 0) {
+                bornTodayList = homesData.getBornToday();
+                bornTodayAdapter.setDataList(bornTodayList);
+                bornTodayRecyclerView.hideShimmerAdapter();
+            } else {
+                ll_main_born_today.setVisibility(View.GONE);
 
-        }
+            }
 
 //        Did you know data set
 
-        if (homesData.getDidYouKnow() != null && homesData.getDidYouKnow().size() > 0) {
+            if (homesData.getDidYouKnow() != null && homesData.getDidYouKnow().size() > 0) {
 
-            doYouKnow = homesData.getDidYouKnow().get(0);
+                doYouKnow = homesData.getDidYouKnow().get(0);
 
-            if (doYouKnow.getContent() != null)
-                view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
-            Utils.justify(view_5_msg_text);
+                if (doYouKnow.getContent() != null)
+                    view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
+                Utils.justify(view_5_msg_text);
 
-            shimmer_do_you_know.stopShimmerAnimation();
-            shimmer_do_you_know.setVisibility(View.GONE);
-            rl_do_you_know.setVisibility(View.VISIBLE);
-        } else {
-            cv_main_did_you_know.setVisibility(View.GONE);
+                shimmer_do_you_know.stopShimmerAnimation();
+                shimmer_do_you_know.setVisibility(View.GONE);
+                rl_do_you_know.setVisibility(View.VISIBLE);
+            } else {
+                cv_main_did_you_know.setVisibility(View.GONE);
+            }
+
+            swipe_refresh.setRefreshing(false);
+
+        }else {
+            rl_hide_layout_home.setVisibility(View.GONE);
+            no_data.setVisibility(View.VISIBLE);
         }
-
-        swipe_refresh.setRefreshing(false);
-
     }
 
-    @Override
-    public void getBornTodayData(ArrayList<HomeBean.BornToday> bornTodayData) {
 
-
-    }
-
-    @Override
-    public void getBreakingNews(ArrayList<NewsAdapterBean.BreakingNews> breakingNews) {
-        Log.e("getBreakingNewWorking", "Breaking News Working");
-
-    }
 
     @Override
     public void getError(String error) {
         Log.e("HomeFragmentError===  ", error);
+//        txt_no_data_title.setText(error);
+        rl_hide_layout_home.setVisibility(View.GONE);
+        no_data.setVisibility(View.VISIBLE);
     }
 
-    @Override
-    public void getDoYouKnow(ArrayList<DoYouKnow> doYouKnows) {
-
-    }
 
 
     private String getCurrentDate() {

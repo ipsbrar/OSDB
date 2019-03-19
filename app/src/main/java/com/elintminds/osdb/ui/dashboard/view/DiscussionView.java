@@ -5,5 +5,5 @@ import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
 
 public interface DiscussionView extends BaseView {
     void getSuccess(DiscussionAdapterBean discussData);
-    void getError(String error);
+    void getError(String error, boolean isVisible);
 }

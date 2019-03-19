@@ -51,7 +51,7 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
     }
 
     @Override
-    public void getPlayerID(String playerID,Context context) {
+    public void getPlayerID(String playerID,Context context, final String token) {
         getMvpView().showProgressDialog();
         String url = "https://staging.osdb.pro:81/api/v1/players/" + playerID;
 
@@ -79,7 +79,7 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
 
                 headers.put("Content-Type", "application/x-www-form-urlencoded");
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc3RhZ2luZy5vc2RiLnBybzo4MVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1NTIzNzA2OTYsImV4cCI6MTU1MjgwMjY5NiwibmJmIjoxNTUyMzcwNjk2LCJqdGkiOiJERUpQVTN2cnZBZEIyQzZrIiwic3ViIjozNjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.IrSsXMjW-BWKhrfFuEMCiitdVS_ijN6bFBvfsE2_Cjk");
+                headers.put("Authorization", "Bearer " + token);
 //
                 return headers;
             }

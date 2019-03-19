@@ -8,5 +8,5 @@ import java.util.ArrayList;
 
 public interface PollsInteractor extends BaseInteractor {
 
-    Observable<ArrayList<PollAdapterBean>> getPollsDataList(String currDate, String userId);
+    Observable<PollAdapterBean> getPollsDataList(String currDate, String userId);
 }

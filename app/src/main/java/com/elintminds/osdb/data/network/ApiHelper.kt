@@ -3,12 +3,16 @@ package com.elintminds.osdb.data.network
 
 import com.elintminds.osdb.ui.dashboard.beans.*
 import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean
+import com.elintminds.osdb.ui.forgot_password.ForgotPasswordBean
 import com.elintminds.osdb.ui.login.beans.UserBean
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamInfoBean
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayersDetailBean
+import com.elintminds.osdb.ui.profile.beans.UserInfo
 import com.elintminds.osdb.ui.register.beans.RegisterBean
+import com.elintminds.osdb.ui.search_finding_screen.beans.ScheduleBeans
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean
 import io.reactivex.Observable
+import retrofit2.Response
 import retrofit2.http.*
 import java.util.*
 
@@ -19,6 +23,10 @@ interface ApiHelper {
     @FormUrlEncoded
     @POST("login")
     fun getUserLogin(@Field("email") email: String, @Field("password") password: String): Observable<UserBean>
+
+    @GET("forgot-password?")
+    fun sendForgotPasswordLink(@Query("email") email: String): Observable<Response<ForgotPasswordBean>>
+
 
     @FormUrlEncoded
     @POST("register")
@@ -44,8 +52,8 @@ interface ApiHelper {
     fun fetchDoYouKnow(): Observable<ArrayList<DoYouKnow>>
 
 
-    @GET("polls/{date}")
-    fun getPollsData(@Path("date") curDate: String, @Query("user_id") user_id: String): Observable<ArrayList<PollAdapterBean>>
+    @GET("polls/get-poll?")
+    fun getPollsData(@Query("user_id") user_id: String): Observable<PollAdapterBean>
 
     @GET("discussion-board/threads")
     fun fetchDiscussions(): Observable<DiscussionAdapterBean>
@@ -64,6 +72,17 @@ interface ApiHelper {
     @GET("teams/{team_id}/players")
     fun fetchAllTeamPlayers(@Path("team_id") teamId: String): Observable<TeamPlayersBean>
 
+    @GET("sports/{slug}/schedules")
+    fun fetchAllSchedule(@Path("slug") slug: String): Observable<ScheduleBeans>
+
+    @GET("user")
+    fun fetchUserData(): Observable<UserInfo>
+
+    @GET("discussion-board/{id}/report-comment")
+    fun fetchReportThread(@Path("id") slug: String): Observable<Response<ScheduleBeans>>
+
+    @GET("discussion-board/{id}/report-thread")
+    fun fetchReportComment(@Path("id") slug: String): Observable<Response<ReportThreadBean>>
 
 //    @GET("teams/{team_id}/players")
 //    fun fetchPlayerDetail(@Path("team_id") teamId: String): Observable<PlayersDetailBean>

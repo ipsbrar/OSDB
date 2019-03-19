@@ -1,17 +1,23 @@
 package com.elintminds.osdb.ui.particular_sport_screen.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.data.network.WebserviceUrls;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamClubBean;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamInfoBean;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamsBean;
 import com.elintminds.osdb.ui.particular_sport_screen.view.SportScreenView;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -107,6 +113,22 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
 //        else {
             holder.followBtn.setText(context.getString(R.string.follow));
 //            holder.followBtn.setSelected(childItem.isFollowing());
+//        }
+
+//        if (childItem.getLogo() != null && !childItem.getLogo().equalsIgnoreCase("")){
+//            try {
+//                JSONArray jsonArray = new JSONArray(childItem.getLogo());
+//                for (int j = 0; j < jsonArray.length(); j++) {
+//                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                    String imgUrl = jsonObject.getString("href");
+//                    String urlImg = "" +imgUrl;
+//                    Log.e("MYIMAGEURL",urlImg);
+//                    Glide.with(context).load(urlImg).into(holder.teamLogo);
+//                }
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 //        }
 
         holder.teamName.setOnClickListener(new View.OnClickListener()

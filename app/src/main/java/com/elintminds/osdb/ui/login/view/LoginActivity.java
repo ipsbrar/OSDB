@@ -109,8 +109,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void onSuccess(UserBean obj) {
         getAppPreferenceHelperClass().saveLoginStatus(true);
         getAppPreferenceHelperClass().saveToken(obj.getToken());
-
-        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+        Intent intent = new Intent(this, DashboardActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         finish();
     }
 

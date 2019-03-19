@@ -45,10 +45,11 @@
               android:layout_marginTop="@dimen/dp_30"
               android:gravity="center_vertical"
               android:padding="@dimen/dp_10"
+              android:id="@+id/txt_im_nt_inst"
               android:textColor="@color/color_black"
               android:textSize="@dimen/sp_16"
               android:fontFamily="@font/rubik_regular"
-              android:background="@drawable/report_unselected"
+              android:background="@drawable/report_selecter"
               android:text="@string/im_not_intrested_in_this_discussion"
     />
 
@@ -59,10 +60,11 @@
               android:layout_marginTop="@dimen/dp_10"
               android:gravity="center_vertical"
               android:padding="@dimen/dp_10"
+              android:id="@+id/txt_its_spam"
               android:textColor="@color/color_black"
               android:textSize="@dimen/sp_16"
               android:fontFamily="@font/rubik_regular"
-              android:background="@drawable/report_unselected"
+              android:background="@drawable/report_selecter"
               android:text="@string/it_s_spam"
     />
 
@@ -75,8 +77,9 @@
               android:padding="@dimen/dp_10"
               android:textColor="@color/color_black"
               android:textSize="@dimen/sp_16"
+              android:id="@+id/txt_its_abuseive"
               android:fontFamily="@font/rubik_regular"
-              android:background="@drawable/report_selected"
+              android:background="@drawable/report_selecter"
               android:text="@string/it_s_absuive_or_harmful"
     />
     <TextView

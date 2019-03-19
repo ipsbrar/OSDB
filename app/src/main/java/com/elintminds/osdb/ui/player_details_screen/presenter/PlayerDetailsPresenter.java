@@ -9,5 +9,5 @@ public interface PlayerDetailsPresenter<V extends PlayerDetailsView, I extends P
 {
     void giveDate(String stringDate);
 
-    void getPlayerID(String playerID, Context context);
+    void getPlayerID(String playerID, Context context, String token);
 }
