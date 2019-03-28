@@ -3,6 +3,7 @@ package com.elintminds.osdb.ui.search_screen.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
+        Log.d("SearchAdapter", "onCreateViewHolder: "+i);
         if(i == HEADING_TYPE)
         {
             View view = LayoutInflater.from(context).inflate(R.layout.search_adapter_header_view, viewGroup, false);
@@ -98,7 +100,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 @Override
                 public void onClick(View view)
                 {
-                    listener.onItemClick(getAdapterPosition());
+                    listener.onItemClick(getAdapterPosition(),"");
                 }
             });
         }

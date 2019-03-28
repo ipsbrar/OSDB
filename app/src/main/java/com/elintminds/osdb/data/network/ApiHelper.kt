@@ -10,6 +10,7 @@ import com.elintminds.osdb.ui.player_details_screen.beans.PlayersDetailBean
 import com.elintminds.osdb.ui.profile.beans.UserInfo
 import com.elintminds.osdb.ui.register.beans.RegisterBean
 import com.elintminds.osdb.ui.search_finding_screen.beans.ScheduleBeans
+import com.elintminds.osdb.ui.search_screen.beans.SearchModal
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean
 import io.reactivex.Observable
 import retrofit2.Response
@@ -83,6 +84,10 @@ interface ApiHelper {
 
     @GET("discussion-board/{id}/report-thread")
     fun fetchReportComment(@Path("id") slug: String): Observable<Response<ReportThreadBean>>
+
+    @GET("search")
+    fun search(@Query("search") searchContent : String , @Query("category") category : String): Observable<Response<SearchModal>>
+
 
 //    @GET("teams/{team_id}/players")
 //    fun fetchPlayerDetail(@Path("team_id") teamId: String): Observable<PlayersDetailBean>

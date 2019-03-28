@@ -11,11 +11,15 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+
+
+
 
 object ApiClient {
     private var retrofit: Retrofit? = null
@@ -25,6 +29,7 @@ object ApiClient {
 
 
     fun getClient(context: Context): Retrofit {
+
         val httpClient = OkHttpClient.Builder()
 
 //        if (retrofit == null ) {
@@ -43,9 +48,13 @@ object ApiClient {
 //                        builder.addHeader("Authorization", "Bearer "+"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc3RhZ2luZy5vc2RiLnBybzo4MVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1NTIzNzA2OTYsImV4cCI6MTU1MjgwMjY5NiwibmJmIjoxNTUyMzcwNjk2LCJqdGkiOiJERUpQVTN2cnZBZEIyQzZrIiwic3ViIjozNjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.IrSsXMjW-BWKhrfFuEMCiitdVS_ijN6bFBvfsE2_Cjk")
                         builder.addHeader("Authorization", "Bearer "+AppPreferenceHelperClass(context).token)
                     }
+
                     return chain.proceed(builder.build())
                 }
             })
+        val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        httpClient.addInterceptor(logging)
+
             try {
                 retrofit = Retrofit.Builder()
                     .baseUrl(WebserviceUrls.BASE_URL)

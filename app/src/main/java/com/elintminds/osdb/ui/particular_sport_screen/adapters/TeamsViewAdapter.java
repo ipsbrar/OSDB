@@ -9,6 +9,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.data.network.WebserviceUrls;
 import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamClubBean;
@@ -115,21 +116,23 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
 //            holder.followBtn.setSelected(childItem.isFollowing());
 //        }
 
-//        if (childItem.getLogo() != null && !childItem.getLogo().equalsIgnoreCase("")){
-//            try {
-//                JSONArray jsonArray = new JSONArray(childItem.getLogo());
-//                for (int j = 0; j < jsonArray.length(); j++) {
-//                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                    String imgUrl = jsonObject.getString("href");
-//                    String urlImg = "" +imgUrl;
-//                    Log.e("MYIMAGEURL",urlImg);
-//                    Glide.with(context).load(urlImg).into(holder.teamLogo);
-//                }
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        if (childItem.getLogo() != null && !childItem.getLogo().equalsIgnoreCase("")){
+            try {
+                JSONArray jsonArray = new JSONArray(childItem.getLogo());
+                for (int j = 0; j < jsonArray.length(); j++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    String imgUrl = jsonObject.getString("href");
+                    String urlImg = "https://s3-us-west-2.amazonaws.com/osdb/" +imgUrl;
+                    Log.e("MYIMAGEURL",urlImg);
+                    RequestOptions requestOptions = new RequestOptions();
+                    requestOptions.placeholder(R.drawable.ic_nfl_1);
+                    Glide.with(context).setDefaultRequestOptions(requestOptions).load(urlImg).into(holder.teamLogo);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
         holder.teamName.setOnClickListener(new View.OnClickListener()
         {

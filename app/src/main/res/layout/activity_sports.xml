@@ -29,23 +29,32 @@
                     android:fontFamily="@font/rubik_medium"
                     android:layout_gravity="center"/>
         </android.support.v7.widget.Toolbar>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:visibility="visible"
+                        android:id="@+id/rl_main_layout"
+                        android:layout_height="match_parent">
+            <android.support.design.widget.TabLayout
+                    android:id="@+id/sport_screen_tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabBackground="@drawable/toolbar_bg"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/color_6849D7"
+                    app:tabMode="fixed"
+                    android:background="@color/color_white"
+                    app:tabSelectedTextColor="@color/color_6849D7"
+                    app:tabTextAppearance="@style/tab_text"/>
 
-        <android.support.design.widget.TabLayout
-                android:id="@+id/sport_screen_tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabBackground="@drawable/toolbar_bg"
-                app:tabGravity="fill"
-                app:tabIndicatorColor="@color/color_6849D7"
-                app:tabMode="fixed"
-                android:background="@color/color_white"
-                app:tabSelectedTextColor="@color/color_6849D7"
-                app:tabTextAppearance="@style/tab_text"/>
-
-        <android.support.v4.view.ViewPager
-                android:id="@+id/sport_screen_viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <android.support.v4.view.ViewPager
+                    android:id="@+id/sport_screen_viewpager"
+                    android:layout_below="@+id/sport_screen_tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+        <include layout="@layout/comming_soon"
+                 android:layout_height="match_parent"
+                 android:visibility="gone"
+                 android:layout_width="match_parent"/>
     </android.support.design.widget.AppBarLayout>
 
 

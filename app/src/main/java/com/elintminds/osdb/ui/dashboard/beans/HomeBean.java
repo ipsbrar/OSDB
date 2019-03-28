@@ -32,15 +32,15 @@ public class HomeBean {
         @SerializedName("featuredPlayer")
         @Expose
         private ArrayList<Object> featuredPlayer = null;
-        @SerializedName("featuredPoll")
-        @Expose
-        private ArrayList<FeaturedPoll> featuredPoll = null;
+//        @SerializedName("featuredPoll")
+//        @Expose
+//        private ArrayList<FeaturedPoll> featuredPoll = null;
         @SerializedName("didYouKnow")
         @Expose
         private ArrayList<DidYouKnow> didYouKnow = null;
-        @SerializedName("onThisDay")
-        @Expose
-        private Object onThisDay;
+//        @SerializedName("onThisDay")
+//        @Expose
+//        private Object onThisDay;
 
         public ArrayList<SportsAdapterListBean> getSportsList() {
             return sportsList;
@@ -74,13 +74,13 @@ public class HomeBean {
             this.featuredPlayer = featuredPlayer;
         }
 
-        public ArrayList<FeaturedPoll> getFeaturedPoll() {
-            return featuredPoll;
-        }
-
-        public void setFeaturedPoll(ArrayList<FeaturedPoll> featuredPoll) {
-            this.featuredPoll = featuredPoll;
-        }
+//        public ArrayList<FeaturedPoll> getFeaturedPoll() {
+//            return featuredPoll;
+//        }
+//
+//        public void setFeaturedPoll(ArrayList<FeaturedPoll> featuredPoll) {
+//            this.featuredPoll = featuredPoll;
+//        }
 
         public ArrayList<DidYouKnow> getDidYouKnow() {
             return didYouKnow;
@@ -90,13 +90,13 @@ public class HomeBean {
             this.didYouKnow = didYouKnow;
         }
 
-        public Object getOnThisDay() {
-            return onThisDay;
-        }
-
-        public void setOnThisDay(Object onThisDay) {
-            this.onThisDay = onThisDay;
-        }
+//        public Object getOnThisDay() {
+//            return onThisDay;
+//        }
+//
+//        public void setOnThisDay(Object onThisDay) {
+//            this.onThisDay = onThisDay;
+//        }
 
 
     public class BreakingNews {

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.ListPopupWindow;
@@ -38,6 +39,9 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
     private String sportsName;
     private int selectedSport;
     public static TeamFragData teamFragData;
+    private RelativeLayout rl_main_layout;
+    private ConstraintLayout constMainLayout;
+    private ImageView img_coming_soon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +52,45 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
             selectedSport = getIntent().getIntExtra("SPORT_ID", 0);
             dropdownList = (ArrayList<SportsAdapterListBean>) getIntent().getSerializableExtra("SPORT_LIST");
             sportsName = getIntent().getStringExtra("SPORT_NAME");
+            rl_main_layout = findViewById(R.id.rl_main_layout);
+            constMainLayout = findViewById(R.id.constMainLayout);
+            img_coming_soon = findViewById(R.id.img_coming_soon);
+            if (sportsName.equalsIgnoreCase("NFL") || sportsName.equalsIgnoreCase("NBA")) {
+                rl_main_layout.setVisibility(View.VISIBLE);
+                constMainLayout.setVisibility(View.GONE);
+            } else {
+                rl_main_layout.setVisibility(View.GONE);
+                constMainLayout.setVisibility(View.VISIBLE);
+                setImageBackground(sportsName);
+            }
 
         }
 
         initializeViews();
+
+    }
+
+    private void setImageBackground(String sportsName) {
+        Log.e("SportsName    ", sportsName);
+        if (sportsName.equalsIgnoreCase("Soccer")) {
+            img_coming_soon.setImageDrawable(getDrawable(R.drawable.coming_soon_soccer));
+
+        } else if (sportsName.equalsIgnoreCase("NHL")) {
+            img_coming_soon.setImageDrawable(getDrawable(R.drawable.coming_soon_nhl));
+
+        } else if (sportsName.equalsIgnoreCase("GOLF")) {
+            img_coming_soon.setImageDrawable(getDrawable(R.drawable.coming_soon_golf));
+
+        } else if (sportsName.equalsIgnoreCase("TENNIS")) {
+            img_coming_soon.setImageDrawable(getDrawable(R.drawable.coming_soon_tennis));
+
+        } else if (sportsName.equalsIgnoreCase("BOXING")) {
+            img_coming_soon.setImageDrawable(getDrawable(R.drawable.coming_soon_boxing));
+
+        } else if (sportsName.equalsIgnoreCase("NASCAR")) {
+            img_coming_soon.setImageDrawable(getDrawable(R.drawable.coming_soon_nascar));
+
+        }
 
     }
 
