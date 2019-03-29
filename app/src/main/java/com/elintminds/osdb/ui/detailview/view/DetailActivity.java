@@ -22,8 +22,8 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
     private Menu collapsedMenu;
     private boolean appBarExpanded = true;
     private ImageView image, backImg, shareImg;
-    private TextView header_txt, detail_txt, toolbarTxt;
-    private String headerText, longText, imgUrl;
+    private TextView header_txt, detail_txt, toolbarTxt, view_game_name;
+    private String headerText, longText, imgUrl, slugName;
     private ImageView locButton;
 
     @Override
@@ -36,6 +36,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         header_txt = findViewById(R.id.header_txt);
         detail_txt = findViewById(R.id.detail_txt);
         toolbarTxt = findViewById(R.id.toolbarTxt);
+        view_game_name = findViewById(R.id.view_game_name);
         backImg = findViewById(R.id.backImg);
         shareImg = findViewById(R.id.shareImg);
         backImg.setOnClickListener(this);
@@ -45,6 +46,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
             imgUrl = getIntent().getStringExtra("imgUrl");
             headerText = getIntent().getStringExtra("title");
             longText = getIntent().getStringExtra("bigContent");
+            slugName = getIntent().getStringExtra("teamName");
 
             if (imgUrl != null)
                 Glide.with(this).load(imgUrl).into(image);
@@ -56,7 +58,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
                 detail_txt.setText(Html.fromHtml(longText).toString());
 //                Utils.justify(detail_txt);
             }
-
+            view_game_name.setText(slugName != null ? slugName : "NFL");
         }
 
 

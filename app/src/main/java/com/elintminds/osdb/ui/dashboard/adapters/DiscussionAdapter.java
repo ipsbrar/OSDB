@@ -49,11 +49,13 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
     public void onBindViewHolder(@NonNull DiscussionAdapter.ViewHolder viewHolder, int i) {
 //        Utils.justify(viewHolder.commentTxt);
 
-        String discription = Html.fromHtml(dataList.get(i).getDescription().trim()).toString();
-
+        if (dataList.get(i).getDescription() != null) {
+            String discription = Html.fromHtml(dataList.get(i).getDescription().trim()).toString();
+            viewHolder.commentTxt.setText(dataList.get(i).getDescription() != null ? discription.trim() : "");
+        }
         viewHolder.playerName.setText(dataList.get(i).getCreated_by().getName() != null ? dataList.get(i).getCreated_by().getName() : "");
         viewHolder.commentsNumber.setText(dataList.get(i).getComments_count() != null ? dataList.get(i).getComments_count() : "");
-        viewHolder.commentTxt.setText(dataList.get(i).getDescription() != null ? discription.trim() : "");
+
 //      2019-02-21 03:24:54
 //
 
