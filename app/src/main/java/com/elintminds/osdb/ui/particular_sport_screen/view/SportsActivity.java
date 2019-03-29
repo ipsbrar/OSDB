@@ -22,7 +22,6 @@ import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
 import com.elintminds.osdb.ui.particular_sport_screen.adapters.DropDownAdapter;
-import com.elintminds.osdb.ui.particular_sport_screen.beans.DropdownBean;
 import com.elintminds.osdb.ui.search_finding_screen.view.ScheduleFragment;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
@@ -33,14 +32,14 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
 
     private Toolbar toolbar;
     private TabLayout tabs;
-    private TextView title;
+    private TextView title, comingsoontxt;
     private PopupWindow dropdownMenu;
     private ArrayList<SportsAdapterListBean> dropdownList = new ArrayList<>();
     private String sportsName;
     private int selectedSport;
     public static TeamFragData teamFragData;
     private RelativeLayout rl_main_layout;
-    private ConstraintLayout constMainLayout;
+    private RelativeLayout constMainLayout;
     private ImageView img_coming_soon;
 
     @Override
@@ -53,8 +52,10 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
             dropdownList = (ArrayList<SportsAdapterListBean>) getIntent().getSerializableExtra("SPORT_LIST");
             sportsName = getIntent().getStringExtra("SPORT_NAME");
             rl_main_layout = findViewById(R.id.rl_main_layout);
+            comingsoontxt = findViewById(R.id.txt_coming_soon);
             constMainLayout = findViewById(R.id.constMainLayout);
             img_coming_soon = findViewById(R.id.img_coming_soon);
+
             if (sportsName.equalsIgnoreCase("NFL") || sportsName.equalsIgnoreCase("NBA")) {
                 rl_main_layout.setVisibility(View.VISIBLE);
                 constMainLayout.setVisibility(View.GONE);

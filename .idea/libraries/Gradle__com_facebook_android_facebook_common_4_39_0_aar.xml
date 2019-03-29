@@ -1,12 +1,12 @@
 <component name="libraryTable">
-  <library name="Gradle: com.facebook.android:facebook-common:4.38.1@aar">
+  <library name="Gradle: com.facebook.android:facebook-common:4.39.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/facebook-common-4.38.1.aar/2b72c9cbd114f1d448cb150425eccd97/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/facebook-common-4.38.1.aar/2b72c9cbd114f1d448cb150425eccd97/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/facebook-common-4.39.0.aar/5e9535a8d19a3e815f2db0ce19597fdc/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/facebook-common-4.39.0.aar/5e9535a8d19a3e815f2db0ce19597fdc/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-common/4.38.1/7308b87b27e7061d1affe383b035229e944ef450/facebook-common-4.38.1-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-common/4.39.0/efb0b7fbb8f96632d36b10df6bba839fa9f765df/facebook-common-4.39.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
