@@ -60,7 +60,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         else if(viewHolder instanceof ItemViewHolder)
         {
-            ((ItemViewHolder) viewHolder).itemTV.setText(item.getSearchName() != null ? item.getSearchName() : "");
+//            ((ItemViewHolder) viewHolder).itemTV.setText(item.getSearchName() != null ? item.getSearchName() : "");
         }
     }
 
@@ -93,16 +93,16 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public ItemViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            itemTV = itemView.findViewById(R.id.search_item);
+//            itemTV = itemView.findViewById(R.id.search_item);
             divider = itemView.findViewById(R.id.search_adapter_divider);
 
-            itemTV.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view)
-                {
-                    listener.onItemClick(getAdapterPosition(),"");
-                }
-            });
+//            itemTV.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view)
+//                {
+//                    listener.onItemClick(getAdapterPosition(),"");
+//                }
+//            });
         }
     }
 }

@@ -126,19 +126,18 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
         view_1_image = view.findViewById(R.id.view_1_image);
         view_5_image = view.findViewById(R.id.view_5_image);
-
+        swipe_refresh = view.findViewById(R.id.swipe_refresh);
         homeFragmentPresenterClass = new HomeFragmentPresenterClass<>(getActivity(), this);
         setUpStartingData();
 
         rl_breaking_news.setOnClickListener(this);
         cv_main_did_you_know.setOnClickListener(this);
 
-        swipe_refresh = view.findViewById(R.id.swipe_refresh);
+
         swipe_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 Log.e("HomeSwipeData", "   Inside refresh layout");
-
                 setUpStartingData();
 
             }
@@ -242,12 +241,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
                 cv_main_did_you_know.setVisibility(View.GONE);
             }
 
-            swipe_refresh.setRefreshing(false);
+            rl_hide_layout_home.setVisibility(View.VISIBLE);
+            no_data.setVisibility(View.GONE);
 
         } else {
             rl_hide_layout_home.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
         }
+
+        swipe_refresh.setRefreshing(false);
     }
 
 
@@ -257,6 +259,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 //        txt_no_data_title.setText(error);
         rl_hide_layout_home.setVisibility(View.GONE);
         no_data.setVisibility(View.VISIBLE);
+        swipe_refresh.setRefreshing(false);
     }
 
 

@@ -29,8 +29,8 @@ import java.util.ArrayList;
 public class SearchActivity extends BaseActivity implements SearchScreenView, SearchScreenView.SearchItemClickListener {
     private Toolbar toolbar;
     private EditText searchET;
-    private RecyclerView searchRV, search_recyclerView_remote;
-    private SearchAdapter adapter;
+    private RecyclerView /*searchRV,*/ search_recyclerView_remote;
+    /*private SearchAdapter adapter;*/
     private ArrayList<SearchBean> dataList = new ArrayList<>();
     private String[] searchSampleData = {"Blackhawks", "Aaron Rodgers", "Australian Open"};
     private SearchScreenPresenterClass searchScreenPresenterClass;
@@ -57,18 +57,15 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
     private void initializeViews() {
         toolbar = findViewById(R.id.search_toolbar);
         searchET = findViewById(R.id.searchET);
-        searchRV = findViewById(R.id.search_recyclerView);
+//        searchRV = findViewById(R.id.search_recyclerView);
         search_recyclerView_remote = findViewById(R.id.search_recyclerView_remote);
-        searchRV.setVisibility(View.VISIBLE);
-        search_recyclerView_remote.setVisibility(View.GONE);
+
     }
 
     private void setUpRecyclerView() {
         searchScreenPresenterClass = new SearchScreenPresenterClass(this, this);
 
-        getSearchData();
-        adapter = new SearchAdapter(this, dataList, this);
-        searchRV.setAdapter(adapter);
+
 
         searchAdapterRemote = new SearchAdapterRemote(searchAdapterRemoteBeanArrayList, this, this);
         search_recyclerView_remote.setAdapter(searchAdapterRemote);
@@ -86,9 +83,6 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
                 if (s.toString().length() >= 3) {
                     Log.e("EditTextChanged", "Search is working");
                     searchScreenPresenterClass.getSearchData(s.toString(), "0");
-                } else {
-                    searchRV.setVisibility(View.VISIBLE);
-                    search_recyclerView_remote.setVisibility(View.GONE);
                 }
             }
 
@@ -100,30 +94,6 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
         });
     }
 
-    private void getSearchData() {
-        SearchBean itemBean;
-        itemBean = new SearchBean();
-        itemBean.setSearchType(SearchAdapter.HEADING_TYPE);
-        itemBean.setSearchName("Recent");
-        dataList.add(itemBean);
-        for (String searchItem : searchSampleData) {
-            itemBean = new SearchBean();
-            itemBean.setSearchType(SearchAdapter.ITEM_TYPE);
-            itemBean.setSearchName(searchItem);
-            dataList.add(itemBean);
-        }
-
-        itemBean = new SearchBean();
-        itemBean.setSearchType(SearchAdapter.HEADING_TYPE);
-        itemBean.setSearchName("Suggestions");
-        dataList.add(itemBean);
-        for (String searchItem : searchSampleData) {
-            itemBean = new SearchBean();
-            itemBean.setSearchType(SearchAdapter.ITEM_TYPE);
-            itemBean.setSearchName(searchItem);
-            dataList.add(itemBean);
-        }
-    }
 
     @Override
     public void onItemClick(int position, String type) {
@@ -167,8 +137,6 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
     @Override
     public void searchOnClick(ArrayList<SearchAdapterRemoteBean> searchModal) {
         searchAdapterRemote.changeData(searchModal);
-        searchRV.setVisibility(View.GONE);
-        search_recyclerView_remote.setVisibility(View.VISIBLE);
     }
 
     @Override

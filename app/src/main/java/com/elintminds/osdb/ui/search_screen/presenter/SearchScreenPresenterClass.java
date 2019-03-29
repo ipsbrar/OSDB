@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
+import com.elintminds.osdb.ui.search_screen.adapters.SearchAdapter;
 import com.elintminds.osdb.ui.search_screen.beans.SearchAdapterRemoteBean;
 import com.elintminds.osdb.ui.search_screen.beans.SearchModal;
 import com.elintminds.osdb.ui.search_screen.model.SearchScreenInteractor;
@@ -63,7 +64,12 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
 
     private void parseData(SearchModal.data homeData) {
         ArrayList<SearchAdapterRemoteBean> searchAdapterRemoteBeanArrayList = new ArrayList<>();
+
         if (homeData.getNewsArrayList() != null && homeData.getNewsArrayList().size() > 0) {
+            SearchAdapterRemoteBean newsBean = new SearchAdapterRemoteBean();
+            newsBean.setSearchType(SearchAdapter.HEADING_TYPE);
+            newsBean.setType("News");
+            searchAdapterRemoteBeanArrayList.add(newsBean);
             for (int i = 0; i < homeData.getNewsArrayList().size(); i++) {
                 SearchAdapterRemoteBean searchAdapterRemoteBean = new SearchAdapterRemoteBean();
                 int newsID = homeData.getNewsArrayList().get(i).getNewsId();
@@ -102,13 +108,17 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
                 searchAdapterRemoteBean.setImgUrl(imgPic == null ? "" : imgPic);
                 searchAdapterRemoteBean.setTitle(title == null ? "" : title);
                 searchAdapterRemoteBean.setType("News");
-
+                searchAdapterRemoteBean.setSearchType(SearchAdapter.ITEM_TYPE);
                 searchAdapterRemoteBeanArrayList.add(searchAdapterRemoteBean);
             }
 
         }
 
         if (homeData.getPlayerArrayList() != null && homeData.getPlayerArrayList().size() > 0) {
+            SearchAdapterRemoteBean playerBean = new SearchAdapterRemoteBean();
+            playerBean.setSearchType(SearchAdapter.HEADING_TYPE);
+            playerBean.setType("Player");
+            searchAdapterRemoteBeanArrayList.add(playerBean);
             for (int i = 0; i < homeData.getPlayerArrayList().size(); i++) {
                 SearchAdapterRemoteBean searchAdapterRemoteBean = new SearchAdapterRemoteBean();
                 int playerId = homeData.getPlayerArrayList().get(i).getPlayerId();
@@ -140,6 +150,7 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
                 searchAdapterRemoteBean.setTeamId(teamId);
                 searchAdapterRemoteBean.setImgUrl(imgPic == null ? "" : imgPic);
                 searchAdapterRemoteBean.setType("Player");
+                searchAdapterRemoteBean.setSearchType(SearchAdapter.ITEM_TYPE);
 
                 searchAdapterRemoteBeanArrayList.add(searchAdapterRemoteBean);
             }
@@ -147,6 +158,10 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
         }
 
         if (homeData.getTeamArrayList() != null && homeData.getTeamArrayList().size() > 0) {
+            SearchAdapterRemoteBean teamBean = new SearchAdapterRemoteBean();
+            teamBean.setSearchType(SearchAdapter.HEADING_TYPE);
+            teamBean.setType("Teams");
+            searchAdapterRemoteBeanArrayList.add(teamBean);
             for (int i = 0; i < homeData.getTeamArrayList().size(); i++) {
                 SearchAdapterRemoteBean searchAdapterRemoteBean = new SearchAdapterRemoteBean();
                 String slugName = homeData.getTeamArrayList().get(i).getSports().getSlugName();
@@ -173,7 +188,7 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
                 searchAdapterRemoteBean.setTeamId(teamId);
                 searchAdapterRemoteBean.setImgUrl(imgPic == null ? "" : imgPic);
                 searchAdapterRemoteBean.setType("Teams");
-
+                searchAdapterRemoteBean.setSearchType(SearchAdapter.ITEM_TYPE);
                 searchAdapterRemoteBeanArrayList.add(searchAdapterRemoteBean);
             }
 
