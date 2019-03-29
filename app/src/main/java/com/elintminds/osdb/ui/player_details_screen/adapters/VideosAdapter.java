@@ -7,20 +7,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
 import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsView;
 
 import java.util.ArrayList;
 
-public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder>
-{
+public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder> {
     private Context context;
     private ArrayList<VideosBean> dataList;
     private PlayerDetailsView.VideoPhotoAdapterListener listener;
 
-    public VideosAdapter(Context context, ArrayList<VideosBean> dataList, PlayerDetailsView.VideoPhotoAdapterListener listener)
-    {
+    public VideosAdapter(Context context, ArrayList<VideosBean> dataList, PlayerDetailsView.VideoPhotoAdapterListener listener) {
         this.context = context;
         this.dataList = dataList;
         this.listener = listener;
@@ -35,9 +36,16 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i)
-    {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+        VideosBean videosBean = dataList.get(i);
 
+
+        if (videosBean.getThumbnail() != null) {
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.ic_latest);
+            Glide.with(context).setDefaultRequestOptions(requestOptions).load(videosBean.getThumbnail()).into(holder.video_thumbnail);
+        }
+        holder.video_title.setText(videosBean.getVideoTitle() != null ? videosBean.getVideoTitle() : "");
     }
 
     @Override
@@ -45,31 +53,26 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder
         return dataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
-        ImageView playerPhoto;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView video_thumbnail;
+        private TextView video_title;
 
-
-        public ViewHolder(@NonNull View itemView)
-        {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            playerPhoto = itemView.findViewById(R.id.img_photo_player_details);
+            video_thumbnail = itemView.findViewById(R.id.video_thumbnail);
+            video_title = itemView.findViewById(R.id.video_title);
 
-            itemView.setOnClickListener(new View.OnClickListener()
-            {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view)
-                {
+                public void onClick(View view) {
                     listener.onItemClick(getAdapterPosition());
                 }
             });
         }
     }
 
-    public void setDataList(ArrayList<VideosBean> data)
-    {
-        if(data == null || data.isEmpty())
-        {
+    public void setDataList(ArrayList<VideosBean> data) {
+        if (data == null || data.isEmpty()) {
             return;
         }
 

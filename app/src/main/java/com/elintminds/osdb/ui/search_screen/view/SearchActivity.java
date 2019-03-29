@@ -22,6 +22,7 @@ import com.elintminds.osdb.ui.search_screen.beans.SearchAdapterRemoteBean;
 import com.elintminds.osdb.ui.search_screen.beans.SearchBean;
 import com.elintminds.osdb.ui.search_screen.beans.SearchModal;
 import com.elintminds.osdb.ui.search_screen.presenter.SearchScreenPresenterClass;
+import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -139,7 +140,8 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
             intent.putExtra("PLAYER_NAME", searchAdapterRemoteBean.getPlayerName());
             intent.putExtra("TEAM_NAME", searchAdapterRemoteBean.getPlayerTeam());
             intent.putExtra("DIVISION_NAME", searchAdapterRemoteBean.getSlugName());
-            intent.putExtra("PLAYER_ID", searchAdapterRemoteBean.getPlayerId());
+            intent.putExtra("PLAYER_ID", String.valueOf(searchAdapterRemoteBean.getPlayerId()));
+            intent.putExtra("PROFILE_PIC", searchAdapterRemoteBean.getImgUrl());
             startActivity(intent);
 
 //            AGE,TEAM_NAME,DIVISION_NAME,PLAYER_ID,PLAYER_NAME
@@ -153,7 +155,12 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
 //            intent.putExtra("timeStamp", timeStamp);
             startActivity(intent);
         } else {
-
+            Intent intent = new Intent(this, TeamDetailsActivity.class);
+            intent.putExtra("TEAM_NAME", searchAdapterRemoteBean.getPlayerTeam());
+            intent.putExtra("DIVISION_NAME", searchAdapterRemoteBean.getSlugName());
+            intent.putExtra("TEAM_ID", String.valueOf(searchAdapterRemoteBean.getTeamId()));
+            intent.putExtra("PROFILE_PIC", searchAdapterRemoteBean.getImgUrl());
+            startActivity(intent);
         }
     }
 

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
@@ -16,7 +18,7 @@ import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
 public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView, View.OnClickListener {
     private TabLayout tabs;
     private TextView title, followBtn;
-    private ImageView backBtn;
+    private ImageView backBtn, team_logo_img;
     private boolean isFollowing = false;
     private String divisionName, teamName, teamId;
 
@@ -29,6 +31,13 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
             teamName = getIntent().getStringExtra("TEAM_NAME");
             divisionName = getIntent().getStringExtra("DIVISION_NAME");
             teamId = getIntent().getStringExtra("TEAM_ID");
+            String profilePic = getIntent().getStringExtra("PROFILE_PIC");
+            team_logo_img = findViewById(R.id.team_logo_img);
+            if (profilePic != null) {
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.ic_latest);
+                Glide.with(this).setDefaultRequestOptions(requestOptions).load(profilePic).into(team_logo_img);
+            }
 
         }
         initializeViews();
@@ -42,6 +51,7 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
         title.setText(teamName != null ? teamName : "");
 
         tabs = findViewById(R.id.team_details_tabs);
+
         backBtn = findViewById(R.id.back_btn);
         followBtn = findViewById(R.id.follow_btn);
         ViewPager viewPager = findViewById(R.id.team_details_viewpager);

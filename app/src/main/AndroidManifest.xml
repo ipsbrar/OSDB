@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -32,28 +32,34 @@
                 <data android:host="com.elintminds.osdb" android:scheme="amzn"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.team_details_screen.view.TeamDetailsActivity">
+        <activity android:name=".ui.team_details_screen.view.TeamDetailsActivity"
+                  android:screenOrientation="portrait">
         </activity>
 
         <meta-data
                 android:name="com.facebook.sdk.ApplicationId"
-                android:value="@string/facebook_app_id" />
+                android:value="@string/facebook_app_id"/>
         <activity
                 android:name=".ui.particular_sport_screen.view.SportsActivity"
+                android:screenOrientation="portrait"
                 android:label="">
         </activity>
-        <activity android:name=".ui.search_finding_screen.view.SearchFindingsActivity">
+        <activity android:name=".ui.search_finding_screen.view.SearchFindingsActivity"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.search_screen.view.SearchActivity">
+        <activity android:name=".ui.search_screen.view.SearchActivity"
+                  android:screenOrientation="portrait">
         </activity>
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyC8fFpWGfRMA28hHluiOQtxzeApLis9N-k"/>
 
-        <activity android:name=".ui.event_details.view.EventDetailsActivity">
+        <activity android:name=".ui.event_details.view.EventDetailsActivity"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.splash.view.SplashScreenActivity">
+        <activity android:name=".ui.splash.view.SplashScreenActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -62,44 +68,62 @@
         </activity>
         <activity
                 android:name=".ui.dashboard.view.DashboardActivity"
+                android:screenOrientation="portrait"
                 android:label="">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.welcome_screen.view.WelcomeActivity">
+        <activity android:name=".ui.welcome_screen.view.WelcomeActivity"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.login_options.view.LoginOptionsActivity"/>
+        <activity android:name=".ui.login_options.view.LoginOptionsActivity"
+                  android:screenOrientation="portrait"/>
         <activity
                 android:name=".ui.forgot_password.view.ForgotPasswordActivity"
+                android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan"/>
         <activity
                 android:name=".ui.login.view.LoginActivity"
+                android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan"/>
         <activity
                 android:name=".ui.register.view.RegisterActivity"
+                android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan"/>
         <activity
                 android:name=".ui.report.view.ReportActivity"
+                android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
                 android:name=".ui.do_you_know.view.DoYouKnowActivity"
+                android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".ui.calendar_screen.view.PollCalendarActivity"/>
-        <activity android:name=".ui.discussion_comments.view.DiscussionCommentsActivity"/>
+        <activity android:name=".ui.calendar_screen.view.PollCalendarActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.discussion_comments.view.DiscussionCommentsActivity"
+                  android:screenOrientation="portrait"/>
         <activity
                 android:name=".ui.add_edit_discussion.view.AddEditDiscussionActivity"
+                android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustResize"/>
 
 
-        <activity android:name=".ui.settings.view.SettingsActivity"/>
-        <activity android:name=".ui.profile.view.ProfileActivity"/>
-        <activity android:name=".ui.profile.view.NotificationActivity"/>
-        <activity android:name=".ui.edit_profile.view.EditProfileActivity"/>
+        <activity android:name=".ui.settings.view.SettingsActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.profile.view.ProfileActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.profile.view.NotificationActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.edit_profile.view.EditProfileActivity"
+                  android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.player_details_screen.view.PlayerDetailsActivity"/>
-        <activity android:name=".ui.detailview.view.DetailActivity"/>
+        <activity android:name=".ui.player_details_screen.view.PlayerDetailsActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detailview.view.DetailActivity"
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

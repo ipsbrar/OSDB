@@ -39,7 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener,
-        DashboardView.SportsAdapterItemClickListener, HomeFragmentView , BornTodayOnClick {
+        DashboardView.SportsAdapterItemClickListener, HomeFragmentView, BornTodayOnClick {
     public static final String TAG = "HomeFragment";
 
     //    No data found layout
@@ -171,14 +171,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
 
     @Override
-    public void onSportsIconClick(int position,String name) {
+    public void onSportsIconClick(int position, String name) {
         Intent sportIntent = new Intent(context, SportsActivity.class);
         sportIntent.putExtra("SPORT_ID", position);
         sportIntent.putExtra("SPORT_NAME", name);
         sportIntent.putExtra("SPORT_LIST", sportsList);
         startActivity(sportIntent);
     }
-
 
 
     @Override
@@ -245,12 +244,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
             swipe_refresh.setRefreshing(false);
 
-        }else {
+        } else {
             rl_hide_layout_home.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
         }
     }
-
 
 
     @Override
@@ -260,7 +258,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         rl_hide_layout_home.setVisibility(View.GONE);
         no_data.setVisibility(View.VISIBLE);
     }
-
 
 
     private String getCurrentDate() {
@@ -299,7 +296,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
                 break;
             }
             case R.id.cv_main_did_you_know: {
-                Log.e("DidYouKnowClick","Clicked");
+                Log.e("DidYouKnowClick", "Clicked");
                 if (doYouKnow != null) {
                     Intent intent = new Intent(context, DoYouKnowActivity.class);
 //                    intent.putExtra("imgUrl", (String) breakingNewsFrag.getImageUrl());
@@ -316,13 +313,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
     }
 
     @Override
-    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName) {
+    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName, String profilePic) {
         Intent intent = new Intent(context, PlayerDetailsActivity.class);
         intent.putExtra("AGE", age);
         intent.putExtra("PLAYER_NAME", playerName);
         intent.putExtra("TEAM_NAME", teamName);
         intent.putExtra("DIVISION_NAME", divisionName);
         intent.putExtra("PLAYER_ID", playerId);
+        intent.putExtra("PROFILE_PIC", profilePic);
         startActivity(intent);
     }
 }

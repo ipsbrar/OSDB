@@ -78,7 +78,7 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
                     try {
                         JSONArray jsonArray = new JSONArray(imgUrl);
                         for (int j = 0; j < jsonArray.length(); j++) {
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
                             imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
                             Log.e("MYIMAGEURL", imgPic);
 
@@ -89,7 +89,7 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
                     }
                 }
                 String longContent = homeData.getNewsArrayList().get(i).getLongContent();
-                boolean isBreakingNews = homeData.getNewsArrayList().get(i).getIsBreakingNews() == 0  ? false : true ;
+                boolean isBreakingNews = homeData.getNewsArrayList().get(i).getIsBreakingNews() == 0 ? false : true;
 
 
                 searchAdapterRemoteBean.setNewsId(newsID);
@@ -122,7 +122,7 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
                     try {
                         JSONArray jsonArray = new JSONArray(imgUrl);
                         for (int j = 0; j < jsonArray.length(); j++) {
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
                             imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
                             Log.e("MYIMAGEURL", imgPic);
 
@@ -140,6 +140,39 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
                 searchAdapterRemoteBean.setTeamId(teamId);
                 searchAdapterRemoteBean.setImgUrl(imgPic == null ? "" : imgPic);
                 searchAdapterRemoteBean.setType("Player");
+
+                searchAdapterRemoteBeanArrayList.add(searchAdapterRemoteBean);
+            }
+
+        }
+
+        if (homeData.getTeamArrayList() != null && homeData.getTeamArrayList().size() > 0) {
+            for (int i = 0; i < homeData.getTeamArrayList().size(); i++) {
+                SearchAdapterRemoteBean searchAdapterRemoteBean = new SearchAdapterRemoteBean();
+                String slugName = homeData.getTeamArrayList().get(i).getSports().getSlugName();
+                String teamName = homeData.getTeamArrayList().get(i).getTeamName();
+                int teamId = homeData.getTeamArrayList().get(i).getTeamId();
+                String imgUrl = homeData.getTeamArrayList().get(i).getLogo();
+                String imgPic = null;
+                if (imgUrl != null && !imgUrl.equalsIgnoreCase("")) {
+                    try {
+                        JSONArray jsonArray = new JSONArray(imgUrl);
+                        for (int j = 0; j < jsonArray.length(); j++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+                            imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
+                            Log.e("MYIMAGEURL", imgPic);
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                searchAdapterRemoteBean.setPlayerTeam(teamName == null ? "" : teamName);
+                searchAdapterRemoteBean.setSlugName(slugName == null ? "" : slugName);
+                searchAdapterRemoteBean.setTeamId(teamId);
+                searchAdapterRemoteBean.setImgUrl(imgPic == null ? "" : imgPic);
+                searchAdapterRemoteBean.setType("Teams");
 
                 searchAdapterRemoteBeanArrayList.add(searchAdapterRemoteBean);
             }

@@ -43,7 +43,7 @@ public class SearchAdapterRemote extends RecyclerView.Adapter<SearchAdapterRemot
         } else if (searchAdapterRemoteBean.getType().equalsIgnoreCase("Player")) {
             myViewHolder.itemTV.setText(searchAdapterRemoteBean.getPlayerName());
         } else {
-            Toast.makeText(context, "NothingHppn", Toast.LENGTH_SHORT).show();
+            myViewHolder.itemTV.setText(searchAdapterRemoteBean.getPlayerTeam());
         }
     }
 

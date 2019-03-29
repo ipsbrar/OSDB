@@ -76,11 +76,13 @@ private  BornTodayOnClick bornTodayOnClick;
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
+
                     bornTodayOnClick.bornTodayOnCLick(dataList.get(getAdapterPosition()).getDateOfBirth(),
                             "NFL",
                             "NFL",
                             String.valueOf(dataList.get(getAdapterPosition()).getId()),
-                            dataList.get(getAdapterPosition()).getFullName()
+                            dataList.get(getAdapterPosition()).getFullName(),
+                            dataList.get(getAdapterPosition()).getHeadshot().get(0).getHref()
                             );
                 }
             });

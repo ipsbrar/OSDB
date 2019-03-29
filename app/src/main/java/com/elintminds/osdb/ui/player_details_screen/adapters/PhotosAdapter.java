@@ -9,20 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.player_details_screen.beans.PhotosBean;
 import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsView;
 
 import java.util.ArrayList;
 
-public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder>
-{
+public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<PhotosBean> dataList;
+    private ArrayList<String> dataList;
     private PlayerDetailsView.VideoPhotoAdapterListener listener;
 
-    public PhotosAdapter(Context context, ArrayList<PhotosBean> dataList, PlayerDetailsView.VideoPhotoAdapterListener listener)
-    {
+    public PhotosAdapter(Context context, ArrayList<String> dataList, PlayerDetailsView.VideoPhotoAdapterListener listener) {
         this.context = context;
         this.dataList = dataList;
         this.listener = listener;
@@ -37,9 +37,13 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i)
-    {
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+        String imgPath = dataList.get(i);
+        if (imgPath != null) {
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.ic_latest);
+            Glide.with(context).setDefaultRequestOptions(requestOptions).load(imgPath).into(holder.playerPhoto);
+        }
     }
 
     @Override
@@ -47,31 +51,25 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
         return dataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView playerPhoto;
 
 
-        public ViewHolder(@NonNull View itemView)
-        {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             playerPhoto = itemView.findViewById(R.id.img_photo_player_details);
 
-            itemView.setOnClickListener(new View.OnClickListener()
-            {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view)
-                {
+                public void onClick(View view) {
                     listener.onItemClick(getAdapterPosition());
                 }
             });
         }
     }
 
-    public void setDataList(ArrayList<PhotosBean> data)
-    {
-        if(data == null || data.isEmpty())
-        {
+    public void setDataList(ArrayList<String> data) {
+        if (data == null || data.isEmpty()) {
             return;
         }
 
