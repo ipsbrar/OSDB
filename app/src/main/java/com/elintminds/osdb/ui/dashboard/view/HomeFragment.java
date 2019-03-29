@@ -39,7 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener,
-        DashboardView.SportsAdapterItemClickListener, HomeFragmentView , BornTodayOnClick {
+        DashboardView.SportsAdapterItemClickListener, HomeFragmentView, BornTodayOnClick {
     public static final String TAG = "HomeFragment";
 
     //    No data found layout
@@ -126,19 +126,18 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
         view_1_image = view.findViewById(R.id.view_1_image);
         view_5_image = view.findViewById(R.id.view_5_image);
-
+        swipe_refresh = view.findViewById(R.id.swipe_refresh);
         homeFragmentPresenterClass = new HomeFragmentPresenterClass<>(getActivity(), this);
         setUpStartingData();
 
         rl_breaking_news.setOnClickListener(this);
         cv_main_did_you_know.setOnClickListener(this);
 
-        swipe_refresh = view.findViewById(R.id.swipe_refresh);
+
         swipe_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 Log.e("HomeSwipeData", "   Inside refresh layout");
-
                 setUpStartingData();
 
             }
@@ -171,14 +170,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
 
     @Override
-    public void onSportsIconClick(int position,String name) {
+    public void onSportsIconClick(int position, String name) {
         Intent sportIntent = new Intent(context, SportsActivity.class);
         sportIntent.putExtra("SPORT_ID", position);
         sportIntent.putExtra("SPORT_NAME", name);
         sportIntent.putExtra("SPORT_LIST", sportsList);
         startActivity(sportIntent);
     }
-
 
 
     @Override
@@ -243,14 +241,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
                 cv_main_did_you_know.setVisibility(View.GONE);
             }
 
-            swipe_refresh.setRefreshing(false);
+            rl_hide_layout_home.setVisibility(View.VISIBLE);
+            no_data.setVisibility(View.GONE);
 
-        }else {
+        } else {
             rl_hide_layout_home.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
         }
-    }
 
+        swipe_refresh.setRefreshing(false);
+    }
 
 
     @Override
@@ -259,8 +259,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 //        txt_no_data_title.setText(error);
         rl_hide_layout_home.setVisibility(View.GONE);
         no_data.setVisibility(View.VISIBLE);
+        swipe_refresh.setRefreshing(false);
     }
-
 
 
     private String getCurrentDate() {
@@ -299,7 +299,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
                 break;
             }
             case R.id.cv_main_did_you_know: {
-                Log.e("DidYouKnowClick","Clicked");
+                Log.e("DidYouKnowClick", "Clicked");
                 if (doYouKnow != null) {
                     Intent intent = new Intent(context, DoYouKnowActivity.class);
 //                    intent.putExtra("imgUrl", (String) breakingNewsFrag.getImageUrl());
@@ -316,13 +316,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
     }
 
     @Override
-    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName) {
+    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName, String profilePic) {
         Intent intent = new Intent(context, PlayerDetailsActivity.class);
         intent.putExtra("AGE", age);
         intent.putExtra("PLAYER_NAME", playerName);
         intent.putExtra("TEAM_NAME", teamName);
         intent.putExtra("DIVISION_NAME", divisionName);
         intent.putExtra("PLAYER_ID", playerId);
+        intent.putExtra("PROFILE_PIC", profilePic);
         startActivity(intent);
     }
 }

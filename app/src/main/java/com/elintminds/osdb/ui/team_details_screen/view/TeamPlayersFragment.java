@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsActivity;
 import com.elintminds.osdb.ui.team_details_screen.adapters.TeamPlayersAdapter;
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean;
 import com.elintminds.osdb.ui.team_details_screen.presenter.TeamDetailsPresenterClass;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -80,6 +84,19 @@ public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView
         intent.putExtra("PLAYER_NAME", dataList.get(position).getFullName());
         intent.putExtra("TEAM_NAME", teamName);
         intent.putExtra("DIVISION_NAME", divisionName);
+        String imgPic = null;
+        if (!dataList.get(position).getHeadshots().equalsIgnoreCase("")) {
+            try {
+                JSONArray jsonArray = new JSONArray(dataList.get(position).getHeadshots());
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
+                Log.e("MYIMAGEURL", imgPic);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        intent.putExtra("PROFILE_PIC", imgPic);
         intent.putExtra("PLAYER_ID", String.valueOf(dataList.get(position).getId()));
         startActivity(intent);
     }

@@ -198,7 +198,16 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 title.setText(dropdownList.get(i).getName());
                 sportsName = dropdownList.get(i).getName();
-                teamFragData.fetchTeamsData(sportsName);
+                if (sportsName.equalsIgnoreCase("NFL") || sportsName.equalsIgnoreCase("NBA")) {
+                    rl_main_layout.setVisibility(View.VISIBLE);
+                    constMainLayout.setVisibility(View.GONE);
+                    teamFragData.fetchTeamsData(sportsName);
+                } else {
+                    rl_main_layout.setVisibility(View.GONE);
+                    constMainLayout.setVisibility(View.VISIBLE);
+                    setImageBackground(sportsName);
+                }
+
                 popupWindow.dismiss();
             }
         });

@@ -1,6 +1,8 @@
 package com.elintminds.osdb.ui.player_details_screen.beans;
 
-public class PlayerDetailInfoBean {
+import java.io.Serializable;
+
+public class PlayerDetailInfoBean implements Serializable {
 
 
     private String playerHeight, playerWeight, playerCollege, placeOfBirth, playerPosition;

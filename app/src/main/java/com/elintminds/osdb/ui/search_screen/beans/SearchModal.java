@@ -18,17 +18,17 @@ public class SearchModal {
 
     public class data {
         @SerializedName("teams")
-        private ArrayList<Team> teamArrayList;
+        private ArrayList<Teams> teamArrayList;
         @SerializedName("players")
         private ArrayList<Player> playerArrayList;
         @SerializedName("news")
         private ArrayList<News> newsArrayList;
 
-        public ArrayList<Team> getTeamArrayList() {
+        public ArrayList<Teams> getTeamArrayList() {
             return teamArrayList;
         }
 
-        public void setTeamArrayList(ArrayList<Team> teamArrayList) {
+        public void setTeamArrayList(ArrayList<Teams> teamArrayList) {
             this.teamArrayList = teamArrayList;
         }
 
@@ -228,6 +228,48 @@ public class SearchModal {
 
         public void setSlugName(String slugName) {
             this.slugName = slugName;
+        }
+    }
+
+    public class Teams {
+        @SerializedName("team_name")
+        private String teamName;
+        @SerializedName("id")
+        private int teamId;
+        private String logo;
+        @SerializedName("sport")
+        private Sports sports;
+
+        public String getLogo() {
+            return logo;
+        }
+
+        public void setLogo(String logo) {
+            this.logo = logo;
+        }
+
+        public String getTeamName() {
+            return teamName;
+        }
+
+        public void setTeamName(String teamName) {
+            this.teamName = teamName;
+        }
+
+        public int getTeamId() {
+            return teamId;
+        }
+
+        public void setTeamId(int teamId) {
+            this.teamId = teamId;
+        }
+
+        public Sports getSports() {
+            return sports;
+        }
+
+        public void setSports(Sports sports) {
+            this.sports = sports;
         }
     }
 }

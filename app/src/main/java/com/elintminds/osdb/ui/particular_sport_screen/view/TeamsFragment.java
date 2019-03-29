@@ -22,6 +22,9 @@ import com.elintminds.osdb.ui.particular_sport_screen.beans.TeamsBean;
 import com.elintminds.osdb.ui.particular_sport_screen.presenter.TeamFragmentPresenter;
 import com.elintminds.osdb.ui.particular_sport_screen.presenter.TeamFragmentPresenterClass;
 import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsActivity;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -108,10 +111,25 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
         String teamName = dataList.get(groupPos).getTeamsList().get(childPos).getTeamName();
         String divisionName = dataList.get(groupPos).getTeamClubName();
         String teamID = String.valueOf(dataList.get(groupPos).getTeamsList().get(childPos).getId());
+        String imgUrl = String.valueOf(dataList.get(groupPos).getTeamsList().get(childPos).getLogo());
+        String imgPic = null;
+        if (!imgUrl.equalsIgnoreCase("")) {
+            try {
+                JSONArray jsonArray = new JSONArray(imgUrl);
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
+                    Log.e("MYIMAGEURL", imgPic);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
         Intent intent = new Intent(context, TeamDetailsActivity.class);
         intent.putExtra("TEAM_NAME", teamName);
         intent.putExtra("DIVISION_NAME", divisionName);
         intent.putExtra("TEAM_ID", teamID);
+        intent.putExtra("PROFILE_PIC", imgPic);
         startActivity(intent);
     }
 

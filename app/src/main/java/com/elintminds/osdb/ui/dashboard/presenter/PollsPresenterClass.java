@@ -81,7 +81,7 @@ public class PollsPresenterClass<V extends PollView, I extends PollsInteractor>
                 e.printStackTrace();
             }
 
-            String url = "https://staging.osdb.pro:81/api/v1/polls/vote/add";
+            String url = "https://dev.osdb.pro:81/api/v1/polls/vote/add";
 
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {

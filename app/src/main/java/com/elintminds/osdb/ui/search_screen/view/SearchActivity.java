@@ -22,14 +22,15 @@ import com.elintminds.osdb.ui.search_screen.beans.SearchAdapterRemoteBean;
 import com.elintminds.osdb.ui.search_screen.beans.SearchBean;
 import com.elintminds.osdb.ui.search_screen.beans.SearchModal;
 import com.elintminds.osdb.ui.search_screen.presenter.SearchScreenPresenterClass;
+import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsActivity;
 
 import java.util.ArrayList;
 
 public class SearchActivity extends BaseActivity implements SearchScreenView, SearchScreenView.SearchItemClickListener {
     private Toolbar toolbar;
     private EditText searchET;
-    private RecyclerView searchRV, search_recyclerView_remote;
-    private SearchAdapter adapter;
+    private RecyclerView /*searchRV,*/ search_recyclerView_remote;
+    /*private SearchAdapter adapter;*/
     private ArrayList<SearchBean> dataList = new ArrayList<>();
     private String[] searchSampleData = {"Blackhawks", "Aaron Rodgers", "Australian Open"};
     private SearchScreenPresenterClass searchScreenPresenterClass;
@@ -56,18 +57,15 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
     private void initializeViews() {
         toolbar = findViewById(R.id.search_toolbar);
         searchET = findViewById(R.id.searchET);
-        searchRV = findViewById(R.id.search_recyclerView);
+//        searchRV = findViewById(R.id.search_recyclerView);
         search_recyclerView_remote = findViewById(R.id.search_recyclerView_remote);
-        searchRV.setVisibility(View.VISIBLE);
-        search_recyclerView_remote.setVisibility(View.GONE);
+
     }
 
     private void setUpRecyclerView() {
         searchScreenPresenterClass = new SearchScreenPresenterClass(this, this);
 
-        getSearchData();
-        adapter = new SearchAdapter(this, dataList, this);
-        searchRV.setAdapter(adapter);
+
 
         searchAdapterRemote = new SearchAdapterRemote(searchAdapterRemoteBeanArrayList, this, this);
         search_recyclerView_remote.setAdapter(searchAdapterRemote);
@@ -85,9 +83,6 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
                 if (s.toString().length() >= 3) {
                     Log.e("EditTextChanged", "Search is working");
                     searchScreenPresenterClass.getSearchData(s.toString(), "0");
-                } else {
-                    searchRV.setVisibility(View.VISIBLE);
-                    search_recyclerView_remote.setVisibility(View.GONE);
                 }
             }
 
@@ -99,30 +94,6 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
         });
     }
 
-    private void getSearchData() {
-        SearchBean itemBean;
-        itemBean = new SearchBean();
-        itemBean.setSearchType(SearchAdapter.HEADING_TYPE);
-        itemBean.setSearchName("Recent");
-        dataList.add(itemBean);
-        for (String searchItem : searchSampleData) {
-            itemBean = new SearchBean();
-            itemBean.setSearchType(SearchAdapter.ITEM_TYPE);
-            itemBean.setSearchName(searchItem);
-            dataList.add(itemBean);
-        }
-
-        itemBean = new SearchBean();
-        itemBean.setSearchType(SearchAdapter.HEADING_TYPE);
-        itemBean.setSearchName("Suggestions");
-        dataList.add(itemBean);
-        for (String searchItem : searchSampleData) {
-            itemBean = new SearchBean();
-            itemBean.setSearchType(SearchAdapter.ITEM_TYPE);
-            itemBean.setSearchName(searchItem);
-            dataList.add(itemBean);
-        }
-    }
 
     @Override
     public void onItemClick(int position, String type) {
@@ -139,7 +110,8 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
             intent.putExtra("PLAYER_NAME", searchAdapterRemoteBean.getPlayerName());
             intent.putExtra("TEAM_NAME", searchAdapterRemoteBean.getPlayerTeam());
             intent.putExtra("DIVISION_NAME", searchAdapterRemoteBean.getSlugName());
-            intent.putExtra("PLAYER_ID", searchAdapterRemoteBean.getPlayerId());
+            intent.putExtra("PLAYER_ID", String.valueOf(searchAdapterRemoteBean.getPlayerId()));
+            intent.putExtra("PROFILE_PIC", searchAdapterRemoteBean.getImgUrl());
             startActivity(intent);
 
 //            AGE,TEAM_NAME,DIVISION_NAME,PLAYER_ID,PLAYER_NAME
@@ -153,15 +125,18 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
 //            intent.putExtra("timeStamp", timeStamp);
             startActivity(intent);
         } else {
-
+            Intent intent = new Intent(this, TeamDetailsActivity.class);
+            intent.putExtra("TEAM_NAME", searchAdapterRemoteBean.getPlayerTeam());
+            intent.putExtra("DIVISION_NAME", searchAdapterRemoteBean.getSlugName());
+            intent.putExtra("TEAM_ID", String.valueOf(searchAdapterRemoteBean.getTeamId()));
+            intent.putExtra("PROFILE_PIC", searchAdapterRemoteBean.getImgUrl());
+            startActivity(intent);
         }
     }
 
     @Override
     public void searchOnClick(ArrayList<SearchAdapterRemoteBean> searchModal) {
         searchAdapterRemote.changeData(searchModal);
-        searchRV.setVisibility(View.GONE);
-        search_recyclerView_remote.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -9,23 +9,35 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
+import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
 import com.elintminds.osdb.ui.player_details_screen.presenter.PlayerDetailsPresenterClass;
 import com.elintminds.osdb.ui.team_details_screen.view.StatsFragment;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import java.util.ArrayList;
 
 
 public class PlayerDetailsActivity extends BaseActivity implements PlayerDetailsView, View.OnClickListener {
     private TabLayout tabs;
     private TextView title, followBtn, user_age, user_date_of_birth, user_team, user_zone;
+    private CircleImageView user_Image;
     private ImageView backBtn;
     private boolean isFollowing = false;
-    private String age, teamName, divisionName, playerId, playerName;
+    private String age, teamName, divisionName, playerId, playerName, profilePic;
     private PlayerDetailsPresenterClass playerDetailsPresenterClass;
     private PlayerDetailInfoBean playerDetailInfoBean;
+    private ArrayList<String> careerHeightArray = new ArrayList<>();
+    private ArrayList<String> imageListArray = new ArrayList<>();
+    private ArrayList<VideosBean> videosBeanArrayList = new ArrayList<>();
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,27 +52,33 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
         title = findViewById(R.id.player_details_title);
         tabs = findViewById(R.id.player_details_tabs);
         backBtn = findViewById(R.id.back_btn);
+        user_Image = findViewById(R.id.user_Image);
         followBtn = findViewById(R.id.follow_btn);
         user_age = findViewById(R.id.user_age);
         user_date_of_birth = findViewById(R.id.user_date_of_birth);
         user_team = findViewById(R.id.user_team);
         user_zone = findViewById(R.id.user_zone);
-        ViewPager viewPager = findViewById(R.id.player_details_viewpager);
+        viewPager = findViewById(R.id.player_details_viewpager);
         playerDetailsPresenterClass = new PlayerDetailsPresenterClass(this, this);
         if (getIntent() != null) {
 
             age = getIntent().getStringExtra("AGE");
+            profilePic = getIntent().getStringExtra("PROFILE_PIC");
             teamName = getIntent().getStringExtra("TEAM_NAME");
             divisionName = getIntent().getStringExtra("DIVISION_NAME");
             playerId = getIntent().getStringExtra("PLAYER_ID");
             playerName = getIntent().getStringExtra("PLAYER_NAME");
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.ic_latest);
+            if (profilePic != null)
+                Glide.with(this).setDefaultRequestOptions(requestOptions).load(profilePic).into(user_Image);
             title.setText(playerName != null ? playerName : "");
 
             playerDetailsPresenterClass.giveDate(age);
             String defaultToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc3RhZ2luZy5vc2RiLnBybzo4MVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1NTIzNzA2OTYsImV4cCI6MTU1MjgwMjY5NiwibmJmIjoxNTUyMzcwNjk2LCJqdGkiOiJERUpQVTN2cnZBZEIyQzZrIiwic3ViIjozNjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.IrSsXMjW-BWKhrfFuEMCiitdVS_ijN6bFBvfsE2_Cjk";
             String token = getAppPreferenceHelperClass().getToken() != null ? getAppPreferenceHelperClass().getToken() : defaultToken;
 
-//            playerDetailsPresenterClass.getPlayerID(playerId, this , token);
+            playerDetailsPresenterClass.getPlayerID(playerId, this, token);
 
             user_team.setText(teamName);
             user_zone.setText(divisionName);
@@ -68,26 +86,10 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
         }
 
 
-        setupViewPager(viewPager);
-        tabs.setupWithViewPager(viewPager);
-
-        setDividerForTabs();
-
         backBtn.setOnClickListener(this);
         followBtn.setOnClickListener(this);
     }
 
-    private void setupViewPager(ViewPager upViewPager) {
-        LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
-        adapter.addFragment(InfoFragment.getInstance(), getString(R.string.info));
-        adapter.addFragment(CareerFragment.getInstance(), getString(R.string.career));
-        adapter.addFragment(BioFragment.getInstance(), getString(R.string.bio));
-        adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
-        adapter.addFragment(StatsFragment.getInstance(), getString(R.string.stats));
-        adapter.addFragment(VideosFragment.getInstance(), getString(R.string.videos));
-        adapter.addFragment(PhotosFragment.getInstance(), getString(R.string.photos));
-        upViewPager.setAdapter(adapter);
-    }
 
     private void setDividerForTabs() {
         View root = tabs.getChildAt(0);
@@ -132,12 +134,39 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
     }
 
     @Override
-    public void fetchPlayerDetailInfo(PlayerDetailInfoBean jsonObject) {
+    public void fetchPlayerDetailInfo(PlayerDetailInfoBean jsonObject,
+                                      ArrayList<String> careerHeightsArray,
+                                      ArrayList<String> imageListArray,
+                                      ArrayList<VideosBean> videosBeanArrayList) {
         this.playerDetailInfoBean = jsonObject;
+        this.careerHeightArray = careerHeightsArray;
+        this.imageListArray = imageListArray;
+        this.videosBeanArrayList = videosBeanArrayList;
+        setupViewPager(viewPager);
+        tabs.setupWithViewPager(viewPager);
+
+        setDividerForTabs();
     }
+
 
     @Override
     public void errorOccur(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        setupViewPager(viewPager);
+        tabs.setupWithViewPager(viewPager);
+        setDividerForTabs();
 
+    }
+
+    private void setupViewPager(ViewPager upViewPager) {
+        LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
+        adapter.addFragment(InfoFragment.getInstance(playerDetailInfoBean), getString(R.string.info));
+        adapter.addFragment(CareerFragment.getInstance(careerHeightArray), getString(R.string.career));
+        adapter.addFragment(BioFragment.getInstance(), getString(R.string.bio));
+        adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
+        adapter.addFragment(StatsFragment.getInstance(), getString(R.string.stats));
+        adapter.addFragment(VideosFragment.getInstance(videosBeanArrayList), getString(R.string.videos));
+        adapter.addFragment(PhotosFragment.getInstance(imageListArray), getString(R.string.photos));
+        upViewPager.setAdapter(adapter);
     }
 }

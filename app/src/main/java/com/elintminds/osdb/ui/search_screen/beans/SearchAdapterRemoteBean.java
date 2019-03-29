@@ -15,6 +15,15 @@ public class SearchAdapterRemoteBean {
     private String tags;
     private String longContent;
     private boolean isBreakingNews;
+    private int searchType;
+
+    public int getSearchType() {
+        return searchType;
+    }
+
+    public void setSearchType(int searchType) {
+        this.searchType = searchType;
+    }
 
     public String getPlayerName() {
         return playerName;

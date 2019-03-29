@@ -86,9 +86,9 @@ public class LiveScroresFragment extends BaseFragment implements DashboardView.S
 
     @Override
     public void onSportsIconClick(int position, String name) {
-        Intent sportIntent = new Intent(context, SportsActivity.class);
-        sportIntent.putExtra("SPORT_ID", position);
-        startActivity(sportIntent);
+//        Intent sportIntent = new Intent(context, SportsActivity.class);
+//        sportIntent.putExtra("SPORT_ID", position);
+//        startActivity(sportIntent);
     }
 
     @Override
