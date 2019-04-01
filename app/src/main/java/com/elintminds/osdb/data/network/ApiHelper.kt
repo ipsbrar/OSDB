@@ -13,6 +13,7 @@ import com.elintminds.osdb.ui.search_finding_screen.beans.ScheduleBeans
 import com.elintminds.osdb.ui.search_screen.beans.SearchModal
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean
 import io.reactivex.Observable
+import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.*
 import java.util.*
@@ -86,9 +87,14 @@ interface ApiHelper {
     fun fetchReportComment(@Path("id") slug: String): Observable<Response<ReportThreadBean>>
 
     @GET("search")
-    fun search(@Query("search") searchContent : String , @Query("category") category : String): Observable<Response<SearchModal>>
+    fun search(@Query("search") searchContent: String, @Query("category") category: String): Observable<Response<SearchModal>>
 
-
+    @FormUrlEncoded
+    @POST("polls/vote/add")
+    fun AddPollComment(
+        @Field("poll_id") pollId: String,
+        @Field("poll_option_id") pollOptionId: String
+    ): Observable<Response<JSONObject>>
 //    @GET("teams/{team_id}/players")
 //    fun fetchPlayerDetail(@Path("team_id") teamId: String): Observable<PlayersDetailBean>
 
