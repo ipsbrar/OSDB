@@ -59,6 +59,7 @@
             app:cardCornerRadius="@dimen/dp_4"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginRight="@dimen/dp_10"
+            android:visibility="gone"
             android:layout_marginTop="@dimen/dp_10"
             android:layout_gravity="center_vertical"
             app:cardElevation="@dimen/dp_2">
@@ -105,6 +106,7 @@
                                         app:cardCornerRadius="@dimen/dp_4"
                                         android:layout_marginLeft="@dimen/dp_10"
                                         android:layout_marginRight="@dimen/dp_10"
+                                        android:visibility="gone"
                                         android:layout_marginTop="@dimen/dp_10"
                                         android:layout_gravity="center_vertical"
                                         app:cardElevation="@dimen/dp_2">

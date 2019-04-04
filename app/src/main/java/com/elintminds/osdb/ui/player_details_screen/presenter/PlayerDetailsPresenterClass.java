@@ -2,10 +2,7 @@ package com.elintminds.osdb.ui.player_details_screen.presenter;
 
 import android.content.Context;
 import android.util.Log;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
@@ -16,8 +13,14 @@ import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
 import com.elintminds.osdb.ui.player_details_screen.model.PlayerDetailsInteractor;
 import com.elintminds.osdb.ui.player_details_screen.model.PlayerDetailsInteractorClass;
 import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsView;
+import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsHorizontalBean;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsMainBean;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsVerticalBean;
 import com.elintminds.osdb.utils.ConnectivityReceiver;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import io.reactivex.functions.Consumer;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,16 +45,50 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
 
     @Override
     public void giveDate(String stringDate) {
-
-        getMvpView().formattedDate(getFormatedDate(stringDate));
+        String outputDate = getFormatedDate(stringDate);
+        getMvpView().formattedDate(outputDate);
 
         Date c = Calendar.getInstance().getTime();
         Date first = getDateFormat(stringDate);
         Date second = getDateFormat(c);
         String ageDiff = getDiffYears(first, second);
+//        ageDiff
+
+        getMvpView().playersAge(getAge(outputDate));
+    }
 
 
-        getMvpView().playersAge(ageDiff);
+    private String getAge(String dobString) {
+        DateFormat originalFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+        Date date = null;
+        int year = 0;
+        int month = 0;
+        int day = 0;
+        try {
+            date = originalFormat.parse(dobString);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            month = cal.get(Calendar.MONTH);
+            day = cal.get(Calendar.DATE);
+            year = cal.get(Calendar.YEAR);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+
+        return ageS + " Years";
     }
 
     @Override
@@ -59,52 +96,50 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
 
         if (ConnectivityReceiver.isConnected()) {
             getMvpView().showProgressDialog();
-            String url = "https://dev.osdb.pro:81/api/v1/players/" + playerID;
-
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Log.e("SuccessVoley", response);
-                    if (response != null)
-                        parseData(response);
-
-                    getMvpView().hideProgressDialog();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("ErrorVolly", error.toString());
-                    getMvpView().errorOccur(error.toString());
-                    getMvpView().hideProgressDialog();
-                }
-            }) {
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-//                super.getHeaders();
-                    Map<String, String> headers = new HashMap<>();
-
-                    headers.put("Content-Type", "application/x-www-form-urlencoded");
-                    headers.put("Accept", "application/json");
-                    headers.put("Authorization", "Bearer " + token);
-//
-                    return headers;
-                }
-            };
-
-            Volley.newRequestQueue(context).add(stringRequest);
+            getCompositeDisposable().add(getInteractor()
+                    .fetchPlayerDetail(playerID)
+                    .subscribeOn(getSchedulerProvider().io())
+                    .observeOn(getSchedulerProvider().ui())
+                    .subscribe(new Consumer<retrofit2.Response<JsonElement>>() {
+                                   @Override
+                                   public void accept(retrofit2.Response<JsonElement> response) throws Exception {
+                                       Log.e("HomeSwipeData", "   Inside Success");
+                                       if (response.isSuccessful()) {
+                                           if (response.body() != null)
+                                               parseData(response.body().toString());
+                                       } else {
+                                           getMvpView().errorOccur("Something went wrong");
+                                       }
+                                       getMvpView().hideProgressDialog();
+                                   }
+                               },
+                            new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    Log.e("HomeSwipeData", "   Inside Reject");
+                                    getMvpView().errorOccur(throwable.toString());
+                                    getMvpView().hideProgressDialog();
+                                }
+                            }));
         } else {
-            getMvpView().errorOccur("No internet found");
+            getMvpView().errorOccur("No Internet connection");
         }
+
+
     }
 
     private void parseData(String response) {
         ArrayList<String> careerHeights = new ArrayList<>();
         ArrayList<String> imageListString = new ArrayList<>();
         ArrayList<VideosBean> videosBeanArrayList = new ArrayList<>();
+        ArrayList<StatsBeans> statsBeansArrayList = new ArrayList<>();
+        String dateOfBirth = null;
         try {
 //            player info
 //            pending   ==>  playerPosition,playerSportsAgent,playerTelevision,currentContract,careerHighlight
             JSONObject jsonObject = new JSONObject(response);
+            dateOfBirth = jsonObject.getString("date_of_birth");
+            giveDate(dateOfBirth);
             String height = jsonObject.getString("height");
             String weight = jsonObject.getString("weight");
             String playerCollege = jsonObject.getString("college_university");
@@ -194,13 +229,114 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
                 }
             }
 
-            getMvpView().fetchPlayerDetailInfo(playerDetailInfoBean, careerHeights, imageListString, videosBeanArrayList);
+//            Bio
+            String bio = jsonObject.getString("about") != null ? jsonObject.getString("about") : "";
+
+
+//            Status data
+            if (jsonObject.has("stats") && jsonObject.getJSONObject("stats") != null) {
+                statsBeansArrayList = StatsData(jsonObject.getJSONObject("stats"));
+            }
+            getMvpView().fetchPlayerDetailInfo(playerDetailInfoBean, careerHeights, imageListString, videosBeanArrayList, bio, statsBeansArrayList);
         } catch (JSONException e) {
             e.printStackTrace();
             getMvpView().errorOccur(e.toString());
         }
     }
 
+
+    //    stats data
+    private ArrayList<StatsBeans> StatsData(JSONObject jsonObject) {
+        ArrayList<StatsBeans> statsBeansArrayList = new ArrayList<>();
+        StatsBeans statsBeans = new StatsBeans();
+        ArrayList<StatsBeans.InnerStatsBean> innerStatsBeanArrayList = new ArrayList<>();
+        ArrayList<List<String>> nestingArrayList = null;
+        Iterator topIterator = jsonObject.keys();
+        int invisible = 0;
+
+        while (topIterator.hasNext()) {
+            try {
+//                get value from top key
+                String topKey = (String) topIterator.next();
+                invisible = 0;
+                JSONObject regObj = jsonObject.getJSONObject(topKey);
+                Iterator iterator = regObj.keys();
+                while (iterator.hasNext()) {
+//                    get nested node (title) key is a title
+                    String key = (String) iterator.next();
+                    StatsBeans.InnerStatsBean innerStatsBean = new StatsBeans.InnerStatsBean();
+                    innerStatsBean.setHeaderText(key);
+
+                    if (invisible == 0) {
+                        innerStatsBean.setMainHeaderText(topKey);
+                        invisible++;
+                    } else {
+                        innerStatsBean.setMainHeaderText("invisible");
+                    }
+
+                    JSONObject regContent = regObj.getJSONObject(key);
+                    Iterator regIterator = regContent.keys();
+
+                    int i = 0;
+
+                    nestingArrayList = new ArrayList<>();
+
+                    while (regIterator.hasNext()) {
+//                       get  years from nested node
+//                       give size to vertical recycler view
+                        String regIteratorKey = (String) regIterator.next();
+                        Log.e("Keys=2222==>   ", regIteratorKey);
+                        List<String> nestedList = new ArrayList<>();
+                        if (i != 0)
+                            nestedList.add(regIteratorKey);
+                        JSONObject dataObj = regContent.getJSONObject(regIteratorKey);
+                        Iterator dataObjIterator = dataObj.keys();
+
+                        if (i == 0) {
+                            nestedList.add("Year");
+                            while (dataObjIterator.hasNext()) {
+//                            data from nested node
+                                if (i == 0) {
+                                    String dataIteratorKey = (String) dataObjIterator.next();
+                                    nestedList.add(dataIteratorKey);
+                                }
+                            }
+                            i++;
+                        }
+
+                        while (dataObjIterator.hasNext()) {
+//                            data from nested node
+                            String dataIteratorKey = (String) dataObjIterator.next();
+                            if (i == 0) {
+                                nestedList.add(dataIteratorKey);
+                            } else {
+                                nestedList.add(dataObj.getString(dataIteratorKey));
+                            }
+
+                            Log.e("Keys=3333==>   ", dataIteratorKey);
+                        }
+
+                        nestingArrayList.add(nestedList);
+                        i++;
+
+                    }
+                    innerStatsBean.setListArrayList(nestingArrayList);
+                    innerStatsBeanArrayList.add(innerStatsBean);
+
+
+                }
+                invisible++;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        statsBeans.setInnerStatsBeansList(innerStatsBeanArrayList);
+        statsBeansArrayList.add(statsBeans);
+
+        return statsBeansArrayList;
+    }
 
     private String getFormatedDate(String rawDate) {
         DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);

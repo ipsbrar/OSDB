@@ -14,13 +14,18 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
+import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
+import com.elintminds.osdb.utils.NonSwipeableViewPager;
+
+import java.util.ArrayList;
 
 public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView, View.OnClickListener {
     private TabLayout tabs;
-    private TextView title, followBtn;
+    private TextView title, followBtn, stadium_txt;
     private ImageView backBtn, team_logo_img;
     private boolean isFollowing = false;
     private String divisionName, teamName, teamId;
+    private ArrayList<StatsBeans> arrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +38,11 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
             teamId = getIntent().getStringExtra("TEAM_ID");
             String profilePic = getIntent().getStringExtra("PROFILE_PIC");
             team_logo_img = findViewById(R.id.team_logo_img);
+            stadium_txt = findViewById(R.id.stadium_txt);
+            stadium_txt.setText(divisionName.equalsIgnoreCase("NBA") ? "Arena" : "Stadium");
             if (profilePic != null) {
                 RequestOptions requestOptions = new RequestOptions();
-                requestOptions.placeholder(R.drawable.ic_latest);
+                requestOptions.placeholder(R.drawable.img_player_empty);
                 Glide.with(this).setDefaultRequestOptions(requestOptions).load(profilePic).into(team_logo_img);
             }
 
@@ -54,8 +61,8 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
 
         backBtn = findViewById(R.id.back_btn);
         followBtn = findViewById(R.id.follow_btn);
-        ViewPager viewPager = findViewById(R.id.team_details_viewpager);
-
+        NonSwipeableViewPager viewPager = findViewById(R.id.team_details_viewpager);
+        viewPager.setOffscreenPageLimit(3);
         setupViewPager(viewPager);
         tabs.setupWithViewPager(viewPager);
 
@@ -68,7 +75,7 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
     private void setupViewPager(ViewPager upViewPager) {
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
         adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
-        adapter.addFragment(StatsFragment.getInstance(), getString(R.string.stats));
+        adapter.addFragment(StatsFragment.getInstance(arrayList, teamId), getString(R.string.stats));
         adapter.addFragment(TeamPlayersFragment.getInstance(teamName, divisionName, teamId), getString(R.string.players));
         upViewPager.setAdapter(adapter);
     }

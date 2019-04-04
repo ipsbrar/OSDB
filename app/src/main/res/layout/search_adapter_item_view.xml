@@ -12,7 +12,7 @@
             android:layout_width="@dimen/dp_60"
             android:layout_height="@dimen/dp_60"
             android:contentDescription="@string/team_logo"
-            android:src="@drawable/ic_nfl_1"
+            android:src="@drawable/img_player_empty"
             android:layout_centerVertical="true"/>
 
     <TextView

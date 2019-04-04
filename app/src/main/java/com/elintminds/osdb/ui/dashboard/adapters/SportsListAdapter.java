@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.BornTodayAdapterBean;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
@@ -16,33 +17,32 @@ import com.elintminds.osdb.ui.dashboard.view.DashboardView;
 
 import java.util.ArrayList;
 
-public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.ViewHolder>
-{
+public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.ViewHolder> {
     private Context context;
     private ArrayList<SportsAdapterListBean> dataList;
     private DashboardView.SportsAdapterItemClickListener listener;
 
-    public SportsListAdapter(Context context, ArrayList<SportsAdapterListBean> sportsIconsList, DashboardView.SportsAdapterItemClickListener listener)
-    {
+    public SportsListAdapter(Context context, ArrayList<SportsAdapterListBean> sportsIconsList, DashboardView.SportsAdapterItemClickListener listener) {
         this.context = context;
         this.dataList = sportsIconsList;
         this.listener = listener;
     }
+
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
-    {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.sports_list_adapter_item, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i)
-    {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
         SportsAdapterListBean item = dataList.get(i);
 
         holder.sportsName.setText(item.getName());
-        Glide.with(context).load(item.getLogo().getFileName()).into(holder.sportsIcon);
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.place);
+        Glide.with(context).setDefaultRequestOptions(requestOptions).load(item.getLogo().getFileName()).into(holder.sportsIcon);
 //        holder.sportsIcon.setImageResource(item.getImgRes());
     }
 
@@ -51,12 +51,11 @@ public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.Vi
         return dataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView sportsIcon;
         TextView sportsName;
-        public ViewHolder(@NonNull View itemView)
-        {
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             sportsIcon = itemView.findViewById(R.id.item_icon);
             sportsName = itemView.findViewById(R.id.sports_name);
@@ -64,15 +63,14 @@ public class SportsListAdapter extends RecyclerView.Adapter<SportsListAdapter.Vi
             sportsIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onSportsIconClick(getAdapterPosition(),dataList.get(getAdapterPosition()).getName());
+                    listener.onSportsIconClick(getAdapterPosition(), dataList.get(getAdapterPosition()).getName());
                 }
             });
         }
     }
-    public void setDataList(ArrayList<SportsAdapterListBean> data)
-    {
-        if(data == null || data.isEmpty())
-        {
+
+    public void setDataList(ArrayList<SportsAdapterListBean> data) {
+        if (data == null || data.isEmpty()) {
             return;
         }
 

@@ -8,6 +8,7 @@ import com.elintminds.osdb.ui.profile.beans.UserInfo;
 import com.elintminds.osdb.ui.profile.model.ProfileInteractor;
 import com.elintminds.osdb.ui.profile.model.ProfileInteractorClass;
 import com.elintminds.osdb.ui.profile.view.ProfileView;
+import com.elintminds.osdb.utils.ConnectivityReceiver;
 import io.reactivex.functions.Consumer;
 
 public class ProfilePresenterClass<V extends ProfileView, I extends ProfileInteractor>
@@ -22,6 +23,7 @@ public class ProfilePresenterClass<V extends ProfileView, I extends ProfileInter
 
     @Override
     public void getUserInfo() {
+        if (ConnectivityReceiver.isConnected()){
         getMvpView().showProgressDialog();
         getCompositeDisposable().add(getInteractor()
                 .fetchUserInfo()
@@ -43,5 +45,8 @@ public class ProfilePresenterClass<V extends ProfileView, I extends ProfileInter
                             }
                         }));
 
+    }else{
+            getMvpView().error("No Internet Connection");
+        }
     }
 }

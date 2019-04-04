@@ -13,12 +13,16 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.Interfaces.DiscussionOnClick;
 import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
+import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
 import com.elintminds.osdb.ui.discussion_comments.view.DiscussionCommentsActivity;
 import com.elintminds.osdb.ui.report.view.ReportActivity;
 import com.elintminds.osdb.utils.Utils;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,19 +52,26 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull DiscussionAdapter.ViewHolder viewHolder, int i) {
 //        Utils.justify(viewHolder.commentTxt);
+        DiscussionAdapterBean.Threads disscussionBean = dataList.get(i);
 
-        if (dataList.get(i).getDescription() != null) {
-            String discription = Html.fromHtml(dataList.get(i).getDescription().trim()).toString();
-            viewHolder.commentTxt.setText(dataList.get(i).getDescription() != null ? discription.trim() : "");
+
+        if (disscussionBean.getDescription() != null) {
+            String discription = Html.fromHtml(disscussionBean.getDescription().trim()).toString();
+            viewHolder.commentTxt.setText(disscussionBean.getDescription() != null ? discription.trim() : "");
         }
-        viewHolder.playerName.setText(dataList.get(i).getCreated_by().getName() != null ? dataList.get(i).getCreated_by().getName() : "");
-        viewHolder.commentsNumber.setText(dataList.get(i).getComments_count() != null ? dataList.get(i).getComments_count() : "");
+        viewHolder.playerName.setText(disscussionBean.getCreated_by().getName() != null ? disscussionBean.getCreated_by().getName() : "");
+        viewHolder.commentsNumber.setText(disscussionBean.getComments_count() != null ? disscussionBean.getComments_count() : "");
 
 //      2019-02-21 03:24:54
-//
+        if (disscussionBean.getCreated_by() != null && disscussionBean.getCreated_by().getAssets() != null
+                && disscussionBean.getCreated_by().getAssets().length > 0) {
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.img_player_empty);
+            Glide.with(context).setDefaultRequestOptions(requestOptions).load(disscussionBean.getCreated_by().getAssets()[0].getFile_name()).into(viewHolder.user_Image);
+        }
 
 //        Utils.getTimeAgo();
-        long timeInLong = getLongTime(dataList.get(i).getUpdated_at() != null ? dataList.get(i).getUpdated_at() : "2019-02-21 03:24:54");
+        long timeInLong = getLongTime(disscussionBean.getUpdated_at() != null ? disscussionBean.getUpdated_at() : "2019-02-21 03:24:54");
 //        Log.e("TimeCheckLong","long   "+timeInLong);
 //        String dateFor = Utils.getDate(timeInLong,"yyyy-dd-MM hh:mm:ss");
 //        Log.e("TimeCheckLong","date   "+dateFor);
@@ -77,7 +88,7 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
         TextView commentTxt, playerName, commentsNumber, hours_txt;
         RelativeLayout commentMainLay;
         LinearLayout reportLay;
-
+        CircleImageView user_Image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,12 +98,21 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
             hours_txt = itemView.findViewById(R.id.hours_txt);
             reportLay = itemView.findViewById(R.id.reportLay);
             playerName = itemView.findViewById(R.id.player_name);
+            user_Image = itemView.findViewById(R.id.user_Image);
 
             commentMainLay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    DiscussionAdapterBean.Threads disscussionBeanOnCLick = dataList.get(getAdapterPosition());
+                    String filePath = "";
+                    if (disscussionBeanOnCLick.getCreated_by() != null && disscussionBeanOnCLick.getCreated_by().getAssets() != null
+                            && disscussionBeanOnCLick.getCreated_by().getAssets().length > 0) {
+                         filePath = disscussionBeanOnCLick.getCreated_by().getAssets()[0].getFile_name();
+                    }
                     if (dataList.get(getAdapterPosition()).getComments_count() != null && Integer.parseInt(dataList.get(getAdapterPosition()).getComments_count()) > 0)
-                        discussionOnClick.discussionOnClick(getAdapterPosition(), dataList.get(getAdapterPosition()).getId());
+                    discussionOnClick.discussionOnClick(disscussionBeanOnCLick.getId(),disscussionBeanOnCLick.getCreated_by().getName()
+                    ,disscussionBeanOnCLick.getDescription(),disscussionBeanOnCLick.getCreated_at()
+                            ,filePath,disscussionBeanOnCLick.getComments_count());
 
                 }
             });

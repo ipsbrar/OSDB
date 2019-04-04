@@ -93,7 +93,7 @@ public class PhotosFragment extends BaseFragment implements PlayerDetailsView.Vi
     }
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(String path) {
 
     }
 }

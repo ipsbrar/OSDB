@@ -2,6 +2,7 @@ package com.elintminds.osdb.ui.calendar_screen.view;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
@@ -45,9 +46,15 @@ public class PollCalendarActivity extends BaseActivity implements PollsCalendarV
             @Override
             public void onClick(int day, int month, int year, boolean hasEvent) {
                 Toast.makeText(PollCalendarActivity.this, day+"/"+month+"/"+year + " hasEvent="+hasEvent, Toast.LENGTH_SHORT).show();
-                if (hasEvent) {
-                    //calendarView.deleteEvent(day, month, year);
-                }
+//                if (hasEvent) {
+//                    //calendarView.deleteEvent(day, month, year);
+//                }
+
+                Intent intent = new Intent();
+//                2019-02-23
+                intent.putExtra("date",year+"-"+month+"-"+day);
+                setResult(0011,intent);
+                finish();
             }
         });
 

@@ -8,6 +8,7 @@ import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
 import com.elintminds.osdb.ui.dashboard.model.LiveScroresInteractor;
 import com.elintminds.osdb.ui.dashboard.model.LiveScroresInteractorClass;
 import com.elintminds.osdb.ui.dashboard.view.LiveScroresView;
+import com.elintminds.osdb.utils.ConnectivityReceiver;
 import io.reactivex.functions.Consumer;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class LiveScroresPresenterClass<V extends LiveScroresView, I extends Live
 
     @Override
     public void getSportsData() {
+        if (ConnectivityReceiver.isConnected()){
         getMvpView().showProgressDialog();
         getCompositeDisposable().add(getInteractor()
                 .getAllSportsList()
@@ -47,5 +49,7 @@ public class LiveScroresPresenterClass<V extends LiveScroresView, I extends Live
                             }
                         }));
 
-    }
+    }else{
+            getMvpView().getError("No Internet Connection");
+        }}
 }

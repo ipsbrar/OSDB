@@ -43,13 +43,11 @@ public class PollsPresenterClass<V extends PollView, I extends PollsInteractor>
                     .getPollsDataList(currentDate, userId)
                     .subscribeOn(getSchedulerProvider().io())
                     .observeOn(getSchedulerProvider().ui())
-                    .subscribe(new Consumer<PollAdapterBean>() {
+                    .subscribe(new Consumer<Response<ArrayList<PollAdapterBean>>>() {
                                    @Override
-                                   public void accept(PollAdapterBean pollList) throws Exception {
-                                       if (pollList != null && pollList.getPoll()!= null)  {
-                                           ArrayList<PollAdapterBean> adapterBeanArrayList = new ArrayList<>();
-                                           adapterBeanArrayList.add(pollList);
-                                           getMvpView().getPollData(adapterBeanArrayList);
+                                   public void accept(Response<ArrayList<PollAdapterBean>> pollList) throws Exception {
+                                       if (pollList.isSuccessful()){
+                                           getMvpView().getPollData(pollList.body());
                                        } else {
                                            getMvpView().error("No data found", true);
                                        }
@@ -72,8 +70,8 @@ public class PollsPresenterClass<V extends PollView, I extends PollsInteractor>
     @Override
     public void VotePolls(final Context context, String pollId, String optionId, final String token) {
 
-
         if (ConnectivityReceiver.isConnected()) {
+            getMvpView().showProgressDialog();
             getCompositeDisposable().add(getInteractor()
                     .AddPollsComment(pollId, optionId)
                     .subscribeOn(getSchedulerProvider().io())
@@ -82,20 +80,12 @@ public class PollsPresenterClass<V extends PollView, I extends PollsInteractor>
                                    @Override
                                    public void accept(Response<JSONObject> response) throws Exception {
                                        if (response.isSuccessful()) {
-                                           if (response.body().has("poll")) {
-                                               Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
-                                               getMvpView().VotePolls("Vote Successfully");
-                                           } else {
-                                               if (response.body().has("error")) {
-                                                   try {
-                                                       getMvpView().error(response.body().getString("error"), false);
-                                                   } catch (JSONException e) {
-                                                       e.printStackTrace();
-                                                   }
-                                               }
+                                           getMvpView().VotePolls("Vote Successfully");
+                                       } else {
+                                           if (response.code() == 409) {
+                                               Toast.makeText(context, "User already voted", Toast.LENGTH_SHORT).show();
                                            }
-                                       }else{
-                                           getMvpView().error(response.body().getString("error"), false);
+//                                           getMvpView().error(response.body().getString("error"), false);
                                        }
                                        getMvpView().hideProgressDialog();
                                    }
@@ -105,6 +95,7 @@ public class PollsPresenterClass<V extends PollView, I extends PollsInteractor>
                                 public void accept(Throwable throwable) throws Exception {
                                     Log.e("PollData", "Error=======    " + throwable.toString());
                                     getMvpView().error(throwable.toString(), true);
+                                    getMvpView().hideProgressDialog();
                                 }
                             }));
 

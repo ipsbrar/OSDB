@@ -51,24 +51,22 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentVi
         assert getArguments() != null;
 //        scheduleCount = getArguments().getInt("SCHEDULES");
 
-        scheduleFragmentPresenterClass = new ScheduleFragmentPresenterClass(getActivity(), this);
-
-        if (getArguments() != null) {
-            slug = getArguments().getString("SLUG");
-            scheduleFragmentPresenterClass.getSlugName(slug != null ? slug : "NFL");
-        }
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.single_recycler_view, container, false);
+        View view = inflater.inflate(R.layout.single_recycler_view_2, container, false);
+
+
+        return view;
     }
 
 
     @Override
     protected void setUp(View view) {
+
         //        No data found Views
         txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
         txt_no_data_disp = view.findViewById(R.id.txt_no_data_disp);
@@ -82,6 +80,16 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentVi
 
         context = getContext();
         scheduleRV = view.findViewById(R.id.recycler_view);
+
+
+        scheduleFragmentPresenterClass = new ScheduleFragmentPresenterClass(getActivity(), this);
+
+
+        if (getArguments() != null) {
+            slug = getArguments().getString("SLUG");
+            scheduleFragmentPresenterClass.getSlugName(slug != null ? slug : "NFL");
+        }
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -96,16 +104,16 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentVi
 
     @Override
     public void success(ArrayList<ScheduleBean> scheduleBeanArrayList) {
-        if (scheduleBeanArrayList.size() > 0){
+        if (scheduleBeanArrayList.size() > 0) {
             this.dataList = scheduleBeanArrayList;
 //        adapter.setDataList(this.dataList);
             adapter = new SchedulesAdapter(context, this.dataList);
             scheduleRV.setAdapter(adapter);
-        }else{
+        } else {
             no_data.setVisibility(View.VISIBLE);
             scheduleRV.setVisibility(View.GONE);
         }
-
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -113,6 +121,7 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentVi
         no_data.setVisibility(View.VISIBLE);
         scheduleRV.setVisibility(View.GONE);
         Toast.makeText(context, "" + error, Toast.LENGTH_SHORT).show();
+        swipeRefreshLayout.setRefreshing(false);
     }
 //
 //    @Override

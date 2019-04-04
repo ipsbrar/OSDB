@@ -42,7 +42,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder
 
         if (videosBean.getThumbnail() != null) {
             RequestOptions requestOptions = new RequestOptions();
-            requestOptions.placeholder(R.drawable.ic_latest);
+            requestOptions.placeholder(R.drawable.video);
             Glide.with(context).setDefaultRequestOptions(requestOptions).load(videosBean.getThumbnail()).into(holder.video_thumbnail);
         }
         holder.video_title.setText(videosBean.getVideoTitle() != null ? videosBean.getVideoTitle() : "");
@@ -65,7 +65,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(getAdapterPosition());
+                    listener.onItemClick(dataList.get(getAdapterPosition()).getVideoUrl());
                 }
             });
         }

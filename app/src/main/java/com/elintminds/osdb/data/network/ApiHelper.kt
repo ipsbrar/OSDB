@@ -12,11 +12,13 @@ import com.elintminds.osdb.ui.register.beans.RegisterBean
 import com.elintminds.osdb.ui.search_finding_screen.beans.ScheduleBeans
 import com.elintminds.osdb.ui.search_screen.beans.SearchModal
 import com.elintminds.osdb.ui.team_details_screen.beans.TeamPlayersBean
+import com.google.gson.JsonElement
 import io.reactivex.Observable
 import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 @JvmSuppressWildcards
@@ -98,4 +100,15 @@ interface ApiHelper {
 //    @GET("teams/{team_id}/players")
 //    fun fetchPlayerDetail(@Path("team_id") teamId: String): Observable<PlayersDetailBean>
 
+    @GET("players/{player_id}")
+    fun fetchPlayerDetail(@Path("player_id") playerId: String): Observable<Response<JsonElement>>
+
+    @GET("teams/{team_id}/stats")
+    fun fetchTeamStats(@Path("team_id") teamId: String): Observable<Response<JsonElement>>
+
+    @GET("discussion-board/{report_id}/report-thread")
+    fun ReportThread(@Path("report_id") teamId: String): Observable<Response<JSONObject>>
+
+    @GET("polls/{date}?")
+    fun fetchPollsList(@Path("date") date: String,@Query("user_id") userId: String): Observable<Response<ArrayList<PollAdapterBean>>>
 }

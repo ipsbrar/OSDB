@@ -9,7 +9,7 @@
     <ImageView
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/category_img_baseball"
+            android:src="@drawable/place"
             android:contentDescription="@string/item_image"
             android:id="@+id/img_photo_player_details"
             android:layout_height="match_parent"/>

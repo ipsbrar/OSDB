@@ -1,7 +1,6 @@
 package com.elintminds.osdb.ui.dashboard.beans;
 
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -21,58 +20,75 @@ public class HomeBean {
     }
 
     @SerializedName("sportsList")
-        @Expose
-        private ArrayList<SportsAdapterListBean> sportsList = null;
-        @SerializedName("breakingNews")
-        @Expose
-        private ArrayList<BreakingNews> breakingNews = null;
-        @SerializedName("bornToday")
-        @Expose
-        private ArrayList<BornToday> bornToday = null;
-        @SerializedName("featuredPlayer")
-        @Expose
-        private ArrayList<Object> featuredPlayer = null;
-//        @SerializedName("featuredPoll")
-//        @Expose
-//        private ArrayList<FeaturedPoll> featuredPoll = null;
-        @SerializedName("didYouKnow")
-        @Expose
-        private ArrayList<DidYouKnow> didYouKnow = null;
-//        @SerializedName("onThisDay")
-//        @Expose
-//        private Object onThisDay;
+    @Expose
+    private ArrayList<SportsAdapterListBean> sportsList = null;
+    @SerializedName("breakingNews")
+    @Expose
+    private ArrayList<BreakingNews> breakingNews = null;
+    @SerializedName("bornToday")
+    @Expose
+    private ArrayList<BornToday> bornToday = null;
 
-        public ArrayList<SportsAdapterListBean> getSportsList() {
-            return sportsList;
-        }
+    public FeaturedPoll getFeaturedPoll() {
+        return featuredPoll;
+    }
 
-        public void setSportsList(ArrayList<SportsAdapterListBean> sportsList) {
-            this.sportsList = sportsList;
-        }
+    public void setFeaturedPoll(FeaturedPoll featuredPoll) {
+        this.featuredPoll = featuredPoll;
+    }
 
-        public ArrayList<BreakingNews> getBreakingNews() {
-            return breakingNews;
-        }
+    //    @SerializedName("featuredPlayer")
+//    @Expose
+//    private ArrayList<Object> featuredPlayer = null;
+    @SerializedName("featuredPoll")
+    @Expose
+    private FeaturedPoll featuredPoll = null;
+    @SerializedName("didYouKnow")
+    @Expose
+    private ArrayList<DidYouKnow> didYouKnow = null;
+    @SerializedName("onThisDay")
+    @Expose
+    private ArrayList<OnThisDay> onThisDay;
 
-        public void setBreakingNews(ArrayList<BreakingNews> breakingNews) {
-            this.breakingNews = breakingNews;
-        }
+    public ArrayList<OnThisDay> getOnThisDay() {
+        return onThisDay;
+    }
 
-        public ArrayList<BornToday> getBornToday() {
-            return bornToday;
-        }
+    public void setOnThisDay(ArrayList<OnThisDay> onThisDay) {
+        this.onThisDay = onThisDay;
+    }
 
-        public void setBornToday(ArrayList<BornToday> bornToday) {
-            this.bornToday = bornToday;
-        }
+    public ArrayList<SportsAdapterListBean> getSportsList() {
+        return sportsList;
+    }
 
-        public ArrayList<Object> getFeaturedPlayer() {
-            return featuredPlayer;
-        }
+    public void setSportsList(ArrayList<SportsAdapterListBean> sportsList) {
+        this.sportsList = sportsList;
+    }
 
-        public void setFeaturedPlayer(ArrayList<Object> featuredPlayer) {
-            this.featuredPlayer = featuredPlayer;
-        }
+    public ArrayList<BreakingNews> getBreakingNews() {
+        return breakingNews;
+    }
+
+    public void setBreakingNews(ArrayList<BreakingNews> breakingNews) {
+        this.breakingNews = breakingNews;
+    }
+
+    public ArrayList<BornToday> getBornToday() {
+        return bornToday;
+    }
+
+    public void setBornToday(ArrayList<BornToday> bornToday) {
+        this.bornToday = bornToday;
+    }
+
+//    public ArrayList<Object> getFeaturedPlayer() {
+//        return featuredPlayer;
+//    }
+//
+//    public void setFeaturedPlayer(ArrayList<Object> featuredPlayer) {
+//        this.featuredPlayer = featuredPlayer;
+//    }
 
 //        public ArrayList<FeaturedPoll> getFeaturedPoll() {
 //            return featuredPoll;
@@ -82,13 +98,13 @@ public class HomeBean {
 //            this.featuredPoll = featuredPoll;
 //        }
 
-        public ArrayList<DidYouKnow> getDidYouKnow() {
-            return didYouKnow;
-        }
+    public ArrayList<DidYouKnow> getDidYouKnow() {
+        return didYouKnow;
+    }
 
-        public void setDidYouKnow(ArrayList<DidYouKnow> didYouKnow) {
-            this.didYouKnow = didYouKnow;
-        }
+    public void setDidYouKnow(ArrayList<DidYouKnow> didYouKnow) {
+        this.didYouKnow = didYouKnow;
+    }
 
 //        public Object getOnThisDay() {
 //            return onThisDay;
@@ -268,7 +284,6 @@ public class HomeBean {
         }
 
     }
-
 
 
     public class Asset {
@@ -530,7 +545,6 @@ public class HomeBean {
     }
 
 
-
     public class Headshot {
 
         @SerializedName("href")
@@ -755,6 +769,7 @@ public class HomeBean {
         }
 
     }
+
     public class Option {
 
         @SerializedName("id")
@@ -814,6 +829,7 @@ public class HomeBean {
         }
 
     }
+
     public class FeaturedPoll {
 
         @SerializedName("poll")
@@ -839,5 +855,17 @@ public class HomeBean {
             this.result = result;
         }
 
+    }
+
+    public class OnThisDay {
+        private String content;
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
     }
 }

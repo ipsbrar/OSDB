@@ -68,7 +68,7 @@ public class SearchAdapterRemote extends RecyclerView.Adapter<RecyclerView.ViewH
             ((ItemViewHolder) viewHolder).slug_name.setText(searchAdapterRemoteBean.getSlugName());
             if (searchAdapterRemoteBean.getImgUrl() != null) {
                 RequestOptions requestOptions = new RequestOptions();
-                requestOptions.placeholder(R.drawable.ic_latest);
+                requestOptions.placeholder(R.drawable.img_player_empty);
                 Glide.with(context).setDefaultRequestOptions(requestOptions).load(searchAdapterRemoteBean.getImgUrl()).into(((ItemViewHolder) viewHolder).team_logo);
             }
 

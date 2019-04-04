@@ -9,13 +9,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.dashboard.beans.DiscussionAdapterBean;
 import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
 import com.elintminds.osdb.ui.discussion_comments.view.DiscussionCommentsActivity;
 import com.elintminds.osdb.utils.Utils;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,17 +45,22 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
 
     @Override
     public void onBindViewHolder(@NonNull DiscussionCommentsAdapter.ViewHolder viewHolder, int i) {
-
+        DiscussionCommentsBean.Comments commentsBean = dataList.get(i);
 //        Utils.justify(viewHolder.commentTxt);
-        viewHolder.playerName.setText(dataList.get(i).getCreated_by().getName() !=null ?dataList.get(i).getCreated_by().getName() : "");
-        if (dataList.get(i).getComment() != null) {
-            String comment = Html.fromHtml(dataList.get(i).getComment().trim()).toString();
-            Log.d("DiscussionAdapter", "onBindViewHolder:    "+comment);
+        viewHolder.playerName.setText(commentsBean.getCreated_by().getName() != null ? commentsBean.getCreated_by().getName() : "");
+        if (commentsBean.getComment() != null) {
+            String comment = Html.fromHtml(commentsBean.getComment().trim()).toString();
+            Log.d("DiscussionAdapter", "onBindViewHolder:    " + comment);
             viewHolder.commentTxt.setText(comment.trim());
         }
-
+        if (commentsBean.getCreated_by() != null && commentsBean.getCreated_by().getAssets() != null
+                && commentsBean.getCreated_by().getAssets().size() > 0) {
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.img_player_empty);
+            Glide.with(context).setDefaultRequestOptions(requestOptions).load(commentsBean.getCreated_by().getAssets().get(0).getFile_name()).into(viewHolder.user_Image);
+        }
         //        Utils.getTimeAgo();
-        long timeInLong = getLongTime(dataList.get(i).getUpdated_at() != null ? dataList.get(i).getUpdated_at() : "2019-02-21 03:24:54");
+        long timeInLong = getLongTime(commentsBean.getUpdated_at() != null ? commentsBean.getUpdated_at() : "2019-02-21 03:24:54");
 //        Log.e("TimeCheckLong","long   "+timeInLong);
 //        String dateFor = Utils.getDate(timeInLong,"yyyy-dd-MM hh:mm:ss");
 //        Log.e("TimeCheckLong","date   "+dateFor);
@@ -68,7 +77,8 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
         TextView playerName, hours_txt;
         TextView commentTxt;
         RelativeLayout commentMainLay;
-
+        LinearLayout cooment_count_lay;
+        CircleImageView user_Image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +86,12 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
             commentTxt = itemView.findViewById(R.id.comment_txt);
             hours_txt = itemView.findViewById(R.id.hours_txt);
             commentMainLay = itemView.findViewById(R.id.comment_main_lay);
+            cooment_count_lay = itemView.findViewById(R.id.cooment_count_lay);
+            user_Image = itemView.findViewById(R.id.user_Image);
+
+            if (context instanceof DiscussionCommentsActivity) {
+                cooment_count_lay.setVisibility(View.GONE);
+            }
 
 //            commentMainLay.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -87,16 +103,15 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
 //            });
         }
     }
-    public void setDataList(ArrayList<DiscussionCommentsBean.Comments> data)
-    {
-        Log.e("DATA",""+data);
-        if(data == null || data.isEmpty())
-        {
+
+    public void setDataList(ArrayList<DiscussionCommentsBean.Comments> data) {
+        Log.e("DATA", "" + data);
+        if (data == null || data.isEmpty()) {
             return;
         }
 
         this.dataList = data;
-        Log.e("DA LIST",""+dataList.size());
+        Log.e("DA LIST", "" + dataList.size());
     }
 
     private long getLongTime(String rawDate) {

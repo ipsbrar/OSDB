@@ -37,6 +37,7 @@ public class LatestFragment extends BaseFragment
     protected void setUp(View view)
     {
         tabs = view.findViewById(R.id.latest_tabs);
+        tabs.setVisibility(View.GONE);
         ViewPager viewPager = view.findViewById(R.id.latest_viewpager);
 
         setupViewPager(viewPager);

@@ -41,7 +41,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
         String imgPath = dataList.get(i);
         if (imgPath != null) {
             RequestOptions requestOptions = new RequestOptions();
-            requestOptions.placeholder(R.drawable.ic_latest);
+            requestOptions.placeholder(R.drawable.place);
             Glide.with(context).setDefaultRequestOptions(requestOptions).load(imgPath).into(holder.playerPhoto);
         }
     }
@@ -62,7 +62,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(getAdapterPosition());
+                    listener.onItemClick(dataList.get(getAdapterPosition()));
                 }
             });
         }

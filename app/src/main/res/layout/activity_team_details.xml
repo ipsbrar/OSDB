@@ -143,6 +143,7 @@
                         android:layout_toEndOf="@id/team_logo_img"
                         android:layout_below="@id/stadium_name"
                         android:padding="10dp"
+                        android:visibility="gone"
                         android:contentDescription="@string/insta_button"/>
 
                 <ImageView
@@ -153,10 +154,12 @@
                         android:layout_toEndOf="@id/insta_icon"
                         android:layout_below="@id/stadium_name"
                         android:padding="10dp"
+                        android:visibility="gone"
                         android:contentDescription="@string/insta_button"/>
 
                 <ImageView
                         android:id="@+id/twitter_icon"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/ic_twitter"
@@ -179,7 +182,7 @@
                     app:tabSelectedTextColor="@color/color_6849D7"
                     app:tabTextAppearance="@style/tab_text"/>
         </android.support.design.widget.AppBarLayout>
-        <android.support.v4.view.ViewPager
+        <com.elintminds.osdb.utils.NonSwipeableViewPager
                 android:id="@+id/team_details_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

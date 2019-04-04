@@ -1,6 +1,7 @@
 package com.elintminds.osdb.ui.player_details_screen.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -106,7 +107,9 @@ public class VideosFragment extends BaseFragment implements PlayerDetailsView.Vi
 
 
     @Override
-    public void onItemClick(int position) {
-
+    public void onItemClick(String path) {
+        Intent intent = new Intent(getActivity(), VideoPlayActivity.class);
+        intent.putExtra("PATH", path);
+        startActivity(intent);
     }
 }

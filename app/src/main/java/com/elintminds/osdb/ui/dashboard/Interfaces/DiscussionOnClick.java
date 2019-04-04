@@ -1,6 +1,6 @@
 package com.elintminds.osdb.ui.dashboard.Interfaces;
 
 public interface DiscussionOnClick {
-    void discussionOnClick(int pos,String id);
+    void discussionOnClick(String id,String name,String comment ,String time,String filepath,String commentNumber);
     void discussionReportOnClick(int pos, String id);
 }

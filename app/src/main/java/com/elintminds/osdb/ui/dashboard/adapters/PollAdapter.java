@@ -41,12 +41,12 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PollAdapter.ViewHolder holder, final int i) {
-
+PollAdapterBean pollAdapterBean = dataList.get(i);
         holder.pollOptionParentLay.removeAllViews();
-        holder.pollHeading.setText(dataList.get(i).getPoll().getText() != null ? dataList.get(i).getPoll().getText() : "");
-        if (dataList.get(i).getPoll().getPublishedDate() != null)
-        PollFragment.dateTxt.setText(AppConstants.convertDateFormat(dataList.get(i).getPoll().getPublishedDate()));
-        final List<PollAdapterBean.Option> pollOptionsList = dataList.get(i).getPoll().getOptions();
+        holder.pollHeading.setText(pollAdapterBean.getText() != null ? pollAdapterBean.getText() : "");
+        if (pollAdapterBean.getPublishedDate() != null)
+            PollFragment.dateTxt.setText(AppConstants.convertDateFormat(pollAdapterBean.getPublishedDate()));
+        final List<PollAdapterBean.Option> pollOptionsList = pollAdapterBean.getOptions();
         String[] options = context.getResources().getStringArray(R.array.option_type);
         for (int j = 0; j < pollOptionsList.size(); j++) {
             View pollOptionView = LayoutInflater.from(context).inflate(R.layout.poll_options_view, null);
@@ -97,10 +97,17 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     //dataList.get(i).setVisible(true);
-                    listner.onOptionClick(dataList.get(getAdapterPosition()).getPoll().getId(), dataList.get(getAdapterPosition()).getPoll().getOptions().get(view.getId()).getId());
+                    listner.onOptionClick(dataList.get(getAdapterPosition()).getId(), dataList.get(getAdapterPosition()).getOptions().get(view.getId()).getId());
 
                 }
             });
         }
+    }
+
+    public void setDataList(ArrayList<PollAdapterBean> adapterBeanArrayList) {
+
+        this.dataList = adapterBeanArrayList;
+        notifyDataSetChanged();
+
     }
 }

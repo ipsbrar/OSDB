@@ -55,7 +55,7 @@ public class CareerFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.single_recycler_view, container, false);
+        View view = inflater.inflate(R.layout.single_recycler_view_2, container, false);
         Bundle bundle = getArguments();
         if (bundle != null) {
             dataList = (ArrayList<String>) bundle.getSerializable("careerHeights");
@@ -79,7 +79,10 @@ public class CareerFragment extends BaseFragment {
 
         careerRV = view.findViewById(R.id.recycler_view);
         swipe_refresh = view.findViewById(R.id.swipe_refresh);
-
+        if (getActivity() instanceof PlayerDetailsActivity) {
+            swipe_refresh.setRefreshing(false);
+            swipe_refresh.setEnabled(false);
+        }
         if (dataList.size() > 0) {
             careerRV.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.GONE);

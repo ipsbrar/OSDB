@@ -1,6 +1,7 @@
 package com.elintminds.osdb.ui.dashboard.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,7 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class PollFragment extends BaseFragment implements DashboardView.PollOptionListner, PollView {
+public class PollFragment extends BaseFragment implements DashboardView.PollOptionListner, PollView, DashboardActivity.OnDateClick {
 
     public static final String TAG = "PollFragment";
 
@@ -42,7 +43,9 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
     public static TextView dateTxt;
     private ArrayList<PollAdapterBean> pollList = new ArrayList<>();
     private PollsPresenterClass<PollFragment, com.elintminds.osdb.ui.dashboard.model.PollsInteractor> pollsPresenterClass;
-private String currentDate;
+    private String currentDate;
+    private String userID;
+
     public static PollFragment newInstance() {
         return new PollFragment();
     }
@@ -72,9 +75,11 @@ private String currentDate;
         LinearLayoutManager llm = new LinearLayoutManager(context);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         pollRecyclerView.setLayoutManager(llm);
-
-currentDate= getCurrentDate();
-        pollsPresenterClass.getPollsData(currentDate != null ? currentDate :"2019-02-23", "166");
+        userID = getAppPreferenceHelperClass().getUserId();
+        currentDate = getCurrentDate();
+        Log.e("CurrentDatePolls", currentDate);
+        pollsPresenterClass.getPollsData(currentDate != null ? currentDate : "2019-02-23",
+                userID != null ? userID : "199");
 
 //        pollsPresenterClass.getPollsData(AppConstants.getCurrentDate(), "2");
         pollAdapter = new PollAdapter(context, pollList, this);
@@ -86,9 +91,13 @@ currentDate= getCurrentDate();
             public void onRefresh() {
                 pollRecyclerView.setVisibility(View.VISIBLE);
                 no_data.setVisibility(View.GONE);
-                pollsPresenterClass.getPollsData("2019-02-23", "166");
+                pollsPresenterClass.getPollsData(currentDate != null ? currentDate : "2019-02-23",
+                        userID != null ? userID : "199");
+                pollRecyclerView.showShimmerAdapter();
             }
         });
+        DashboardActivity dashboardActivity = new DashboardActivity();
+        dashboardActivity.setOnDateClick(this);
     }
 
 
@@ -105,8 +114,7 @@ currentDate= getCurrentDate();
     @Override
     public void getPollData(ArrayList<PollAdapterBean> arrayList) {
         if (arrayList.size() > 0) {
-            pollList.addAll(arrayList);
-            pollAdapter.notifyDataSetChanged();
+            pollAdapter.setDataList(arrayList);
         } else {
             pollRecyclerView.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
@@ -124,7 +132,7 @@ currentDate= getCurrentDate();
     @Override
     public void error(String error, boolean isVisible) {
 
-        if (isVisible){
+        if (isVisible) {
             pollRecyclerView.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
             pollRecyclerView.hideShimmerAdapter();
@@ -134,16 +142,32 @@ currentDate= getCurrentDate();
 
     }
 
-// get Current date
-private String getCurrentDate() {
-    SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-    String date;
+    // get Current date
+    private String getCurrentDate() {
+        SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String date;
 
-    Date currDate = Calendar.getInstance().getTime();
-    date = spf.format(currDate);
+        Date currDate = Calendar.getInstance().getTime();
+        date = spf.format(currDate);
 
-    Log.e("Date", "" + date);
+        Log.e("Date", "" + date);
 
-    return date;
-}
+        return date;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    @Override
+    public void dateClickPoll(String date) {
+        Toast.makeText(getActivity(), "fragment Toast working", Toast.LENGTH_SHORT).show();
+        currentDate = date;
+        pollsPresenterClass.getPollsData(currentDate != null ? currentDate : "2019-02-23",
+                userID != null ? userID : "199");
+        pollRecyclerView.showShimmerAdapter();
+        pollList = null;
+    }
 }

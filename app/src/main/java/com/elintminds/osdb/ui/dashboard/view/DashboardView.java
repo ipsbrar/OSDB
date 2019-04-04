@@ -1,6 +1,7 @@
 package com.elintminds.osdb.ui.dashboard.view;
 
 import com.elintminds.osdb.ui.base.view.BaseView;
+import com.elintminds.osdb.ui.profile.beans.UserInfo;
 
 public interface DashboardView extends BaseView
 {
@@ -24,5 +25,6 @@ public interface DashboardView extends BaseView
     {
         void onSportsIconClick(int position, String name);
     }
-
+    void success(UserInfo userBean);
+    void error(String error);
 }

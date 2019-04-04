@@ -11,6 +11,7 @@ import com.elintminds.osdb.ui.login.beans.UserBean;
 import com.elintminds.osdb.ui.login.model.LoginInteractor;
 import com.elintminds.osdb.ui.login.model.LoginInteractorClass;
 import com.elintminds.osdb.ui.login.view.LoginView;
+import com.elintminds.osdb.utils.ConnectivityReceiver;
 import io.reactivex.functions.Consumer;
 
 public class LoginPresenterClass<V extends LoginView, I extends LoginInteractor> extends BasePresenterClass<V, I> implements LoginPresenter<V, I> {
@@ -29,37 +30,40 @@ public class LoginPresenterClass<V extends LoginView, I extends LoginInteractor>
 
     @Override
     public void sendUserValue(String userEmail, String userPassword) {
-getMvpView().showProgressDialog();
-        getCompositeDisposable().add(getInteractor()
-                .doServerLogin(userEmail, userPassword)
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<UserBean>() {
-                               @Override
-                               public void accept(UserBean loginBean) throws Exception {
-                                   Log.e("loginstatuspresenter", "Success=======");
+        if (ConnectivityReceiver.isConnected()) {
+            getMvpView().showProgressDialog();
+            getCompositeDisposable().add(getInteractor()
+                    .doServerLogin(userEmail, userPassword)
+                    .subscribeOn(getSchedulerProvider().io())
+                    .observeOn(getSchedulerProvider().ui())
+                    .subscribe(new Consumer<UserBean>() {
+                                   @Override
+                                   public void accept(UserBean loginBean) throws Exception {
+                                       Log.e("loginstatuspresenter", "Success=======");
 
-                                   if (loginBean.getToken() != null) {
-                                       Log.e("loginstatuspresenter", loginBean.getToken());
-                                       getMvpView().onSuccess(loginBean);
-                                   }else
-                                   if (loginBean.getError() != null) {
-                                       Log.e("loginstatuspresenter", loginBean.getError());
-                                       getMvpView().onError(loginBean.getError());
+                                       if (loginBean.getToken() != null) {
+                                           Log.e("loginstatuspresenter", loginBean.getToken());
+                                           getMvpView().onSuccess(loginBean);
+                                       } else if (loginBean.getError() != null) {
+                                           Log.e("loginstatuspresenter", loginBean.getError());
+                                           getMvpView().onError(loginBean.getError());
+                                       }
+                                       getMvpView().hideProgressDialog();
                                    }
-                                   getMvpView().hideProgressDialog();
-                               }
-                           },
-                        new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                Log.e("loginstatuspresenter", "Error=======    " + throwable.toString());
-                                getMvpView().onError(throwable.toString());
-                                getMvpView().hideProgressDialog();
+                               },
+                            new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    Log.e("loginstatuspresenter", "Error=======    " + throwable.toString());
+                                    getMvpView().onError(throwable.toString());
+                                    getMvpView().hideProgressDialog();
 
-                            }
-                        }));
+                                }
+                            }));
 
+        } else {
+            getMvpView().onError("No Internet Connection");
+        }
     }
 
     @Override

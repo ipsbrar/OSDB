@@ -79,7 +79,7 @@
                 android:layout_height="@dimen/dp_40"
                 android:inputType="textEmailAddress"
                 android:fontFamily="@font/rubik_light"
-                android:text="pardeepsharma475@gmail.com"
+                android:text="sandeepndit475@gmail.com"
                 android:maxLines="1"
                 android:textSize="@dimen/sp_14"
                 android:paddingLeft="@dimen/dp_15"

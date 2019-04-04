@@ -109,16 +109,16 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
     @Override
     public void onTeamClick(int groupPos, int childPos) {
         String teamName = dataList.get(groupPos).getTeamsList().get(childPos).getTeamName();
-        String divisionName = dataList.get(groupPos).getTeamClubName();
+        String divisionName = SportsName;
         String teamID = String.valueOf(dataList.get(groupPos).getTeamsList().get(childPos).getId());
         String imgUrl = String.valueOf(dataList.get(groupPos).getTeamsList().get(childPos).getLogo());
         String imgPic = null;
         if (!imgUrl.equalsIgnoreCase("")) {
             try {
                 JSONArray jsonArray = new JSONArray(imgUrl);
-                    JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
-                    Log.e("MYIMAGEURL", imgPic);
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
+                Log.e("MYIMAGEURL", imgPic);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -135,7 +135,7 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
 
     @Override
     public void getAllListsOfTeam(ArrayList<TeamClubBean> teamClubBean) {
-        if (teamClubBean.size() > 0) {
+        if (teamClubBean != null && teamClubBean.size() > 0) {
             this.dataList = teamClubBean;
             adapter = new TeamsViewAdapter(context, this.dataList, this);
             teamsEpView.setAdapter(adapter);
@@ -145,6 +145,7 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
             no_data.setVisibility(View.VISIBLE);
             teamsEpView.setVisibility(View.GONE);
         }
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -152,6 +153,7 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
         Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
         no_data.setVisibility(View.VISIBLE);
         teamsEpView.setVisibility(View.GONE);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -159,5 +161,6 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
         teamsEpView.setVisibility(View.VISIBLE);
         no_data.setVisibility(View.GONE);
         teamFragmentPresenter.getSlugName(sportsName != null ? sportsName : "NFL");
+        swipeRefreshLayout.setRefreshing(false);
     }
 }

@@ -69,7 +69,6 @@ public class TeamFragmentPresenterClass<V extends TeamFragmentView, I extends Te
                             new Consumer<Throwable>() {
                                 @Override
                                 public void accept(Throwable throwable) throws Exception {
-
                                     getMvpView().getError(throwable.toString());
                                     getMvpView().hideProgressDialog();
                                 }

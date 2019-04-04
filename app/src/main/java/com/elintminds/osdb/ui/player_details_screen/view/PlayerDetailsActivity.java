@@ -19,6 +19,7 @@ import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
 import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
 import com.elintminds.osdb.ui.player_details_screen.presenter.PlayerDetailsPresenterClass;
+import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
 import com.elintminds.osdb.ui.team_details_screen.view.StatsFragment;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,13 +32,15 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
     private CircleImageView user_Image;
     private ImageView backBtn;
     private boolean isFollowing = false;
-    private String age, teamName, divisionName, playerId, playerName, profilePic;
+    private String age, teamName, divisionName, playerId, playerName, profilePic, dateOfBirth;
     private PlayerDetailsPresenterClass playerDetailsPresenterClass;
     private PlayerDetailInfoBean playerDetailInfoBean;
     private ArrayList<String> careerHeightArray = new ArrayList<>();
     private ArrayList<String> imageListArray = new ArrayList<>();
     private ArrayList<VideosBean> videosBeanArrayList = new ArrayList<>();
     private ViewPager viewPager;
+    private String bio;
+    private ArrayList<StatsBeans> arrayListStats = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,8 +71,10 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
             divisionName = getIntent().getStringExtra("DIVISION_NAME");
             playerId = getIntent().getStringExtra("PLAYER_ID");
             playerName = getIntent().getStringExtra("PLAYER_NAME");
+            dateOfBirth = getIntent().getStringExtra("dateOfBirth");
+
             RequestOptions requestOptions = new RequestOptions();
-            requestOptions.placeholder(R.drawable.ic_latest);
+            requestOptions.placeholder(R.drawable.img_player_empty);
             if (profilePic != null)
                 Glide.with(this).setDefaultRequestOptions(requestOptions).load(profilePic).into(user_Image);
             title.setText(playerName != null ? playerName : "");
@@ -130,18 +135,25 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
 
     @Override
     public void playersAge(String stringDate) {
-        user_age.setText(stringDate);
+        if (dateOfBirth != null)
+            user_age.setText(dateOfBirth);
+        else
+            user_age.setText(stringDate);
     }
 
     @Override
     public void fetchPlayerDetailInfo(PlayerDetailInfoBean jsonObject,
                                       ArrayList<String> careerHeightsArray,
                                       ArrayList<String> imageListArray,
-                                      ArrayList<VideosBean> videosBeanArrayList) {
+                                      ArrayList<VideosBean> videosBeanArrayList,
+                                      String bio,
+                                      ArrayList<StatsBeans> arrayListStat) {
         this.playerDetailInfoBean = jsonObject;
         this.careerHeightArray = careerHeightsArray;
         this.imageListArray = imageListArray;
         this.videosBeanArrayList = videosBeanArrayList;
+        this.bio = bio;
+        this.arrayListStats = arrayListStat;
         setupViewPager(viewPager);
         tabs.setupWithViewPager(viewPager);
 
@@ -162,9 +174,9 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
         adapter.addFragment(InfoFragment.getInstance(playerDetailInfoBean), getString(R.string.info));
         adapter.addFragment(CareerFragment.getInstance(careerHeightArray), getString(R.string.career));
-        adapter.addFragment(BioFragment.getInstance(), getString(R.string.bio));
+        adapter.addFragment(BioFragment.getInstance(bio), getString(R.string.bio));
         adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
-        adapter.addFragment(StatsFragment.getInstance(), getString(R.string.stats));
+        adapter.addFragment(StatsFragment.getInstance(arrayListStats, null), getString(R.string.stats));
         adapter.addFragment(VideosFragment.getInstance(videosBeanArrayList), getString(R.string.videos));
         adapter.addFragment(PhotosFragment.getInstance(imageListArray), getString(R.string.photos));
         upViewPager.setAdapter(adapter);

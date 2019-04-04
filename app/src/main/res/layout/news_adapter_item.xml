@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:scaleType="centerCrop"
-                android:background="@drawable/category_img_nfl"
+                android:background="@drawable/place"
                 android:contentDescription="@string/item_image"/>
 
         <TextView

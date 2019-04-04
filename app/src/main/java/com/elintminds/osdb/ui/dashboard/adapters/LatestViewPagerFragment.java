@@ -36,4 +36,5 @@ public class LatestViewPagerFragment extends FragmentPagerAdapter
         fragmentList.add(fragment);
         titles.add(title);
     }
+
 }

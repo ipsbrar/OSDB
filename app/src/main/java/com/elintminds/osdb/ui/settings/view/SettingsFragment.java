@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
+import com.elintminds.osdb.ui.login.view.LoginActivity;
 import com.elintminds.osdb.ui.login_options.view.LoginOptionsActivity;
 
 import java.util.Objects;
@@ -19,6 +20,7 @@ import java.util.Objects;
 public class SettingsFragment extends BaseFragment implements View.OnClickListener {
 
     private CardView changePassView, helpView, feedbackView, privacyView, termsView, logoutView;
+
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
     }
@@ -57,37 +59,40 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
 
             case R.id.change_pass_view: {
 
-               // ((SettingsView)getContext()).changeFragment();
+                // ((SettingsView)getContext()).changeFragment();
                 break;
             }
             case R.id.feedback_view: {
 
-                ((SettingsView) Objects.requireNonNull(getContext())).changeFragment(FeedbackFragment.getInstance(),FeedbackFragment.TAG);
+                ((SettingsView) Objects.requireNonNull(getContext())).changeFragment(FeedbackFragment.getInstance(), FeedbackFragment.TAG);
                 break;
             }
 
             case R.id.term_condition_view: {
 
-                ((SettingsView) Objects.requireNonNull(getContext())).changeFragment(TermsConditionFragment.newInstance(),TermsConditionFragment.TAG);
+                ((SettingsView) Objects.requireNonNull(getContext()))
+                        .changeFragment(TermsConditionFragment.newInstance("https://dev.osdb.pro/terms"), TermsConditionFragment.TAG);
                 break;
             }
 
             case R.id.help_view: {
 
-                ((SettingsView) Objects.requireNonNull(getContext())).changeFragment(FeedbackFragment.getInstance(),"Help");
+                ((SettingsView) Objects.requireNonNull(getContext())).changeFragment(FeedbackFragment.getInstance(), "Help");
                 break;
             }
 
             case R.id.privacy_policy_view: {
 
-                ((SettingsView) Objects.requireNonNull(getContext())).changeFragment(TermsConditionFragment.newInstance(),getResources().getString(R.string.privacy_policy));
+                ((SettingsView) Objects.requireNonNull(getContext()))
+                        .changeFragment(TermsConditionFragment.newInstance("https://dev.osdb.pro/privacy-policy"), getResources()
+                                .getString(R.string.privacy_policy));
                 break;
             }
 
             case R.id.logout_view: {
                 getAppPreferenceHelperClass().clearUserData();
-                Intent intent = new Intent(getActivity(), LoginOptionsActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
 

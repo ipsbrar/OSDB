@@ -13,7 +13,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="@dimen/dp_20"
             android:layout_marginLeft="@dimen/dp_20"
-            android:src="@drawable/ic_user_image"/>
+            android:src="@drawable/img_player_empty"/>
 
     <RelativeLayout android:id="@+id/commentlay"
                     android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_8798AD"
                 android:textSize="14sp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:text="comments"
                 android:fontFamily="@font/rubik_regular"
                 tools:targetApi="jelly_bean"/>
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="@dimen/dp_5"
-            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_below="@+id/commentlay"
             android:layout_toRightOf="@id/cooment_count_lay"
             android:orientation="horizontal">

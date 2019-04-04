@@ -9,16 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 
 public class TermsConditionFragment extends BaseFragment {
 
 
-    public static String TAG="Terms & Conditions";
-    public static TermsConditionFragment newInstance() {
-        return new TermsConditionFragment();
+    public static String TAG = "Terms & Conditions";
+
+    public static TermsConditionFragment newInstance(String url) {
+        TermsConditionFragment termsConditionFragment = new TermsConditionFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("url", url);
+        termsConditionFragment.setArguments(bundle);
+        return termsConditionFragment;
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,31 +38,37 @@ public class TermsConditionFragment extends BaseFragment {
         WebView webView = view.findViewById(R.id.webview);
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        webView.getSettings().setJavaScriptEnabled(true);
 
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            String url = bundle.getString("url");
+            showProgressDialog();
 
-        showProgressDialog();
+            webView.setWebViewClient(new WebViewClient() {
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    Log.i("tag", "Processing webview url click...");
+                    view.loadUrl(url);
+                    return true;
+                }
 
-        webView.setWebViewClient(new WebViewClient() {
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.i("tag", "Processing webview url click...");
-                view.loadUrl(url);
-                return true;
-            }
+                public void onPageFinished(WebView view, String url) {
 
-            public void onPageFinished(WebView view, String url) {
+                    hideProgressDialog();
+                }
 
-                hideProgressDialog();
-            }
+                public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                    hideProgressDialog();
 
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                }
+            });
 
-
-            }
-        });
-
-        webView.loadUrl("https://staging.osdb.pro");
+            webView.loadUrl(url);
+        } else {
+            Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+            getActivity().onBackPressed();
+        }
     }
-
 
 
 }

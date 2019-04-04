@@ -10,6 +10,6 @@ import java.util.ArrayList;
 
 public interface PollsInteractor extends BaseInteractor {
 
-    Observable<PollAdapterBean> getPollsDataList(String currDate, String userId);
+    Observable<Response<ArrayList<PollAdapterBean>>> getPollsDataList(String currDate, String userId);
     Observable<Response<JSONObject>> AddPollsComment(String pollId, String optionId);
 }

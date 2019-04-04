@@ -3,11 +3,13 @@ package com.elintminds.osdb.ui.report.view
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.elintminds.osdb.R
 import com.elintminds.osdb.ui.base.view.BaseActivity
 
 
-class ReportActivity : BaseActivity() {
+class ReportActivity : BaseActivity() ,ReportView{
+
 
     private var backImg: ImageView? = null
     private var sendbtn: TextView? = null
@@ -27,5 +29,11 @@ class ReportActivity : BaseActivity() {
         }
 
     }
+    override fun getReportSuccess(reportMessage: String) {
+        Toast.makeText(this,reportMessage,Toast.LENGTH_LONG).show()
+    }
 
+    override fun error(error: String) {
+        Toast.makeText(this,error,Toast.LENGTH_LONG).show()
+    }
 }

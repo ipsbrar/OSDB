@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
@@ -40,7 +42,7 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
     private ImageView backImg, user_Image;
     private ShimmerRecyclerView discussionCommentsRecyclerView;
     private TextView player_name, hours_txt, comment_txt, comments_number;
-private RelativeLayout rl_hide_layout;
+    private RelativeLayout rl_hide_layout;
 
     private ArrayList<DiscussionCommentsBean.Comments> discussionList = new ArrayList<>();
     private DiscussionCommentsAdapter discussionAdapter;
@@ -79,11 +81,31 @@ private RelativeLayout rl_hide_layout;
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         discussionCommentsRecyclerView.setLayoutManager(llm);
         discussionCommentsRecyclerView.showShimmerAdapter();
-
+        discussionCommentsPresenterClass = new DiscussionCommentsPresenterClass(this, this);
 //        getComments();
         if (getIntent() != null) {
             String id = getIntent().getStringExtra("id");
-            discussionCommentsPresenterClass = new DiscussionCommentsPresenterClass(this, this);
+            String name = getIntent().getStringExtra("name");
+            String comment = getIntent().getStringExtra("comment");
+            String time = getIntent().getStringExtra("time");
+            String filepath = getIntent().getStringExtra("filepath");
+            String commentNumber = getIntent().getStringExtra("commentNumber");
+
+            player_name.setText(name != null ? name : "");
+            comments_number.setText(commentNumber != null ? commentNumber : "");
+            if (comment != null) {
+                String discription = Html.fromHtml(comment.trim()).toString();
+                comment_txt.setText(discription.trim());
+            }
+            if (time != null) {
+                hours_txt.setText(getFormatedDate(time));
+            }
+            if (filepath != null) {
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.img_player_empty);
+                Glide.with(this).setDefaultRequestOptions(requestOptions).load(filepath).into(user_Image);
+            }
+
             discussionCommentsPresenterClass.getDiscussion(id);
             showProgressDialog();
         } else {
@@ -156,7 +178,7 @@ private RelativeLayout rl_hide_layout;
 
         if (discussionCommentsBean.getComments().size() > 0) {
             discussionAdapter.setDataList(discussionCommentsBean.getComments());
-        }else{
+        } else {
             rl_hide_layout.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
         }

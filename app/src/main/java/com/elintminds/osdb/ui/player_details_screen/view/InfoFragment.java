@@ -1,11 +1,15 @@
 package com.elintminds.osdb.ui.player_details_screen.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.NestedScrollView;
+import android.text.Html;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +28,8 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
     private boolean isCharityViewed = false, isCommunityViewed = false, isCareerViewed = false;
     private TextView user_height, user_weight, user_college, user_place_of_birth, user_position,
             user_fan_email_address, user_current_contract, user_business_ventures,
-            user_endorsement_deals,user_sport_agent,user_television_agent;
-
+            user_endorsement_deals, user_sport_agent, user_television_agent;
+    private RelativeLayout rl_endorsement_deals, rl_business_venture, rl_current_contract, rl_fan_email_address, rl_sport_agent, rl_television_agent;
     private NestedScrollView nscroll;
     //    No data found layout
     private ConstraintLayout no_data;
@@ -60,6 +64,14 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
         txt_no_data_title.setText(getString(R.string.no_data_found));
         txt_no_data_disp.setText(getString(R.string.please_try_again));
         no_data.setVisibility(View.GONE);
+
+//        relative layouts
+        rl_endorsement_deals = view.findViewById(R.id.rl_endorsement_deals);
+        rl_business_venture = view.findViewById(R.id.rl_business_venture);
+        rl_current_contract = view.findViewById(R.id.rl_current_contract);
+        rl_television_agent = view.findViewById(R.id.rl_television_agent);
+        rl_sport_agent = view.findViewById(R.id.rl_sport_agent);
+        rl_fan_email_address = view.findViewById(R.id.rl_fan_email_address);
 
         nscroll = view.findViewById(R.id.nscroll);
         charitiesViewBtn = view.findViewById(R.id.charity_view_btn);
@@ -99,18 +111,56 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void SetViewData(PlayerDetailInfoBean playerInfo) {
-
-        user_height.setText(playerInfo.getPlayerHeight());
-        user_weight.setText(playerInfo.getPlayerWeight());
+        if (playerInfo.getPlayerHeight() != null) {
+            double playerHeight = Double.parseDouble(playerInfo.getPlayerHeight());
+            int intHeight = (int) playerHeight;
+            int feet = intHeight / 12;
+            int leftover = intHeight % 12;
+            String finalHeight = feet + "'" + leftover + "\"";
+            Log.e("Inches_to_feet  ", finalHeight);
+            user_height.setText(finalHeight);
+        }
+        user_weight.setText(playerInfo.getPlayerWeight() + "lbs");
         user_college.setText(playerInfo.getPlayerCollege());
         user_place_of_birth.setText(playerInfo.getPlaceOfBirth());
         user_position.setText(playerInfo.getPlayerPosition());
-        user_fan_email_address.setText(playerInfo.getPlayerFanMailAddress());
-        user_current_contract.setText(playerInfo.getCurrentContract());
-        user_business_ventures.setText(playerInfo.getBusinessVentures());
-        user_endorsement_deals.setText(playerInfo.getEndorsementDeals());
-        user_sport_agent.setText(playerInfo.getPlayerSportsAgent());
-        user_television_agent.setText(playerInfo.getPlayerTelevision());
+        if (playerInfo.getPlayerFanMailAddress() != null
+                && !playerInfo.getPlayerFanMailAddress().equalsIgnoreCase("")
+                && !playerInfo.getPlayerFanMailAddress().equalsIgnoreCase("null")) {
+            user_fan_email_address.setText(Html.fromHtml(playerInfo.getPlayerFanMailAddress()));
+        } else {
+            rl_fan_email_address.setVisibility(View.GONE);
+        }
+        if (playerInfo.getPlayerSportsAgent() != null
+                && !playerInfo.getPlayerSportsAgent().equalsIgnoreCase("")
+                && !playerInfo.getPlayerSportsAgent().equalsIgnoreCase("null")) {
+            user_sport_agent.setText(playerInfo.getPlayerSportsAgent());
+        } else {
+            rl_sport_agent.setVisibility(View.GONE);
+        }
+        if (playerInfo.getPlayerTelevision() != null
+                && !playerInfo.getPlayerTelevision().equalsIgnoreCase("")
+                && !playerInfo.getPlayerTelevision().equalsIgnoreCase("null")) {
+            user_television_agent.setText(playerInfo.getPlayerTelevision());
+        } else {
+            rl_television_agent.setVisibility(View.GONE);
+        }
+
+        if (playerInfo.getCurrentContract() != null && !TextUtils.isEmpty(playerInfo.getCurrentContract()) && !playerInfo.getCurrentContract().equalsIgnoreCase("null"))
+            user_current_contract.setText(playerInfo.getCurrentContract());
+        else
+            rl_current_contract.setVisibility(View.GONE);
+
+        if (playerInfo.getBusinessVentures() != null && !TextUtils.isEmpty(playerInfo.getBusinessVentures()) && !playerInfo.getBusinessVentures().equalsIgnoreCase("null"))
+            user_business_ventures.setText(playerInfo.getBusinessVentures());
+        else
+            rl_business_venture.setVisibility(View.GONE);
+
+        if (playerInfo.getEndorsementDeals() != null && !TextUtils.isEmpty(playerInfo.getEndorsementDeals()) && !playerInfo.getEndorsementDeals().equalsIgnoreCase("null"))
+            user_endorsement_deals.setText(playerInfo.getEndorsementDeals());
+        else
+            rl_endorsement_deals.setVisibility(View.GONE);
+
 
     }
 
@@ -147,4 +197,6 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
             valueTV.setVisibility(View.GONE);
         }
     }
+
+
 }

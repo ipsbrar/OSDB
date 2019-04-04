@@ -59,7 +59,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="200dp"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/category_img_baseball"
+                                    android:src="@drawable/place"
                                     android:contentDescription="@string/item_image"/>
                             <TextView
                                     android:id="@+id/news_title"

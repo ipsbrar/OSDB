@@ -109,11 +109,17 @@ public class DiscussionFragment extends BaseFragment implements DiscussionView, 
     }
 
     @Override
-    public void discussionOnClick(int pos, String id) {
+    public void discussionOnClick(String id,String name,String comment ,String time,String filepath,String commentNumber) {
         if (getActivity() != null && isAdded())
             startActivity(new Intent(getActivity(), DiscussionCommentsActivity.class)
                     .putExtra("isInnerComment", false)
-                    .putExtra("id", id));
+                    .putExtra("id", id)
+                    .putExtra("name", name)
+                    .putExtra("comment", comment)
+                    .putExtra("time", time)
+                    .putExtra("filepath", filepath)
+                    .putExtra("commentNumber", commentNumber)
+            );
     }
 
     @Override

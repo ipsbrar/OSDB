@@ -9,6 +9,7 @@ import com.elintminds.osdb.ui.register.beans.RegisterBean;
 import com.elintminds.osdb.ui.register.model.RegisterInteractor;
 import com.elintminds.osdb.ui.register.model.RegisterInteractorClass;
 import com.elintminds.osdb.ui.register.view.RegisterView;
+import com.elintminds.osdb.utils.ConnectivityReceiver;
 import io.reactivex.functions.Consumer;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class RegisterPresenterClass<V extends RegisterView, I extends RegisterIn
 
     @Override
     public void getRegisterData(String name, String email, String password, String phoneNumber, String type) {
+        if (ConnectivityReceiver.isConnected()){
         getMvpView().showProgressDialog();
         getCompositeDisposable().add(getInteractor()
                 .doServerRegister(name, email, password, phoneNumber, type)
@@ -55,6 +57,9 @@ public class RegisterPresenterClass<V extends RegisterView, I extends RegisterIn
                             }
                         }));
 
+    }else{
+            getMvpView().getError("No Internet Connection");
+        }
     }
 }
 

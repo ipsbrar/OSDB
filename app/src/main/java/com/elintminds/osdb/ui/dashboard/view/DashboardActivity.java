@@ -2,6 +2,7 @@ package com.elintminds.osdb.ui.dashboard.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
@@ -11,10 +12,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.add_edit_discussion.view.AddEditDiscussionActivity;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.calendar_screen.view.PollCalendarActivity;
+import com.elintminds.osdb.ui.profile.beans.UserInfo;
 import com.elintminds.osdb.ui.profile.view.ProfileActivity;
 import com.elintminds.osdb.ui.search_screen.view.SearchActivity;
 
@@ -29,7 +32,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     private String currentFrag = "Home";
     private ImageView homelogo;
     private ImageView optionMenuImg;
-
+    private static OnDateClick onDateClick;
     private MenuItem searchItem, calendarItem, addItem;
     private ImageView tabHomeIcon, tabLatestIcon, tabliveIcon, tabPollIcon, tabDiscussionIcon;
     private TextView tabHomeTxt, tabLatestTxt, tabliveTxt, tabPollTxt, tabDiscussionTxt;
@@ -163,7 +166,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         FragmentManager fragmentManager = getSupportFragmentManager();
         for (String tagStr : tags) {
             if (!fragmentManager.findFragmentByTag(tagStr).isHidden()) {
-                Log.e("CheckIsHidden",tagStr);
+                Log.e("CheckIsHidden", tagStr);
                 tag = tagStr;
             }
         }
@@ -178,7 +181,9 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
                 break;
             case PollFragment.TAG:
-                startActivity(new Intent(this, PollCalendarActivity.class));
+//                startActivity(new Intent(this, PollCalendarActivity.class));
+                Intent intent = new Intent(this, PollCalendarActivity.class);
+                startActivityForResult(intent, 0011);
                 break;
 
             case DiscussionFragment.TAG:
@@ -194,6 +199,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     private void homeSelected() {
         optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
+        optionMenuImg.setVisibility(View.VISIBLE);
         tabHomeIcon.setSelected(true);
         tabHomeTxt.setSelected(true);
 
@@ -212,6 +218,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     private void latestSelected() {
         optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
+        optionMenuImg.setVisibility(View.VISIBLE);
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -248,6 +255,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     private void pollsSelected() {
         optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_calendar));
+        optionMenuImg.setVisibility(View.VISIBLE);
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -266,6 +274,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     private void discussionSelected() {
         optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_add));
+        optionMenuImg.setVisibility(View.GONE);
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -300,11 +309,37 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
         }
         for (String tagStr : tags) {
             if (!tagStr.equals(tag) && !fragmentManager.findFragmentByTag(tagStr).isHidden()) {
-                Log.e("CheckIsHidden","============");
+                Log.e("CheckIsHidden", "============");
                 fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag(tagStr)).commit();
             }
         }
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Toast.makeText(this, "Activity Toast working", Toast.LENGTH_SHORT).show();
+        if (data.getStringExtra("date")!=null)
+        onDateClick.dateClickPoll(data.getStringExtra("date"));
+    }
+
+    public void setOnDateClick(OnDateClick onDateClick) {
+        this.onDateClick = onDateClick;
+    }
+
+    @Override
+    public void success(UserInfo userBean) {
+        getAppPreferenceHelperClass().saveUserId(String.valueOf(userBean.getUser().getId()));
+    }
+
+    @Override
+    public void error(String error) {
+
+    }
+
+    public interface OnDateClick {
+        void dateClickPoll(String date);
     }
 }

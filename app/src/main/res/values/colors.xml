@@ -52,4 +52,6 @@
     <color name="default_todayCircleColor">@color/colorPrimary</color>
     <color name="default_eventCircleColor">#6849D7</color>
     <color name="default_backgroundColor">#fffafafa</color>
+
+    <color name="header_line_color">@android:color/holo_red_light</color>
 </resources>

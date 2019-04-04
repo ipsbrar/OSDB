@@ -26,6 +26,7 @@ import com.elintminds.osdb.ui.dashboard.adapters.NewsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.presenter.NewsFragmentPresenterClass;
 import com.elintminds.osdb.ui.detailview.view.DetailActivity;
+import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsActivity;
 import com.elintminds.osdb.utils.CardPaddingItemDecoration;
 import com.elintminds.osdb.utils.Utils;
 import io.supercharge.shimmerlayout.ShimmerLayout;
@@ -43,7 +44,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     ShimmerLayout shimmer_break_latest;
     private NewsFragmentPresenterClass newsFragmentPresenterClass;
     private ImageView news_frag_image;
-    private TextView news_title, news_frag_game_name, txt_date_breaking_news, txt_time_stamp_breaking_news,load_more_news;
+    private TextView news_title, news_frag_game_name, txt_date_breaking_news, txt_time_stamp_breaking_news, load_more_news;
     String imgUrl, title, bigContent, teamName, date, timeStamp;
 
 
@@ -75,9 +76,13 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         txt_no_data_disp.setText(getString(R.string.please_try_again));
         no_data.setVisibility(View.GONE);
 
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
+        if (getActivity() instanceof PlayerDetailsActivity) {
+            swipeRefreshLayout.setRefreshing(false);
+            swipeRefreshLayout.setEnabled(false);
+        }
         newsRecyclerView = view.findViewById(R.id.news_recycler_view);
         newsFragmentPresenterClass = new NewsFragmentPresenterClass(getActivity(), this);
-        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
         rl_hide_layout = view.findViewById(R.id.rl_hide_layout);
         shimmer_break_latest = view.findViewById(R.id.shimmer_break_latest);
         topNews = view.findViewById(R.id.top_news);
@@ -112,7 +117,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setRetainInstance(true);
     }
 
     private void setupRecyclerView() {
@@ -125,8 +130,6 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         newsRecyclerView.setNestedScrollingEnabled(false);
         newsRecyclerView.setAdapter(adapter);
         newsRecyclerView.showShimmerAdapter();
-
-
         newsFragmentPresenterClass.getNewsData();
 
 
@@ -166,7 +169,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
                 }
                 break;
             }
-            case R.id.load_more_news:{
+            case R.id.load_more_news: {
 
                 break;
             }
@@ -180,6 +183,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         Log.e("DATA", "" + newsList.getData().size());
         if (newsList != null) {
             if (newsList.getBreakingNews().size() > 0) {
+                topNews.setVisibility(View.VISIBLE);
                 if (newsList.getBreakingNews().get(0).getImageUrl() != null && !newsList.getBreakingNews().get(0).getImageUrl().equals(""))
                     Glide.with(getActivity()).load(newsList.getBreakingNews().get(0).getImageUrl());
                 if (newsList.getBreakingNews().get(0).getTitle() != null) {
@@ -194,9 +198,10 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
                 title = newsList.getBreakingNews().get(0).getTitle();
                 bigContent = newsList.getBreakingNews().get(0).getLongContent();
 //        ,teamName,date,timeStamp;                 pending
+            } else {
+                topNews.setVisibility(View.GONE);
             }
 
-            topNews.setVisibility(View.VISIBLE);
             shimmer_break_latest.stopShimmerAnimation();
             shimmer_break_latest.setVisibility(View.GONE);
 
@@ -204,7 +209,7 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
                 this.newsList = newsList.getData();
                 adapter.setDataList(this.newsList);
             }
-        }else{
+        } else {
             rl_hide_layout.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
         }

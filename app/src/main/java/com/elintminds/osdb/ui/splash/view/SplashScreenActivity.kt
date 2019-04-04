@@ -36,7 +36,7 @@ class SplashScreenActivity : BaseActivity() {
                 if(appPreferenceHelperClass.loginStatus)
                     startActivity(Intent(this@SplashScreenActivity, DashboardActivity::class.java))
                     else
-                startActivity(Intent(this@SplashScreenActivity, LoginOptionsActivity::class.java))
+                startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
             }
             finish()
 

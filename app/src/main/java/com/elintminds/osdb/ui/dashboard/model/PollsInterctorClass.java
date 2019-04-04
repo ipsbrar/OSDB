@@ -18,8 +18,8 @@ public class PollsInterctorClass extends BaseInteractorClass implements PollsInt
     }
 
     @Override
-    public Observable<PollAdapterBean> getPollsDataList(String currDate, String userId) {
-        return getApiInterface().getPollsData(userId);
+    public Observable<Response<ArrayList<PollAdapterBean>>> getPollsDataList(String currDate, String userId) {
+        return getApiInterface().fetchPollsList(currDate,userId);
     }
 
     @Override

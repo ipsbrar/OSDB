@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.data.network.WebserviceUrls;
 import com.elintminds.osdb.ui.dashboard.beans.HomeBean;
@@ -21,14 +22,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.ViewHolder>
-{
+public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.ViewHolder> {
     private Context context;
     private ArrayList<TeamPlayersBean.Player> dataList;
     private TeamDetailsView.TeamPlayersAdapterListener listener;
 
-    public TeamPlayersAdapter(Context context, ArrayList<TeamPlayersBean.Player> dataList, TeamDetailsView.TeamPlayersAdapterListener listener)
-    {
+    public TeamPlayersAdapter(Context context, ArrayList<TeamPlayersBean.Player> dataList, TeamDetailsView.TeamPlayersAdapterListener listener) {
         this.context = context;
         this.dataList = dataList;
         this.listener = listener;
@@ -37,27 +36,27 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
-    {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.team_player_adapter_view, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i)
-    {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         TeamPlayersBean.Player item = dataList.get(i);
         viewHolder.playerName.setText(item.getFullName());
-        if (item.getHeadshots() != null && !item.getHeadshots().equalsIgnoreCase("")){
+        if (item.getHeadshots() != null && !item.getHeadshots().equalsIgnoreCase("")) {
             try {
                 JSONArray jsonArray = new JSONArray(item.getHeadshots());
-                for (int j = 0; j < jsonArray.length(); j++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
                     String imgUrl = jsonObject.getString("href");
-                    String urlImg = "https://s3-us-west-2.amazonaws.com/osdb/" +imgUrl;
-                    Log.e("MYIMAGEURL",urlImg);
-                    Glide.with(context).load(urlImg).into(viewHolder.player_image);
-                }
+                    String urlImg = "https://s3-us-west-2.amazonaws.com/osdb/" + imgUrl;
+                    Log.e("MYIMAGEURL", urlImg);
+                    RequestOptions requestOptions = new RequestOptions();
+                    requestOptions.placeholder(R.drawable.img_player_empty);
+
+                    Glide.with(context).setDefaultRequestOptions(requestOptions).load(urlImg).into(viewHolder.player_image);
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -70,12 +69,11 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
         return dataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
-     private  TextView playerName;
-     private ImageView player_image;
-        public ViewHolder(@NonNull View itemView)
-        {
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView playerName;
+        private ImageView player_image;
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             playerName = itemView.findViewById(R.id.player_name);
             player_image = itemView.findViewById(R.id.player_image);
@@ -90,10 +88,8 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
     }
 
 
-    public void setDataList(ArrayList<TeamPlayersBean.Player> data)
-    {
-        if(data == null || data.isEmpty())
-        {
+    public void setDataList(ArrayList<TeamPlayersBean.Player> data) {
+        if (data == null || data.isEmpty()) {
             return;
         }
 

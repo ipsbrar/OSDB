@@ -8,6 +8,7 @@ import com.elintminds.osdb.ui.do_you_know.model.DiscussionCommentsInteractor
 import com.elintminds.osdb.ui.do_you_know.model.DiscussionCommentsInterctorClass
 
 import com.elintminds.osdb.ui.splash.view.DiscussionCommentsView
+import com.elintminds.osdb.utils.ConnectivityReceiver
 
 public class DiscussionCommentsPresenterClass<V : DiscussionCommentsView, I : DiscussionCommentsInteractor>
 
@@ -18,6 +19,7 @@ public constructor(context: Context,  view: V) : BasePresenterClass<V, I>(contex
 
 
     override fun getDiscussion(id :String) {
+        if (ConnectivityReceiver.isConnected()){
         compositeDisposable.add(
             interactor
                 .getDiscussion(id)
@@ -33,5 +35,7 @@ public constructor(context: Context,  view: V) : BasePresenterClass<V, I>(contex
                         mvpView.getError(throwable.toString())
                     })
         )
-    }
+    }else{
+            mvpView.getError("No Internet Connection")
+        }}
 }

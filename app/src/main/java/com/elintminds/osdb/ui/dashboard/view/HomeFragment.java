@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
@@ -45,7 +46,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
     //    No data found layout
     private ConstraintLayout no_data;
     private TextView txt_no_data_title, txt_no_data_disp;
-
+    private CardView cv_on_this_day;
+    private LinearLayout ll_poll_layout, ll_feature_athlete;
     private RelativeLayout rl_hide_layout_home;
     private Context context;
     private ShimmerRecyclerView sportsRecyclerView;
@@ -56,7 +58,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
     private ArrayList<HomeBean.BornToday> bornTodayList = new ArrayList<>();
     private HomeFragmentPresenterClass<HomeFragment, com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor> homeFragmentPresenterClass;
-    private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_5_msg_text;
+    private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_4_msg_text, view_5_msg_text, view_6_msg_text;
     private ImageView view_1_image, view_5_image;
     private RelativeLayout rl_breaking_news, rl_do_you_know, rl_main_breaking_news;
     private LinearLayout ll_main_born_today;
@@ -79,9 +81,28 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
     }
 
+    private String getAge(int year, int month, int day) {
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+
+        return ageS;
+    }
 
     @Override
     protected void setUp(View view) {
+
+        Log.e("YourAgeIsTHis", getAge(1993, 9, 1));
 
         //        No data found Views
         txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
@@ -104,6 +125,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         rl_main_breaking_news = view.findViewById(R.id.rl_main_breaking_news);
         shimmer_breaking_news = view.findViewById(R.id.shimmer_breaking_news);
 
+
 //      born today data
         bornTodayRecyclerView = view.findViewById(R.id.born_today_recycler);
         ll_main_born_today = view.findViewById(R.id.ll_main_born_today);
@@ -116,6 +138,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         rl_do_you_know = view.findViewById(R.id.rl_do_you_know);
         cv_main_did_you_know = view.findViewById(R.id.cv_main_did_you_know);
 
+//      feature athlete
+        ll_feature_athlete = view.findViewById(R.id.ll_feature_athlete);
+
+//      on this day
+        cv_on_this_day = view.findViewById(R.id.cv_on_this_day);
+        view_6_msg_text = view.findViewById(R.id.view_6_msg_text);
+
+//      feature player
+        ll_poll_layout = view.findViewById(R.id.ll_poll_layout);
+        view_4_msg_text = view.findViewById(R.id.view_4_msg_text);
 
         rl_hide_layout_home = view.findViewById(R.id.rl_hide_layout_home);
         view_1_msg_text = view.findViewById(R.id.view_1_msg_text);
@@ -123,6 +155,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         view_1_time_stamp = view.findViewById(R.id.view_1_time_stamp);
         view_1_game_name = view.findViewById(R.id.view_1_game_name);
         view_5_msg_text = view.findViewById(R.id.view_5_msg_text);
+
 
         view_1_image = view.findViewById(R.id.view_1_image);
         view_5_image = view.findViewById(R.id.view_5_image);
@@ -165,6 +198,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         shimmer_do_you_know.setVisibility(View.VISIBLE);
         shimmer_do_you_know.startShimmerAnimation();
 
+
+        ll_feature_athlete.setVisibility(View.GONE);
         homeFragmentPresenterClass.getHomeData(getCurrentDate());
     }
 
@@ -197,9 +232,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 //        set home data
             if (homesData.getBreakingNews() != null && homesData.getBreakingNews().size() > 0) {
                 breakingNewsFrag = homesData.getBreakingNews().get(0);
-                if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals(""))
-                    Glide.with(Objects.requireNonNull(getActivity())).load(breakingNewsFrag.getImageUrl()).into(view_1_image);
-
+                if (breakingNewsFrag.getImageUrl() != null && !breakingNewsFrag.getImageUrl().equals("")) {
+                    RequestOptions requestOptions = new RequestOptions();
+                    requestOptions.placeholder(R.drawable.place);
+                    Glide.with(Objects.requireNonNull(getActivity())).setDefaultRequestOptions(requestOptions)
+                            .load(breakingNewsFrag.getImageUrl()).into(view_1_image);
+                }
                 if (breakingNewsFrag.getTitle() != null) {
                     Log.e("getBreakingNewWorking", "title    " + breakingNewsFrag.getTitle());
                     view_1_msg_text.setText(breakingNewsFrag.getTitle());
@@ -239,6 +277,28 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
                 rl_do_you_know.setVisibility(View.VISIBLE);
             } else {
                 cv_main_did_you_know.setVisibility(View.GONE);
+            }
+
+
+//            on this day data
+            if (homesData.getOnThisDay() != null && homesData.getOnThisDay().size() > 0) {
+                String contentOnThisDay = homesData.getOnThisDay().get(0).getContent();
+                if (contentOnThisDay != null) {
+                    view_6_msg_text.setText(Html.fromHtml(contentOnThisDay));
+                    cv_on_this_day.setVisibility(View.VISIBLE);
+                } else {
+                    cv_on_this_day.setVisibility(View.GONE);
+                }
+            } else {
+                cv_on_this_day.setVisibility(View.GONE);
+            }
+
+//            polls data
+            if (homesData.getFeaturedPoll() != null && homesData.getFeaturedPoll().getPoll() != null) {
+                view_4_msg_text.setText(homesData.getFeaturedPoll().getPoll().getText());
+                ll_poll_layout.setVisibility(View.VISIBLE);
+            } else {
+                ll_poll_layout.setVisibility(View.GONE);
             }
 
             rl_hide_layout_home.setVisibility(View.VISIBLE);
@@ -316,7 +376,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
     }
 
     @Override
-    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName, String profilePic) {
+    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName, String profilePic,String dateOfBirth) {
         Intent intent = new Intent(context, PlayerDetailsActivity.class);
         intent.putExtra("AGE", age);
         intent.putExtra("PLAYER_NAME", playerName);
@@ -324,6 +384,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         intent.putExtra("DIVISION_NAME", divisionName);
         intent.putExtra("PLAYER_ID", playerId);
         intent.putExtra("PROFILE_PIC", profilePic);
+        intent.putExtra("dateOfBirth", dateOfBirth);
         startActivity(intent);
     }
 }

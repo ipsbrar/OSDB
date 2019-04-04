@@ -1,5 +1,6 @@
 package com.elintminds.osdb.ui.search_screen.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.elintminds.osdb.R;
@@ -104,6 +106,7 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
 
     @Override
     public void onItemClickRemote(SearchAdapterRemoteBean searchAdapterRemoteBean) {
+        hideSoftKeyboard(SearchActivity.this);
         if (searchAdapterRemoteBean.getType().equalsIgnoreCase("Player")) {
             Intent intent = new Intent(this, PlayerDetailsActivity.class);
             intent.putExtra("AGE", "2019-03-20 18:34:34");
@@ -142,5 +145,21 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
     @Override
     public void getError(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (this != null)
+        hideSoftKeyboard(SearchActivity.this);
+
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
 }
