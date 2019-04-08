@@ -120,6 +120,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 showFragment(HomeFragment.newInstance(), HomeFragment.TAG);
                 //changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
 
+
                 break;
             }
 
