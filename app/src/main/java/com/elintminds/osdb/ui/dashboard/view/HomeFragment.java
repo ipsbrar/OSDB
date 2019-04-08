@@ -14,10 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
@@ -25,6 +22,7 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.dashboard.Interfaces.BornTodayOnClick;
 import com.elintminds.osdb.ui.dashboard.adapters.BornTodayAdapter;
+import com.elintminds.osdb.ui.dashboard.adapters.DoYouKnowAdapter;
 import com.elintminds.osdb.ui.dashboard.adapters.SportsListAdapter;
 import com.elintminds.osdb.ui.dashboard.beans.*;
 import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor;
@@ -35,6 +33,9 @@ import com.elintminds.osdb.ui.particular_sport_screen.view.SportsActivity;
 import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsActivity;
 import com.elintminds.osdb.utils.Utils;
 import io.supercharge.shimmerlayout.ShimmerLayout;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -47,22 +48,24 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
     private ConstraintLayout no_data;
     private TextView txt_no_data_title, txt_no_data_disp;
     private CardView cv_on_this_day;
-    private LinearLayout ll_poll_layout, ll_feature_athlete;
+    private LinearLayout ll_poll_layout, ll_feature_athlete, poll_option_parent;
     private RelativeLayout rl_hide_layout_home;
     private Context context;
-    private ShimmerRecyclerView sportsRecyclerView;
+    private ShimmerRecyclerView sportsRecyclerView, rcv_do_you_know;
     private ShimmerRecyclerView bornTodayRecyclerView;
     private SportsListAdapter sportsListAdapter;
     private BornTodayAdapter bornTodayAdapter;
-    private ShimmerLayout shimmer_breaking_news, shimmer_do_you_know;
+    private DoYouKnowAdapter doYouKnowAdapter;
+    private ShimmerLayout shimmer_breaking_news;
     private ArrayList<SportsAdapterListBean> sportsList = new ArrayList<>();
+    private ArrayList<HomeBean.DidYouKnow> didYouKnow = new ArrayList<>();
     private ArrayList<HomeBean.BornToday> bornTodayList = new ArrayList<>();
     private HomeFragmentPresenterClass<HomeFragment, com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractor> homeFragmentPresenterClass;
-    private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_4_msg_text, view_5_msg_text, view_6_msg_text;
-    private ImageView view_1_image, view_5_image;
-    private RelativeLayout rl_breaking_news, rl_do_you_know, rl_main_breaking_news;
-    private LinearLayout ll_main_born_today;
+    private TextView view_1_msg_text, view_1_game_name, view_1_date, view_1_time_stamp, view_4_msg_text, view_6_msg_text;
+    private ImageView view_1_image;
     private CardView cv_main_did_you_know;
+    private RelativeLayout rl_breaking_news, rl_main_breaking_news;
+    private LinearLayout ll_main_born_today;
     private SwipeRefreshLayout swipe_refresh;
     private HomeBean.BreakingNews breakingNewsFrag;
     private HomeBean.DidYouKnow doYouKnow;
@@ -81,28 +84,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
     }
 
-    private String getAge(int year, int month, int day) {
-        Calendar dob = Calendar.getInstance();
-        Calendar today = Calendar.getInstance();
-
-        dob.set(year, month, day);
-
-        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-
-        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
-            age--;
-        }
-
-        Integer ageInt = new Integer(age);
-        String ageS = ageInt.toString();
-
-        return ageS;
-    }
 
     @Override
     protected void setUp(View view) {
 
-        Log.e("YourAgeIsTHis", getAge(1993, 9, 1));
 
         //        No data found Views
         txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
@@ -134,8 +119,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         bornTodayRecyclerView.setAdapter(bornTodayAdapter);
 
 //      did you know data
-        shimmer_do_you_know = view.findViewById(R.id.shimmer_do_you_know);
-        rl_do_you_know = view.findViewById(R.id.rl_do_you_know);
+        rcv_do_you_know = view.findViewById(R.id.rcv_do_you_know);
+        rcv_do_you_know.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
         cv_main_did_you_know = view.findViewById(R.id.cv_main_did_you_know);
 
 //      feature athlete
@@ -154,11 +140,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         view_1_date = view.findViewById(R.id.view_1_date);
         view_1_time_stamp = view.findViewById(R.id.view_1_time_stamp);
         view_1_game_name = view.findViewById(R.id.view_1_game_name);
-        view_5_msg_text = view.findViewById(R.id.view_5_msg_text);
-
+//      polls
+        poll_option_parent = view.findViewById(R.id.poll_option_parent);
 
         view_1_image = view.findViewById(R.id.view_1_image);
-        view_5_image = view.findViewById(R.id.view_5_image);
+
         swipe_refresh = view.findViewById(R.id.swipe_refresh);
         homeFragmentPresenterClass = new HomeFragmentPresenterClass<>(getActivity(), this);
         setUpStartingData();
@@ -193,10 +179,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         bornTodayRecyclerView.showShimmerAdapter();
 
 //              did you know data
+
         cv_main_did_you_know.setVisibility(View.VISIBLE);
-        rl_do_you_know.setVisibility(View.GONE);
-        shimmer_do_you_know.setVisibility(View.VISIBLE);
-        shimmer_do_you_know.startShimmerAnimation();
+        rcv_do_you_know.showShimmerAdapter();
 
 
         ll_feature_athlete.setVisibility(View.GONE);
@@ -249,7 +234,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
                 rl_breaking_news.setVisibility(View.VISIBLE);
             } else {
                 rl_main_breaking_news.setVisibility(View.GONE);
-
             }
 
 //        born today data set
@@ -265,17 +249,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 //        Did you know data set
 
             if (homesData.getDidYouKnow() != null && homesData.getDidYouKnow().size() > 0) {
-
-                doYouKnow = homesData.getDidYouKnow().get(0);
-
-                if (doYouKnow.getContent() != null)
-                    view_5_msg_text.setText(Html.fromHtml(doYouKnow.getContent()).toString());
-                Utils.justify(view_5_msg_text);
-
-                shimmer_do_you_know.stopShimmerAnimation();
-                shimmer_do_you_know.setVisibility(View.GONE);
-                rl_do_you_know.setVisibility(View.VISIBLE);
+                doYouKnowAdapter = new DoYouKnowAdapter(getActivity(), homesData.getDidYouKnow());
+                rcv_do_you_know.setAdapter(doYouKnowAdapter);
+                cv_main_did_you_know.setVisibility(View.VISIBLE);
+                rcv_do_you_know.hideShimmerAdapter();
             } else {
+                rcv_do_you_know.hideShimmerAdapter();
                 cv_main_did_you_know.setVisibility(View.GONE);
             }
 
@@ -297,6 +276,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
             if (homesData.getFeaturedPoll() != null && homesData.getFeaturedPoll().getPoll() != null) {
                 view_4_msg_text.setText(homesData.getFeaturedPoll().getPoll().getText());
                 ll_poll_layout.setVisibility(View.VISIBLE);
+
+                if (homesData.getFeaturedPoll().getPoll().getOptions() != null && homesData.getFeaturedPoll().getPoll().getOptions().size() > 0) {
+                    setPollsOptions(homesData.getFeaturedPoll().getPoll().getOptions(), homesData.getFeaturedPoll().getPoll().getId());
+                }
+
             } else {
                 ll_poll_layout.setVisibility(View.GONE);
             }
@@ -312,6 +296,95 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
         swipe_refresh.setRefreshing(false);
     }
 
+    @Override
+    public void AddVotePollsSuccess(String jsonObject) {
+        try {
+            JSONObject jsonObject1 = new JSONObject(jsonObject);
+            setPollResult(jsonObject1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void setPollsOptions(final List<HomeBean.Option> options, final int pollID) {
+        poll_option_parent.removeAllViews();
+        for (int i = 0; i < options.size(); i++) {
+//            polls Options
+            View pollOptionView = LayoutInflater.from(context).inflate(R.layout.poll_options_view, null);
+            poll_option_parent.addView(pollOptionView);
+            poll_option_parent.setId(i);
+            TextView pollLabel = pollOptionView.findViewById(R.id.poll_label);
+            pollLabel.setText(options.get(i).getText());
+            pollLabel.setTextColor(context.getResources().getColor(R.color.color_2E384D));
+        }
+
+        poll_option_parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //dataList.get(i).setVisible(true);
+                String pollId = String.valueOf(pollID);
+                String optionId = String.valueOf(options.get(view.getId()).getId());
+
+                homeFragmentPresenterClass.AddVote(getActivity(), pollId, optionId);
+
+            }
+        });
+    }
+
+    private void setPollResult(JSONObject jsonObject) {
+        poll_option_parent.removeAllViews();
+        int size = 0;
+        int counter = 0;
+        ArrayList<String> titleArray = new ArrayList<>();
+        if (jsonObject.has("poll")) {
+            if (jsonObject.has("options")) {
+                try {
+                    JSONArray optionArray = jsonObject.getJSONArray("options");
+                    size = optionArray.length();
+                    for (int i = 0; i < size; i++) {
+                        JSONObject optionObj = optionArray.getJSONObject(i);
+                        titleArray.add(optionObj.getString("text"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (jsonObject.has("result")) {
+            try {
+                JSONObject resultObj = jsonObject.getJSONObject("result");
+                Iterator resultIterator = resultObj.keys();
+                while (resultIterator.hasNext()) {
+                    String keyValue = (String) resultIterator.next();
+                    String value = resultObj.getString(keyValue);
+
+                    View pollOptionView = LayoutInflater.from(context).inflate(R.layout.poll_options_view, null);
+                    poll_option_parent.addView(pollOptionView);
+                    poll_option_parent.setId(counter);
+                    TextView pollLabel = pollOptionView.findViewById(R.id.poll_label);
+                    TextView poll_label_2 = pollOptionView.findViewById(R.id.poll_name);
+                    TextView txt_polls_count = pollOptionView.findViewById(R.id.progress_percentage);
+                    ProgressBar progressBar = pollOptionView.findViewById(R.id.progress_view);
+                    if (titleArray.size() > 0) {
+                        poll_label_2.setText(titleArray.get(counter));
+
+                    }else{
+                        poll_label_2.setText(String.valueOf(keyValue));
+                    }
+                    pollLabel.setText(String.valueOf(counter)+" .");
+                    txt_polls_count.setText(value + " %");
+                    double progress = Double.parseDouble(value);
+                    progressBar.setProgress((int) progress);
+                    counter++;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 
     @Override
     public void getError(String error) {
@@ -376,7 +449,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
     }
 
     @Override
-    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName, String profilePic,String dateOfBirth) {
+    public void bornTodayOnCLick(String age, String teamName, String divisionName, String playerId, String playerName, String profilePic, String dateOfBirth) {
         Intent intent = new Intent(context, PlayerDetailsActivity.class);
         intent.putExtra("AGE", age);
         intent.putExtra("PLAYER_NAME", playerName);

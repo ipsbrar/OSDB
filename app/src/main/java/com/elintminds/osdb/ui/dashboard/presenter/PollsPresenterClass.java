@@ -17,6 +17,7 @@ import com.elintminds.osdb.ui.dashboard.model.PollsInteractor;
 import com.elintminds.osdb.ui.dashboard.model.PollsInterctorClass;
 import com.elintminds.osdb.ui.dashboard.view.PollView;
 import com.elintminds.osdb.utils.ConnectivityReceiver;
+import com.google.gson.JsonElement;
 import io.reactivex.functions.Consumer;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,9 +77,9 @@ public class PollsPresenterClass<V extends PollView, I extends PollsInteractor>
                     .AddPollsComment(pollId, optionId)
                     .subscribeOn(getSchedulerProvider().io())
                     .observeOn(getSchedulerProvider().ui())
-                    .subscribe(new Consumer<Response<JSONObject>>() {
+                    .subscribe(new Consumer<Response<JsonElement>>() {
                                    @Override
-                                   public void accept(Response<JSONObject> response) throws Exception {
+                                   public void accept(Response<JsonElement> response) throws Exception {
                                        if (response.isSuccessful()) {
                                            getMvpView().VotePolls("Vote Successfully");
                                        } else {

@@ -63,155 +63,158 @@
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
         >
+            <RelativeLayout
+                    android:id="@+id/top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    app:layout_collapseMode="parallax"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                    android:background="@drawable/toolbar_bg">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/user_Image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_user_image"/>
                 <RelativeLayout
-                        android:id="@+id/top"
+                        android:layout_toRightOf="@+id/user_Image"
+                        android:layout_marginLeft="@dimen/dp_22"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        app:layout_collapseMode="parallax"
-                        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-                        android:background="@drawable/toolbar_bg">
+                        android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/user_Image"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_user_image"/>
-                    <RelativeLayout
-                            android:layout_toRightOf="@+id/user_Image"
-                            android:layout_marginLeft="@dimen/dp_22"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                    <TextView android:height="17dp"
+                              android:id="@+id/d_age"
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:lineSpacingMultiplier="1.62"
+                              android:text="@string/age_details"
+                              android:fontFamily="@font/rubik_medium"
+                              android:textSize="@dimen/sp_10"/>
 
-                        <TextView android:height="17dp"
-                                  android:id="@+id/d_age"
-                                  android:layout_height="wrap_content"
-                                  android:layout_width="wrap_content"
-                                  android:lineSpacingMultiplier="1.62"
-                                  android:text="@string/age_details"
-                                  android:fontFamily="@font/rubik_medium"
-                                  android:textSize="@dimen/sp_10"/>
-
-                        <TextView android:height="17dp"
-                                  android:id="@+id/user_age"
-                                  android:layout_toRightOf="@+id/d_age"
-                                  android:layout_height="wrap_content"
-                                  android:layout_width="wrap_content"
-                                  android:lineSpacingMultiplier="1.62"
-                                  android:text="35 YEARS"
-                                  android:layout_marginLeft="@dimen/dp_10"
-                                  android:fontFamily="@font/rubik_medium"
-                                  android:textSize="@dimen/sp_10"/>
+                    <TextView android:height="17dp"
+                              android:id="@+id/user_age"
+                              android:layout_toRightOf="@+id/d_age"
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:lineSpacingMultiplier="1.62"
+                              android:text="35 YEARS"
+                              android:layout_marginLeft="@dimen/dp_10"
+                              android:fontFamily="@font/rubik_medium"
+                              android:textSize="@dimen/sp_10"/>
 
 
-                        <TextView android:height="17dp"
-                                  android:id="@+id/d_date_of_birth"
-                                  android:layout_height="wrap_content"
-                                  android:layout_width="wrap_content"
-                                  android:layout_below="@+id/d_age"
-                                  android:lineSpacingMultiplier="1.62"
-                                  android:text="@string/date_of_birth_details"
-                                  android:fontFamily="@font/rubik_medium"
-                                  android:textSize="@dimen/sp_10"/>
+                    <TextView android:height="17dp"
+                              android:id="@+id/d_date_of_birth"
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:layout_below="@+id/d_age"
+                              android:lineSpacingMultiplier="1.62"
+                              android:text="@string/date_of_birth_details"
+                              android:fontFamily="@font/rubik_medium"
+                              android:textSize="@dimen/sp_10"/>
 
-                        <TextView android:height="17dp"
-                                  android:id="@+id/user_date_of_birth"
-                                  android:layout_toRightOf="@+id/d_date_of_birth"
-                                  android:layout_height="wrap_content"
-                                  android:layout_width="wrap_content"
-                                  android:lineSpacingMultiplier="1.62"
-                                  android:text="Dec 2, 1983"
-                                  android:layout_below="@+id/d_age"
-                                  android:layout_marginLeft="@dimen/dp_10"
-                                  android:fontFamily="@font/rubik_medium"
-                                  android:textSize="@dimen/sp_10"/>
+                    <TextView android:height="17dp"
+                              android:id="@+id/user_date_of_birth"
+                              android:layout_toRightOf="@+id/d_date_of_birth"
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:lineSpacingMultiplier="1.62"
+                              android:text="Dec 2, 1983"
+                              android:layout_below="@+id/d_age"
+                              android:layout_marginLeft="@dimen/dp_10"
+                              android:fontFamily="@font/rubik_medium"
+                              android:textSize="@dimen/sp_10"/>
 
-                        <TextView android:height="17dp"
-                                  android:id="@+id/d_team"
-                                  android:layout_height="wrap_content"
-                                  android:layout_width="wrap_content"
-                                  android:layout_below="@+id/d_date_of_birth"
-                                  android:lineSpacingMultiplier="1.62"
-                                  android:text="@string/team_details"
-                                  android:fontFamily="@font/rubik_medium"
-                                  android:textSize="@dimen/sp_10"/>
+                    <TextView android:height="17dp"
+                              android:id="@+id/d_team"
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:layout_below="@+id/d_date_of_birth"
+                              android:lineSpacingMultiplier="1.62"
+                              android:text="@string/team_details"
+                              android:fontFamily="@font/rubik_medium"
+                              android:textSize="@dimen/sp_10"/>
 
-                        <TextView android:height="17dp"
-                                  android:id="@+id/user_team"
-                                  android:layout_toRightOf="@+id/d_team"
-                                  android:layout_height="wrap_content"
-                                  android:layout_width="wrap_content"
-                                  android:lineSpacingMultiplier="1.62"
-                                  android:text="Green Bay Packers"
-                                  android:layout_below="@+id/d_date_of_birth"
-                                  android:layout_marginLeft="@dimen/dp_10"
-                                  android:fontFamily="@font/rubik_medium"
-                                  android:textSize="@dimen/sp_10"/>
+                    <TextView android:height="17dp"
+                              android:id="@+id/user_team"
+                              android:layout_toRightOf="@+id/d_team"
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:lineSpacingMultiplier="1.62"
+                              android:text="Green Bay Packers"
+                              android:layout_below="@+id/d_date_of_birth"
+                              android:layout_marginLeft="@dimen/dp_10"
+                              android:fontFamily="@font/rubik_medium"
+                              android:textSize="@dimen/sp_10"/>
 
-                        <TextView android:height="17dp"
-                                  android:id="@+id/d_zone"
-                                  android:layout_height="wrap_content"
-                                  android:layout_width="wrap_content"
-                                  android:layout_below="@+id/d_team"
-                                  android:lineSpacingMultiplier="1.62"
-                                  android:text="@string/zone_details"
-                                  android:fontFamily="@font/rubik_medium"
-                                  android:textSize="@dimen/sp_10"/>
+                    <TextView android:height="17dp"
+                              android:id="@+id/d_zone"
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:layout_below="@+id/d_team"
+                              android:lineSpacingMultiplier="1.62"
+                              android:text="@string/zone_details"
+                              android:fontFamily="@font/rubik_medium"
+                              android:textSize="@dimen/sp_10"/>
 
-                        <TextView android:height="17dp"
-                                  android:id="@+id/user_zone"
-                                  android:layout_toRightOf="@+id/d_zone"
-                                  android:layout_height="wrap_content"
-                                  android:layout_width="wrap_content"
-                                  android:lineSpacingMultiplier="1.62"
-                                  android:text="NFC North"
-                                  android:layout_below="@+id/d_team"
-                                  android:layout_marginLeft="@dimen/dp_10"
-                                  android:fontFamily="@font/rubik_medium"
-                                  android:textSize="@dimen/sp_10"/>
+                    <TextView android:height="17dp"
+                              android:id="@+id/user_zone"
+                              android:layout_toRightOf="@+id/d_zone"
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:lineSpacingMultiplier="1.62"
+                              android:text="NFC North"
+                              android:layout_below="@+id/d_team"
+                              android:layout_marginLeft="@dimen/dp_10"
+                              android:fontFamily="@font/rubik_medium"
+                              android:textSize="@dimen/sp_10"/>
 
-                        <ImageView
-                                android:id="@+id/insta_details"
-                                android:layout_width="wrap_content"
-                                android:layout_below="@+id/user_zone"
-                                android:padding="10dp"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/ic_insta"/>
-                        <ImageView
-                                android:id="@+id/fb_details"
-                                android:layout_width="wrap_content"
-                                android:layout_below="@+id/user_zone"
-                                android:padding="10dp"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/insta_details"
-                                app:srcCompat="@drawable/ic_fb"/>
-                        <ImageView
-                                android:id="@+id/twitter_details"
-                                android:layout_width="wrap_content"
-                                android:padding="10dp"
-                                android:layout_toRightOf="@+id/fb_details"
-                                android:layout_below="@+id/user_zone"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/ic_twitter"/>
-                    </RelativeLayout>
-
+                    <ImageView
+                            android:id="@+id/insta_details"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@+id/user_zone"
+                            android:padding="10dp"
+                            android:visibility="gone"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_insta"/>
+                    <ImageView
+                            android:id="@+id/fb_details"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@+id/user_zone"
+                            android:padding="10dp"
+                            android:visibility="gone"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/insta_details"
+                            app:srcCompat="@drawable/ic_fb"/>
+                    <ImageView
+                            android:id="@+id/twitter_details"
+                            android:layout_width="wrap_content"
+                            android:padding="10dp"
+                            android:visibility="gone"
+                            android:layout_toRightOf="@+id/fb_details"
+                            android:layout_below="@+id/user_zone"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_twitter"/>
                 </RelativeLayout>
 
-                <android.support.design.widget.TabLayout
-                        android:id="@+id/player_details_tabs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:tabBackground="@drawable/toolbar_bg"
-                        app:tabGravity="fill"
+            </RelativeLayout>
 
-                        app:tabIndicatorColor="@color/color_6849D7"
-                        app:tabMode="scrollable"
-                        android:layout_gravity="bottom"
-                        android:background="@color/color_white"
-                        app:tabSelectedTextColor="@color/color_6849D7"
-                        app:tabTextAppearance="@style/tab_text"
+            <android.support.design.widget.TabLayout
+                    android:id="@+id/player_details_tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabBackground="@drawable/toolbar_bg"
+                    app:tabGravity="fill"
 
-                />
+                    app:tabIndicatorColor="@color/color_6849D7"
+                    app:tabMode="scrollable"
+                    android:layout_gravity="bottom"
+                    android:background="@color/color_white"
+                    app:tabSelectedTextColor="@color/color_6849D7"
+                    app:tabTextAppearance="@style/tab_text"
+
+            />
         </android.support.design.widget.AppBarLayout>
 
 

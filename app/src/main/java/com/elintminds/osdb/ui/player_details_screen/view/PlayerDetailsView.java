@@ -3,8 +3,7 @@ package com.elintminds.osdb.ui.player_details_screen.view;
 import com.elintminds.osdb.ui.base.view.BaseView;
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
 import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
-import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
-import org.json.JSONObject;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 
 import java.util.ArrayList;
 

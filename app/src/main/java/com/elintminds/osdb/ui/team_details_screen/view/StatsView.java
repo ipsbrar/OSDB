@@ -1,7 +1,7 @@
 package com.elintminds.osdb.ui.team_details_screen.view;
 
 import com.elintminds.osdb.ui.base.view.BaseView;
-import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 
 import java.util.ArrayList;
 

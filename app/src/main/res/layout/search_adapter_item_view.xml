@@ -37,9 +37,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
+
             android:fontFamily="@font/rubik_medium"
-            android:layout_toEndOf="@id/team_logo"
-            android:layout_toStartOf="@id/follow_btn"
+            android:text="@string/career_highlights_info"
+            android:layout_toRightOf="@+id/team_logo"
+            android:layout_toLeftOf="@+id/slug_name"
             android:layout_centerVertical="true"
             android:maxLines="1"
             android:textSize="@dimen/sp_15"

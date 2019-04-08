@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.utils.Utils;
@@ -48,8 +49,11 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
             longText = getIntent().getStringExtra("bigContent");
             slugName = getIntent().getStringExtra("teamName");
 
-            if (imgUrl != null)
-                Glide.with(this).load(imgUrl).into(image);
+            if (imgUrl != null) {
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.place);
+                Glide.with(this).setDefaultRequestOptions(requestOptions).load(imgUrl).into(image);
+            }
             if (headerText != null) {
                 header_txt.setText(headerText);
                 Utils.justify(header_txt);

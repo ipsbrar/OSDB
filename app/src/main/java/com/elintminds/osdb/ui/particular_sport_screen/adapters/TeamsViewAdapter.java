@@ -22,18 +22,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class TeamsViewAdapter extends BaseExpandableListAdapter
-{
+public class TeamsViewAdapter extends BaseExpandableListAdapter {
     private Context context;
     private ArrayList<TeamClubBean> dataList;
     private SportScreenView.TeamsExpandableItemsListener listener;
 
-    public TeamsViewAdapter(Context context, ArrayList<TeamClubBean> dataList, SportScreenView.TeamsExpandableItemsListener listener)
-    {
+    public TeamsViewAdapter(Context context, ArrayList<TeamClubBean> dataList, SportScreenView.TeamsExpandableItemsListener listener) {
         this.context = context;
         this.dataList = dataList;
         this.listener = listener;
     }
+
     @Override
     public int getGroupCount() {
         return dataList.size();
@@ -70,16 +69,14 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
     }
 
     @Override
-    public View getGroupView(int i, boolean b, View view, ViewGroup parent)
-    {
+    public View getGroupView(int i, boolean b, View view, ViewGroup parent) {
         GroupViewHolder holder;
-        TeamClubBean headerTitle = (TeamClubBean)getGroup(i);
+        TeamClubBean headerTitle = (TeamClubBean) getGroup(i);
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.sports_expandable_group_view, parent, false);
             holder = new GroupViewHolder(view);
             view.setTag(holder);
-        }
-        else {
+        } else {
             holder = (GroupViewHolder) view.getTag();
         }
 
@@ -89,19 +86,15 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
     }
 
     @Override
-    public View getChildView(final int i, final int i1, boolean b, View view, ViewGroup parent)
-    {
+    public View getChildView(final int i, final int i1, boolean b, View view, ViewGroup parent) {
         ChildViewHolder holder;
         TeamInfoBean.Team childItem = (TeamInfoBean.Team) getChild(i, i1);
 
-        if (view == null)
-        {
+        if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.sports_expandable_child_view, parent, false);
             holder = new ChildViewHolder(view);
             view.setTag(holder);
-        }
-        else
-        {
+        } else {
             holder = (ChildViewHolder) view.getTag();
         }
 
@@ -112,33 +105,30 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
 //            holder.followBtn.setSelected(childItem.isFollowing());
 //        }
 //        else {
-            holder.followBtn.setText(context.getString(R.string.follow));
+        holder.followBtn.setText(context.getString(R.string.follow));
 //            holder.followBtn.setSelected(childItem.isFollowing());
 //        }
 
-        if (childItem.getLogo() != null && !childItem.getLogo().equalsIgnoreCase("")){
+        if (childItem.getLogo() != null && !childItem.getLogo().equalsIgnoreCase("")) {
             try {
                 JSONArray jsonArray = new JSONArray(childItem.getLogo());
-                for (int j = 0; j < jsonArray.length(); j++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String imgUrl = jsonObject.getString("href");
-                    String urlImg = "https://s3-us-west-2.amazonaws.com/osdb/" +imgUrl;
-                    Log.e("MYIMAGEURL",urlImg);
-                    RequestOptions requestOptions = new RequestOptions();
-                    requestOptions.placeholder(R.drawable.ic_nfl_1);
-                    Glide.with(context).setDefaultRequestOptions(requestOptions).load(urlImg).into(holder.teamLogo);
-                }
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                String imgUrl = jsonObject.getString("href");
+                String urlImg = "https://s3-us-west-2.amazonaws.com/osdb/" + imgUrl;
+                Log.e("MYIMAGEURL", childItem.getTeamName() + "    " + urlImg);
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.empty_white);
+                Glide.with(context).setDefaultRequestOptions(requestOptions).load(urlImg).into(holder.teamLogo);
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
 
-        holder.teamName.setOnClickListener(new View.OnClickListener()
-        {
+        holder.teamName.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 listener.onTeamClick(i, i1);
             }
         });
@@ -151,22 +141,20 @@ public class TeamsViewAdapter extends BaseExpandableListAdapter
         return true;
     }
 
-    public class GroupViewHolder
-    {
+    public class GroupViewHolder {
         TextView clubName;
-        GroupViewHolder(View view)
-        {
+
+        GroupViewHolder(View view) {
             clubName = view.findViewById(R.id.lblListHeader);
         }
     }
 
-    public class ChildViewHolder
-    {
+    public class ChildViewHolder {
         TextView teamName;
         TextView followBtn;
         ImageView teamLogo;
-        public ChildViewHolder(View view)
-        {
+
+        public ChildViewHolder(View view) {
             teamName = view.findViewById(R.id.teamName);
             followBtn = view.findViewById(R.id.follow_btn);
             teamLogo = view.findViewById(R.id.team_logo);

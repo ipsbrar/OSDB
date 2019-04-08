@@ -54,7 +54,6 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
                     Log.e("MYIMAGEURL", urlImg);
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.placeholder(R.drawable.img_player_empty);
-
                     Glide.with(context).setDefaultRequestOptions(requestOptions).load(urlImg).into(viewHolder.player_image);
 
 

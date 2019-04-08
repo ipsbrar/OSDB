@@ -75,7 +75,7 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
 //        Log.e("TimeCheckLong","long   "+timeInLong);
 //        String dateFor = Utils.getDate(timeInLong,"yyyy-dd-MM hh:mm:ss");
 //        Log.e("TimeCheckLong","date   "+dateFor);
-        viewHolder.hours_txt.setText(Utils.getTimeAgo(timeInLong));
+        viewHolder.hours_txt.setText("- "+Utils.getTimeAgo(timeInLong));
     }
 
     @Override

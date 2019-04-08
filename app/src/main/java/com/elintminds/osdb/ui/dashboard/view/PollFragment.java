@@ -116,6 +116,8 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
         if (arrayList.size() > 0) {
             pollAdapter.setDataList(arrayList);
         } else {
+            txt_no_data_title.setText("No poll available");
+            txt_no_data_disp.setText(" for the " + currentDate);
             pollRecyclerView.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
         }
@@ -133,6 +135,7 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
     public void error(String error, boolean isVisible) {
 
         if (isVisible) {
+            txt_no_data_title.setText(error);
             pollRecyclerView.setVisibility(View.GONE);
             no_data.setVisibility(View.VISIBLE);
             pollRecyclerView.hideShimmerAdapter();

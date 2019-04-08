@@ -15,9 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
+import com.elintminds.osdb.ui.player_details_screen.adapters.CharityCommunityAdapter;
+import com.elintminds.osdb.ui.player_details_screen.beans.CharityCommunityBeans;
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
+
+import java.util.ArrayList;
 
 public class InfoFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = "InfoFragment";
@@ -28,12 +33,15 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
     private boolean isCharityViewed = false, isCommunityViewed = false, isCareerViewed = false;
     private TextView user_height, user_weight, user_college, user_place_of_birth, user_position,
             user_fan_email_address, user_current_contract, user_business_ventures,
-            user_endorsement_deals, user_sport_agent, user_television_agent;
-    private RelativeLayout rl_endorsement_deals, rl_business_venture, rl_current_contract, rl_fan_email_address, rl_sport_agent, rl_television_agent;
+            user_endorsement_deals, user_sport_agent, user_television_agent, user_draft, user_jersy;
+    private RelativeLayout rl_endorsement_deals, rl_business_venture, rl_current_contract
+            , rl_fan_email_address, rl_sport_agent, rl_television_agent, rl_jersy, rl_draft,
+            rl_community_work,rl_charity_rcv;
     private NestedScrollView nscroll;
     //    No data found layout
     private ConstraintLayout no_data;
     private TextView txt_no_data_title, txt_no_data_disp;
+    private ShimmerRecyclerView rcv_charity, rcv_community_work;
 
 
     public static InfoFragment getInstance(PlayerDetailInfoBean playerDetailInfoBean) {
@@ -72,6 +80,15 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
         rl_television_agent = view.findViewById(R.id.rl_television_agent);
         rl_sport_agent = view.findViewById(R.id.rl_sport_agent);
         rl_fan_email_address = view.findViewById(R.id.rl_fan_email_address);
+        rl_jersy = view.findViewById(R.id.rl_jersy);
+        rl_draft = view.findViewById(R.id.rl_draft);
+        rl_charity_rcv = view.findViewById(R.id.rl_charity_rcv);
+        rl_community_work = view.findViewById(R.id.rl_community_work);
+
+//        charity community work
+        rcv_charity = view.findViewById(R.id.rcv_charity);
+        rcv_community_work = view.findViewById(R.id.rcv_community_work);
+
 
         nscroll = view.findViewById(R.id.nscroll);
         charitiesViewBtn = view.findViewById(R.id.charity_view_btn);
@@ -91,6 +108,8 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
         user_endorsement_deals = view.findViewById(R.id.user_endorsement_deals);
         user_sport_agent = view.findViewById(R.id.user_sport_agent);
         user_television_agent = view.findViewById(R.id.user_television_agent);
+        user_draft = view.findViewById(R.id.user_draft);
+        user_jersy = view.findViewById(R.id.user_jersy);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -145,7 +164,20 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
         } else {
             rl_television_agent.setVisibility(View.GONE);
         }
-
+        if (playerInfo.getJersey() != null
+                && !playerInfo.getJersey().equalsIgnoreCase("")
+                && !playerInfo.getJersey().equalsIgnoreCase("null")) {
+            user_jersy.setText(playerInfo.getJersey());
+        } else {
+            rl_jersy.setVisibility(View.GONE);
+        }
+        if (playerInfo.getDraft() != null
+                && !playerInfo.getDraft().equalsIgnoreCase("")
+                && !playerInfo.getDraft().equalsIgnoreCase("null")) {
+            user_draft.setText(playerInfo.getDraft());
+        } else {
+            rl_draft.setVisibility(View.GONE);
+        }
         if (playerInfo.getCurrentContract() != null && !TextUtils.isEmpty(playerInfo.getCurrentContract()) && !playerInfo.getCurrentContract().equalsIgnoreCase("null"))
             user_current_contract.setText(playerInfo.getCurrentContract());
         else
@@ -161,7 +193,27 @@ public class InfoFragment extends BaseFragment implements View.OnClickListener {
         else
             rl_endorsement_deals.setVisibility(View.GONE);
 
+        if (playerInfo.getCharityArrayList() != null && playerInfo.getCharityArrayList().size() > 0) {
+            CharityCommunityAdapter charityCommunityAdapter = new CharityCommunityAdapter(getActivity(), playerInfo.getCharityArrayList());
+            rcv_charity.setAdapter(charityCommunityAdapter);
+            rcv_charity.hideShimmerAdapter();
 
+        } else {
+            rl_charity_rcv.setVisibility(View.GONE);
+            rcv_charity.hideShimmerAdapter();
+
+        }
+//rcv_community_work
+        if (playerInfo.getCommunityArrayList() != null && playerInfo.getCommunityArrayList().size() > 0) {
+            CharityCommunityAdapter charityCommunityAdapter = new CharityCommunityAdapter(getActivity(), playerInfo.getCommunityArrayList());
+            rcv_community_work.setAdapter(charityCommunityAdapter);
+            rcv_community_work.hideShimmerAdapter();
+
+        } else {
+            rl_community_work.setVisibility(View.GONE);
+            rcv_community_work.hideShimmerAdapter();
+
+        }
     }
 
     @Override

@@ -85,6 +85,8 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
         no_data.setVisibility(View.GONE);
 
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setRefreshing(false);
+        swipeRefreshLayout.setEnabled(false);
         teamFragmentPresenter = new TeamFragmentPresenterClass(getActivity(), this);
         Bundle bundle = getArguments();
         SportsActivity sportsActivity = new SportsActivity();
@@ -129,6 +131,7 @@ public class TeamsFragment extends BaseFragment implements SportScreenView.Teams
         intent.putExtra("TEAM_NAME", teamName);
         intent.putExtra("DIVISION_NAME", divisionName);
         intent.putExtra("TEAM_ID", teamID);
+        intent.putExtra("CLUB_NAME", dataList.get(groupPos).getTeamClubName());
         intent.putExtra("PROFILE_PIC", imgPic);
         startActivity(intent);
     }

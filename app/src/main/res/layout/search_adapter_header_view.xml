@@ -10,10 +10,10 @@
         android:id="@+id/search_heading"
         android:paddingLeft="@dimen/dp_25"
         android:paddingRight="@dimen/dp_25"
-        android:paddingTop="@dimen/dp_5"
-        android:paddingBottom="5dp"
+        android:paddingTop="@dimen/dp_15"
+        android:paddingBottom="@dimen/dp_15"
         android:layout_marginTop="25dp"
-        android:textSize="@dimen/sp_12"
+        android:textSize="@dimen/sp_15"
         android:textColor="@color/color_8798AD">
 
 </TextView>

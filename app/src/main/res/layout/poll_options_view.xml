@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="@color/color_white"
+                    android:textColor="@color/color_2E384D"
                     android:text="A."
                     android:fontFamily="@font/rubik_regular"
                     android:layout_centerVertical="true"

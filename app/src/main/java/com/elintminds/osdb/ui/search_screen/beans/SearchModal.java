@@ -144,6 +144,16 @@ public class SearchModal {
         private int isBreakingNews;
         @SerializedName("long_content")
         private String longContent;
+        @SerializedName("sports")
+        ArrayList<NewsSports> newsSportsArrayList;
+
+        public ArrayList<NewsSports> getNewsSportsArrayList() {
+            return newsSportsArrayList;
+        }
+
+        public void setNewsSportsArrayList(ArrayList<NewsSports> newsSportsArrayList) {
+            this.newsSportsArrayList = newsSportsArrayList;
+        }
 
         public int getNewsId() {
             return newsId;
@@ -215,6 +225,32 @@ public class SearchModal {
 
         public void setLongContent(String longContent) {
             this.longContent = longContent;
+        }
+    }
+
+    public class NewsSports {
+        @SerializedName("sport")
+        private Sport sport;
+
+        public Sport getSport() {
+            return sport;
+        }
+
+        public void setSport(Sport sport) {
+            this.sport = sport;
+        }
+    }
+
+    public class Sport {
+        @SerializedName("name")
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
     }
 

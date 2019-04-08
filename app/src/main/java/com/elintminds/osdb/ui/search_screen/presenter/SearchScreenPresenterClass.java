@@ -65,54 +65,7 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
     private void parseData(SearchModal.data homeData) {
         ArrayList<SearchAdapterRemoteBean> searchAdapterRemoteBeanArrayList = new ArrayList<>();
 
-        if (homeData.getNewsArrayList() != null && homeData.getNewsArrayList().size() > 0) {
-            SearchAdapterRemoteBean newsBean = new SearchAdapterRemoteBean();
-            newsBean.setSearchType(SearchAdapter.HEADING_TYPE);
-            newsBean.setType("News");
-            searchAdapterRemoteBeanArrayList.add(newsBean);
-            for (int i = 0; i < homeData.getNewsArrayList().size(); i++) {
-                SearchAdapterRemoteBean searchAdapterRemoteBean = new SearchAdapterRemoteBean();
-                int newsID = homeData.getNewsArrayList().get(i).getNewsId();
-                String title = homeData.getNewsArrayList().get(i).getNewsTitle();
-                String slug = homeData.getNewsArrayList().get(i).getSlugName();
-                String content = homeData.getNewsArrayList().get(i).getShortContent();
-                String createdAt = homeData.getNewsArrayList().get(i).getCreatedAt();
-                String tags = homeData.getNewsArrayList().get(i).getTags();
-                String imgUrl = homeData.getNewsArrayList().get(i).getImageUrl();
-                String imgPic = null;
-                if (imgUrl != null && !imgUrl.equalsIgnoreCase("")) {
-                    try {
-                        JSONArray jsonArray = new JSONArray(imgUrl);
-                        for (int j = 0; j < jsonArray.length(); j++) {
-                            JSONObject jsonObject = jsonArray.getJSONObject(0);
-                            imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
-                            Log.e("MYIMAGEURL", imgPic);
 
-                        }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                String longContent = homeData.getNewsArrayList().get(i).getLongContent();
-                boolean isBreakingNews = homeData.getNewsArrayList().get(i).getIsBreakingNews() == 0 ? false : true;
-
-
-                searchAdapterRemoteBean.setNewsId(newsID);
-                searchAdapterRemoteBean.setBreakingNews(isBreakingNews);
-                searchAdapterRemoteBean.setContent(content == null ? "" : content);
-                searchAdapterRemoteBean.setCreatedAt(createdAt == null ? "" : createdAt);
-                searchAdapterRemoteBean.setSlugName(slug == null ? "" : slug);
-                searchAdapterRemoteBean.setTags(tags == null ? "" : tags);
-                searchAdapterRemoteBean.setLongContent(longContent == null ? "" : longContent);
-                searchAdapterRemoteBean.setImgUrl(imgPic == null ? "" : imgPic);
-                searchAdapterRemoteBean.setTitle(title == null ? "" : title);
-                searchAdapterRemoteBean.setType("News");
-                searchAdapterRemoteBean.setSearchType(SearchAdapter.ITEM_TYPE);
-                searchAdapterRemoteBeanArrayList.add(searchAdapterRemoteBean);
-            }
-
-        }
 
         if (homeData.getPlayerArrayList() != null && homeData.getPlayerArrayList().size() > 0) {
             SearchAdapterRemoteBean playerBean = new SearchAdapterRemoteBean();
@@ -156,6 +109,66 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
             }
 
         }
+
+        if (homeData.getNewsArrayList() != null && homeData.getNewsArrayList().size() > 0) {
+            SearchAdapterRemoteBean newsBean = new SearchAdapterRemoteBean();
+            newsBean.setSearchType(SearchAdapter.HEADING_TYPE);
+            newsBean.setType("News");
+            searchAdapterRemoteBeanArrayList.add(newsBean);
+            for (int i = 0; i < homeData.getNewsArrayList().size(); i++) {
+                SearchAdapterRemoteBean searchAdapterRemoteBean = new SearchAdapterRemoteBean();
+                int newsID = homeData.getNewsArrayList().get(i).getNewsId();
+                String title = homeData.getNewsArrayList().get(i).getNewsTitle();
+                String content = homeData.getNewsArrayList().get(i).getShortContent();
+                String createdAt = homeData.getNewsArrayList().get(i).getCreatedAt();
+                String tags = homeData.getNewsArrayList().get(i).getTags();
+                String imgUrl = homeData.getNewsArrayList().get(i).getImageUrl();
+                String slug = null;
+                if (homeData.getNewsArrayList().get(i).getSlugName() != null) {
+                    slug = homeData.getNewsArrayList().get(i).getSlugName();
+                } else {
+                    if (homeData.getNewsArrayList().get(i).getNewsSportsArrayList() != null
+                            && homeData.getNewsArrayList().get(i).getNewsSportsArrayList().size() > 0
+                            && homeData.getNewsArrayList().get(i).getNewsSportsArrayList().get(0).getSport() != null)
+                        slug = homeData.getNewsArrayList().get(i).getNewsSportsArrayList().get(0).getSport().getName();
+                }
+
+                String imgPic = null;
+                if (imgUrl != null && !imgUrl.equalsIgnoreCase("")) {
+                    try {
+                        JSONArray jsonArray = new JSONArray(imgUrl);
+                        for (int j = 0; j < jsonArray.length(); j++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+                            imgPic = "https://s3-us-west-2.amazonaws.com/osdb/" + jsonObject.getString("href");
+                            Log.e("MYIMAGEURL", imgPic);
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                String longContent = homeData.getNewsArrayList().get(i).getLongContent();
+                boolean isBreakingNews = homeData.getNewsArrayList().get(i).getIsBreakingNews() == 0 ? false : true;
+
+
+                searchAdapterRemoteBean.setNewsId(newsID);
+                searchAdapterRemoteBean.setBreakingNews(isBreakingNews);
+                searchAdapterRemoteBean.setContent(content == null ? "" : content);
+                searchAdapterRemoteBean.setCreatedAt(createdAt == null ? "" : createdAt);
+                searchAdapterRemoteBean.setSlugName(slug == null ? "" : slug);
+                searchAdapterRemoteBean.setTags(tags == null ? "" : tags);
+                searchAdapterRemoteBean.setLongContent(longContent == null ? "" : longContent);
+                searchAdapterRemoteBean.setImgUrl(imgPic == null ? "" : imgPic);
+                searchAdapterRemoteBean.setTitle(title == null ? "" : title);
+                searchAdapterRemoteBean.setType("News");
+                searchAdapterRemoteBean.setSearchType(SearchAdapter.ITEM_TYPE);
+                searchAdapterRemoteBeanArrayList.add(searchAdapterRemoteBean);
+            }
+
+        }
+
+
 
         if (homeData.getTeamArrayList() != null && homeData.getTeamArrayList().size() > 0) {
             SearchAdapterRemoteBean teamBean = new SearchAdapterRemoteBean();

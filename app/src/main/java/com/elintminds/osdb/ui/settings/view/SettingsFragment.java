@@ -59,7 +59,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
 
             case R.id.change_pass_view: {
 
-                // ((SettingsView)getContext()).changeFragment();
+                ((SettingsView) Objects.requireNonNull(getContext())).changeFragment(ChangePasswordFragment.getInstance(), ChangePasswordFragment.TAG);
                 break;
             }
             case R.id.feedback_view: {

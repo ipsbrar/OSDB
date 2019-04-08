@@ -4,6 +4,7 @@ import android.content.Context;
 import com.elintminds.osdb.data.app_prefs.PreferenceHelper;
 import com.elintminds.osdb.ui.base.model.BaseInteractorClass;
 import com.elintminds.osdb.ui.dashboard.beans.PollAdapterBean;
+import com.google.gson.JsonElement;
 import io.reactivex.Observable;
 import org.json.JSONObject;
 import retrofit2.Response;
@@ -23,7 +24,7 @@ public class PollsInterctorClass extends BaseInteractorClass implements PollsInt
     }
 
     @Override
-    public Observable<Response<JSONObject>> AddPollsComment(String pollId, String optionId) {
+    public Observable<Response<JsonElement>> AddPollsComment(String pollId, String optionId) {
         return getApiInterface().AddPollComment(pollId,optionId);
     }
 }

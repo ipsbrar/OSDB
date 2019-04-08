@@ -14,7 +14,7 @@ import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
-import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 import com.elintminds.osdb.utils.NonSwipeableViewPager;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
     private TextView title, followBtn, stadium_txt;
     private ImageView backBtn, team_logo_img;
     private boolean isFollowing = false;
-    private String divisionName, teamName, teamId;
+    private String divisionName, teamName, teamId, clubName;
     private ArrayList<StatsBeans> arrayList = new ArrayList<>();
 
     @Override
@@ -36,6 +36,7 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
             teamName = getIntent().getStringExtra("TEAM_NAME");
             divisionName = getIntent().getStringExtra("DIVISION_NAME");
             teamId = getIntent().getStringExtra("TEAM_ID");
+            clubName = getIntent().getStringExtra("CLUB_NAME");
             String profilePic = getIntent().getStringExtra("PROFILE_PIC");
             team_logo_img = findViewById(R.id.team_logo_img);
             stadium_txt = findViewById(R.id.stadium_txt);
@@ -76,7 +77,7 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
         LatestViewPagerFragment adapter = new LatestViewPagerFragment(getSupportFragmentManager());
         adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
         adapter.addFragment(StatsFragment.getInstance(arrayList, teamId), getString(R.string.stats));
-        adapter.addFragment(TeamPlayersFragment.getInstance(teamName, divisionName, teamId), getString(R.string.players));
+        adapter.addFragment(TeamPlayersFragment.getInstance(teamName, divisionName, teamId,clubName), getString(R.string.players));
         upViewPager.setAdapter(adapter);
     }
 

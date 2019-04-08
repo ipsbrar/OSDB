@@ -397,6 +397,8 @@
     <string name="no_data_found">No data found</string>
     <string name="please_try_again">Please try again</string>
     <string name="coming_soon">We are currently working hard on this page \n we will be back soon please visit again
-    </string>
 
+    </string>
+    <string name="change_password_to_osdb">Change password to OSDB</string>
+    <string name="new_password">New password</string>
 </resources>

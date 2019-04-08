@@ -28,7 +28,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_below="@id/view_5_image"/>
+        />
 
         <LinearLayout android:id="@+id/poll_option_parent"
                       android:layout_width="match_parent"

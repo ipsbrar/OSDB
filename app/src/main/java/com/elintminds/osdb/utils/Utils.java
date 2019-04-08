@@ -221,19 +221,19 @@ public class Utils {
 
         final long diff = now - time;
         if (diff < MINUTE_MILLIS) {
-            return "just now";
+            return "m";
         } else if (diff < 2 * MINUTE_MILLIS) {
-            return "a minute ago";
+            return "m";
         } else if (diff < 50 * MINUTE_MILLIS) {
-            return diff / MINUTE_MILLIS + " minutes ago";
+            return diff / MINUTE_MILLIS + " m";
         } else if (diff < 90 * MINUTE_MILLIS) {
-            return "an hour ago";
+            return "h";
         } else if (diff < 24 * HOUR_MILLIS) {
-            return diff / HOUR_MILLIS + " hours ago";
+            return diff / HOUR_MILLIS + " h";
         } else if (diff < 48 * HOUR_MILLIS) {
-            return "yesterday";
+            return "d";
         } else {
-            return diff / DAY_MILLIS + " days ago";
+            return diff / DAY_MILLIS + " d";
         }
     }
 

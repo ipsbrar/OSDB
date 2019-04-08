@@ -59,16 +59,21 @@ public class SearchAdapterRemote extends RecyclerView.Adapter<RecyclerView.ViewH
             ((HeaderViewHolder) viewHolder).headerTV.setText(searchAdapterRemoteBean.getType() != null ? searchAdapterRemoteBean.getType() : "");
         } else if (viewHolder instanceof ItemViewHolder) {
             if (searchAdapterRemoteBean.getType().equalsIgnoreCase("News")) {
-                ((ItemViewHolder) viewHolder).user_name.setText(searchAdapterRemoteBean.getTags());
+                ((ItemViewHolder) viewHolder).team_logo.setVisibility(View.GONE);
+                ((ItemViewHolder) viewHolder).user_name.setText(searchAdapterRemoteBean.getTitle());
             } else if (searchAdapterRemoteBean.getType().equalsIgnoreCase("Player")) {
                 ((ItemViewHolder) viewHolder).user_name.setText(searchAdapterRemoteBean.getPlayerName());
             } else {
                 ((ItemViewHolder) viewHolder).user_name.setText(searchAdapterRemoteBean.getPlayerTeam());
             }
             ((ItemViewHolder) viewHolder).slug_name.setText(searchAdapterRemoteBean.getSlugName());
+
             if (searchAdapterRemoteBean.getImgUrl() != null) {
                 RequestOptions requestOptions = new RequestOptions();
-                requestOptions.placeholder(R.drawable.img_player_empty);
+                if (searchAdapterRemoteBean.getType().equalsIgnoreCase("News"))
+                    requestOptions.placeholder(R.drawable.place);
+                else
+                    requestOptions.placeholder(R.drawable.img_player_empty);
                 Glide.with(context).setDefaultRequestOptions(requestOptions).load(searchAdapterRemoteBean.getImgUrl()).into(((ItemViewHolder) viewHolder).team_logo);
             }
 

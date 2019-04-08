@@ -42,6 +42,15 @@ interface ApiHelper {
         @Field("type") type: String
     ): Observable<RegisterBean>
 
+    @FormUrlEncoded
+    @POST("self-reset-password")
+    fun ChangePassword(
+        @Field("id") userID: String,
+        @Field("old_password") email: String,
+        @Field("password") password: String,
+        @Field("confirm_password") phoneNumber: String
+    ): Observable<Response<JSONObject>>
+
 
     @GET("sports/list")
     fun fetchAllSportsList(): Observable<ArrayList<SportsAdapterListBean>>
@@ -96,7 +105,7 @@ interface ApiHelper {
     fun AddPollComment(
         @Field("poll_id") pollId: String,
         @Field("poll_option_id") pollOptionId: String
-    ): Observable<Response<JSONObject>>
+    ): Observable<Response<JsonElement>>
 //    @GET("teams/{team_id}/players")
 //    fun fetchPlayerDetail(@Path("team_id") teamId: String): Observable<PlayersDetailBean>
 

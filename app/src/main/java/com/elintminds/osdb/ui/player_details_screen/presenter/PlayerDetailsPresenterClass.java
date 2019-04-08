@@ -2,21 +2,16 @@ package com.elintminds.osdb.ui.player_details_screen.presenter;
 
 import android.content.Context;
 import android.util.Log;
-import com.android.volley.*;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
-import com.elintminds.osdb.data.network.WebserviceUrls;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
+import com.elintminds.osdb.ui.player_details_screen.beans.CharityCommunityBeans;
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
 import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
 import com.elintminds.osdb.ui.player_details_screen.model.PlayerDetailsInteractor;
 import com.elintminds.osdb.ui.player_details_screen.model.PlayerDetailsInteractorClass;
 import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsView;
-import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
-import com.elintminds.osdb.ui.team_details_screen.beans.StatsHorizontalBean;
-import com.elintminds.osdb.ui.team_details_screen.beans.StatsMainBean;
-import com.elintminds.osdb.ui.team_details_screen.beans.StatsVerticalBean;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans2;
 import com.elintminds.osdb.utils.ConnectivityReceiver;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -144,12 +139,26 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
             String weight = jsonObject.getString("weight");
             String playerCollege = jsonObject.getString("college_university");
             String placeOfBirth = jsonObject.getString("birth_place");
-            String playerPosition = jsonObject.getString("weight");
+
             String playerFanMailAddress = jsonObject.getString("fan_email");
             String businessVentures = jsonObject.getString("business_ventures");
             String endorsementDeals = jsonObject.getString("endorsement_deals");
             String communityWork = jsonObject.getString("community_works");
             String careerHighlight = jsonObject.getString("weight");
+            String playerPosition = null;
+            String jersey = null;
+            String draft = null;
+            if (jsonObject.has("meta")) {
+                String metaString = jsonObject.getString("meta");
+                JSONObject metaObj = new JSONObject(metaString);
+                jersey = metaObj.getString("jersey");
+                playerPosition = metaObj.getString("position");
+                JSONObject draftObj = metaObj.getJSONObject("draft");
+                String year = draftObj.getString("year");
+                String round = draftObj.getString("round");
+                String number = draftObj.getString("number");
+                draft = year + "/Round " + round + "/Pick " + number;
+            }
             String playerSportsAgent = null;
             String playerTelevision = null;
             String currentContract = null;
@@ -176,6 +185,43 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
                 }
 
             }
+            ArrayList<CharityCommunityBeans> charityArrayList = new ArrayList<>();
+            ArrayList<CharityCommunityBeans> communityArrayList = new ArrayList<>();
+
+// community works
+            if (jsonObject.has("community_works")) {
+                JSONArray communityJsonArray = jsonObject.getJSONArray("community_works");
+                for (int i = 0; i < communityJsonArray.length(); i++) {
+                    JSONObject communityObj = communityJsonArray.getJSONObject(i);
+                    CharityCommunityBeans charityCommunityBeans = new CharityCommunityBeans();
+                    charityCommunityBeans.setContentText(communityObj.getString("description"));
+                    JSONArray assetJsonArray = communityObj.getJSONArray("assets");
+                    String filePath = "";
+                    if (assetJsonArray.length() > 0) {
+                        JSONObject assetsObj = assetJsonArray.getJSONObject(0);
+                        charityCommunityBeans.setImgUrl(assetsObj.getString("file_name"));
+                    }
+
+                    communityArrayList.add(charityCommunityBeans);
+                }
+            }
+//            charity
+            if (jsonObject.has("charity_donations")) {
+                JSONArray communityJsonArray = jsonObject.getJSONArray("charity_donations");
+                for (int i = 0; i < communityJsonArray.length(); i++) {
+                    JSONObject communityObj = communityJsonArray.getJSONObject(i);
+                    CharityCommunityBeans charityCommunityBeans = new CharityCommunityBeans();
+                    charityCommunityBeans.setContentText(communityObj.getString("description"));
+                    JSONArray assetJsonArray = communityObj.getJSONArray("assets");
+                    String filePath = "";
+                    if (assetJsonArray.length() > 0) {
+                        JSONObject assetsObj = assetJsonArray.getJSONObject(0);
+                        charityCommunityBeans.setImgUrl(assetsObj.getString("file_name"));
+                    }
+
+                    charityArrayList.add(charityCommunityBeans);
+                }
+            }
 
             PlayerDetailInfoBean playerDetailInfoBean = new PlayerDetailInfoBean();
             playerDetailInfoBean.setPlayerHeight(height != null ? height : "");
@@ -191,6 +237,10 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
             playerDetailInfoBean.setEndorsementDeals(endorsementDeals != null ? endorsementDeals : "");
             playerDetailInfoBean.setCommunityWork(communityWork != null ? communityWork : "");
             playerDetailInfoBean.setCareerHighlight(careerHighlight != null ? careerHighlight : "");
+            playerDetailInfoBean.setJersey(jersey != null ? jersey : "");
+            playerDetailInfoBean.setDraft(draft != null ? draft : "");
+            playerDetailInfoBean.setCommunityArrayList(communityArrayList);
+            playerDetailInfoBean.setCharityArrayList(charityArrayList);
 
 
 //            career heights
@@ -235,6 +285,7 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
 
 //            Status data
             if (jsonObject.has("stats") && jsonObject.getJSONObject("stats") != null) {
+//                StatsData2(jsonObject.getJSONObject("stats"));
                 statsBeansArrayList = StatsData(jsonObject.getJSONObject("stats"));
             }
             getMvpView().fetchPlayerDetailInfo(playerDetailInfoBean, careerHeights, imageListString, videosBeanArrayList, bio, statsBeansArrayList);
@@ -394,5 +445,115 @@ public class PlayerDetailsPresenterClass<V extends PlayerDetailsView, I extends 
         return cal;
     }
 
-
 }
+//    //    stats data
+//    private ArrayList<StatsBeans> StatsData2(JSONObject jsonObject) {
+//
+//        ArrayList<StatsBeans2> statsBeans2s = new ArrayList<>();
+//        StatsBeans2 statsBeans2 = new StatsBeans2();
+//
+//        JSONArray topJsonArray = jsonObject.names();
+//        try {
+//            for (int i = 0; i < topJsonArray.length(); i++) {
+//
+//                JSONObject topJsonObj = topJsonArray
+//                topJsonObj.names().length();
+//
+//
+//
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//        ArrayList<StatsBeans> statsBeansArrayList = new ArrayList<>();
+//        StatsBeans statsBeans = new StatsBeans();
+//        ArrayList<StatsBeans.InnerStatsBean> innerStatsBeanArrayList = new ArrayList<>();
+//        ArrayList<List<String>> nestingArrayList = null;
+//        Iterator topIterator = jsonObject.keys();
+//        int invisible = 0;
+//
+//        while (topIterator.hasNext()) {
+//            try {
+////                get value from top key
+//                String topKey = (String) topIterator.next();
+//                invisible = 0;
+//                JSONObject regObj = jsonObject.getJSONObject(topKey);
+//                Iterator iterator = regObj.keys();
+//                while (iterator.hasNext()) {
+////                    get nested node (title) key is a title
+//                    String key = (String) iterator.next();
+//                    StatsBeans.InnerStatsBean innerStatsBean = new StatsBeans.InnerStatsBean();
+//                    innerStatsBean.setHeaderText(key);
+//
+//                    if (invisible == 0) {
+//                        innerStatsBean.setMainHeaderText(topKey);
+//                        invisible++;
+//                    } else {
+//                        innerStatsBean.setMainHeaderText("invisible");
+//                    }
+//
+//                    JSONObject regContent = regObj.getJSONObject(key);
+//                    Iterator regIterator = regContent.keys();
+//
+//                    int i = 0;
+//
+//                    nestingArrayList = new ArrayList<>();
+//
+//                    while (regIterator.hasNext()) {
+////                       get  years from nested node
+////                       give size to vertical recycler view
+//                        String regIteratorKey = (String) regIterator.next();
+//                        Log.e("Keys=2222==>   ", regIteratorKey);
+//                        List<String> nestedList = new ArrayList<>();
+//                        if (i != 0)
+//                            nestedList.add(regIteratorKey);
+//                        JSONObject dataObj = regContent.getJSONObject(regIteratorKey);
+//                        Iterator dataObjIterator = dataObj.keys();
+//
+//                        if (i == 0) {
+//                            nestedList.add("Year");
+//                            while (dataObjIterator.hasNext()) {
+////                            data from nested node
+//                                if (i == 0) {
+//                                    String dataIteratorKey = (String) dataObjIterator.next();
+//                                    nestedList.add(dataIteratorKey);
+//                                }
+//                            }
+//                            i++;
+//                        }
+//
+//                        while (dataObjIterator.hasNext()) {
+////                            data from nested node
+//                            String dataIteratorKey = (String) dataObjIterator.next();
+//                            if (i == 0) {
+//                                nestedList.add(dataIteratorKey);
+//                            } else {
+//                                nestedList.add(dataObj.getString(dataIteratorKey));
+//                            }
+//
+//                            Log.e("Keys=3333==>   ", dataIteratorKey);
+//                        }
+//
+//                        nestingArrayList.add(nestedList);
+//                        i++;
+//
+//                    }
+//                    innerStatsBean.setListArrayList(nestingArrayList);
+//                    innerStatsBeanArrayList.add(innerStatsBean);
+//
+//
+//                }
+//                invisible++;
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//
+//        }
+//        statsBeans.setInnerStatsBeansList(innerStatsBeanArrayList);
+//        statsBeansArrayList.add(statsBeans);
+//
+//        return statsBeansArrayList;
+//    }
+//}

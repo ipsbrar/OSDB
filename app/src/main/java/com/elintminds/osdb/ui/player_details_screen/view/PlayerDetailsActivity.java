@@ -19,7 +19,7 @@ import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
 import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
 import com.elintminds.osdb.ui.player_details_screen.presenter.PlayerDetailsPresenterClass;
-import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 import com.elintminds.osdb.ui.team_details_screen.view.StatsFragment;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -32,7 +32,7 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
     private CircleImageView user_Image;
     private ImageView backBtn;
     private boolean isFollowing = false;
-    private String age, teamName, divisionName, playerId, playerName, profilePic, dateOfBirth;
+    private String age, teamName, divisionName, playerId, playerName, profilePic, dateOfBirth, clubName;
     private PlayerDetailsPresenterClass playerDetailsPresenterClass;
     private PlayerDetailInfoBean playerDetailInfoBean;
     private ArrayList<String> careerHeightArray = new ArrayList<>();
@@ -71,6 +71,7 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
             divisionName = getIntent().getStringExtra("DIVISION_NAME");
             playerId = getIntent().getStringExtra("PLAYER_ID");
             playerName = getIntent().getStringExtra("PLAYER_NAME");
+            clubName = getIntent().getStringExtra("CLUB_NAME");
             dateOfBirth = getIntent().getStringExtra("dateOfBirth");
 
             RequestOptions requestOptions = new RequestOptions();
@@ -86,7 +87,7 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
             playerDetailsPresenterClass.getPlayerID(playerId, this, token);
 
             user_team.setText(teamName);
-            user_zone.setText(divisionName);
+            user_zone.setText(clubName);
 
         }
 

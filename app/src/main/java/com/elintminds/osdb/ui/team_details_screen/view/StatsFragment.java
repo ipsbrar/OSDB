@@ -17,15 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
-import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsActivity;
-import com.elintminds.osdb.ui.search_finding_screen.adapters.PlayerProfileAdapter;
-import com.elintminds.osdb.ui.search_finding_screen.beans.PlayersProfileBean;
-import com.elintminds.osdb.ui.search_finding_screen.view.PlayerFragment;
-import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 import com.elintminds.osdb.ui.team_details_screen.adapters.StatsMainAdapter;
-import com.elintminds.osdb.ui.team_details_screen.beans.StatsHorizontalBean;
-import com.elintminds.osdb.ui.team_details_screen.beans.StatsMainBean;
-import com.elintminds.osdb.ui.team_details_screen.beans.StatsVerticalBean;
 import com.elintminds.osdb.ui.team_details_screen.presenter.StatsPresenterClass;
 
 import java.util.ArrayList;

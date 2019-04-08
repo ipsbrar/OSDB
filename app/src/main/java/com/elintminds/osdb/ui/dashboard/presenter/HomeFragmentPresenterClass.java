@@ -2,6 +2,7 @@ package com.elintminds.osdb.ui.dashboard.presenter;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.data.network.WebserviceUrls;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
@@ -11,7 +12,10 @@ import com.elintminds.osdb.ui.dashboard.model.HomeFragmentInteractorClass;
 import com.elintminds.osdb.ui.dashboard.view.HomeFragmentView;
 import com.elintminds.osdb.ui.login.beans.UserBean;
 import com.elintminds.osdb.utils.ConnectivityReceiver;
+import com.google.gson.JsonElement;
 import io.reactivex.functions.Consumer;
+import org.json.JSONObject;
+import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,6 +80,44 @@ public class HomeFragmentPresenterClass<V extends HomeFragmentView, I extends Ho
                             }));
         }else{
             getMvpView().getError("No Internet connection");
+        }
+    }
+
+    @Override
+    public void AddVote(final Context context,String pollID, String optionID) {
+        if (ConnectivityReceiver.isConnected()) {
+            getMvpView().showProgressDialog();
+            getCompositeDisposable().add(getInteractor()
+                    .AddPollsComment(pollID, optionID)
+                    .subscribeOn(getSchedulerProvider().io())
+                    .observeOn(getSchedulerProvider().ui())
+                    .subscribe(new Consumer<Response<JsonElement>>() {
+                                   @Override
+                                   public void accept(Response<JsonElement> response) throws Exception {
+                                       if (response.isSuccessful()) {
+                                           getMvpView().AddVotePollsSuccess(response.body().toString());
+                                       } else {
+                                           if (response.code() == 409) {
+                                               Toast.makeText(context, "User already voted", Toast.LENGTH_SHORT).show();
+                                           }
+//                                           getMvpView().error(response.body().getString("error"), false);
+                                       }
+                                       getMvpView().hideProgressDialog();
+                                   }
+                               },
+                            new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    Log.e("PollData", "Error=======    " + throwable.toString());
+//                                    getMvpView().getError(throwable.toString());
+                                    Toast.makeText(context, throwable.toString(), Toast.LENGTH_SHORT).show();
+                                    getMvpView().hideProgressDialog();
+                                }
+                            }));
+
+        } else {
+
+            getMvpView().getError("No internet found");
         }
     }
 

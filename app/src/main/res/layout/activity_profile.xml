@@ -52,7 +52,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 app:civ_circle_background_color="@color/color_D8D8D8"
-                android:src="@drawable/ic_user_image"
+                android:src="@drawable/img_player_empty"
         />
         <ImageView
                 android:id="@+id/edit_img_btn"

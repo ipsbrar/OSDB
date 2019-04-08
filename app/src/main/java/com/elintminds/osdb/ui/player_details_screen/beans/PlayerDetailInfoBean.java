@@ -1,14 +1,49 @@
 package com.elintminds.osdb.ui.player_details_screen.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class PlayerDetailInfoBean implements Serializable {
 
 
     private String playerHeight, playerWeight, playerCollege, placeOfBirth, playerPosition;
     private String playerFanMailAddress, playerSportsAgent, playerTelevision, currentContract, businessVentures;
-    private String endorsementDeals, communityWork, careerHighlight;
+    private String endorsementDeals, communityWork, careerHighlight, jersey, draft;
 
+    private ArrayList<CharityCommunityBeans> charityArrayList;
+    private ArrayList<CharityCommunityBeans> communityArrayList;
+
+    public ArrayList<CharityCommunityBeans> getCommunityArrayList() {
+        return communityArrayList;
+    }
+
+    public void setCommunityArrayList(ArrayList<CharityCommunityBeans> communityArrayList) {
+        this.communityArrayList = communityArrayList;
+    }
+
+    public ArrayList<CharityCommunityBeans> getCharityArrayList() {
+        return charityArrayList;
+    }
+
+    public void setCharityArrayList(ArrayList<CharityCommunityBeans> charityArrayList) {
+        this.charityArrayList = charityArrayList;
+    }
+
+    public String getJersey() {
+        return jersey;
+    }
+
+    public void setJersey(String jersey) {
+        this.jersey = jersey;
+    }
+
+    public String getDraft() {
+        return draft;
+    }
+
+    public void setDraft(String draft) {
+        this.draft = draft;
+    }
 
     public String getPlayerHeight() {
         return playerHeight;

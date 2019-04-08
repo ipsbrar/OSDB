@@ -41,7 +41,7 @@ public class PollAdapter extends RecyclerView.Adapter<PollAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PollAdapter.ViewHolder holder, final int i) {
-PollAdapterBean pollAdapterBean = dataList.get(i);
+        PollAdapterBean pollAdapterBean = dataList.get(i);
         holder.pollOptionParentLay.removeAllViews();
         holder.pollHeading.setText(pollAdapterBean.getText() != null ? pollAdapterBean.getText() : "");
         if (pollAdapterBean.getPublishedDate() != null)
@@ -59,17 +59,17 @@ PollAdapterBean pollAdapterBean = dataList.get(i);
             pollLabel.setText(options[j]);
             pollLabel.setTextColor(context.getResources().getColor(R.color.color_2E384D));
             pollName.setText(pollOptionsList.get(j).getText());
-        /*    if (dataList.get(i).getVisible()) {
+//            if (pollAdapterBean.getResult() != null) {
                 progressBar.setProgress(40);
                 progressPer.setText(progressBar.getProgress() + "%");
                 pollName.setTextColor(context.getResources().getColor(R.color.color_white));
                 pollLabel.setTextColor(context.getResources().getColor(R.color.color_white));
-            } else {
-                progressBar.setProgress(0);
-                progressPer.setText("");
-                pollName.setTextColor(context.getResources().getColor(R.color.color_2E384D));
-                pollLabel.setTextColor(context.getResources().getColor(R.color.color_2E384D));
-            }*/
+//            } else {
+//                progressBar.setProgress(0);
+//                progressPer.setText("");
+//                pollName.setTextColor(context.getResources().getColor(R.color.color_2E384D));
+//                pollLabel.setTextColor(context.getResources().getColor(R.color.color_2E384D));
+//            }
 
 
         }

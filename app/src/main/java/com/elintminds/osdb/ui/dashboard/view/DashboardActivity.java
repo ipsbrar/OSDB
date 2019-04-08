@@ -93,7 +93,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
 
     public void changeFragment(Fragment fragment, String tag) {
-        toolbarMenuVisibility(tag);
+//        toolbarMenuVisibility(tag);
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.dashboard_container, fragment, tag)
                 .commit();
@@ -102,8 +102,8 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     public void toolbarMenuVisibility(String tag) {
         if (tag.equals(HomeFragment.TAG)) {
-            mTextMessage.setVisibility(View.GONE);
-            homelogo.setVisibility(View.VISIBLE);
+            mTextMessage.setVisibility(View.VISIBLE);
+            homelogo.setVisibility(View.GONE);
         } else {
             mTextMessage.setVisibility(View.VISIBLE);
             homelogo.setVisibility(View.GONE);
@@ -199,6 +199,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     private void homeSelected() {
         optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
+        toolbarMenuVisibility(HomeFragment.TAG);
         optionMenuImg.setVisibility(View.VISIBLE);
         tabHomeIcon.setSelected(true);
         tabHomeTxt.setSelected(true);
@@ -219,6 +220,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     private void latestSelected() {
         optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
         optionMenuImg.setVisibility(View.VISIBLE);
+        toolbarMenuVisibility(LatestFragment.TAG);
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -237,6 +239,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     private void liveSelected() {
         optionMenuImg.setImageDrawable(null);
+
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -256,6 +259,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     private void pollsSelected() {
         optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_calendar));
         optionMenuImg.setVisibility(View.VISIBLE);
+        toolbarMenuVisibility(PollFragment.TAG);
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 
@@ -275,6 +279,7 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     private void discussionSelected() {
         optionMenuImg.setImageDrawable(getResources().getDrawable(R.drawable.ic_add));
         optionMenuImg.setVisibility(View.GONE);
+        toolbarMenuVisibility(DiscussionFragment.TAG);
         tabHomeIcon.setSelected(false);
         tabHomeTxt.setSelected(false);
 

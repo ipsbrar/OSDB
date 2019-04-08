@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
-import com.elintminds.osdb.ui.team_details_screen.adapters.StatsBeans;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 import com.elintminds.osdb.ui.team_details_screen.model.StatsInteractor;
 import com.elintminds.osdb.ui.team_details_screen.model.StatsInteractorClass;
 import com.elintminds.osdb.ui.team_details_screen.view.StatsView;
@@ -17,7 +17,6 @@ import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public class StatsPresenterClass<V extends StatsView, I extends StatsInteractor>

@@ -42,14 +42,15 @@ public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView
             , "David Bakhtiari", "Evan Baylis", "Kapri Bibbs", "Tim Boyle"};
     private TeamDetailsPresenterClass teamDetailsPresenterClass;
     private SwipeRefreshLayout swipe_refresh;
-    private String teamName, divisionName, teamID;
+    private String teamName, divisionName, teamID,clubName;
 
-    public static TeamPlayersFragment getInstance(String teamName, String divisionName, String teamId) {
+    public static TeamPlayersFragment getInstance(String teamName, String divisionName, String teamId,String clubName) {
         TeamPlayersFragment teamPlayersFragment = new TeamPlayersFragment();
         Bundle bundle = new Bundle();
         bundle.putString("TEAM_NAME", teamName);
         bundle.putString("DIVISION_NAME", divisionName);
         bundle.putString("TEAM_ID", teamId);
+        bundle.putString("CLUB_NAME", clubName);
         teamPlayersFragment.setArguments(bundle);
         return teamPlayersFragment;
     }
@@ -94,6 +95,7 @@ public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView
             teamName = bundle.getString("TEAM_NAME");
             divisionName = bundle.getString("DIVISION_NAME");
             teamID = bundle.getString("TEAM_ID");
+            clubName = bundle.getString("CLUB_NAME");
 
             teamDetailsPresenterClass.getTeamID(teamID != null ? teamID : "33");
         }
@@ -115,6 +117,7 @@ public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView
         intent.putExtra("PLAYER_NAME", dataList.get(position).getFullName());
         intent.putExtra("TEAM_NAME", teamName);
         intent.putExtra("DIVISION_NAME", divisionName);
+        intent.putExtra("CLUB_NAME", clubName);
         String imgPic = null;
         if (!dataList.get(position).getHeadshots().equalsIgnoreCase("")) {
             try {
