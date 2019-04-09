@@ -3,6 +3,7 @@ package com.elintminds.osdb.ui.dashboard.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,12 @@ import com.elintminds.osdb.ui.dashboard.beans.NewsAdapterBean;
 import com.elintminds.osdb.ui.dashboard.view.DashboardView;
 import com.elintminds.osdb.utils.Utils;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHolder> {
     private Context context;
@@ -49,7 +55,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
             holder.newsTitle.setText(item.getTitle());
             Utils.justify(holder.newsTitle);
         }
-
+        if (item.getCreatedAt() != null && !TextUtils.isEmpty(item.getCreatedAt())) {
+            holder.newsDateTime.setText(getFormatedDate(item.getCreatedAt()));
+        }
     }
 
     @Override
@@ -84,5 +92,20 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 
         this.dataList = data;
         Log.e("DA LIST", "" + dataList.size());
+    }
+
+    private String getFormatedDate(String rawDate) {
+        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+        DateFormat targetFormat = new SimpleDateFormat("MMM. dd, yyyy");
+//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+
+            Date date = originalFormat.parse(rawDate);
+            String formattedDate = targetFormat.format(date);
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

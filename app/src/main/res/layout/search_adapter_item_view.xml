@@ -6,46 +6,78 @@
         android:layout_marginTop="1dp"
         android:padding="22dp"
         android:background="@color/color_white">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:id="@+id/rl_other"
+                    android:layout_height="wrap_content">
 
-    <ImageView
-            android:id="@+id/team_logo"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
-            android:contentDescription="@string/team_logo"
-            android:src="@drawable/img_player_empty"
-            android:layout_centerVertical="true"/>
 
-    <TextView
-            android:id="@+id/slug_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingLeft="@dimen/dp_15"
-            android:paddingRight="@dimen/dp_15"
-            android:paddingBottom="5dp"
-            android:fontFamily="@font/rubik_light"
-            android:text="NFL"
-            android:background="@drawable/follow_following_btn_bg"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/sp_13"
-            android:textColor="@color/follow_following_text_color" />
+        <ImageView
+                android:id="@+id/team_logo"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:contentDescription="@string/team_logo"
+                android:src="@drawable/img_player_empty"
+                android:layout_centerVertical="true"/>
 
-    <TextView
-            android:id="@+id/user_name"
+        <TextView
+                android:id="@+id/slug_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingBottom="5dp"
+                android:fontFamily="@font/rubik_light"
+                android:text="NFL"
+                android:background="@drawable/follow_following_btn_bg"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_13"
+                android:textColor="@color/follow_following_text_color"/>
+
+        <TextView
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/career_highlights_info"
+                android:layout_toRightOf="@+id/team_logo"
+                android:layout_toLeftOf="@+id/slug_name"
+                android:layout_centerVertical="true"
+                android:maxLines="1"
+                android:textSize="@dimen/sp_15"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/color_black"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/rl_news_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-
-            android:fontFamily="@font/rubik_medium"
-            android:text="@string/career_highlights_info"
-            android:layout_toRightOf="@+id/team_logo"
-            android:layout_toLeftOf="@+id/slug_name"
-            android:layout_centerVertical="true"
-            android:maxLines="1"
-            android:textSize="@dimen/sp_15"
-            android:padding="@dimen/dp_10"
-            android:textColor="@color/color_black" />
-
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/txt_news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/career_highlights_info"
+                android:maxLines="1"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/color_black"/>
+        <com.elintminds.osdb.utils.TagView
+                xmlns:tagview="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/tag_group"
+                android:layout_below="@+id/txt_news_title"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                tagview:lineMargin="5dp"
+                tagview:tagMargin="5dp"
+                tagview:textPaddingLeft="8dp"
+                tagview:textPaddingTop="5dp"
+                tagview:textPaddingRight="8dp"
+                tagview:textPaddingBottom="5dp"/>
+    </RelativeLayout>
 </RelativeLayout>

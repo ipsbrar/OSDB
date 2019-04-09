@@ -12,9 +12,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
+import com.elintminds.osdb.utils.Tag;
+import com.elintminds.osdb.utils.TagView;
 import com.elintminds.osdb.utils.Utils;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class DetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -23,9 +34,11 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
     private Menu collapsedMenu;
     private boolean appBarExpanded = true;
     private ImageView image, backImg, shareImg;
-    private TextView header_txt, detail_txt, toolbarTxt, view_game_name;
+    private TextView header_txt, detail_txt, toolbarTxt, view_game_name, date_txt;
     private String headerText, longText, imgUrl, slugName;
     private ImageView locButton;
+    private TagView tag_group;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +53,8 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         view_game_name = findViewById(R.id.view_game_name);
         backImg = findViewById(R.id.backImg);
         shareImg = findViewById(R.id.shareImg);
+        date_txt = findViewById(R.id.date_txt);
+        tag_group = findViewById(R.id.tag_group);
         backImg.setOnClickListener(this);
         shareImg.setOnClickListener(this);
 
@@ -48,6 +63,8 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
             headerText = getIntent().getStringExtra("title");
             longText = getIntent().getStringExtra("bigContent");
             slugName = getIntent().getStringExtra("teamName");
+            String[] arrayString = (String[]) getIntent().getSerializableExtra("arrayString");
+            String date = getIntent().getStringExtra("date");
 
             if (imgUrl != null) {
                 RequestOptions requestOptions = new RequestOptions();
@@ -60,8 +77,29 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
             }
             if (longText != null) {
                 detail_txt.setText(Html.fromHtml(longText).toString());
-//                Utils.justify(detail_txt);
             }
+            if (date != null) {
+                String formatedDate = getFormatedDate(date);
+                long timeInLong = getLongTime(date);
+                date_txt.setText(formatedDate + "  " + Utils.getTimeAgo(timeInLong));
+            } else {
+                date_txt.setText("");
+            }
+            List<Tag> tagList = new ArrayList<>();
+            if (arrayString != null && arrayString.length > 0) {
+                for (int i = 0; i < arrayString.length; i++) {
+                    Tag tag = new Tag(arrayString[i]);
+                    tag.setBackground(getDrawable(R.drawable.red_capsule_bg));
+                    tagList.add(tag);
+                }
+                view_game_name.setVisibility(View.GONE);
+                tag_group.setVisibility(View.VISIBLE);
+                tag_group.addTags(tagList);
+            } else {
+                view_game_name.setVisibility(View.VISIBLE);
+                tag_group.setVisibility(View.GONE);
+            }
+
             view_game_name.setText(slugName != null ? slugName : "NFL");
         }
 
@@ -109,5 +147,34 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
                 startActivity(Intent.createChooser(sharingIntent, "Share"));
             }
         }
+    }
+
+    private String getFormatedDate(String rawDate) {
+        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+        DateFormat targetFormat = new SimpleDateFormat("MMM. dd, yyyy");
+//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+
+            Date date = originalFormat.parse(rawDate);
+            String formattedDate = targetFormat.format(date);
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    private long getLongTime(String rawDate) {
+        String string_date = rawDate;
+
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+            Date d = f.parse(string_date);
+            long milliseconds = d.getTime();
+            return milliseconds;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0L;
     }
 }

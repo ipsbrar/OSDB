@@ -20,7 +20,9 @@ import android.text.TextPaint;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.text.style.ImageSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -246,5 +248,14 @@ public class Utils {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(milliSeconds);
         return formatter.format(calendar.getTime());
+    }
+
+    private Utils() throws InstantiationException {
+        throw new InstantiationException("This class is not for instantiation");
+    }
+
+    public static int dipToPx(Context c,float dipValue) {
+        DisplayMetrics metrics = c.getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
     }
 }

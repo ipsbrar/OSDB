@@ -1,5 +1,8 @@
 package com.elintminds.osdb.ui.search_screen.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SearchAdapterRemoteBean {
     private String playerName;
     private String playerAge;
@@ -16,6 +19,15 @@ public class SearchAdapterRemoteBean {
     private String longContent;
     private boolean isBreakingNews;
     private int searchType;
+    private String[] stringArrayList;
+
+    public String[] getStringArrayList() {
+        return stringArrayList;
+    }
+
+    public void setStringArrayList(String[] stringArrayList) {
+        this.stringArrayList = stringArrayList;
+    }
 
     public int getSearchType() {
         return searchType;

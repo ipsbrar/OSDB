@@ -3,7 +3,11 @@ package com.elintminds.osdb.ui.team_details_screen.presenter;
 import android.content.Context;
 import android.util.Log;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
+import com.elintminds.osdb.ui.DemoTable.Cell;
+import com.elintminds.osdb.ui.DemoTable.ColumnHeader;
+import com.elintminds.osdb.ui.DemoTable.RowHeader;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeanVertical;
 import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 import com.elintminds.osdb.ui.team_details_screen.model.StatsInteractor;
 import com.elintminds.osdb.ui.team_details_screen.model.StatsInteractorClass;
@@ -79,96 +83,215 @@ public class StatsPresenterClass<V extends StatsView, I extends StatsInteractor>
     }
 
     private void StatsData(JSONObject jsonObject) {
-        long startTime = System.currentTimeMillis();
-        ArrayList<StatsBeans> statsBeansArrayList = new ArrayList<>();
-        StatsBeans statsBeans = new StatsBeans();
-        ArrayList<StatsBeans.InnerStatsBean> innerStatsBeanArrayList = new ArrayList<>();
-        ArrayList<List<String>> nestingArrayList = null;
-        Iterator topIterator = jsonObject.keys();
-        int invisible = 0;
-        int size = jsonObject.names().length();
-        while (topIterator.hasNext()) {
+        List<RowHeader> rowHeaderArrayList = null;
+        List<ColumnHeader> columnHeaderArrayList = null;
+        List<List<Cell>> cellListMain = null;
+
+        Iterator mainHeaderKey = jsonObject.keys();
+        ArrayList<StatsBeanVertical> statsBeanVerticalArrayList = new ArrayList<>();
+        StatsBeanVertical statsBeanVertical = null;
+        while (mainHeaderKey.hasNext()) {
+
+            String mainStringKey = (String) mainHeaderKey.next();
+
             try {
-//                get value from top key
-                String topKey = (String) topIterator.next();
-                invisible = 0;
-                JSONObject regObj = jsonObject.getJSONObject(topKey);
-                Iterator iterator = regObj.keys();
-                while (iterator.hasNext()) {
-//                    get nested node (title) key is a title
-                    String key = (String) iterator.next();
-                    StatsBeans.InnerStatsBean innerStatsBean = new StatsBeans.InnerStatsBean();
-                    innerStatsBean.setHeaderText(key);
+                JSONObject regObj = jsonObject.getJSONObject(mainStringKey);
+                Iterator headerIterator = regObj.keys();
 
-                    if (invisible == 0) {
-                        innerStatsBean.setMainHeaderText(topKey);
-                        invisible++;
-                    } else {
-                        innerStatsBean.setMainHeaderText("invisible");
-                    }
-
-                    JSONObject regContent = regObj.getJSONObject(key);
-                    Iterator regIterator = regContent.keys();
-
+                while (headerIterator.hasNext()) {
+                    StatsBeanVertical.TableList tableList = new StatsBeanVertical.TableList();
                     int i = 0;
 
-                    nestingArrayList = new ArrayList<>();
 
-                    while (regIterator.hasNext()) {
-//                       get  years from nested node
-//                       give size to vertical recycler view
-                        String regIteratorKey = (String) regIterator.next();
-                        Log.e("Keys=2222==>   ", regIteratorKey);
-                        List<String> nestedList = new ArrayList<>();
-                        if (i != 0)
-                            nestedList.add(regIteratorKey);
-                        JSONObject dataObj = regContent.getJSONObject(regIteratorKey);
-                        Iterator dataObjIterator = dataObj.keys();
+                    String headerKey = (String) headerIterator.next();
 
-                        if (i == 0) {
-                            nestedList.add("Year");
-                            while (dataObjIterator.hasNext()) {
-//                            data from nested node
-                                if (i == 0) {
-                                    String dataIteratorKey = (String) dataObjIterator.next();
-                                    nestedList.add(dataIteratorKey);
-                                }
-                            }
-                            i++;
-                        }
 
-                        while (dataObjIterator.hasNext()) {
-//                            data from nested node
-                            String dataIteratorKey = (String) dataObjIterator.next();
+                    JSONObject puntsObj = regObj.getJSONObject(headerKey);
+                    Iterator puntsIterator = puntsObj.keys();
+                    rowHeaderArrayList = new ArrayList<>();
+                    columnHeaderArrayList = new ArrayList<>();
+                    cellListMain = new ArrayList<>();
+                    while (puntsIterator.hasNext()) {
+                        //            set main header
+                        statsBeanVertical = new StatsBeanVertical();
+                        statsBeanVertical.setMainHeader(mainStringKey);
+
+                        //            set  header
+                        statsBeanVertical.setHeader(headerKey);
+//                     get year (rows data)
+                        String rowsData = (String) puntsIterator.next();
+                        RowHeader rowHeader = new RowHeader(rowsData);
+                        rowHeaderArrayList.add(rowHeader);
+
+                        JSONObject columnData = puntsObj.getJSONObject(rowsData);
+                        Iterator columnIterator = columnData.keys();
+//                        get column header and cells data
+
+                        List<Cell> cellList = new ArrayList<>();
+                        while (columnIterator.hasNext()) {
+                            String columnString = (String) columnIterator.next();
                             if (i == 0) {
-                                nestedList.add(dataIteratorKey);
+                                ColumnHeader columnHeader = new ColumnHeader(columnString);
+                                columnHeaderArrayList.add(columnHeader);
+                                Cell cell = new Cell(columnData.getString(columnString));
+                                cellList.add(cell);
                             } else {
-                                nestedList.add(dataObj.getString(dataIteratorKey));
+                                Cell cell = new Cell(columnData.getString(columnString));
+                                cellList.add(cell);
                             }
-
-                            Log.e("Keys=3333==>   ", dataIteratorKey);
                         }
-
-                        nestingArrayList.add(nestedList);
                         i++;
-
+                        cellListMain.add(cellList);
                     }
-                    innerStatsBean.setListArrayList(nestingArrayList);
-                    innerStatsBeanArrayList.add(innerStatsBean);
-
-
+                    tableList.setCellList(cellListMain);
+                    tableList.setColumnHeaderList(columnHeaderArrayList);
+                    tableList.setRowHeaderList(rowHeaderArrayList);
+                    statsBeanVertical.setTableList(tableList);
+                    statsBeanVerticalArrayList.add(statsBeanVertical);
                 }
-                invisible++;
+
+
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-
         }
-        statsBeans.setInnerStatsBeansList(innerStatsBeanArrayList);
-        statsBeansArrayList.add(statsBeans);
-        long endTime = System.currentTimeMillis();
-        Log.e("TimeSuccessStats", endTime - startTime + "");
-        getMvpView().success(statsBeansArrayList);
+        getMvpView().success(statsBeanVerticalArrayList);
+
+//        if (jsonObject.has("REG")) {
+//            try {
+//                JSONObject regObj = jsonObject.getJSONObject("REG");
+//                if (regObj.has("punts")) {
+//                    JSONObject puntsObj = regObj.getJSONObject("punts");
+//                    Iterator puntsIterator = puntsObj.keys();
+//
+//                    while (puntsIterator.hasNext()) {
+////                get year (rows data)
+//                        String rowsData = (String) puntsIterator.next();
+//                        RowHeader rowHeader = new RowHeader(rowsData);
+//                        rowHeaderArrayList.add(rowHeader);
+//
+//                        JSONObject columnData = puntsObj.getJSONObject(rowsData);
+//                        Iterator columnIterator = columnData.keys();
+////                        get column header and cells data
+//
+//                        List<Cell> cellList = new ArrayList<>();
+//                        while (columnIterator.hasNext()) {
+//                            String columnString = (String) columnIterator.next();
+//                            if (i == 0) {
+//                                ColumnHeader columnHeader = new ColumnHeader(columnString);
+//                                columnHeaderArrayList.add(columnHeader);
+//                                Cell cell = new Cell(columnData.getString(columnString));
+//                                cellList.add(cell);
+//                            } else {
+//                                Cell cell = new Cell(columnData.getString(columnString));
+//                                cellList.add(cell);
+//                            }
+//                        }
+//                        i++;
+//                        cellListMain.add(cellList);
+//
+//                    }
+//                    getMvpView().success(columnHeaderArrayList, rowHeaderArrayList, cellListMain);
+//                }
+//
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
+//    private void StatsData(JSONObject jsonObject) {
+//        long startTime = System.currentTimeMillis();
+//        ArrayList<StatsBeans> statsBeansArrayList = new ArrayList<>();
+//        StatsBeans statsBeans = new StatsBeans();
+//        ArrayList<StatsBeans.InnerStatsBean> innerStatsBeanArrayList = new ArrayList<>();
+//        ArrayList<List<String>> nestingArrayList = null;
+//        Iterator topIterator = jsonObject.keys();
+//        int invisible = 0;
+//        int size = jsonObject.names().length();
+//        while (topIterator.hasNext()) {
+//            try {
+////                get value from top key
+//                String topKey = (String) topIterator.next();
+//                invisible = 0;
+//                JSONObject regObj = jsonObject.getJSONObject(topKey);
+//                Iterator iterator = regObj.keys();
+//                while (iterator.hasNext()) {
+////                    get nested node (title) key is a title
+//                    String key = (String) iterator.next();
+//                    StatsBeans.InnerStatsBean innerStatsBean = new StatsBeans.InnerStatsBean();
+//                    innerStatsBean.setHeaderText(key);
+//
+//                    if (invisible == 0) {
+//                        innerStatsBean.setMainHeaderText(topKey);
+//                        invisible++;
+//                    } else {
+//                        innerStatsBean.setMainHeaderText("invisible");
+//                    }
+//
+//                    JSONObject regContent = regObj.getJSONObject(key);
+//                    Iterator regIterator = regContent.keys();
+//
+//                    int i = 0;
+//
+//                    nestingArrayList = new ArrayList<>();
+//
+//                    while (regIterator.hasNext()) {
+////                       get  years from nested node
+////                       give size to vertical recycler view
+//                        String regIteratorKey = (String) regIterator.next();
+//                        Log.e("Keys=2222==>   ", regIteratorKey);
+//                        List<String> nestedList = new ArrayList<>();
+//                        if (i != 0)
+//                            nestedList.add(regIteratorKey);
+//                        JSONObject dataObj = regContent.getJSONObject(regIteratorKey);
+//                        Iterator dataObjIterator = dataObj.keys();
+//
+//                        if (i == 0) {
+//                            nestedList.add("Year");
+//                            while (dataObjIterator.hasNext()) {
+////                            data from nested node
+//                                if (i == 0) {
+//                                    String dataIteratorKey = (String) dataObjIterator.next();
+//                                    nestedList.add(dataIteratorKey);
+//                                }
+//                            }
+//                            i++;
+//                        }
+//
+//                        while (dataObjIterator.hasNext()) {
+////                            data from nested node
+//                            String dataIteratorKey = (String) dataObjIterator.next();
+//                            if (i == 0) {
+//                                nestedList.add(dataIteratorKey);
+//                            } else {
+//                                nestedList.add(dataObj.getString(dataIteratorKey));
+//                            }
+//
+//                            Log.e("Keys=3333==>   ", dataIteratorKey);
+//                        }
+//
+//                        nestingArrayList.add(nestedList);
+//                        i++;
+//
+//                    }
+//                    innerStatsBean.setListArrayList(nestingArrayList);
+//                    innerStatsBeanArrayList.add(innerStatsBean);
+//
+//
+//                }
+//                invisible++;
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//
+//        }
+//        statsBeans.setInnerStatsBeansList(innerStatsBeanArrayList);
+//        statsBeansArrayList.add(statsBeans);
+//        long endTime = System.currentTimeMillis();
+//        Log.e("TimeSuccessStats", endTime - startTime + "");
+//        getMvpView().success(statsBeansArrayList);
+//    }
 }

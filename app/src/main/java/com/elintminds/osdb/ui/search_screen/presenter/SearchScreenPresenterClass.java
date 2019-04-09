@@ -1,6 +1,7 @@
 package com.elintminds.osdb.ui.search_screen.presenter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import com.elintminds.osdb.data.app_prefs.AppPreferenceHelperClass;
 import com.elintminds.osdb.ui.base.presenter.BasePresenterClass;
@@ -18,6 +19,8 @@ import org.json.JSONObject;
 import retrofit2.Response;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SearchScreenPresenterClass<V extends SearchScreenView, I extends SearchScreenInteractor>
         extends BasePresenterClass<V, I> implements SearchScreenPresenter<V, I> {
@@ -64,7 +67,6 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
 
     private void parseData(SearchModal.data homeData) {
         ArrayList<SearchAdapterRemoteBean> searchAdapterRemoteBeanArrayList = new ArrayList<>();
-
 
 
         if (homeData.getPlayerArrayList() != null && homeData.getPlayerArrayList().size() > 0) {
@@ -115,23 +117,44 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
             newsBean.setSearchType(SearchAdapter.HEADING_TYPE);
             newsBean.setType("News");
             searchAdapterRemoteBeanArrayList.add(newsBean);
+            List<String> stringArrayList ;
             for (int i = 0; i < homeData.getNewsArrayList().size(); i++) {
                 SearchAdapterRemoteBean searchAdapterRemoteBean = new SearchAdapterRemoteBean();
                 int newsID = homeData.getNewsArrayList().get(i).getNewsId();
                 String title = homeData.getNewsArrayList().get(i).getNewsTitle();
                 String content = homeData.getNewsArrayList().get(i).getShortContent();
                 String createdAt = homeData.getNewsArrayList().get(i).getCreatedAt();
-                String tags = homeData.getNewsArrayList().get(i).getTags();
                 String imgUrl = homeData.getNewsArrayList().get(i).getImageUrl();
                 String slug = null;
-                if (homeData.getNewsArrayList().get(i).getSlugName() != null) {
+                stringArrayList = new ArrayList<>();
+                if (homeData.getNewsArrayList().get(i).getSlugName() != null
+                        && !homeData.getNewsArrayList().get(i).getSlugName().equalsIgnoreCase("")) {
                     slug = homeData.getNewsArrayList().get(i).getSlugName();
+                    stringArrayList.add(slug);
                 } else {
                     if (homeData.getNewsArrayList().get(i).getNewsSportsArrayList() != null
                             && homeData.getNewsArrayList().get(i).getNewsSportsArrayList().size() > 0
-                            && homeData.getNewsArrayList().get(i).getNewsSportsArrayList().get(0).getSport() != null)
+                            && homeData.getNewsArrayList().get(i).getNewsSportsArrayList().get(0).getSport() != null
+                            && homeData.getNewsArrayList().get(i).getNewsSportsArrayList().get(0).getSport().getName() != null
+                            && !homeData.getNewsArrayList().get(i).getNewsSportsArrayList().get(0).getSport().getName().equalsIgnoreCase("")) {
                         slug = homeData.getNewsArrayList().get(i).getNewsSportsArrayList().get(0).getSport().getName();
+                        stringArrayList.add(slug);
+                    }
                 }
+                String tags = homeData.getNewsArrayList().get(i).getTags();
+                if (tags != null) {
+                    if (tags.contains(",")) {
+                        List<String> items = Arrays.asList(tags.split("\\s*,\\s*"));
+                        for (int j = 0; j < items.size(); j++) {
+                            if (!items.get(j).equalsIgnoreCase(""))
+                                stringArrayList.add(items.get(j));
+                        }
+                    } else {
+                        if (!TextUtils.isEmpty(tags))
+                        stringArrayList.add(homeData.getNewsArrayList().get(i).getTags());
+                    }
+                }
+
 
                 String imgPic = null;
                 if (imgUrl != null && !imgUrl.equalsIgnoreCase("")) {
@@ -163,11 +186,13 @@ public class SearchScreenPresenterClass<V extends SearchScreenView, I extends Se
                 searchAdapterRemoteBean.setTitle(title == null ? "" : title);
                 searchAdapterRemoteBean.setType("News");
                 searchAdapterRemoteBean.setSearchType(SearchAdapter.ITEM_TYPE);
+                String[] mStringArray = new String[stringArrayList.size()];
+                mStringArray = stringArrayList.toArray(mStringArray);
+                searchAdapterRemoteBean.setStringArrayList(mStringArray);
                 searchAdapterRemoteBeanArrayList.add(searchAdapterRemoteBean);
             }
 
         }
-
 
 
         if (homeData.getTeamArrayList() != null && homeData.getTeamArrayList().size() > 0) {

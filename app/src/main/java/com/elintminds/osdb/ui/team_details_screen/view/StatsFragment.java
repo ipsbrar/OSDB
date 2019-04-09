@@ -16,7 +16,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.ui.DemoTable.Cell;
+import com.elintminds.osdb.ui.DemoTable.ColumnHeader;
+import com.elintminds.osdb.ui.DemoTable.RowHeader;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeanVertical;
 import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 import com.elintminds.osdb.ui.team_details_screen.adapters.StatsMainAdapter;
 import com.elintminds.osdb.ui.team_details_screen.presenter.StatsPresenterClass;
@@ -125,22 +129,34 @@ public class StatsFragment extends BaseFragment implements StatsView {
         statsRV.setAdapter(statsMainAdapter);
     }
 
+//    @Override
+//    public void success(ArrayList<StatsBeans> statsData) {
+//        if (statsData != null && statsData.size() > 0) {
+//            if (statsMainAdapter == null) {
+//                statsMainAdapter = new StatsMainAdapter(getActivity(), arrayList);
+//                statsRV.setAdapter(statsMainAdapter);
+//            } else {
+//                arrayList = statsData.get(0).getInnerStatsBeansList();
+//                statsMainAdapter.setData(arrayList);
+//            }
+//            statsRV.setVisibility(View.VISIBLE);
+//            no_data.setVisibility(View.GONE);
+//        } else {
+//            statsRV.setVisibility(View.GONE);
+//            no_data.setVisibility(View.VISIBLE);
+//        }
+//    }
+
     @Override
-    public void success(ArrayList<StatsBeans> statsData) {
-        if (statsData != null && statsData.size() > 0) {
-            if (statsMainAdapter == null) {
-                statsMainAdapter = new StatsMainAdapter(getActivity(), arrayList);
-                statsRV.setAdapter(statsMainAdapter);
-            } else {
-                arrayList = statsData.get(0).getInnerStatsBeansList();
-                statsMainAdapter.setData(arrayList);
-            }
-            statsRV.setVisibility(View.VISIBLE);
-            no_data.setVisibility(View.GONE);
-        } else {
-            statsRV.setVisibility(View.GONE);
-            no_data.setVisibility(View.VISIBLE);
-        }
+    public void success(List<ColumnHeader> columnHeaderList, List<RowHeader> rowHeaderList, List<List<Cell>> cellList) {
+
+
+
+    }
+
+    @Override
+    public void success(ArrayList<StatsBeanVertical> verticalArrayList) {
+
     }
 
     @Override

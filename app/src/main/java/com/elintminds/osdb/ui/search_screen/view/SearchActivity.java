@@ -124,8 +124,10 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
             intent.putExtra("title", searchAdapterRemoteBean.getTitle());
             intent.putExtra("bigContent", searchAdapterRemoteBean.getLongContent());
             intent.putExtra("teamName", searchAdapterRemoteBean.getSlugName());
-//            intent.putExtra("date", date);
+            intent.putExtra("date", searchAdapterRemoteBean.getCreatedAt());
+            intent.putExtra("arrayString", searchAdapterRemoteBean.getStringArrayList());
 //            intent.putExtra("timeStamp", timeStamp);
+
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, TeamDetailsActivity.class);

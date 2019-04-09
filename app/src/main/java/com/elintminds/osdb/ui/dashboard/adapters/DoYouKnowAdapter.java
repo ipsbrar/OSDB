@@ -42,6 +42,9 @@ public class DoYouKnowAdapter extends RecyclerView.Adapter<DoYouKnowAdapter.MyVi
             requestOptions.placeholder(R.drawable.place);
             Glide.with(context).setDefaultRequestOptions(requestOptions)
                     .load(didYouKnow.getAssets().get(0).getFileName()).into(myViewHolder.view_5_image);
+        }else{
+            Glide.with(context)
+                    .load(R.drawable.place).into(myViewHolder.view_5_image);
         }
     }
 

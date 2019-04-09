@@ -10,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,12 @@ import com.elintminds.osdb.utils.CardPaddingItemDecoration;
 import com.elintminds.osdb.utils.Utils;
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class NewsFragment extends BaseFragment implements DashboardView.NewsItemsClickListener, View.OnClickListener, NewsFragmentView {
     public static final String TAG = "NewsFragment";
@@ -194,10 +200,17 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
                 //    news_frag_game_name.setText(newsList.getBreakingNews().get(0).getTitle());
                 //    Utils.justify(news_frag_game_name);
                 // }
+                if (newsList.getBreakingNews().get(0).getCreatedAt() != null && !TextUtils.isEmpty(newsList.getBreakingNews().get(0).getCreatedAt()))
+                    txt_date_breaking_news.setText(getFormatedDate(newsList.getBreakingNews().get(0).getCreatedAt()));
+
+                long timeInLong = getLongTime(newsList.getBreakingNews().get(0).getCreatedAt() != null ? newsList.getBreakingNews().get(0).getCreatedAt() : "2019-02-21 03:24:54");
+
+                txt_time_stamp_breaking_news.setText(Utils.getTimeAgo(timeInLong));
+
                 imgUrl = (String) newsList.getBreakingNews().get(0).getImageUrl();
                 title = newsList.getBreakingNews().get(0).getTitle();
                 bigContent = newsList.getBreakingNews().get(0).getLongContent();
-//        ,teamName,date,timeStamp;                 pending
+
             } else {
                 topNews.setVisibility(View.GONE);
             }
@@ -227,5 +240,34 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         swipeRefreshLayout.setRefreshing(false);
         newsRecyclerView.hideShimmerAdapter();
         shimmer_break_latest.stopShimmerAnimation();
+    }
+
+    private String getFormatedDate(String rawDate) {
+        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+        DateFormat targetFormat = new SimpleDateFormat("MMM. dd, yyyy");
+//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+
+            Date date = originalFormat.parse(rawDate);
+            String formattedDate = targetFormat.format(date);
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    private long getLongTime(String rawDate) {
+        String string_date = rawDate;
+
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+            Date d = f.parse(string_date);
+            long milliseconds = d.getTime();
+            return milliseconds;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0L;
     }
 }

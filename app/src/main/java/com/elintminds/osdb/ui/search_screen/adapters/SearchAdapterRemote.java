@@ -7,18 +7,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.search_screen.beans.SearchAdapterRemoteBean;
 import com.elintminds.osdb.ui.search_screen.beans.SearchBean;
 import com.elintminds.osdb.ui.search_screen.view.SearchScreenView;
+import com.elintminds.osdb.utils.Tag;
+import com.elintminds.osdb.utils.TagView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchAdapterRemote extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -58,14 +59,25 @@ public class SearchAdapterRemote extends RecyclerView.Adapter<RecyclerView.ViewH
         if (viewHolder instanceof HeaderViewHolder) {
             ((HeaderViewHolder) viewHolder).headerTV.setText(searchAdapterRemoteBean.getType() != null ? searchAdapterRemoteBean.getType() : "");
         } else if (viewHolder instanceof ItemViewHolder) {
+            ((ItemViewHolder) viewHolder).tag_group.removeAll();
             if (searchAdapterRemoteBean.getType().equalsIgnoreCase("News")) {
-                ((ItemViewHolder) viewHolder).team_logo.setVisibility(View.GONE);
-                ((ItemViewHolder) viewHolder).user_name.setText(searchAdapterRemoteBean.getTitle());
+                ((ItemViewHolder) viewHolder).rl_other.setVisibility(View.GONE);
+                ((ItemViewHolder) viewHolder).rl_news_layout.setVisibility(View.VISIBLE);
+                ((ItemViewHolder) viewHolder).txt_news_title.setText(searchAdapterRemoteBean.getTitle());
+                if (searchAdapterRemoteBean.getStringArrayList() != null && searchAdapterRemoteBean.getStringArrayList().length > 0) {
+                    Log.e("AdapterPositionIsThis", "     " + searchAdapterRemoteBean.getStringArrayList().length);
+                    ((ItemViewHolder) viewHolder).tag_group.addTags(getTagList(searchAdapterRemoteBean.getStringArrayList()));
+                }
             } else if (searchAdapterRemoteBean.getType().equalsIgnoreCase("Player")) {
+                ((ItemViewHolder) viewHolder).rl_other.setVisibility(View.VISIBLE);
+                ((ItemViewHolder) viewHolder).rl_news_layout.setVisibility(View.GONE);
                 ((ItemViewHolder) viewHolder).user_name.setText(searchAdapterRemoteBean.getPlayerName());
             } else {
+                ((ItemViewHolder) viewHolder).rl_other.setVisibility(View.VISIBLE);
+                ((ItemViewHolder) viewHolder).rl_news_layout.setVisibility(View.GONE);
                 ((ItemViewHolder) viewHolder).user_name.setText(searchAdapterRemoteBean.getPlayerTeam());
             }
+
             ((ItemViewHolder) viewHolder).slug_name.setText(searchAdapterRemoteBean.getSlugName());
 
             if (searchAdapterRemoteBean.getImgUrl() != null) {
@@ -107,14 +119,20 @@ public class SearchAdapterRemote extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
-        private TextView slug_name, user_name;
+        private TextView slug_name, user_name, txt_news_title;
         private ImageView team_logo;
+        private RelativeLayout rl_news_layout, rl_other;
+        private TagView tag_group;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             slug_name = itemView.findViewById(R.id.slug_name);
             user_name = itemView.findViewById(R.id.user_name);
             team_logo = itemView.findViewById(R.id.team_logo);
+            txt_news_title = itemView.findViewById(R.id.txt_news_title);
+            rl_news_layout = itemView.findViewById(R.id.rl_news_layout);
+            rl_other = itemView.findViewById(R.id.rl_other);
+            tag_group = itemView.findViewById(R.id.tag_group);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -124,5 +142,15 @@ public class SearchAdapterRemote extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
             });
         }
+    }
+
+    private List<Tag> getTagList(String[] strings) {
+        List<Tag> tagList = new ArrayList<>();
+        for (int j = 0; j < strings.length; j++) {
+            Tag tag = new Tag(strings[j]);
+            tag.setBackground(context.getDrawable(R.drawable.follow_following_btn_bg));
+            tagList.add(tag);
+        }
+        return tagList;
     }
 }

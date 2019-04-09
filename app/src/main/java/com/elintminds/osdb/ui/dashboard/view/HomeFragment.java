@@ -309,13 +309,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
 
     private void setPollsOptions(final List<HomeBean.Option> options, final int pollID) {
         poll_option_parent.removeAllViews();
+        String[] optionsCharArray = context.getResources().getStringArray(R.array.option_type);
         for (int i = 0; i < options.size(); i++) {
 //            polls Options
             View pollOptionView = LayoutInflater.from(context).inflate(R.layout.poll_options_view, null);
             poll_option_parent.addView(pollOptionView);
             poll_option_parent.setId(i);
             TextView pollLabel = pollOptionView.findViewById(R.id.poll_label);
-            pollLabel.setText(options.get(i).getText());
+            TextView poll_name = pollOptionView.findViewById(R.id.poll_name);
+            pollLabel.setText(optionsCharArray[i]);
+            poll_name.setText(options.get(i).getText());
             pollLabel.setTextColor(context.getResources().getColor(R.color.color_2E384D));
         }
 
@@ -356,6 +359,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
             try {
                 JSONObject resultObj = jsonObject.getJSONObject("result");
                 Iterator resultIterator = resultObj.keys();
+                String[] optionsCharArray = context.getResources().getStringArray(R.array.option_type);
                 while (resultIterator.hasNext()) {
                     String keyValue = (String) resultIterator.next();
                     String value = resultObj.getString(keyValue);
@@ -369,11 +373,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
                     ProgressBar progressBar = pollOptionView.findViewById(R.id.progress_view);
                     if (titleArray.size() > 0) {
                         poll_label_2.setText(titleArray.get(counter));
-
-                    }else{
+                    } else {
                         poll_label_2.setText(String.valueOf(keyValue));
                     }
-                    pollLabel.setText(String.valueOf(counter)+" .");
+                    pollLabel.setText(optionsCharArray[counter]);
                     txt_polls_count.setText(value + " %");
                     double progress = Double.parseDouble(value);
                     progressBar.setProgress((int) progress);
