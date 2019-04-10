@@ -7,13 +7,15 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.utils.Utils;
 
 public class DoYouKnowActivity extends BaseActivity implements View.OnClickListener {
 
-    private ImageView backImg, shareImg;
+    private ImageView backImg, shareImg, imageView;
     private TextView detail_txt;
 
     @Override
@@ -23,7 +25,15 @@ public class DoYouKnowActivity extends BaseActivity implements View.OnClickListe
 
         detail_txt = findViewById(R.id.detail_txt);
         shareImg = findViewById(R.id.share_img);
+        imageView = findViewById(R.id.image);
         if (getIntent() != null) {
+
+            String imgUrl = getIntent().getStringExtra("imgUrl");
+            if (imgUrl != null) {
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.place);
+                Glide.with(this).setDefaultRequestOptions(requestOptions).load(imgUrl).into(imageView);
+            }
 
             String title = getIntent().getStringExtra("title");
             detail_txt.setText(Html.fromHtml(title).toString());
@@ -43,7 +53,7 @@ public class DoYouKnowActivity extends BaseActivity implements View.OnClickListe
             case R.id.back_img:
                 finish();
                 break;
-            case R.id.share_img:{
+            case R.id.share_img: {
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("*/*");
                 startActivity(Intent.createChooser(sharingIntent, "Share  using"));

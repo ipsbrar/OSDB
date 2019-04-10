@@ -8,37 +8,45 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeanVertical;
 import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsVerticalBean;
+import com.elintminds.osdb.ui.team_details_screen.presenter.TeamDetailPresenterActivity;
+import com.elintminds.osdb.ui.team_details_screen.presenter.TeamDetailsPresenterClass;
 import com.elintminds.osdb.utils.NonSwipeableViewPager;
 
 import java.util.ArrayList;
 
 public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView, View.OnClickListener {
     private TabLayout tabs;
-    private TextView title, followBtn, stadium_txt;
+    private TextView title, followBtn, stadium_txt,head_coach_name,stadium_name;
     private ImageView backBtn, team_logo_img;
     private boolean isFollowing = false;
     private String divisionName, teamName, teamId, clubName;
-    private ArrayList<StatsBeans> arrayList = new ArrayList<>();
-
+    private ArrayList<StatsBeanVertical> arrayList = new ArrayList<>();
+private TeamDetailPresenterActivity teamDetailsPresenterClass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_details);
         if (getIntent() != null) {
-
             teamName = getIntent().getStringExtra("TEAM_NAME");
             divisionName = getIntent().getStringExtra("DIVISION_NAME");
             teamId = getIntent().getStringExtra("TEAM_ID");
             clubName = getIntent().getStringExtra("CLUB_NAME");
             String profilePic = getIntent().getStringExtra("PROFILE_PIC");
+            teamDetailsPresenterClass = new TeamDetailPresenterActivity(this,this);
+            teamDetailsPresenterClass.getTeamData(teamId);
             team_logo_img = findViewById(R.id.team_logo_img);
+            head_coach_name = findViewById(R.id.head_coach_name);
+            stadium_name = findViewById(R.id.stadium_name);
             stadium_txt = findViewById(R.id.stadium_txt);
             stadium_txt.setText(divisionName.equalsIgnoreCase("NBA") ? "Arena" : "Stadium");
             if (profilePic != null) {
@@ -110,5 +118,16 @@ public class TeamDetailsActivity extends BaseActivity implements TeamDetailsView
                 }
                 break;
         }
+    }
+
+    @Override
+    public void TeamData(String headCoach, String stadium) {
+        stadium_name.setText(stadium != null ? stadium : "");
+        head_coach_name.setText(headCoach != null ? headCoach : "");
+    }
+
+    @Override
+    public void getError(String error, boolean isVisible) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 }

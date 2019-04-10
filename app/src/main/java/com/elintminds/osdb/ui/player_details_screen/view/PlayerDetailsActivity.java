@@ -19,6 +19,7 @@ import com.elintminds.osdb.ui.dashboard.view.NewsFragment;
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
 import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
 import com.elintminds.osdb.ui.player_details_screen.presenter.PlayerDetailsPresenterClass;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeanVertical;
 import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 import com.elintminds.osdb.ui.team_details_screen.view.StatsFragment;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -40,7 +41,7 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
     private ArrayList<VideosBean> videosBeanArrayList = new ArrayList<>();
     private ViewPager viewPager;
     private String bio;
-    private ArrayList<StatsBeans> arrayListStats = new ArrayList<>();
+    private ArrayList<StatsBeanVertical> statsBeanVerticalArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
         user_team = findViewById(R.id.user_team);
         user_zone = findViewById(R.id.user_zone);
         viewPager = findViewById(R.id.player_details_viewpager);
+        viewPager.setOffscreenPageLimit(7);
         playerDetailsPresenterClass = new PlayerDetailsPresenterClass(this, this);
         if (getIntent() != null) {
 
@@ -148,13 +150,13 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
                                       ArrayList<String> imageListArray,
                                       ArrayList<VideosBean> videosBeanArrayList,
                                       String bio,
-                                      ArrayList<StatsBeans> arrayListStat) {
+                                      ArrayList<StatsBeanVertical> statsBeanVerticalArrayList) {
         this.playerDetailInfoBean = jsonObject;
         this.careerHeightArray = careerHeightsArray;
         this.imageListArray = imageListArray;
         this.videosBeanArrayList = videosBeanArrayList;
         this.bio = bio;
-        this.arrayListStats = arrayListStat;
+        this.statsBeanVerticalArrayList = statsBeanVerticalArrayList;
         setupViewPager(viewPager);
         tabs.setupWithViewPager(viewPager);
 
@@ -177,7 +179,7 @@ public class PlayerDetailsActivity extends BaseActivity implements PlayerDetails
         adapter.addFragment(CareerFragment.getInstance(careerHeightArray), getString(R.string.career));
         adapter.addFragment(BioFragment.getInstance(bio), getString(R.string.bio));
         adapter.addFragment(NewsFragment.getInstance(), getString(R.string.news));
-        adapter.addFragment(StatsFragment.getInstance(arrayListStats, null), getString(R.string.stats));
+        adapter.addFragment(StatsFragment.getInstance(statsBeanVerticalArrayList, null), getString(R.string.stats));
         adapter.addFragment(VideosFragment.getInstance(videosBeanArrayList), getString(R.string.videos));
         adapter.addFragment(PhotosFragment.getInstance(imageListArray), getString(R.string.photos));
         upViewPager.setAdapter(adapter);

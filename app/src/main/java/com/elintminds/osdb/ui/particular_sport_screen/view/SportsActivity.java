@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import com.elintminds.osdb.R;
+import com.elintminds.osdb.ui.FilterActivity.view.FilterActivity;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
 import com.elintminds.osdb.ui.dashboard.adapters.LatestViewPagerFragment;
 import com.elintminds.osdb.ui.dashboard.beans.SportsAdapterListBean;
@@ -159,7 +160,7 @@ public class SportsActivity extends BaseActivity implements SportScreenView, Vie
 
         switch (item.getItemId()) {
             case R.id.navigation_search:
-                startActivity(new Intent(this, SearchActivity.class));
+                startActivity(new Intent(this, FilterActivity.class));
                 break;
             default:
                 return super.onOptionsItemSelected(item);

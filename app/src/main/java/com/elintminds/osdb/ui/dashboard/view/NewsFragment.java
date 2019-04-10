@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
@@ -71,6 +72,12 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
+    @Override
     protected void setUp(View view) {
         context = getContext();
 
@@ -111,7 +118,9 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
             public void onRefresh() {
                 Log.e("HomeSwipeData", "   Inside refresh layout");
                 rl_hide_layout.setVisibility(View.VISIBLE);
+                shimmer_break_latest.setVisibility(View.VISIBLE);
                 no_data.setVisibility(View.GONE);
+                topNews.setVisibility(View.GONE);
                 shimmer_break_latest.startShimmerAnimation();
                 newsRecyclerView.showShimmerAdapter();
                 newsFragmentPresenterClass.getNewsData();
@@ -120,11 +129,6 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         });
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-    }
 
     private void setupRecyclerView() {
         CardPaddingItemDecoration itemDecoration = new CardPaddingItemDecoration(context, 10f, 10f, 7f, 7f);
@@ -147,12 +151,14 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         Log.e("ON NEWS CLICK", "" + position);
         if (newsList.size() > 0) {
             Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra("imgUrl", (String) newsList.get(position).getImageUrl());
+            intent.putExtra("imgUrl", newsList.get(position).getAsset() != null ? newsList.get(position).getAsset().getFileName() : null);
             intent.putExtra("title", newsList.get(position).getTitle());
             intent.putExtra("bigContent", newsList.get(position).getLongContent());
-//            intent.putExtra("teamName", teamName);
-//            intent.putExtra("date", date);
-//            intent.putExtra("timeStamp", timeStamp);
+            intent.putExtra("teamName", newsList.get(position).getSlug());
+            intent.putExtra("date", Utils.getFormatedDate(newsList.get(position).getPublishedAt()
+                    , "yyyy-MM-dd hh:mm:ss"
+                    , "MMM. dd, yyyy"));
+            intent.putExtra("timeStamp", timeStamp);
             startActivity(intent);
         }
 
@@ -188,36 +194,9 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
     public void getNewsData(NewsAdapterBean newsList) {
         Log.e("DATA", "" + newsList.getData().size());
         if (newsList != null) {
-            if (newsList.getBreakingNews().size() > 0) {
-                topNews.setVisibility(View.VISIBLE);
-                if (newsList.getBreakingNews().get(0).getImageUrl() != null && !newsList.getBreakingNews().get(0).getImageUrl().equals(""))
-                    Glide.with(getActivity()).load(newsList.getBreakingNews().get(0).getImageUrl());
-                if (newsList.getBreakingNews().get(0).getTitle() != null) {
-                    news_title.setText(newsList.getBreakingNews().get(0).getTitle());
-                    Utils.justify(news_title);
-                }
-                //if (newsList.getBreakingNews().get(0).getTitle() != null){
-                //    news_frag_game_name.setText(newsList.getBreakingNews().get(0).getTitle());
-                //    Utils.justify(news_frag_game_name);
-                // }
-                if (newsList.getBreakingNews().get(0).getCreatedAt() != null && !TextUtils.isEmpty(newsList.getBreakingNews().get(0).getCreatedAt()))
-                    txt_date_breaking_news.setText(getFormatedDate(newsList.getBreakingNews().get(0).getCreatedAt()));
-
-                long timeInLong = getLongTime(newsList.getBreakingNews().get(0).getCreatedAt() != null ? newsList.getBreakingNews().get(0).getCreatedAt() : "2019-02-21 03:24:54");
-
-                txt_time_stamp_breaking_news.setText(Utils.getTimeAgo(timeInLong));
-
-                imgUrl = (String) newsList.getBreakingNews().get(0).getImageUrl();
-                title = newsList.getBreakingNews().get(0).getTitle();
-                bigContent = newsList.getBreakingNews().get(0).getLongContent();
-
-            } else {
-                topNews.setVisibility(View.GONE);
-            }
-
-            shimmer_break_latest.stopShimmerAnimation();
-            shimmer_break_latest.setVisibility(View.GONE);
-
+//            set breaking news data
+            setBreakingNewsData(newsList.getBreakingNews());
+//            set normal new data
             if (newsList.getData().size() > 0) {
                 this.newsList = newsList.getData();
                 adapter.setDataList(this.newsList);
@@ -229,7 +208,47 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         swipeRefreshLayout.setRefreshing(false);
         newsRecyclerView.hideShimmerAdapter();
         shimmer_break_latest.stopShimmerAnimation();
+        shimmer_break_latest.setVisibility(View.GONE);
     }
+
+    private void setBreakingNewsData(ArrayList<NewsAdapterBean.BreakingNews> breakingNews) {
+        if (breakingNews.size() > 0) {
+            topNews.setVisibility(View.VISIBLE);
+            if (breakingNews.get(0).getImageUrl() != null && !breakingNews.get(0).getImageUrl().equals("")) {
+                imgUrl = (String) breakingNews.get(0).getImageUrl();
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.place);
+                Glide.with(getActivity()).setDefaultRequestOptions(requestOptions)
+                        .load(imgUrl).into(news_frag_image);
+            }
+            if (breakingNews.get(0).getTitle() != null) {
+                news_title.setText(breakingNews.get(0).getTitle());
+                Utils.justify(news_title);
+            }
+
+            if (breakingNews.get(0).getPublishedAt() != null && !TextUtils.isEmpty(breakingNews.get(0).getPublishedAt()))
+                date = breakingNews.get(0).getPublishedAt();
+            txt_date_breaking_news.setText(Utils.getFormatedDate(breakingNews.get(0).getPublishedAt()
+                    , "yyyy-MM-dd hh:mm:ss"
+                    , "MMM. dd, yyyy"));
+
+            long timeInLong = Utils.getLongTime(breakingNews.get(0).getPublishedAt() != null ?
+                    breakingNews.get(0).getPublishedAt() :
+                    "2019-02-21 03:24:54", "yyyy-MM-dd hh:mm:ss");
+            timeStamp = Utils.getTimeAgo(timeInLong);
+            txt_time_stamp_breaking_news.setText(timeStamp);
+
+            imgUrl = (String) breakingNews.get(0).getImageUrl();
+            title = breakingNews.get(0).getTitle();
+            bigContent = breakingNews.get(0).getLongContent();
+            teamName = breakingNews.get(0).getSlug();
+            topNews.setVisibility(View.VISIBLE);
+        } else {
+            topNews.setVisibility(View.GONE);
+        }
+
+    }
+
 
     @Override
     public void getError(String error) {
@@ -242,32 +261,5 @@ public class NewsFragment extends BaseFragment implements DashboardView.NewsItem
         shimmer_break_latest.stopShimmerAnimation();
     }
 
-    private String getFormatedDate(String rawDate) {
-        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
-        DateFormat targetFormat = new SimpleDateFormat("MMM. dd, yyyy");
-//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try {
 
-            Date date = originalFormat.parse(rawDate);
-            String formattedDate = targetFormat.format(date);
-            return formattedDate;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-
-    private long getLongTime(String rawDate) {
-        String string_date = rawDate;
-
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try {
-            Date d = f.parse(string_date);
-            long milliseconds = d.getTime();
-            return milliseconds;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return 0L;
-    }
 }

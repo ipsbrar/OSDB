@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -58,50 +59,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         backImg.setOnClickListener(this);
         shareImg.setOnClickListener(this);
 
-        if (getIntent() != null) {
-            imgUrl = getIntent().getStringExtra("imgUrl");
-            headerText = getIntent().getStringExtra("title");
-            longText = getIntent().getStringExtra("bigContent");
-            slugName = getIntent().getStringExtra("teamName");
-            String[] arrayString = (String[]) getIntent().getSerializableExtra("arrayString");
-            String date = getIntent().getStringExtra("date");
-
-            if (imgUrl != null) {
-                RequestOptions requestOptions = new RequestOptions();
-                requestOptions.placeholder(R.drawable.place);
-                Glide.with(this).setDefaultRequestOptions(requestOptions).load(imgUrl).into(image);
-            }
-            if (headerText != null) {
-                header_txt.setText(headerText);
-                Utils.justify(header_txt);
-            }
-            if (longText != null) {
-                detail_txt.setText(Html.fromHtml(longText).toString());
-            }
-            if (date != null) {
-                String formatedDate = getFormatedDate(date);
-                long timeInLong = getLongTime(date);
-                date_txt.setText(formatedDate + "  " + Utils.getTimeAgo(timeInLong));
-            } else {
-                date_txt.setText("");
-            }
-            List<Tag> tagList = new ArrayList<>();
-            if (arrayString != null && arrayString.length > 0) {
-                for (int i = 0; i < arrayString.length; i++) {
-                    Tag tag = new Tag(arrayString[i]);
-                    tag.setBackground(getDrawable(R.drawable.red_capsule_bg));
-                    tagList.add(tag);
-                }
-                view_game_name.setVisibility(View.GONE);
-                tag_group.setVisibility(View.VISIBLE);
-                tag_group.addTags(tagList);
-            } else {
-                view_game_name.setVisibility(View.VISIBLE);
-                tag_group.setVisibility(View.GONE);
-            }
-
-            view_game_name.setText(slugName != null ? slugName : "NFL");
-        }
+        setData(getIntent());
 
 
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -127,6 +85,58 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         });
     }
 
+    private void setData(Intent intent) {
+        if (intent != null) {
+            imgUrl = intent.getStringExtra("imgUrl");
+            headerText = intent.getStringExtra("title");
+            longText = intent.getStringExtra("bigContent");
+            slugName = intent.getStringExtra("teamName");
+            String[] arrayString = (String[]) intent.getSerializableExtra("arrayString");
+            String date = intent.getStringExtra("date");
+            // set image
+            if (imgUrl != null) {
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.place);
+                Glide.with(this).setDefaultRequestOptions(requestOptions).load(imgUrl).into(image);
+            }
+
+            // set header text
+            header_txt.setText(headerText != null ? headerText : "");
+            Utils.justify(header_txt);
+
+            // set big content
+            detail_txt.setText(longText != null ? Html.fromHtml(longText).toString() : "");
+
+            // set date and time stamp
+            if (date != null) {
+//                String formatedDate = Utils.getFormatedDate(date, "yyyy-MM-dd hh:mm:ss", "MMM. dd, yyyy");
+                long timeInLong = Utils.getLongTime(date, "MMM. dd, yyyy");
+                date_txt.setText(date + "  " + Utils.getTimeAgo(timeInLong));
+            } else {
+                date_txt.setText("");
+            }
+
+//            set all tags
+            if (arrayString != null && arrayString.length > 0) {
+                List<Tag> tagList = new ArrayList<>();
+                for (int i = 0; i < arrayString.length; i++) {
+                    Tag tag = new Tag(arrayString[i]);
+                    tag.setBackground(getDrawable(R.drawable.red_capsule_bg));
+                    tagList.add(tag);
+                }
+                view_game_name.setVisibility(View.GONE);
+                tag_group.setVisibility(View.VISIBLE);
+                tag_group.addTags(tagList);
+            } else {
+                view_game_name.setVisibility(View.VISIBLE);
+                tag_group.setVisibility(View.GONE);
+            }
+
+            view_game_name.setText(slugName != null ? slugName : "NFL");
+        }
+
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -147,34 +157,5 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
                 startActivity(Intent.createChooser(sharingIntent, "Share"));
             }
         }
-    }
-
-    private String getFormatedDate(String rawDate) {
-        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
-        DateFormat targetFormat = new SimpleDateFormat("MMM. dd, yyyy");
-//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try {
-
-            Date date = originalFormat.parse(rawDate);
-            String formattedDate = targetFormat.format(date);
-            return formattedDate;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-
-    private long getLongTime(String rawDate) {
-        String string_date = rawDate;
-
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try {
-            Date d = f.parse(string_date);
-            long milliseconds = d.getTime();
-            return milliseconds;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return 0L;
     }
 }

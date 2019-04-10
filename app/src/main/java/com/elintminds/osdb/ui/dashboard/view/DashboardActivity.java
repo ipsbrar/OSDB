@@ -27,16 +27,11 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
     private TextView mTextMessage;
     private Toolbar toolbar;
-
-    private LinearLayout home_lay, latest_lay;
-    private String currentFrag = "Home";
     private ImageView homelogo;
     private ImageView optionMenuImg;
     private static OnDateClick onDateClick;
-    private MenuItem searchItem, calendarItem, addItem;
     private ImageView tabHomeIcon, tabLatestIcon, tabliveIcon, tabPollIcon, tabDiscussionIcon;
     private TextView tabHomeTxt, tabLatestTxt, tabliveTxt, tabPollTxt, tabDiscussionTxt;
-
     private ArrayList<String> tags = new ArrayList();
 
     @Override
@@ -117,9 +112,8 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
 
             case R.id.home_lay: {
                 homeSelected();
+                mTextMessage.setText(R.string.title_home);
                 showFragment(HomeFragment.newInstance(), HomeFragment.TAG);
-                //changeFragment(HomeFragment.newInstance(), HomeFragment.TAG);
-
 
                 break;
             }
@@ -130,16 +124,15 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 mTextMessage.setText(R.string.title_latest);
 
                 showFragment(LatestFragment.newInstance(), LatestFragment.TAG);
-                //  changeFragment(LatestFragment.newInstance(), LatestFragment.TAG);
                 break;
             }
 
             case R.id.live_scores_lay:
 
-                liveSelected();
-                mTextMessage.setText(R.string.title_live_scores);
+//                liveSelected();
+//                mTextMessage.setText(R.string.title_live_scores);
                 //changeFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
-                showFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
+//                showFragment(LiveScroresFragment.newInstance(), LiveScroresFragment.TAG);
 
                 break;
             case R.id.polls_lay:
@@ -327,8 +320,8 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Toast.makeText(this, "Activity Toast working", Toast.LENGTH_SHORT).show();
-        if (data.getStringExtra("date")!=null)
-        onDateClick.dateClickPoll(data.getStringExtra("date"));
+        if (data.getStringExtra("date") != null)
+            onDateClick.dateClickPoll(data.getStringExtra("date"));
     }
 
     public void setOnDateClick(OnDateClick onDateClick) {

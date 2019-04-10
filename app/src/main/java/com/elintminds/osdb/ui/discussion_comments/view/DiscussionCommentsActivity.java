@@ -25,6 +25,7 @@ import com.elintminds.osdb.ui.discussion_comments.beans.DiscussionCommentsBean;
 import com.elintminds.osdb.ui.report.view.ReportActivity;
 import com.elintminds.osdb.ui.splash.presenter.DiscussionCommentsPresenterClass;
 import com.elintminds.osdb.ui.splash.view.DiscussionCommentsView;
+import com.elintminds.osdb.utils.Utils;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DateFormat;
@@ -98,7 +99,7 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
                 comment_txt.setText(discription.trim());
             }
             if (time != null) {
-                hours_txt.setText(getFormatedDate(time));
+                hours_txt.setText(Utils.getFormatedDate(time,"yyyy-MM-dd hh:mm:ss","h:mm a. MMM dd, yyyy"));
             }
             if (filepath != null) {
                 RequestOptions requestOptions = new RequestOptions();
@@ -173,7 +174,9 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
             comment_txt.setText(discription.trim());
         }
         if (discussionCommentsBean.getUpdated_at() != null) {
-            hours_txt.setText(getFormatedDate(discussionCommentsBean.getUpdated_at()));
+            hours_txt.setText(Utils.getFormatedDate(discussionCommentsBean.getUpdated_at()
+                    ,"yyyy-MM-dd hh:mm:ss"
+                    ,"h:mm a. MMM dd, yyyy"));
         }
 
         if (discussionCommentsBean.getComments().size() > 0) {
@@ -195,18 +198,5 @@ public class DiscussionCommentsActivity extends BaseActivity implements View.OnC
 
     }
 
-    private String getFormatedDate(String rawDate) {
-        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
-        DateFormat targetFormat = new SimpleDateFormat("h:mm a. MMM dd, yyyy");
-//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try {
 
-            Date date = originalFormat.parse(rawDate);
-            String formattedDate = targetFormat.format(date);
-            return formattedDate;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
 }

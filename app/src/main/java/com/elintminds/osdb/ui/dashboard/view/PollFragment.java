@@ -115,6 +115,8 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
     public void getPollData(ArrayList<PollAdapterBean> arrayList) {
         if (arrayList.size() > 0) {
             pollAdapter.setDataList(arrayList);
+            pollRecyclerView.setVisibility(View.VISIBLE);
+            no_data.setVisibility(View.GONE);
         } else {
             txt_no_data_title.setText("No poll available");
             txt_no_data_disp.setText(" for the " + currentDate);
@@ -171,6 +173,8 @@ public class PollFragment extends BaseFragment implements DashboardView.PollOpti
         pollsPresenterClass.getPollsData(currentDate != null ? currentDate : "2019-02-23",
                 userID != null ? userID : "199");
         pollRecyclerView.showShimmerAdapter();
+        no_data.setVisibility(View.GONE);
+        pollRecyclerView.setVisibility(View.VISIBLE);
         pollList = null;
     }
 }

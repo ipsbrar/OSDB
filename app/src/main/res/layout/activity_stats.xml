@@ -7,12 +7,15 @@
               android:layout_height="match_parent"
               tools:context=".MainActivity">
     <ScrollView android:layout_width="match_parent"
+                android:id="@+id/sv_stats"
                 android:layout_height="match_parent">
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:id="@+id/ll_table_main"
                       android:orientation="vertical"/>
     </ScrollView>
+    <include layout="@layout/no_data_found"
+             android:visibility="gone"/>
     <!--<com.evrencoskun.tableview.TableView-->
     <!--android:id="@+id/content_container"-->
     <!--android:layout_width="match_parent"-->

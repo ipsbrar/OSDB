@@ -7,4 +7,5 @@ import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsView;
 public interface TeamDetailsPresenter<V extends TeamDetailsView.TeamPlayersView, I extends TeamDetailsInteractor> extends BasePresenter<V, I>
 {
     void getTeamID(String teamId);
+
 }

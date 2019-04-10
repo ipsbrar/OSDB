@@ -56,7 +56,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
             Utils.justify(holder.newsTitle);
         }
         if (item.getCreatedAt() != null && !TextUtils.isEmpty(item.getCreatedAt())) {
-            holder.newsDateTime.setText(getFormatedDate(item.getCreatedAt()));
+            holder.newsDateTime.setText(Utils.getFormatedDate(item.getCreatedAt()
+                    , "yyyy-MM-dd hh:mm:ss"
+                    , "MMM. dd, yyyy"));
         }
     }
 
@@ -92,20 +94,5 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
 
         this.dataList = data;
         Log.e("DA LIST", "" + dataList.size());
-    }
-
-    private String getFormatedDate(String rawDate) {
-        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
-        DateFormat targetFormat = new SimpleDateFormat("MMM. dd, yyyy");
-//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try {
-
-            Date date = originalFormat.parse(rawDate);
-            String formattedDate = targetFormat.format(date);
-            return formattedDate;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

@@ -20,16 +20,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.DemoTable.DemoStats">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+        <activity android:name=".ui.FilterActivity.view.FilterActivity">
         </activity>
-        <activity android:name=".ui.player_details_screen.view.VideoPlayActivity"
-
-                  android:screenOrientation="landscape">
+        <activity android:name=".ui.DemoTable.DemoStats"/>
+        <activity
+                android:name=".ui.player_details_screen.view.VideoPlayActivity"
+                android:screenOrientation="landscape">
         </activity>
         <activity
                 android:name="com.amazon.identity.auth.device.workflow.WorkflowActivity"
@@ -81,7 +77,11 @@
         <activity
                 android:name=".ui.splash.view.SplashScreenActivity"
                 android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
                 android:name=".ui.dashboard.view.DashboardActivity"

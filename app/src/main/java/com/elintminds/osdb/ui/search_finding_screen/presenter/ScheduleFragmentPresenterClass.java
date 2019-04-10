@@ -10,6 +10,7 @@ import com.elintminds.osdb.ui.search_finding_screen.model.ScheduleFragmentIntera
 import com.elintminds.osdb.ui.search_finding_screen.model.ScheduleFragmentInteractorClass;
 import com.elintminds.osdb.ui.search_finding_screen.view.ScheduleFragmentView;
 import com.elintminds.osdb.utils.ConnectivityReceiver;
+import com.elintminds.osdb.utils.Utils;
 import io.reactivex.functions.Consumer;
 import org.json.JSONObject;
 
@@ -42,7 +43,6 @@ public class ScheduleFragmentPresenterClass<V extends ScheduleFragmentView, I ex
                     .subscribe(new Consumer<ScheduleBeans>() {
                                    @Override
                                    public void accept(ScheduleBeans scheduleBeans) throws Exception {
-
                                        ArrayList<ScheduleBean> allSchedule = new ArrayList<>();
                                        String vanueName = "", vanueCity = "", vanueState = "", vanueCountry = "";
                                        for (int i = 0; i < scheduleBeans.getSchedules().size(); i++) {
@@ -58,7 +58,7 @@ public class ScheduleFragmentPresenterClass<V extends ScheduleFragmentView, I ex
                                                }
                                                String matchAddress = vanueName + " " + vanueCity + " " + vanueState + " " + vanueCountry;
                                                String eventTime = scheduleBeans.getSchedules().get(i).getGames().get(j).getScheduledDateTime();
-                                               String matchTiming = eventTime != null ? getFormatedDate(eventTime) : "none";
+                                               String matchTiming = eventTime != null ? Utils.getFormatedDate(eventTime,"yyyy-MM-dd hh:mm:ss","h:mm a") : "none";
                                                scheduleBean.setMatchAddres(matchAddress);
                                                scheduleBean.setMatchTime(matchTiming);
 
@@ -93,20 +93,5 @@ public class ScheduleFragmentPresenterClass<V extends ScheduleFragmentView, I ex
         } else {
             getMvpView().error("No internet found");
         }
-    }
-
-    private String getFormatedDate(String rawDate) {
-        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
-        DateFormat targetFormat = new SimpleDateFormat("h:mm a");
-//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try {
-
-            Date date = originalFormat.parse(rawDate);
-            String formattedDate = targetFormat.format(date);
-            return formattedDate;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

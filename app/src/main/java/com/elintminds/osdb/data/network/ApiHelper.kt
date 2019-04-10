@@ -120,4 +120,7 @@ interface ApiHelper {
 
     @GET("polls/{date}?")
     fun fetchPollsList(@Path("date") date: String,@Query("user_id") userId: String): Observable<Response<ArrayList<PollAdapterBean>>>
+
+    @GET("team/{team_id}")
+    fun fetchTeamData(@Path("team_id") teamId: String): Observable<Response<JsonElement>>
 }

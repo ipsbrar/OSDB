@@ -13,37 +13,33 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.DemoTable.Cell;
 import com.elintminds.osdb.ui.DemoTable.ColumnHeader;
+import com.elintminds.osdb.ui.DemoTable.MyTableViewAdapter;
 import com.elintminds.osdb.ui.DemoTable.RowHeader;
 import com.elintminds.osdb.ui.base.view.BaseFragment;
 import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeanVertical;
 import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 import com.elintminds.osdb.ui.team_details_screen.adapters.StatsMainAdapter;
 import com.elintminds.osdb.ui.team_details_screen.presenter.StatsPresenterClass;
+import com.evrencoskun.tableview.TableView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StatsFragment extends BaseFragment implements StatsView {
     public static final String TAG = "StatsFragment";
-    private static int ROW_SIZE = 15;
-    private static int COLUMN_SIZE = 15;
     //no  data found
     private ConstraintLayout no_data;
     private TextView txt_no_data_title, txt_no_data_disp;
-    private Context context;
-    private RecyclerView statsRV;
-    private StatsMainAdapter statsMainAdapter;
-    private ArrayList<StatsBeans.InnerStatsBean> arrayList = new ArrayList<>();
-    private ArrayList<List<String>> stringArrayList = new ArrayList<>();
-    private SwipeRefreshLayout swipe_refresh;
+
+    private LinearLayout ll_table_main;
+    private ScrollView sv_stats;
     private StatsPresenterClass statsPresenterClass;
 
-    public static StatsFragment getInstance(ArrayList<StatsBeans> arrayListStats, String id) {
+    public static StatsFragment getInstance(ArrayList<StatsBeanVertical> arrayListStats, String id) {
         StatsFragment statsFragment = new StatsFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("STATS_DATA", arrayListStats);
@@ -56,7 +52,7 @@ public class StatsFragment extends BaseFragment implements StatsView {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.e("CheckStatusStats", "  OnCreateView");
-        return inflater.inflate(R.layout.single_recycler_view, container, false);
+        return inflater.inflate(R.layout.activity_stats, container, false);
     }
 
     @Override
@@ -66,22 +62,10 @@ public class StatsFragment extends BaseFragment implements StatsView {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (isVisible())
-            Log.e("CheckStatusStats", "  OnActivityCreated");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (isVisible())
-            Log.e("CheckStatusStats", "  OnStart");
-    }
-
-    @Override
     protected void setUp(View view) {
-        context = getContext();
+//        context = getContext();
+        ll_table_main = view.findViewById(R.id.ll_table_main);
+        sv_stats = view.findViewById(R.id.sv_stats);
         //        No data found Views
         txt_no_data_title = view.findViewById(R.id.txt_no_data_title);
         txt_no_data_disp = view.findViewById(R.id.txt_no_data_disp);
@@ -90,84 +74,67 @@ public class StatsFragment extends BaseFragment implements StatsView {
         txt_no_data_disp.setText(getString(R.string.please_try_again));
         no_data.setVisibility(View.GONE);
 
-        statsRV = view.findViewById(R.id.recycler_view);
-        swipe_refresh = view.findViewById(R.id.swipe_refresh);
-        swipe_refresh.setRefreshing(false);
-        swipe_refresh.setEnabled(false);
-
-        statsRV.setLayoutManager(new LinearLayoutManager(context) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
         statsPresenterClass = new StatsPresenterClass(getActivity(), this);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            ArrayList<StatsBeans> statsBeansArrayList = (ArrayList<StatsBeans>) bundle.getSerializable("STATS_DATA");
+            ArrayList<StatsBeanVertical> statsBeansArrayList = (ArrayList<StatsBeanVertical>) bundle.getSerializable("STATS_DATA");
             String teamId = bundle.getString("team_id");
             if (statsBeansArrayList != null && statsBeansArrayList.size() > 0) {
-                arrayList = statsBeansArrayList.get(0).getInnerStatsBeansList();
+                showProgressDialog();
+                setUpStatsLayout(statsBeansArrayList);
             } else if (teamId != null && !TextUtils.isEmpty(teamId)) {
                 statsPresenterClass.fetchTeamStatsData(teamId);
             }
         }
 
-        setupRecyclerView();
-
-        swipe_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipe_refresh.setRefreshing(false);
-            }
-        });
     }
-
-
-    private void setupRecyclerView() {
-        statsMainAdapter = new StatsMainAdapter(getActivity(), arrayList);
-        statsRV.setAdapter(statsMainAdapter);
-    }
-
-//    @Override
-//    public void success(ArrayList<StatsBeans> statsData) {
-//        if (statsData != null && statsData.size() > 0) {
-//            if (statsMainAdapter == null) {
-//                statsMainAdapter = new StatsMainAdapter(getActivity(), arrayList);
-//                statsRV.setAdapter(statsMainAdapter);
-//            } else {
-//                arrayList = statsData.get(0).getInnerStatsBeansList();
-//                statsMainAdapter.setData(arrayList);
-//            }
-//            statsRV.setVisibility(View.VISIBLE);
-//            no_data.setVisibility(View.GONE);
-//        } else {
-//            statsRV.setVisibility(View.GONE);
-//            no_data.setVisibility(View.VISIBLE);
-//        }
-//    }
 
     @Override
     public void success(List<ColumnHeader> columnHeaderList, List<RowHeader> rowHeaderList, List<List<Cell>> cellList) {
-
 
 
     }
 
     @Override
     public void success(ArrayList<StatsBeanVertical> verticalArrayList) {
-
+        showProgressDialog();
+        setUpStatsLayout(verticalArrayList);
     }
 
     @Override
     public void error(String error) {
-        Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
-        statsRV.setVisibility(View.GONE);
+        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+        sv_stats.setVisibility(View.GONE);
         no_data.setVisibility(View.VISIBLE);
     }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.e("CheckStatusStats","ISVisiBle");
+        Log.e("CheckStatusStats", "ISVisiBle");
+    }
+
+    private void setUpStatsLayout(ArrayList<StatsBeanVertical> verticalArrayList) {
+        long startTime = System.currentTimeMillis();
+        if (verticalArrayList.size() > 0) {
+            for (int i = 0; i < verticalArrayList.size(); i++) {
+                View pollOptionView = LayoutInflater.from(getActivity()).inflate(R.layout.table_layout, null);
+                ll_table_main.addView(pollOptionView);
+                TextView txt_main_header = pollOptionView.findViewById(R.id.txt_main_header);
+                TextView txt_header = pollOptionView.findViewById(R.id.txt_header);
+                TableView content_container = pollOptionView.findViewById(R.id.content_container);
+                txt_main_header.setText(verticalArrayList.get(i).getMainHeader());
+                txt_header.setText(verticalArrayList.get(i).getHeader());
+
+                MyTableViewAdapter adapter = new MyTableViewAdapter(getActivity());
+                content_container.setAdapter(adapter);
+                adapter.setAllItems(verticalArrayList.get(i).getTableList().getColumnHeaderList()
+                        , verticalArrayList.get(i).getTableList().getRowHeaderList()
+                        , verticalArrayList.get(i).getTableList().getCellList());
+            }
+        }
+        hideProgressDialog();
+        long stopTime = System.currentTimeMillis();
+        Log.e("TimeInStats" , "time calculation   "+   (stopTime-startTime));
     }
 }

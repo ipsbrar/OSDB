@@ -125,7 +125,7 @@ public class HomeBean {
         private String title;
         @SerializedName("slug")
         @Expose
-        private Object slug;
+        private String slug;
         @SerializedName("content")
         @Expose
         private String content;
@@ -179,11 +179,11 @@ public class HomeBean {
             this.title = title;
         }
 
-        public Object getSlug() {
+        public String getSlug() {
             return slug;
         }
 
-        public void setSlug(Object slug) {
+        public void setSlug(String slug) {
             this.slug = slug;
         }
 

@@ -54,7 +54,11 @@ public class PhotosFragment extends BaseFragment implements PlayerDetailsView.Vi
         return view;
     }
 
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
     @Override
     protected void setUp(View view) {
         context = getContext();

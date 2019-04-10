@@ -3,6 +3,7 @@ package com.elintminds.osdb.ui.player_details_screen.view;
 import com.elintminds.osdb.ui.base.view.BaseView;
 import com.elintminds.osdb.ui.player_details_screen.beans.PlayerDetailInfoBean;
 import com.elintminds.osdb.ui.player_details_screen.beans.VideosBean;
+import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeanVertical;
 import com.elintminds.osdb.ui.team_details_screen.beans.StatsBeans;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public interface PlayerDetailsView extends BaseView {
             , ArrayList<String> imageListArray
             , ArrayList<VideosBean> videosBeanArrayList
             , String bio
-            , ArrayList<StatsBeans> statsData);
+            , ArrayList<StatsBeanVertical> statsBeanVerticalArrayList);
 
     void errorOccur(String error);
 //    void fetchPlayerDetailInfo(JSONObject jsonObject);

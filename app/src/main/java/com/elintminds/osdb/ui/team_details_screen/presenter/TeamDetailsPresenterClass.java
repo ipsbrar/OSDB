@@ -10,7 +10,11 @@ import com.elintminds.osdb.ui.team_details_screen.model.TeamDetailsInteractor;
 import com.elintminds.osdb.ui.team_details_screen.model.TeamDetailsInteractorClass;
 import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsView;
 import com.elintminds.osdb.utils.ConnectivityReceiver;
+import com.google.gson.JsonElement;
 import io.reactivex.functions.Consumer;
+import org.json.JSONException;
+import org.json.JSONObject;
+import retrofit2.Response;
 
 public class TeamDetailsPresenterClass<V extends TeamDetailsView.TeamPlayersView, I extends TeamDetailsInteractor>
         extends BasePresenterClass<V, I> implements TeamDetailsPresenter<V, I>
@@ -47,12 +51,13 @@ public class TeamDetailsPresenterClass<V extends TeamDetailsView.TeamPlayersView
                                 @Override
                                 public void accept(Throwable throwable) throws Exception {
                                     Log.e("HomeSwipeData", "   Inside Reject");
-                                    getMvpView().getError(throwable.toString());
+                                    getMvpView().getError(throwable.toString(),true);
                                     getMvpView().hideProgressDialog();
                                 }
                             }));
         }else{
-            getMvpView().getError("No internet found");
+            getMvpView().getError("No internet found",true);
         }
     }
+
 }

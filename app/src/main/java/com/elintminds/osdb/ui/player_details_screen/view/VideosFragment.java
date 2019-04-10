@@ -57,16 +57,10 @@ public class VideosFragment extends BaseFragment implements PlayerDetailsView.Vi
         }
         return view;
     }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        for (String nws : sampleTitles) {
-//            VideosBean item = new VideosBean();
-//            item.setVideoTitle(nws);
-//            videosList.add(item);
-//        }
+        setRetainInstance(true);
     }
 
     @Override

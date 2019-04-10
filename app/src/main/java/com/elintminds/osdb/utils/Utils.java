@@ -29,9 +29,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.elintminds.osdb.R;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Utils {
@@ -258,4 +261,34 @@ public class Utils {
         DisplayMetrics metrics = c.getResources().getDisplayMetrics();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
     }
+
+    public static String getFormatedDate(String rawDate, String currentFormat, String formatTime) {
+        DateFormat originalFormat = new SimpleDateFormat(currentFormat, Locale.ENGLISH);
+        DateFormat targetFormat = new SimpleDateFormat(formatTime);
+//        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+
+            Date date = originalFormat.parse(rawDate);
+            String formattedDate = targetFormat.format(date);
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static long getLongTime(String rawDate, String currentFormat) {
+        String string_date = rawDate;
+
+        SimpleDateFormat f = new SimpleDateFormat(currentFormat);
+        try {
+            Date d = f.parse(string_date);
+            long milliseconds = d.getTime();
+            return milliseconds;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0L;
+    }
+
 }

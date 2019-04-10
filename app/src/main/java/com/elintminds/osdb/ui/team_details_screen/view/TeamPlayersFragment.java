@@ -152,7 +152,13 @@ public class TeamPlayersFragment extends BaseFragment implements TeamDetailsView
     }
 
     @Override
-    public void getError(String error) {
-        Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+    public void getError(String error, boolean isVisible) {
+
+    }
+
+
+    @Override
+    public void TeamData(String headCoach, String stadium) {
+
     }
 }

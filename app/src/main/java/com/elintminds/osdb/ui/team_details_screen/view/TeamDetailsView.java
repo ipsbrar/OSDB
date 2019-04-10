@@ -12,6 +12,9 @@ public interface TeamDetailsView extends BaseView
 
      interface TeamPlayersView  extends TeamDetailsView{
         void getPlayers(TeamPlayersBean teamPlayersBean);
-        void getError(String error);
+        void getError(String error, boolean isVisible);
     }
+
+    void TeamData(String headCoach,String stadium);
+    void getError(String error, boolean isVisible);
 }
