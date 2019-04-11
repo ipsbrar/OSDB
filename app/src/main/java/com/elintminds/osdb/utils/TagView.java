@@ -177,13 +177,13 @@ public class TagView extends RelativeLayout {
             tagLayout.setId(listIndex);
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                tagLayout.setBackgroundDrawable(getSelector(tag));
+                tagLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.follow_following_btn_bg));
             } else {
-                tagLayout.setBackground(getSelector(tag));
+                tagLayout.setBackground(getResources().getDrawable(R.drawable.follow_following_btn_bg));
             }
 
             // tag text
-            TextView tagView = (TextView) tagLayout.findViewById(R.id.tv_tag_item_contain);
+            TextView tagView = tagLayout.findViewById(R.id.tv_tag_item_contain);
             tagView.setText(tag.getText());
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tagView.getLayoutParams();
             params.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, textPaddingBottom);

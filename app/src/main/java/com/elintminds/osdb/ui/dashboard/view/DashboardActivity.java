@@ -143,9 +143,9 @@ public class DashboardActivity extends BaseActivity implements DashboardView, Vi
                 break;
             case R.id.discussion_lay:
 
-                discussionSelected();
-                mTextMessage.setText(R.string.title_discussion);
-                showFragment(DiscussionFragment.newInstance(), DiscussionFragment.TAG);
+//                discussionSelected();
+//                mTextMessage.setText(R.string.title_discussion);
+//                showFragment(DiscussionFragment.newInstance(), DiscussionFragment.TAG);
                 break;
 
             case R.id.option_img:

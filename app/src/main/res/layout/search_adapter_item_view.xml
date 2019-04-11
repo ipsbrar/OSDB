@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:padding="22dp"
+        android:padding="12dp"
         android:background="@color/color_white">
     <RelativeLayout android:layout_width="match_parent"
                     android:id="@+id/rl_other"
@@ -72,7 +72,6 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 tagview:lineMargin="5dp"
                 tagview:tagMargin="5dp"
                 tagview:textPaddingLeft="8dp"

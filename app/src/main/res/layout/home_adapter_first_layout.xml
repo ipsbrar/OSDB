@@ -9,7 +9,7 @@ android:id="@+id/rl_main_breaking_news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rl_breaking_news"
-        android:visibility="gone"
+        android:visibility="visible"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_marginTop="20dp">
 
@@ -41,14 +41,15 @@ android:id="@+id/rl_main_breaking_news"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            app:cardBackgroundColor="@color/color_B3FFFFFF"
+            app:cardBackgroundColor="@color/card_back_color"
             app:contentPadding="16dp"
-            app:cardElevation="@dimen/dp_4"
+            app:cardElevation="@dimen/dp_10"
             app:cardCornerRadius="@dimen/dp_5"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="170dp"
             android:layout_marginBottom="10dp">
 
         <RelativeLayout
+                android:background="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -59,6 +60,7 @@ android:id="@+id/rl_main_breaking_news"
                     android:textColor="@color/color_2E384D"
                     android:textSize="18sp"
                     android:maxLines="5"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/rubik_medium"
                     android:text="@string/sample_text_1"
                     android:layout_gravity="center"
@@ -116,7 +118,7 @@ android:id="@+id/rl_main_breaking_news"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:paddingLeft="30dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:paddingRight="30dp"
         app:shimmer_animation_duration="1200">
 <include layout="@layout/demo_layout_shimmer"/>

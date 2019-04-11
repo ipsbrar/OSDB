@@ -23,10 +23,10 @@ public class NewsFragmentPresenterClass<V extends NewsFragmentView, I extends Ne
     }
 
     @Override
-    public void getNewsData() {
+    public void getNewsData(int offset) {
         if (ConnectivityReceiver.isConnected()) {
             getCompositeDisposable().add(getInteractor()
-                    .getAllNewsList()
+                    .getAllNewsList(offset)
                     .subscribeOn(getSchedulerProvider().io())
                     .observeOn(getSchedulerProvider().ui())
                     .subscribe(new Consumer<NewsAdapterBean>() {

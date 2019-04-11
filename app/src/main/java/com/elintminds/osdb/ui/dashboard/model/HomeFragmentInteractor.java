@@ -13,10 +13,6 @@ import java.util.ArrayList;
 
 public interface HomeFragmentInteractor extends BaseInteractor
 {
-    Observable<ArrayList<SportsAdapterListBean>> getAllSportsList();
     Observable<HomeBean> getAllHomeList(String currentDate);
-    Observable<ArrayList<BornTodayAdapterBean>> getBornTodayList(String currentDate, String limit);
-    Observable<NewsAdapterBean> getAllNewsList();
-    Observable<ArrayList<DoYouKnow>> getDoYouKnow();
     Observable<Response<JsonElement>> AddPollsComment(String pollId, String optionId);
 }

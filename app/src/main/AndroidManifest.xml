@@ -149,6 +149,9 @@
         <activity
                 android:name=".ui.detailview.view.DetailActivity"
                 android:screenOrientation="portrait"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="4180a12c60c0bd330bc679de633da426a496387a" />
     </application>
 
 </manifest>

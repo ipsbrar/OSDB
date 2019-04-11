@@ -123,6 +123,13 @@ public class StatsFragment extends BaseFragment implements StatsView {
                 TextView txt_main_header = pollOptionView.findViewById(R.id.txt_main_header);
                 TextView txt_header = pollOptionView.findViewById(R.id.txt_header);
                 TableView content_container = pollOptionView.findViewById(R.id.content_container);
+                if (i > 0){
+                    if (verticalArrayList.get(i).getMainHeader().equalsIgnoreCase(verticalArrayList.get(i-1).getMainHeader())){
+                        txt_main_header.setVisibility(View.GONE);
+                    }else{
+                        txt_main_header.setVisibility(View.VISIBLE);
+                    }
+                }
                 txt_main_header.setText(verticalArrayList.get(i).getMainHeader());
                 txt_header.setText(verticalArrayList.get(i).getHeader());
 

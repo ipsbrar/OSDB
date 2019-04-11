@@ -419,7 +419,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,
             long timeInLong = Utils.getLongTime(breakingNewsFrag.getPublishedAt() != null ?
                     breakingNewsFrag.getPublishedAt() :
                     "2019-02-21 03:24:54", "yyyy-MM-dd hh:mm:ss");
-            view_1_time_stamp.setText(Utils.getTimeAgo(timeInLong));
+            view_1_time_stamp.setText(Utils.getFullTimeAgo(timeInLong));
             shimmer_breaking_news.stopShimmerAnimation();
             shimmer_breaking_news.setVisibility(View.GONE);
             rl_breaking_news.setVisibility(View.VISIBLE);

@@ -242,6 +242,37 @@ public class Utils {
         }
     }
 
+
+    public static String getFullTimeAgo(long time) {
+        if (time < 1000000000000L) {
+            time *= 1000;
+        }
+
+        Date date = Calendar.getInstance().getTime();
+        long now=date.getTime();
+//        long now = System.currentTimeMillis();
+        if (time > now || time <= 0) {
+            return null;
+        }
+
+
+        final long diff = now - time;
+        if (diff < MINUTE_MILLIS) {
+            return "just now";
+        } else if (diff < 2 * MINUTE_MILLIS) {
+            return "a minute ago";
+        } else if (diff < 50 * MINUTE_MILLIS) {
+            return diff / MINUTE_MILLIS + " minutes ago";
+        } else if (diff < 90 * MINUTE_MILLIS) {
+            return "an hour ago";
+        } else if (diff < 24 * HOUR_MILLIS) {
+            return diff / HOUR_MILLIS + " hours ago";
+        } else if (diff < 48 * HOUR_MILLIS) {
+            return "a day ago";
+        } else {
+            return diff / DAY_MILLIS + " days ago";
+        }
+    }
     public static String getDate(long milliSeconds, String dateFormat)
     {
         // Create a DateFormatter object for displaying date in specified format.

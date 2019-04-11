@@ -12,7 +12,7 @@ public class NewsFragmentInteractorClass extends BaseInteractorClass implements 
     }
 
     @Override
-    public Observable<NewsAdapterBean> getAllNewsList() {
-        return getApiInterface().fetchAllNews();
+    public Observable<NewsAdapterBean> getAllNewsList(int offset) {
+        return getApiInterface().fetchAllNews(offset);
     }
 }

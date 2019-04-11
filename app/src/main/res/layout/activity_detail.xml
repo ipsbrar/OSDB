@@ -109,36 +109,32 @@
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:paddingTop="5dp"
-
+                        android:layout_below="@+id/date_txt"
                         android:fontFamily="@font/rubik_regular"
                         android:paddingBottom="5dp"
                         android:layout_marginTop="8dp"/>
                 <com.elintminds.osdb.utils.TagView
                         xmlns:tagview="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/tag_group"
-
                         android:layout_marginTop="@dimen/dp_10"
                         android:layout_width="match_parent"
                         android:layout_alignParentStart="true"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_toStartOf="@+id/date_txt"
+                        android:layout_marginBottom="10dp"
                         tagview:lineMargin="5dp"
                         tagview:tagMargin="5dp"
+                        android:layout_below="@+id/date_txt"
                         tagview:textPaddingLeft="8dp"
                         tagview:textPaddingTop="5dp"
                         tagview:textPaddingRight="8dp"
-
                         tagview:textPaddingBottom="5dp"/>
                 <TextView
                         android:id="@+id/date_txt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
                         android:textColor="@color/color_A0A5B5"
                         android:textSize="@dimen/sp_12"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
+                        android:gravity="start"
                         android:padding="@dimen/dp_10"
                         android:fontFamily="@font/rubik_regular"
                         android:text="Feb. 6, 2019   2h ago"/>

@@ -66,7 +66,7 @@ public class SearchAdapterRemote extends RecyclerView.Adapter<RecyclerView.ViewH
                 ((ItemViewHolder) viewHolder).txt_news_title.setText(searchAdapterRemoteBean.getTitle());
                 if (searchAdapterRemoteBean.getStringArrayList() != null && searchAdapterRemoteBean.getStringArrayList().length > 0) {
                     Log.e("AdapterPositionIsThis", "     " + searchAdapterRemoteBean.getStringArrayList().length);
-                    ((ItemViewHolder) viewHolder).tag_group.addTags(getTagList(searchAdapterRemoteBean.getStringArrayList()));
+                    ((ItemViewHolder) viewHolder).tag_group.addTags(searchAdapterRemoteBean.getStringArrayList());
                 }
             } else if (searchAdapterRemoteBean.getType().equalsIgnoreCase("Player")) {
                 ((ItemViewHolder) viewHolder).rl_other.setVisibility(View.VISIBLE);

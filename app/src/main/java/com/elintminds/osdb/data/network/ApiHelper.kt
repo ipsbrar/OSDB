@@ -58,8 +58,8 @@ interface ApiHelper {
     @GET("born-today?")
     fun fetchBornTodayData(@Query("currentdate") curDate: String, @Query("limit") limit: String): Observable<ArrayList<BornTodayAdapterBean>>
 
-    @GET("news")
-    fun fetchAllNews(): Observable<NewsAdapterBean>
+    @GET("news?")
+    fun fetchAllNews(@Query("offset") offset: Int): Observable<NewsAdapterBean>
 
     @GET("did-you-know")
     fun fetchDoYouKnow(): Observable<ArrayList<DoYouKnow>>

@@ -21,7 +21,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     TextView signInBtn, forgotPassTxt, signUpTab;
     EditText loginEmailEt, loginPassEt;
-    private Toolbar toolbar;
+//    private Toolbar toolbar;
     private ImageView showPassBtn;
     private boolean isPassShown = false;
     private LoginPresenterClass loginPresenterClass;
@@ -33,16 +33,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         initializeViews();
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
     }
 
     private void initializeViews() {
-        toolbar = findViewById(R.id.login_toolbar);
+//        toolbar = findViewById(R.id.login_toolbar);
         signInBtn = findViewById(R.id.signin_btn);
         signUpTab = findViewById(R.id.signup_tab);
         forgotPassTxt = findViewById(R.id.forgot_pass_txt);

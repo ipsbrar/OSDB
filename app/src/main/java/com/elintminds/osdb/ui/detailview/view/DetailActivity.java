@@ -111,22 +111,16 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
             if (date != null) {
 //                String formatedDate = Utils.getFormatedDate(date, "yyyy-MM-dd hh:mm:ss", "MMM. dd, yyyy");
                 long timeInLong = Utils.getLongTime(date, "MMM. dd, yyyy");
-                date_txt.setText(date + "  " + Utils.getTimeAgo(timeInLong));
+                date_txt.setText(date + "  " + Utils.getFullTimeAgo(timeInLong));
             } else {
                 date_txt.setText("");
             }
 
 //            set all tags
             if (arrayString != null && arrayString.length > 0) {
-                List<Tag> tagList = new ArrayList<>();
-                for (int i = 0; i < arrayString.length; i++) {
-                    Tag tag = new Tag(arrayString[i]);
-                    tag.setBackground(getDrawable(R.drawable.red_capsule_bg));
-                    tagList.add(tag);
-                }
                 view_game_name.setVisibility(View.GONE);
                 tag_group.setVisibility(View.VISIBLE);
-                tag_group.addTags(tagList);
+                tag_group.addTags(arrayString);
             } else {
                 view_game_name.setVisibility(View.VISIBLE);
                 tag_group.setVisibility(View.GONE);

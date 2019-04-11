@@ -18,28 +18,8 @@ public class HomeFragmentInteractorClass extends BaseInteractorClass implements 
     }
 
     @Override
-    public Observable<ArrayList<SportsAdapterListBean>> getAllSportsList() {
-        return getApiInterface().fetchAllSportsList();
-    }
-
-    @Override
     public Observable<HomeBean> getAllHomeList(String currentDate) {
         return getApiInterface().fetchHomeData(currentDate);
-    }
-
-    @Override
-    public Observable<ArrayList<BornTodayAdapterBean>> getBornTodayList(String currentDate, String limit) {
-        return getApiInterface().fetchBornTodayData(currentDate, limit);
-    }
-
-    @Override
-    public Observable<NewsAdapterBean> getAllNewsList() {
-        return getApiInterface().fetchAllNews();
-    }
-
-    @Override
-    public Observable<ArrayList<DoYouKnow>> getDoYouKnow() {
-        return getApiInterface().fetchDoYouKnow();
     }
 
     @Override

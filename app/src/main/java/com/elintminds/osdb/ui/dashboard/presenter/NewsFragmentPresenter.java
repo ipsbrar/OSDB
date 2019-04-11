@@ -5,5 +5,5 @@ import com.elintminds.osdb.ui.dashboard.model.NewsFragmentInteractor;
 import com.elintminds.osdb.ui.dashboard.view.NewsFragmentView;
 
 public interface NewsFragmentPresenter<V extends NewsFragmentView, I extends NewsFragmentInteractor> extends BasePresenter<V,I> {
-    void getNewsData();
+    void getNewsData(int offset);
 }

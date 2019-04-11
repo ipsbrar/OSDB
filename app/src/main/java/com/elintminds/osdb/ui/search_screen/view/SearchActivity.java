@@ -7,15 +7,18 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.elintminds.osdb.R;
 import com.elintminds.osdb.ui.base.view.BaseActivity;
-import com.elintminds.osdb.ui.detailview.view.DetailActivity;
 import com.elintminds.osdb.ui.player_details_screen.view.PlayerDetailsActivity;
 import com.elintminds.osdb.ui.search_finding_screen.view.SearchFindingsActivity;
 import com.elintminds.osdb.ui.search_screen.adapters.SearchAdapter;
@@ -25,16 +28,16 @@ import com.elintminds.osdb.ui.search_screen.beans.SearchBean;
 import com.elintminds.osdb.ui.search_screen.beans.SearchModal;
 import com.elintminds.osdb.ui.search_screen.presenter.SearchScreenPresenterClass;
 import com.elintminds.osdb.ui.team_details_screen.view.TeamDetailsActivity;
+import com.elintminds.osdb.utils.Utils;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends BaseActivity implements SearchScreenView, SearchScreenView.SearchItemClickListener {
-    private Toolbar toolbar;
+public class SearchActivity extends BaseActivity implements SearchScreenView
+        , SearchScreenView.SearchItemClickListener
+        , TextWatcher, TextView.OnEditorActionListener {
     private EditText searchET;
-    private RecyclerView /*searchRV,*/ search_recyclerView_remote;
-    /*private SearchAdapter adapter;*/
+    private RecyclerView search_recyclerView_remote;
     private ArrayList<SearchBean> dataList = new ArrayList<>();
-    private String[] searchSampleData = {"Blackhawks", "Aaron Rodgers", "Australian Open"};
     private SearchScreenPresenterClass searchScreenPresenterClass;
     private SearchAdapterRemote searchAdapterRemote;
     private ArrayList<SearchAdapterRemoteBean> searchAdapterRemoteBeanArrayList = new ArrayList<>();
@@ -46,7 +49,7 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
 
         initializeViews();
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.img_back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -57,16 +60,16 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
     }
 
     private void initializeViews() {
-        toolbar = findViewById(R.id.search_toolbar);
+//        toolbar = findViewById(R.id.search_toolbar);
         searchET = findViewById(R.id.searchET);
 //        searchRV = findViewById(R.id.search_recyclerView);
         search_recyclerView_remote = findViewById(R.id.search_recyclerView_remote);
+
 
     }
 
     private void setUpRecyclerView() {
         searchScreenPresenterClass = new SearchScreenPresenterClass(this, this);
-
 
 
         searchAdapterRemote = new SearchAdapterRemote(searchAdapterRemoteBeanArrayList, this, this);
@@ -82,10 +85,7 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Log.e("EditTextChanged", s + "  " + start + "  " + count + "  ");
-                if (s.toString().length() >= 3) {
-                    Log.e("EditTextChanged", "Search is working");
-                    searchScreenPresenterClass.getSearchData(s.toString(), "0");
-                }
+
             }
 
             @Override
@@ -94,6 +94,18 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
 
             }
         });
+
+        searchET.addTextChangedListener(this);
+        searchET.setOnEditorActionListener(this);
+    }
+
+    private void performSearch() {
+        searchET.setFocusableInTouchMode(false);
+        hideSoftKeyboard(SearchActivity.this);
+        if (!TextUtils.isEmpty(searchET.getText().toString()))
+            searchScreenPresenterClass.getSearchData(searchET.getText().toString().trim(), "0");
+        else
+            Toast.makeText(this, "Please provide valid value.", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -102,6 +114,12 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
         Intent intent = new Intent(this, SearchFindingsActivity.class);
         intent.putExtra("TITLE", dataList.get(position).getSearchName());
         startActivity(intent);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        hideSoftKeyboard(SearchActivity.this);
     }
 
     @Override
@@ -124,7 +142,9 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
             intent.putExtra("title", searchAdapterRemoteBean.getTitle());
             intent.putExtra("bigContent", searchAdapterRemoteBean.getLongContent());
             intent.putExtra("teamName", searchAdapterRemoteBean.getSlugName());
-            intent.putExtra("date", searchAdapterRemoteBean.getCreatedAt());
+            intent.putExtra("date", Utils.getFormatedDate(searchAdapterRemoteBean.getCreatedAt()
+                    , "yyyy-MM-dd hh:mm:ss"
+                    , "MMM. dd, yyyy"));
             intent.putExtra("arrayString", searchAdapterRemoteBean.getStringArrayList());
 //            intent.putExtra("timeStamp", timeStamp);
 
@@ -152,9 +172,10 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (this != null)
-        hideSoftKeyboard(SearchActivity.this);
-
+        if (this != null) {
+            searchET.setFocusableInTouchMode(false);
+            hideSoftKeyboard(SearchActivity.this);
+        }
     }
 
     public static void hideSoftKeyboard(Activity activity) {
@@ -163,5 +184,32 @@ public class SearchActivity extends BaseActivity implements SearchScreenView, Se
                         Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (s.toString().length() >= 3) {
+            Log.e("EditTextChanged", "Search is working");
+            searchScreenPresenterClass.getSearchData(s.toString(), "0");
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            performSearch();
+            return true;
+        }
+        return false;
     }
 }

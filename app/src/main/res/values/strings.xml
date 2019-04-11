@@ -10,7 +10,7 @@
     <string name="benifit_3">Benefit #3</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</string>
     <string name="some_error">Error</string>
-    <string name="account_exists_text">I already have an account
+    <string name="account_exists_text">I already have an account.
         <font color="#6849D7">
             <b>Sign in</b>
         </font>

@@ -49,6 +49,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
         if (item.getAsset() != null) {
             RequestOptions requestOptions = new RequestOptions();
             requestOptions.placeholder(R.drawable.place);
+            Log.e("Image_Path_news",item.getAsset().getFileName());
             Glide.with(context).setDefaultRequestOptions(requestOptions).load(item.getAsset().getFileName()).into(holder.newsPreviewImage);
         }
         if (item.getTitle() != null) {

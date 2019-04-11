@@ -3,6 +3,8 @@ package com.elintminds.osdb.Application;
 import android.app.Application;
 import android.support.v7.app.AppCompatDelegate;
 import com.elintminds.osdb.utils.ConnectivityReceiver;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class MyApplication extends Application {
 
@@ -11,16 +13,22 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        final Fabric fabric = new Fabric.Builder(this)
+                .kits(new Crashlytics())
+                .debuggable(true)
+                .build();
+        Fabric.with(fabric);
+
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         myApplication = null;
         if (myApplication == null)
-        myApplication = this;
+            myApplication = this;
     }
 
-    public static MyApplication getInstance(){
-        if (myApplication == null){
-            synchronized (MyApplication.class){
-                if (myApplication == null){
+    public static MyApplication getInstance() {
+        if (myApplication == null) {
+            synchronized (MyApplication.class) {
+                if (myApplication == null) {
                     myApplication = new MyApplication();
                 }
             }

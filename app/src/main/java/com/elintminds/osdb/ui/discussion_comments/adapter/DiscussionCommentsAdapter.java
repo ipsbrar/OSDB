@@ -59,11 +59,9 @@ public class DiscussionCommentsAdapter extends RecyclerView.Adapter<DiscussionCo
             requestOptions.placeholder(R.drawable.img_player_empty);
             Glide.with(context).setDefaultRequestOptions(requestOptions).load(commentsBean.getCreated_by().getAssets().get(0).getFile_name()).into(viewHolder.user_Image);
         }
-        //        Utils.getTimeAgo();
+
         long timeInLong = getLongTime(commentsBean.getUpdated_at() != null ? commentsBean.getUpdated_at() : "2019-02-21 03:24:54");
-//        Log.e("TimeCheckLong","long   "+timeInLong);
-//        String dateFor = Utils.getDate(timeInLong,"yyyy-dd-MM hh:mm:ss");
-//        Log.e("TimeCheckLong","date   "+dateFor);
+
         viewHolder.hours_txt.setText(Utils.getTimeAgo(timeInLong));
     }
 
