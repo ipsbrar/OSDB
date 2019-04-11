@@ -1,126 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:animateLayoutChanges="true"
-android:id="@+id/rl_main_breaking_news"
-                android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
-<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rl_breaking_news"
-        android:visibility="visible"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_marginTop="20dp">
-
-    <TextView
-            android:id="@+id/first_view_heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/breaking_news"
-            android:textColor="@color/color_565656"
-            android:textSize="14sp"
-            android:fontFamily="@font/rubik_medium"
-            android:textAllCaps="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginStart="25dp"/>
-
-    <ImageView
-            android:id="@+id/view_1_image"
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:scaleType="centerCrop"
-            android:fontFamily="@font/rubik_medium"
-            android:src="@drawable/place"
-            android:contentDescription="@string/item_image"
-            android:layout_below="@id/first_view_heading"
-            android:layout_marginTop="10dp"/>
-
-    <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            app:cardBackgroundColor="@color/card_back_color"
-            app:contentPadding="16dp"
-            app:cardElevation="@dimen/dp_10"
-            app:cardCornerRadius="@dimen/dp_5"
-            android:layout_marginTop="170dp"
-            android:layout_marginBottom="10dp">
-
-        <RelativeLayout
-                android:background="@android:color/transparent"
-                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/rl_main_breaking_news"
                 android:layout_height="wrap_content">
+    <RelativeLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rl_breaking_news"
+            android:visibility="visible"
+            android:layout_marginTop="20dp">
 
-            <TextView
-                    android:id="@+id/view_1_msg_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_2E384D"
-                    android:textSize="18sp"
-                    android:maxLines="5"
+        <TextView
+                android:id="@+id/first_view_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/breaking_news"
+                android:textColor="@color/color_565656"
+                android:textSize="14sp"
+                android:fontFamily="@font/rubik_medium"
+                android:textAllCaps="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"/>
+
+        <ImageView
+                android:id="@+id/view_1_image"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:scaleType="centerCrop"
+                android:fontFamily="@font/rubik_medium"
+                android:src="@drawable/place"
+                android:contentDescription="@string/item_image"
+                android:layout_below="@id/first_view_heading"
+                android:layout_marginTop="10dp"/>
+
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:cardBackgroundColor="@color/card_back_color"
+                app:contentPadding="16dp"
+                app:cardElevation="@dimen/dp_10"
+                app:cardCornerRadius="@dimen/dp_5"
+                android:layout_marginTop="170dp"
+                android:layout_marginBottom="10dp">
+
+            <RelativeLayout
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/rubik_medium"
-                    android:text="@string/sample_text_1"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                    android:id="@+id/view_1_game_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="NFL"
-                    android:textColor="@color/color_white"
-                    android:background="@drawable/red_capsule_bg"
-                    android:layout_below="@id/view_1_msg_text"
-                    android:textSize="11sp"
-                    android:textAllCaps="true"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:paddingTop="5dp"
-                    android:fontFamily="@font/rubik_regular"
-                    android:paddingBottom="5dp"
-                    android:layout_marginTop="8dp"/>
+                <TextView
+                        android:id="@+id/view_1_msg_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_2E384D"
+                        android:textSize="18sp"
+                        android:maxLines="5"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/rubik_medium"
+                        android:text="@string/sample_text_1"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"/>
 
-            <TextView
-                    android:id="@+id/view_1_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sep_16_2018"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/rubik_regular"
-                    android:textColor="@color/color_8798AD"
-                    android:layout_below="@id/view_1_game_name"
-                    android:layout_marginTop="6dp"/>
+                <TextView
+                        android:id="@+id/view_1_game_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NFL"
+                        android:textColor="@color/color_white"
+                        android:background="@drawable/red_capsule_bg"
+                        android:layout_below="@id/view_1_msg_text"
+                        android:textSize="11sp"
+                        android:textAllCaps="true"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:paddingTop="5dp"
+                        android:fontFamily="@font/rubik_regular"
+                        android:paddingBottom="5dp"
+                        android:layout_marginTop="8dp"/>
 
-            <TextView
-                    android:id="@+id/view_1_time_stamp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/_1_min_ago"
-                    android:fontFamily="@font/rubik_regular"
-                    android:textSize="12sp"
-                    android:textColor="@color/color_8798AD"
-                    android:layout_below="@id/view_1_game_name"
-                    android:layout_marginTop="6dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"/>
-        </RelativeLayout>
+                <TextView
+                        android:id="@+id/view_1_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sep_16_2018"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textColor="@color/color_8798AD"
+                        android:layout_below="@id/view_1_game_name"
+                        android:layout_marginTop="6dp"/>
 
-    </android.support.v7.widget.CardView>
-</RelativeLayout>
+                <TextView
+                        android:id="@+id/view_1_time_stamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_1_min_ago"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textSize="12sp"
+                        android:textColor="@color/color_8798AD"
+                        android:layout_below="@id/view_1_game_name"
+                        android:layout_marginTop="6dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
     <io.supercharge.shimmerlayout.ShimmerLayout
-        android:id="@+id/shimmer_breaking_news"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:paddingLeft="30dp"
-        android:visibility="gone"
-        android:paddingRight="30dp"
-        app:shimmer_animation_duration="1200">
-<include layout="@layout/demo_layout_shimmer"/>
+            android:id="@+id/shimmer_breaking_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:paddingLeft="30dp"
+            android:visibility="gone"
+            android:paddingRight="30dp"
+            app:shimmer_animation_duration="1200">
+        <include layout="@layout/demo_layout_shimmer"/>
     </io.supercharge.shimmerlayout.ShimmerLayout>
 </RelativeLayout>

@@ -156,6 +156,13 @@
                 android:textSize="@dimen/sp_15"
                 android:textColor="@color/color_6849D7"/>
 
+        <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Force Crash!"
+                android:onClick="forceCrash"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
 
 
     </LinearLayout>

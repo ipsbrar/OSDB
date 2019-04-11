@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.elintminds.osdb">
+          package="com.osdb.android">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -13,18 +13,18 @@
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-            android:name=".Application.MyApplication"
+            android:name="com.osdb.android.Application.MyApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.FilterActivity.view.FilterActivity">
+        <activity android:name="com.osdb.android.ui.FilterActivity.view.FilterActivity">
         </activity>
-        <activity android:name=".ui.DemoTable.DemoStats"/>
+        <activity android:name="com.osdb.android.ui.DemoTable.DemoStats"/>
         <activity
-                android:name=".ui.player_details_screen.view.VideoPlayActivity"
+                android:name="com.osdb.android.ui.player_details_screen.view.VideoPlayActivity"
                 android:screenOrientation="landscape">
         </activity>
         <activity
@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ui.team_details_screen.view.TeamDetailsActivity"
+                android:name="com.osdb.android.ui.team_details_screen.view.TeamDetailsActivity"
                 android:screenOrientation="portrait">
         </activity>
 
@@ -53,16 +53,16 @@
                 android:value="@string/facebook_app_id"/>
 
         <activity
-                android:name=".ui.particular_sport_screen.view.SportsActivity"
+                android:name="com.osdb.android.ui.particular_sport_screen.view.SportsActivity"
                 android:label=""
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".ui.search_finding_screen.view.SearchFindingsActivity"
+                android:name="com.osdb.android.ui.search_finding_screen.view.SearchFindingsActivity"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".ui.search_screen.view.SearchActivity"
+                android:name="com.osdb.android.ui.search_screen.view.SearchActivity"
                 android:screenOrientation="portrait">
         </activity>
 
@@ -71,11 +71,11 @@
                 android:value="AIzaSyC8fFpWGfRMA28hHluiOQtxzeApLis9N-k"/>
 
         <activity
-                android:name=".ui.event_details.view.EventDetailsActivity"
+                android:name="com.osdb.android.ui.event_details.view.EventDetailsActivity"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".ui.splash.view.SplashScreenActivity"
+                android:name="com.osdb.android.ui.splash.view.SplashScreenActivity"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -84,70 +84,70 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ui.dashboard.view.DashboardActivity"
+                android:name="com.osdb.android.ui.dashboard.view.DashboardActivity"
                 android:label=""
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".MainActivity"
+                android:name="com.osdb.android.MainActivity"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".ui.welcome_screen.view.WelcomeActivity"
+                android:name="com.osdb.android.ui.welcome_screen.view.WelcomeActivity"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".ui.login_options.view.LoginOptionsActivity"
+                android:name="com.osdb.android.ui.login_options.view.LoginOptionsActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".ui.forgot_password.view.ForgotPasswordActivity"
+                android:name="com.osdb.android.ui.forgot_password.view.ForgotPasswordActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan"/>
         <activity
-                android:name=".ui.login.view.LoginActivity"
+                android:name="com.osdb.android.ui.login.view.LoginActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan"/>
         <activity
-                android:name=".ui.register.view.RegisterActivity"
+                android:name="com.osdb.android.ui.register.view.RegisterActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan"/>
         <activity
-                android:name=".ui.report.view.ReportActivity"
+                android:name="com.osdb.android.ui.report.view.ReportActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
-                android:name=".ui.do_you_know.view.DoYouKnowActivity"
+                android:name="com.osdb.android.ui.do_you_know.view.DoYouKnowActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
-                android:name=".ui.calendar_screen.view.PollCalendarActivity"
+                android:name="com.osdb.android.ui.calendar_screen.view.PollCalendarActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".ui.discussion_comments.view.DiscussionCommentsActivity"
+                android:name="com.osdb.android.ui.discussion_comments.view.DiscussionCommentsActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".ui.add_edit_discussion.view.AddEditDiscussionActivity"
+                android:name="com.osdb.android.ui.add_edit_discussion.view.AddEditDiscussionActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustResize"/>
         <activity
-                android:name=".ui.settings.view.SettingsActivity"
+                android:name="com.osdb.android.ui.settings.view.SettingsActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".ui.profile.view.ProfileActivity"
+                android:name="com.osdb.android.ui.profile.view.ProfileActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".ui.profile.view.NotificationActivity"
+                android:name="com.osdb.android.ui.profile.view.NotificationActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".ui.edit_profile.view.EditProfileActivity"
+                android:name="com.osdb.android.ui.edit_profile.view.EditProfileActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".ui.player_details_screen.view.PlayerDetailsActivity"
+                android:name="com.osdb.android.ui.player_details_screen.view.PlayerDetailsActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".ui.detailview.view.DetailActivity"
+                android:name="com.osdb.android.ui.detailview.view.DetailActivity"
                 android:screenOrientation="portrait"/>
         <meta-data
             android:name="io.fabric.ApiKey"

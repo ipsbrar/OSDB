@@ -35,7 +35,7 @@
         />
 
     </RelativeLayout>
-    <com.elintminds.osdb.ui.calendarview.view.CalendarView
+    <com.osdb.android.ui.calendarview.view.CalendarView
             android:id="@+id/calendarView"
             app:dayHeight="48dp"
             app:dayWidth="48dp"
@@ -50,6 +50,6 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent">
 
-    </com.elintminds.osdb.ui.calendarview.view.CalendarView>
+    </com.osdb.android.ui.calendarview.view.CalendarView>
 
 </LinearLayout>

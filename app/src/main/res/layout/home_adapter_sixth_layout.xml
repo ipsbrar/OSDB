@@ -5,13 +5,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_marginRight="25dp"
         app:cardElevation="@dimen/dp_4"
         app:cardCornerRadius="@dimen/dp_5"
         android:id="@+id/cv_on_this_day"
         app:cardBackgroundColor="@color/color_6849D7"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp">
 
     <RelativeLayout
@@ -42,7 +41,6 @@
                 android:textSize="18sp"
                 android:text="@string/sample_text_6"
                 android:layout_gravity="center"
-
                 android:fontFamily="@font/rubik_regular"
                 android:layout_marginTop="15dp"
                 android:layout_below="@id/view_6_heading"/>
