@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginRight="25dp"
         app:cardElevation="@dimen/dp_4"
         app:cardCornerRadius="@dimen/dp_5"
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="15dp">
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
                 android:id="@+id/view_6_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"/>
 
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
                 android:id="@+id/view_6_msg_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

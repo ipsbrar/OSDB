@@ -11,18 +11,29 @@
 
 
     <RelativeLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:paddingBottom="15dp">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="15dp">
 
-        <ImageView
-                android:id="@+id/news_preview_image"
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:scaleType="centerCrop"
-                android:background="@drawable/place"
-                android:contentDescription="@string/item_image"/>
+        <RelativeLayout
+                android:id="@+id/news_view" android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:id="@+id/news_preview_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/place"
+                    android:contentDescription="@string/item_image"/>
 
+            <ImageView
+                    android:id="@+id/video_icon" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_play"
+                    android:visibility="gone"
+                    android:layout_centerInParent="true"
+            />
+        </RelativeLayout>
         <TextView
                 android:id="@+id/news_title"
                 android:layout_width="wrap_content"
@@ -34,12 +45,12 @@
                 android:layout_marginRight="10dp"
                 android:paddingTop="2dp"
                 android:maxLines="3"
-                android:paddingBottom="2dp"
-                android:layout_below="@id/news_preview_image"
+                android:minLines="1"
+                android:layout_below="@id/news_view"
                 android:fontFamily="@font/rubik_medium"
                 tools:targetApi="jelly_bean"/>
 
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
                 android:id="@+id/news_date_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,6 +60,27 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Sep. 16, 2018"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:layout_below="@id/news_title"
+                android:fontFamily="@font/rubik_light"
+                tools:targetApi="jelly_bean"/>
+
+        <me.biubiubiu.justifytext.library.JustifyTextView
+                android:id="@+id/txt_source"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_8798AD"
+                android:textSize="12sp"
+                android:layout_toRightOf="@+id/news_date_time"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/source"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:textAlignment="viewEnd"
+                android:layout_alignParentEnd="true"
                 android:layout_below="@id/news_title"
                 android:fontFamily="@font/rubik_light"
                 tools:targetApi="jelly_bean"/>

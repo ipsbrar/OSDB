@@ -61,7 +61,7 @@
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/place"
                                     android:contentDescription="@string/item_image"/>
-                            <TextView
+                            <me.biubiubiu.justifytext.library.JustifyTextView
                                     android:id="@+id/news_title"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -76,49 +76,66 @@
                                     android:layout_marginRight="16dp"
                                     android:fontFamily="@font/rubik_medium"
                                     tools:targetApi="jelly_bean"/>
+                            <RelativeLayout android:layout_width="match_parent"
+                                            android:id="@+id/rl_tags"
+                                            android:layout_marginRight="@dimen/dp_16"
+                                            android:layout_marginLeft="@dimen/dp_16"
+                                            android:layout_below="@id/news_title"
+                                            android:layout_height="wrap_content">
+                                <com.osdb.pro.utils.TagView
+                                        xmlns:tagview="http://schemas.android.com/apk/res-auto"
+                                        android:id="@+id/news_frag_game_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_height="wrap_content"
+                                        tagview:lineMargin="5dp"
+                                        android:layout_marginTop="8dp"
+                                        tagview:tagMargin="5dp"
+                                        android:layout_centerVertical="true"
+                                        tagview:textPaddingLeft="8dp"
+                                        tagview:textPaddingTop="5dp"
+                                        tagview:textPaddingRight="8dp"
+                                        tagview:textPaddingBottom="5dp"/>
 
-                            <TextView
-                                    android:id="@+id/news_frag_game_name"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="NFL"
-                                    android:textColor="@color/color_white"
-                                    android:background="@drawable/red_capsule_bg"
-                                    android:layout_below="@id/news_title"
-                                    android:textSize="11sp"
-                                    android:textAllCaps="true"
-                                    android:paddingLeft="12dp"
-                                    android:paddingRight="12dp"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-                                    android:layout_marginTop="8dp"
-                                    android:layout_marginLeft="16dp"
-                                    android:layout_marginRight="16dp"
-                                    android:fontFamily="@font/rubik_regular"
-                                    tools:targetApi="jelly_bean"/>
+                                <me.biubiubiu.justifytext.library.JustifyTextView
+                                        android:id="@+id/txt_source"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/source"
+                                        android:textSize="12sp"
+                                        android:layout_centerVertical="true"
+                                        android:textColor="@color/color_8798AD"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_marginLeft="@dimen/dp_8"
+                                        android:fontFamily="@font/rubik_light"
+                                        tools:targetApi="jelly_bean"/>
 
-                            <TextView
+                            </RelativeLayout>
+
+
+                            <me.biubiubiu.justifytext.library.JustifyTextView
                                     android:id="@+id/txt_date_breaking_news"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/sep_16_2018"
                                     android:textSize="12sp"
                                     android:textColor="@color/color_8798AD"
-                                    android:layout_below="@id/news_frag_game_name"
+                                    android:layout_below="@id/rl_tags"
                                     android:layout_marginTop="6dp"
                                     android:layout_marginLeft="16dp"
                                     android:layout_marginRight="16dp"
                                     android:fontFamily="@font/rubik_light"
                                     tools:targetApi="jelly_bean"/>
 
-                            <TextView
+                            <me.biubiubiu.justifytext.library.JustifyTextView
                                     android:id="@+id/txt_time_stamp_breaking_news"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/_1_min_ago"
                                     android:textSize="12sp"
                                     android:textColor="@color/color_8798AD"
-                                    android:layout_below="@id/news_frag_game_name"
+                                    android:layout_below="@id/rl_tags"
                                     android:layout_marginTop="6dp"
                                     android:layout_alignParentEnd="true"
                                     android:layout_alignParentRight="true"
@@ -147,7 +164,7 @@
                             android:nestedScrollingEnabled="false"
                             tools:targetApi="lollipop"/>
 
-                    <TextView
+                    <me.biubiubiu.justifytext.library.JustifyTextView
                             android:id="@+id/load_more_news"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"

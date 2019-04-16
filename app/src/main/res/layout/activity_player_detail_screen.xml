@@ -39,7 +39,7 @@
         <TextView
                 android:id="@+id/player_details_title"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textSize="@dimen/sp_20"
                 android:layout_toStartOf="@id/follow_btn"
                 android:layout_toEndOf="@id/back_btn"
@@ -206,7 +206,6 @@
                     android:layout_height="wrap_content"
                     app:tabBackground="@drawable/toolbar_bg"
                     app:tabGravity="fill"
-
                     app:tabIndicatorColor="@color/color_6849D7"
                     app:tabMode="scrollable"
                     android:layout_gravity="bottom"
@@ -218,7 +217,7 @@
         </android.support.design.widget.AppBarLayout>
 
 
-        <com.osdb.android.utils.NonSwipeableViewPager
+        <com.osdb.pro.utils.NonSwipeableViewPager
                 android:id="@+id/player_details_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

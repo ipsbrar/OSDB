@@ -70,8 +70,10 @@
     <string name="sample_text_5">His biggest achievement has been winning the 2009 US Open, defeating Rafael Nadal in
         the semifinal and 5-time defending champion Roger Federer in the final. He was the first to defeat both…
     </string>
-    <string name="sample_text_6">On July 12, 1921 Babe Ruth sets a record of 137 career home runs. His biggest achievement has been winning the 2009 US Open, defeating Rafael Nadal in
-        the semifinal and 5-time defending champion Roger Federer in the final. He was the first to defeat both…</string>
+    <string name="sample_text_6">On July 12, 1921 Babe Ruth sets a record of 137 career home runs. His biggest
+        achievement has been winning the 2009 US Open, defeating Rafael Nadal in
+        the semifinal and 5-time defending champion Roger Federer in the final. He was the first to defeat both…
+    </string>
     <string name="did_you_know">Did you know?</string>
     <string name="item_image">Item image</string>
     <string name="team_logo">Team logo</string>
@@ -393,8 +395,8 @@
     <string name="report_msg">Are you sure you want to report?</string>
     <string name="form_terms_line_2">the OSDB</string>
     <string name="form_terms_line_3"><![CDATA[ Terms & Conditions]]></string>
-    <string name="verification_link">An verification link sent on your email address</string>
-    <string name="forgot_password_link">An rest link sent on your register email address</string>
+    <string name="verification_link">A verification link is sent on your email address</string>
+    <string name="forgot_password_link">A reset link is sent on your registered email address</string>
     <string name="no_data_found">No data found</string>
     <string name="please_try_again">Please try again</string>
     <string name="coming_soon">We are currently working hard on this page \n we will be back soon please visit again
@@ -402,4 +404,5 @@
     </string>
     <string name="change_password_to_osdb">Change password to OSDB</string>
     <string name="new_password">New password</string>
+    <string name="source">Source</string>
 </resources>

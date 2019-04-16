@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:padding="12dp"
+        android:paddingTop="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingLeft="@dimen/dp_12"
+        android:paddingRight="@dimen/dp_12"
+        android:id="@+id/rl_main_search"
         android:background="@color/color_white">
     <RelativeLayout android:layout_width="match_parent"
                     android:id="@+id/rl_other"
                     android:layout_height="wrap_content">
 
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/team_logo"
                 android:layout_width="@dimen/dp_60"
                 android:layout_height="@dimen/dp_60"
@@ -51,6 +56,7 @@
                 android:padding="@dimen/dp_10"
                 android:textColor="@color/color_black"/>
     </RelativeLayout>
+
     <RelativeLayout
             android:id="@+id/rl_news_layout"
             android:layout_width="match_parent"
@@ -65,18 +71,14 @@
                 android:maxLines="1"
                 android:textSize="@dimen/sp_15"
                 android:textColor="@color/color_black"/>
-        <com.osdb.android.utils.TagView
-                xmlns:tagview="http://schemas.android.com/apk/res-auto"
+
+        <com.osdb.pro.utils.FlowLayout
                 android:id="@+id/tag_group"
                 android:layout_below="@+id/txt_news_title"
-                android:layout_marginTop="@dimen/dp_10"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tagview:lineMargin="5dp"
-                tagview:tagMargin="5dp"
-                tagview:textPaddingLeft="8dp"
-                tagview:textPaddingTop="5dp"
-                tagview:textPaddingRight="8dp"
-                tagview:textPaddingBottom="5dp"/>
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="wrap_content"/>
+
+
     </RelativeLayout>
 </RelativeLayout>

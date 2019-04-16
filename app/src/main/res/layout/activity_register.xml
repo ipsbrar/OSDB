@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_back_gray">
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
                 android:id="@+id/page_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

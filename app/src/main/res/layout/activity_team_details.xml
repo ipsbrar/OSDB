@@ -99,7 +99,7 @@
                         android:id="@+id/head_coach_name"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:lineSpacingMultiplier="1.62"
+
                         android:layout_toEndOf="@id/team_logo_img"
                         android:layout_below="@id/head_coach_txt"
                         android:textSize="@dimen/sp_14"
@@ -126,7 +126,7 @@
                         android:id="@+id/stadium_name"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:lineSpacingMultiplier="1.62"
+
                         android:layout_toEndOf="@id/team_logo_img"
                         android:layout_below="@id/stadium_txt"
                         android:textSize="@dimen/sp_14"
@@ -182,7 +182,7 @@
                     app:tabSelectedTextColor="@color/color_6849D7"
                     app:tabTextAppearance="@style/tab_text"/>
         </android.support.design.widget.AppBarLayout>
-        <com.osdb.android.utils.NonSwipeableViewPager
+        <com.osdb.pro.utils.NonSwipeableViewPager
                 android:id="@+id/team_details_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
         tools:context=".ui.login_options.view.LoginOptionsActivity">
 
 
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
                 android:id="@+id/signin_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 app:srcCompat="@drawable/ic_logo_purple"
                 android:layout_centerHorizontal="true"/>
 
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
                 android:id="@+id/welcome_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                 android:textSize="@dimen/sp_28"
                 android:fontFamily="@font/rubik_bold"
                 android:textColor="@color/color_2E384D"/>
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
                 android:id="@+id/welcome_sub_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
