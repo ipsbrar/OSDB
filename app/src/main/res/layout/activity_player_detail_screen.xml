@@ -217,7 +217,7 @@
         </android.support.design.widget.AppBarLayout>
 
 
-        <com.osdb.pro.utils.NonSwipeableViewPager
+        <com.osdb.app.utils.NonSwipeableViewPager
                 android:id="@+id/player_details_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

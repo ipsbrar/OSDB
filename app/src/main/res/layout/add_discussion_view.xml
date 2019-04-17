@@ -55,7 +55,7 @@
             android:id="@+id/et_lay" android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view">
-        <com.osdb.pro.utils.CustomEditText
+        <com.osdb.app.utils.CustomEditText
                 android:id="@+id/txt_add_comment"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
@@ -68,7 +68,7 @@
                 android:fontFamily="@font/rubik_regular"
                 android:hint="@string/add_your_discussion">
             <requestFocus/>
-        </com.osdb.pro.utils.CustomEditText>
+        </com.osdb.app.utils.CustomEditText>
     </RelativeLayout>
 
     <TextView

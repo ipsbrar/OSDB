@@ -13,10 +13,10 @@
             android:background="@color/white"
             android:gravity="center"
             android:padding="@dimen/dp_12"
-
+            android:visibility="gone"
             android:text="@string/edit_profile"
             android:fontFamily="@font/rubik_regular"
-            android:textColor="@color/color_black" />
+            android:textColor="@color/color_black"/>
 
     <TextView
             android:id="@+id/camera_picker_btn"
@@ -29,7 +29,7 @@
             android:layout_marginTop="@dimen/dp_1"
             android:text="@string/take_photo"
             android:fontFamily="@font/rubik_regular"
-            android:textColor="@color/color_black" />
+            android:textColor="@color/color_black"/>
 
     <TextView
             android:id="@+id/gallery_picker_btn"
@@ -42,7 +42,7 @@
             android:padding="@dimen/dp_12"
             android:text="@string/choose_photo"
             android:fontFamily="@font/rubik_regular"
-            android:textColor="@color/color_black" />
+            android:textColor="@color/color_black"/>
 
     <TextView
             android:id="@+id/deleteBtn"
@@ -52,9 +52,10 @@
             android:layout_marginTop="@dimen/dp_1"
             android:gravity="center"
             android:padding="@dimen/dp_12"
+            android:visibility="gone"
             android:text="@string/delete_photo"
             android:fontFamily="@font/rubik_regular"
-            android:textColor="@color/color_DD4B39" />
+            android:textColor="@color/color_DD4B39"/>
     <TextView
             android:id="@+id/cancelBtn"
             android:layout_width="match_parent"
@@ -65,7 +66,7 @@
             android:padding="@dimen/dp_12"
             android:text="@string/cancel"
             android:fontFamily="@font/rubik_regular"
-            android:textColor="@color/color_black" />
+            android:textColor="@color/color_black"/>
 
 
 </LinearLayout>

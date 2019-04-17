@@ -41,7 +41,7 @@
                 app:srcCompat="@drawable/ic_logo_purple"
                 android:layout_centerHorizontal="true"/>
 
-        <me.biubiubiu.justifytext.library.JustifyTextView
+        <TextView
                 android:id="@+id/welcome_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                 android:textSize="@dimen/sp_28"
                 android:fontFamily="@font/rubik_bold"
                 android:textColor="@color/color_2E384D"/>
-        <me.biubiubiu.justifytext.library.JustifyTextView
+        <TextView
                 android:id="@+id/welcome_sub_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

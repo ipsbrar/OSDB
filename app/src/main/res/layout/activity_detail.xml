@@ -108,7 +108,7 @@
                             android:layout_below="@id/header_txt"
                             android:layout_height="wrap_content">
 
-                <com.osdb.pro.utils.TagView
+                <com.osdb.app.utils.TagView
                         xmlns:tagview="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/view_game_name"
                         android:layout_width="match_parent"

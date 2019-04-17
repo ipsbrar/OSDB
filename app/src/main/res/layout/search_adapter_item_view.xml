@@ -72,7 +72,7 @@
                 android:textSize="@dimen/sp_15"
                 android:textColor="@color/color_black"/>
 
-        <com.osdb.pro.utils.FlowLayout
+        <com.osdb.app.utils.FlowLayout
                 android:id="@+id/tag_group"
                 android:layout_below="@+id/txt_news_title"
                 android:layout_width="match_parent"
